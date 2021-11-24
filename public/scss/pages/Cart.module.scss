@@ -1,0 +1,61 @@
+@import '../utils/variables';
+
+.cart
+{
+  &_container
+  {
+    @include useContainer();
+    @include flex(row, flex-start, space-between, true);
+    margin-bottom: 64px;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      margin-bottom: 24px;
+    }
+  }
+
+  &_title
+  {
+    @include typographyBuilder(600, 20, 24);
+    width: 100%;
+    color: $color_black_text;
+    margin-bottom: 22px;
+  }
+
+  &_detailsContainer,
+  &_orderSummaryContainer
+  {
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      width: 100% !important;
+    }
+  }
+
+  &_detailsContainer
+  {
+    width: calc(((100% - 24px) / 12) * 8);    
+    
+    &:last-child
+    {
+      width: 100%;
+    }
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid $color_light;
+    }
+  }
+
+  &_orderSummaryContainer
+  {
+    width: calc(((100% - 24px) / 12) * 4);
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      padding-bottom: 24px;
+      border-bottom: 1px solid $color_light;
+    }
+  }
+}

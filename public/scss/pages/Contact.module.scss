@@ -1,0 +1,79 @@
+@import '../utils/variables';
+
+.contact
+{
+  &_container
+  {
+    width: 100%;
+    margin-top: 22px;
+    position: relative;
+
+    & > div
+    {
+      @include useContainer();
+      @include flex(row, center, center);
+    }
+  }
+
+  &_form
+  {
+    width: calc(((100% - 24px) / 12) * 6);
+    position: relative;
+    z-index: 10;
+    padding-bottom: 224px;
+    margin-bottom: 64px;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      width: 100%;
+    }
+  }
+
+  &_content
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+    margin: 10px 0 0;
+  }
+
+  &_label
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_grey;
+    margin: 24px 0 8px 0;
+  }
+
+  &_map
+  {
+    & > div > div:first-child 
+    {
+      height: 173px !important; 
+      bottom: 24px;
+    }
+  }
+
+  &_buttonContainer
+  {
+    padding: 24px 0;
+    border-bottom: 1px solid $color_light;
+  }
+
+  &_title
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+  }
+
+  &_titleParent
+  {
+    display: none;
+  }
+
+  img,
+  video,
+  iframe
+  {
+    max-width: 100%;
+  }
+  
+}

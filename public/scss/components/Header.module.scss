@@ -1,0 +1,104 @@
+@import '../utils/variables';
+
+.header
+{
+  &_wrapper
+  {
+    @include useContainer();
+    transition: all ease-in-out 0.5s;
+
+    &[class*="scrolled"]
+    {
+      position: fixed;
+      top: 0;
+      z-index: 10;
+      background-color: $color_white;
+      min-width: 100%;
+      left: 0;
+
+      & > div
+      {
+        @include useContainer();
+        padding: 0 18px;
+
+        @media screen and (max-width: $breakpoint_max_md) 
+        {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  &_container
+  {
+    @include flex(row, center, center);
+    background-color: $color_white;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+  
+  &_menu
+  {
+    display: block;
+    @include fixedWidth(40px);
+    height: 14px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.5 0.333374H15.5V2.00004H0.5V0.333374ZM0.5 6.16671H10.5V7.83337H0.5V6.16671ZM0.5 12H15.5V13.6667H0.5V12Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+  }
+
+  &_logoContainer
+  {
+    margin: auto;
+  }
+
+  &_logo
+  {
+    max-width: 200px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+  }
+
+  &_cartContainer
+  {
+    @include flex(row, center, center);
+    @include fixedWidth(40px);
+    cursor: pointer;
+  }
+
+  &_cartIcon
+  {
+    display: block;
+    width: 16px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='16' height='19' viewBox='0 0 16 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.83333 6.66671V5.00004C3.83333 3.89497 4.27232 2.83516 5.05372 2.05376C5.83512 1.27236 6.89493 0.833374 8 0.833374C9.10507 0.833374 10.1649 1.27236 10.9463 2.05376C11.7277 2.83516 12.1667 3.89497 12.1667 5.00004V6.66671H14.6667C14.8877 6.66671 15.0996 6.7545 15.2559 6.91079C15.4122 7.06707 15.5 7.27903 15.5 7.50004V17.5C15.5 17.7211 15.4122 17.933 15.2559 18.0893C15.0996 18.2456 14.8877 18.3334 14.6667 18.3334H1.33333C1.11232 18.3334 0.900358 18.2456 0.744078 18.0893C0.587797 17.933 0.5 17.7211 0.5 17.5V7.50004C0.5 7.27903 0.587797 7.06707 0.744078 6.91079C0.900358 6.7545 1.11232 6.66671 1.33333 6.66671H3.83333ZM3.83333 8.33337H2.16667V16.6667H13.8333V8.33337H12.1667V10H10.5V8.33337H5.5V10H3.83333V8.33337ZM5.5 6.66671H10.5V5.00004C10.5 4.337 10.2366 3.70111 9.76777 3.23227C9.29893 2.76343 8.66304 2.50004 8 2.50004C7.33696 2.50004 6.70107 2.76343 6.23223 3.23227C5.76339 3.70111 5.5 4.337 5.5 5.00004V6.66671Z' fill='%23333333'/%3E%3C/svg%3E");
+  }
+
+  &_cartLabel
+  {
+    @include typographyBuilder(600, 10, 16);
+    margin-left: 6.5px;
+  }
+
+  &_placeholderLogo
+  {
+    width: 155px;
+    height: 24px;
+  }
+
+  &_announce
+  {
+    height: 32px;
+    background-color: $color_black_text;
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  &_announceItem
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_white;
+  }
+}

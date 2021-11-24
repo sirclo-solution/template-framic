@@ -1,0 +1,37 @@
+@import '../utils/variables';
+
+.homepage
+{
+  &_container
+  {
+    @include useContainer()
+  }
+
+  &_linkAllProduct
+  {
+    @include flex(row, center, flex-start);
+    @include fixedWidth(100%);
+    @include typographyBuilder(700, 16, 24);
+    padding: 12px 17px 12px 12px;
+    background-color: $color_light_dark;
+    color: $color_black;
+    margin-top: 42px;
+    cursor: pointer;
+
+    & > img 
+    {
+      margin-right: 13px;
+    }
+  }
+
+  &_rightArrow
+  {
+    margin-left: auto;
+  }
+
+  &_textSeeProduct
+  {
+    margin: 0;
+    color: $color_black_text;
+  }
+}

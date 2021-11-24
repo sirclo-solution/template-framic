@@ -1,0 +1,118 @@
+@import '../utils/variables';
+
+.footer
+{
+  &_wrapper
+  {
+    background-color: $color_black;   
+  }
+  
+  &_container
+  {
+    @include useContainer();
+    @include flex(column, center, center);
+  }
+
+  &_copyright
+  {
+    @include typographyBuilder(400, 10, 16);
+    color: $color_grey_light;
+    padding: 12px 0 19px;
+  }
+
+  &_link
+  {
+    @include flex(row, center, center, true);
+    width: 100%;
+    margin-top: 12px;
+    border-top: 1px solid rgba($color_grey, 0.5);
+    padding: 12px 0 0;
+
+    & > ul
+    {
+      @include flex(row, center, center, true);
+      margin-bottom: 0;
+      padding: 0;
+      list-style: none;
+
+      a
+      {
+        @include typographyBuilder(400, 12, 16);
+        color: $color_white;
+        text-transform: capitalize;
+      }    
+
+      & > li:not(:last-child)
+      {
+        margin-right: 18px;
+      }
+    }
+  }
+
+  &_socialContainer
+  {
+    margin: 23px 0;
+  }
+
+  &_socialItem
+  {
+    &:not(:last-child)
+    {
+      margin-right: 16px;
+    }
+
+    & > img
+    {
+      height: 16px;
+    }
+  }
+
+  &_logoDescription
+  {
+    @include flex(column, center, center);
+    padding-top: 29px;
+
+    h1, h2, h3, h4, h5, h6, p
+    {
+      @include typographyBuilder(400, 12, 16);
+      text-align: center;
+      color: $color_white;
+      order: 2;
+      margin-top: 23px;
+
+      &::before
+      {
+        content: "";
+        width: 100px;
+        margin: auto;
+        display: block;
+        border-top: 1px solid rgba(102, 102, 102, 0.5);
+      }
+    }
+
+    img
+    {
+      order: 1;
+      width: 130px !important;
+    }
+  }
+
+  &_placeholderWidgetLink
+  {
+    width: 52px;
+    height: 16px;
+    margin-bottom: 10px;
+
+    &:not(:last-child)
+    {
+      margin-right: 18px;
+    }
+  }
+
+  &_placeholderWidgetLogoDescription
+  {
+    width: 52px;
+    height: 16px;
+    margin-bottom: 10px;
+  }
+}

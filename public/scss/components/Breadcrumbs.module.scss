@@ -1,0 +1,51 @@
+@import '../utils/variables';
+
+.breadcrumb
+{
+  
+  &_wrapper
+  {
+    @include useContainer()
+  }
+  
+  &_container
+  {
+    background-color: transparent;
+    padding: 12px 0;
+  }
+
+  &_item
+  {
+    @include typographyBuilder(400, 10, 16);
+
+    & > a
+    {
+      color: $color_black;
+    }
+
+    & > span
+    {
+      color: $color_grey_light;
+    }
+
+    &:not(:first-child)
+    {
+      padding-left: 4px !important;
+
+      &::before
+      {
+        padding-right: 4px !important;
+      }
+    }
+
+    &:last-child
+    {
+      & > a
+      {
+        @include typographyBuilder(400, 10, 16);
+        pointer-events: none;
+        color: $color_grey_light;
+      }
+    }
+  }
+}

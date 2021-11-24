@@ -1,0 +1,247 @@
+@import '../utils/variables';
+
+.paymentmethod 
+{
+  &_paymentItemEnabled
+  {
+    @include flex(row, center, flex-start, true);
+    border: 1px solid $color_light;
+    box-sizing: border-box;
+    border-radius: 2px;
+
+    & > div
+    {
+      padding: 12px;
+    }
+
+    &:not(:last-child)
+    {
+      margin-bottom: 12px;
+    }
+  }
+
+  &_paymentItemDisabled
+  {
+    pointer-events: none;
+    opacity: .5;
+  }
+
+  &_paymentImg
+  {
+    &:empty
+    {
+      display: none
+    }
+    
+    & > img
+    {
+      @include fixedHeight(24px);
+    }
+  }
+
+  &_paymentType
+  {
+    @include flex(row, center, flex-start);
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    margin-right: auto;
+    cursor: pointer;
+
+    & > p
+    {
+      margin: 0 0 0 12px;
+    }
+  }
+
+  &_paymentMethodDetails
+  {
+    width: 100%;
+    background: $color_light_low;
+  }
+
+  &_selectedPaymentMethod
+  {
+    display: block;
+    position: relative;
+  }
+
+  &_paymentSummary
+  {
+    @include fixedWidth(100%);
+    display: block;
+    margin-bottom: 16px
+  }
+
+  &_paymentDetailsRow
+  {
+    @include flex(row, flex-start, space-between);
+
+    &:last-child
+    {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px dashed $color_grey_dark;
+
+      & > td
+      {
+        @include typographyBuilder(600, 16, 24);
+      }
+    }
+  }
+
+  &_paymentDetailsLabel
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+  }
+
+  &_paymentDetailsValue
+  {
+    @include flex(row, flex-start, flex-end);
+    text-align: right;
+
+    @media (max-width: #{$breakpoint_max_md})
+    {
+      display: block;
+
+      & > span
+      {
+       display: block;
+      }
+    }
+  }
+
+  &_basePrice
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_red;
+    text-decoration-line: line-through;
+    margin-right: 6px;
+
+    @media (max-width: #{$breakpoint_max_md})
+    {
+      margin: 0;
+    }
+  }
+
+  &_salePrice
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+  }
+
+  &_agreementContainer
+  {
+    @include flex(row, center, flex-start);
+    margin: 8px 0;
+
+    & > span
+    {
+      @include typographyBuilder(400, 12, 16);
+      color: $color_grey;
+      margin-left: 8px;
+    }
+  }
+
+  &_promotionButtonGroup
+  {
+    margin-bottom: 24px;
+
+    & > button
+    {
+      background-color: $color_white;
+      width: 100%;
+
+      &:last-child
+      {
+        margin-top: 12px;
+      }
+
+      &::after
+      {
+        margin-left: auto !important;
+      }
+    }
+
+    & > div
+    {
+      &:last-child
+      {
+        margin-top: 12px;
+      }
+
+      &::after
+      {
+        display: none;
+      }
+    }
+  }
+
+  &_loaderElement
+  {
+
+    width: 100%;
+    text-align: center;
+  }
+
+  &_pointButtonRemove,
+  &_voucherButtonRemove
+  {
+    display: block;
+    margin-left: auto;
+  }
+
+  &_paymentWarningText
+  {
+    @include typographyBuilder(400, 12, 16);
+    width: 100%;
+    padding: 0 12px;
+    color: $color_red;
+  }
+
+  &_pointsButton,
+  &_voucherButton
+  {
+    @include typographyBuilder(400, 14, 16);
+    color: $color_black_text;
+  }
+
+  &_loaderPages
+  {
+    @include flex(row, center, center);
+    @include fixedSize(100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba($color_black, 0.8);
+
+    span[class*="loaderpages_dotItem"]
+    {
+      background-color: $color_white;
+    }
+
+    p
+    {
+      color: $color_white;
+    }
+  }
+
+  &_radioButton
+  {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    background-clip: content-box;
+    border: 1px solid $color_black_text;
+    background-color: $color_white;
+    border-radius: 50%;
+
+    &:checked
+    {
+      background-color: $color_black_text;
+      padding: 2px;
+    }
+  }
+}

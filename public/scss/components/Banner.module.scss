@@ -1,0 +1,93 @@
+@import '../utils/variables';
+
+.bannerCarousel
+{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+
+  [class="BrainhubCarousel"] {
+    width: 100%;
+    height: 100%;
+  }
+
+  [class="BrainhubCarousel__container"] {
+    position: relative;
+  }
+
+  [class="BrainhubCarousel__container"]
+  [class="BrainhubCarousel__trackContainer"]
+  [class="BrainhubCarousel__track"]
+  {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  [class*="BrainhubCarouselItem"]
+  {
+    @include flex(row, flex-start, flex-start);
+
+    div,
+    a,
+    img
+    {
+      @include fixedWidth(100%);
+      height: auto;
+      position: relative;
+    }
+  }
+
+  [class="BrainhubCarouselItem--active"]
+  {
+    @include fixedWidth(100%);
+  }
+
+  [class="BrainhubCarousel__dots"]
+  {
+    position: absolute;
+    width: 100%;
+    bottom: 13PX;
+    
+    [class*="BrainhubCarousel__dot"] {
+      background-color: transparent;
+      padding: 0 5px;
+
+      &:before {
+        background: $color_white;
+        box-shadow: none;
+        border-radius: 0;
+        width: 22px;
+        height: 2px;
+        padding: 0;
+      }
+    }
+  }
+
+  &_placeholder
+  {
+    width: 100%;
+    height: calc(100vh - 75px);
+
+    @media screen and (max-width: $breakpoint_max_md)
+    {
+      height: 30vh;
+    }
+  }
+
+  li[class*="BrainhubCarouselItem"]
+  {
+    img 
+    {
+      display: none;
+    }
+
+    &[class*="--active"]
+    {
+      img 
+      {
+        display: block !important;
+      }
+    }
+  } 
+}

@@ -1,0 +1,45 @@
+@import '../utils/variables';
+
+.paymentStatus
+{
+  &_parent
+  {
+    @include flex(row, center, center);
+  }
+
+  &_container
+  {
+    @include useContainer();
+    width: calc(((100% - 24px) / 12) * 4);
+    
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      width: 100%;
+    }
+  }
+
+  &_heading
+  {
+    text-align: center;
+    padding: 30px 0 25px 0;
+    background: #EEEEEE;
+  }
+
+  &_title
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    margin-top: 6px;
+  }
+
+  &_content
+  {
+    text-align: center;
+    padding: 24px 0;
+  }
+
+  &_contentDesc
+  {
+    @include typographyBuilder(400, 16, 24);
+  }
+}

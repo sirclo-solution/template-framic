@@ -1,0 +1,40 @@
+@import '~bootstrap/scss/bootstrap.scss';
+// @import './base/all.scss';
+@import './utils/variables.scss';
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+main
+{
+  min-height: calc(100vh - 170px);
+}
+
+body
+{
+  @include useScrollbar();
+}
+
+.page-transition {
+
+  &-enter {
+    opacity: 0;
+
+    &-active {
+      opacity: 1;
+      transition: opacity 200ms;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+
+    &-active {
+      opacity: 0;
+      transition: opacity 200ms;
+    }
+  } 
+}

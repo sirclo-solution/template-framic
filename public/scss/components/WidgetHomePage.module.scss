@@ -1,0 +1,204 @@
+@import '../utils/variables';
+
+.widget
+{
+  
+  &_container
+  {
+    h1, h2, h3, h4, h5, p
+    {
+      @include typographyBuilder(700, 28, 40);
+      color: $color_white;
+      font-weight: bold;
+    }
+
+    &:last-child
+    {
+      margin: 42px 0 64px 0;
+    }
+
+    @media screen and (min-width: $breakpoint_min_md) 
+    {
+      @include flex(row, flex-start, space-between);
+    }
+  }
+
+  &_itemTop
+  {
+    @include position();
+    margin-top: 41px;
+    margin-bottom: 42px;
+   
+
+    &:hover{
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    
+    &:first-child
+    {
+      width: calc(((100% - 12px) / 12) * 7);
+
+      h1, h2, h3, h4, h5, p
+      {
+        @include absolute(45%, 0, 0, 57px);
+      }
+      
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        margin-top: 53px;
+        margin-bottom: 0;
+        width: 100%;
+      }
+    }
+    
+    &:last-child
+    {
+      width: calc(((100% - 12px) / 12) * 5);
+
+      h1, h2, h3, h4, h5, p
+      {
+        @include absolute(50%, 0, 0, 50%);
+        transform: translate(-50%, 0);
+      }
+      
+      
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        margin-top: 16px;
+        width: 100%;
+      }
+    }
+
+    img
+    {
+      @include fixedWidth(100%, true);
+      object-fit: contain;
+    }
+  }
+
+  &_productsContainer
+  {
+    @include flex(row, flex-start, flex-start, true);
+    margin-bottom: 42px;
+
+    & > div[class*="product_container"]
+    { 
+      @include fixedWidth(calc((100% - 72px) / 4));
+
+      &:not(:last-child)
+      {
+        margin-right: 24px;
+      }
+
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        @include fixedWidth(calc((100% - 16px) / 2));
+        margin-bottom: 16px;
+
+        &:nth-child(odd)
+        {
+          margin-right: 16px;
+        }
+
+        &:nth-child(even)
+        {
+          margin-right: 0;
+        }
+      }
+    }
+
+    & > div[class*="product_placeholder"]
+    {
+      @include fixedWidth(calc((100% - 72px) / 4));
+
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        @include fixedWidth(calc((100% - 16px) / 2));
+        margin-right: 16px;
+      }
+    }
+  }
+
+  &_productsLabel
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    margin-bottom: 0;
+  }
+
+  &_productsLink
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_blue;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  &_productsHeader
+  {
+    @include flex(row, center, space-between);
+    margin-bottom: 24px;
+  }
+
+  &_itemBottom
+  {
+    @include position();
+
+    &:hover{
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    
+    &:last-child
+    {
+      width: calc(((100% - 12px) / 12) * 7);
+
+      h1, h2, h3, h4, h5, p
+      {
+        @include absolute(65%, 0, 0, 38px);
+        @include typographyBuilder(700, 48, 125);
+      }
+      
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        margin-top: 16px;
+        width: 100%;
+
+        h1, h2, h3, h4, h5, p
+        {
+          @include absolute(43%, 0, 0, 38px);
+        }
+      }
+    }
+    
+    &:first-child
+    {
+      width: calc(((100% - 12px) / 12) * 5);
+      text-align: center;
+      
+      h1, h2, h3, h4, h5, p
+      {
+        @include absolute(50%, 0, 0, 50%);
+        transform: translate(-50%, 0);
+      } 
+      
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        margin-top: 16px;
+        width: 100%;
+      }
+    }
+    
+    img
+    {
+      @include fixedWidth(100%, true);
+      object-fit: contain;
+    }
+  }
+
+  &_placeholder
+  {
+    height: 431px;
+  }
+}

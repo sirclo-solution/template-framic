@@ -1,0 +1,53 @@
+@import '../utils/variables';
+
+.giftCard
+{
+  &_container
+  {
+    width: 100%;
+    margin: 22px 0 100px 0;
+    position: relative;
+
+    & > div
+    {
+      @include useContainer();
+      @include flex(row, center, center);
+    }
+  }
+
+  &_form
+  {
+    width: calc(((100% - 24px) / 12) * 6);
+    
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      width: 100%;
+    }
+  }
+
+  &_content
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+    margin: 10px 0 0;
+  }
+
+  &_label
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_grey;
+    margin: 24px 0 8px 0;
+  }
+
+  &_buttonContainer
+  {
+    margin: 24px 0;
+  }
+
+  &_title
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+  }
+  
+}

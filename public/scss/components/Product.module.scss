@@ -1,0 +1,133 @@
+@import '../utils/variables';
+
+.product
+{
+
+  &_placeholder
+  {
+    @include fixedHeight(332px);
+
+    &:not(:last-child)
+    {
+      margin-right: 24px;
+    }
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixedHeight(162px);
+      margin-right: 16px;
+      margin-bottom: 12px;
+      
+      &:nth-child(even)
+      {
+        margin-right: 0 !important;
+      }
+    }
+  }
+
+  &_container
+  {
+    position: relative;
+    width: fit-content;
+  } 
+
+  &_imageContainer
+  {
+    @include fixedWidth(100%);
+    overflow: hidden;
+  }
+
+  &_imageItem
+  {
+    @include fixedWidth(100%);
+  }
+
+  &_labelContainer
+  {
+    margin-top: 12px
+  }
+
+  &_title
+  {
+    @include typographyBuilder(400, 16, 24);
+    margin-bottom: 8px;
+    color: $color_black_text;
+  }
+
+  &_price
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+    margin-bottom: 0;
+  }
+
+  &_priceSale
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+    text-decoration-line: line-through;
+  }
+
+  &_priceText
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_red;
+    margin-left: 4px;
+
+    @media screen and (max-width: $breakpoint_max_lg) 
+    {
+      display: block;
+      margin-left: 0;
+    }
+  }
+
+  &_stickerContainer
+  {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &_stickerItemNew,
+  &_stickerItemOutOfStock,
+  &_stickerItemOpenOrder,
+  &_stickerItemComingSoon,
+  &_stickerItemPreOrder,
+  &_stickerItemSale
+  {
+    @include typographyBuilder(600, 10, 16);
+    display: block;
+    padding: 4px 8px;
+    color: $color_white;
+  }
+
+  &_stickerItemNew
+  {
+    background-color: $color_green;
+  }
+
+  &_stickerItemOutOfStock
+  {
+    background-color: $color_grey_light;
+  }
+
+  &_stickerItemOpenOrder
+  {
+    background-color: $color_blue;
+  }
+
+  &_stickerItemComingSoon
+  {
+    background-color: $color_purple;
+  }
+  
+  &_stickerItemSale
+  {
+    background-color: $color_red; 
+  }
+
+  &_stickerItemPreOrder
+  {
+    background-color: $color_purple;
+  }
+}
