@@ -1,0 +1,88 @@
+@import '../utils/variables';
+
+// list buttons format typing: $name, $background_color, $color, $border_color
+$buttons: (
+  "primary" $color_black_text $color_white $color_black_text,
+  "secondary" transparent $color_black_text $color_black_text,
+  "text" $color_white $color_black_text $color_white,
+);
+
+.btn 
+{
+  @include typographyBuilder(400, 16, 24);
+  @include flex(row, center, center);
+  padding: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+  
+  &:focus
+  {
+    outline: 0;
+  }
+
+  &:disabled
+  {
+    pointer-events: none;
+    opacity: .1;
+  }
+
+  &_small
+  {
+    padding: 12px !important;
+  }
+
+  @each $name, $background_color, $color, $border_color in $buttons
+  {
+    &_#{$name}
+    {
+      @extend .btn;
+      background-color: $background_color;
+      border: 1px solid $border_color;
+      color: $color;
+
+      &Small
+      {
+        @extend .btn_#{$name};
+        @extend .btn_small;
+      }
+
+      &Long
+      {
+        @extend .btn_#{$name};
+        @include fixedWidth(100%);
+
+        &Small
+        {
+          @extend .btn_#{$name}Long;
+          @extend .btn_small;
+        }
+      }
+
+      &Outline
+      {
+        @extend .btn_#{$name};
+        background-color: transparent;
+        border-color: $background_color;
+        color: $background_color;
+
+        &Long
+        {
+          @extend .btn_#{$name}Outline;
+          @include fixedWidth(100%);
+
+          &Small
+          {
+            @extend .btn_#{$name}Long;
+            @extend .btn_small;
+          }
+        }
+        
+        &Small
+        {
+          @extend .btn_#{$name}Outline;
+          @extend .btn_small;
+        }
+      }
+    }
+  }
+}

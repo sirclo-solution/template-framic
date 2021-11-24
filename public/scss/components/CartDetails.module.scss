@@ -1,0 +1,394 @@
+@import '../utils/variables';
+
+.cartdetails 
+{
+  &_header
+  {
+    @include flex(row, center, space-between);
+    padding-bottom: 24px;
+    border-bottom: 1px solid $color_light;
+    margin-bottom: 12px;
+  }
+  
+
+  &_headerTitle
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_headerShop
+  {
+    @include typographyBuilder(400, 16, 24);
+    @include flex(row, center, center);
+    color: $color_blue;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+
+    &:hover
+    {
+      text-decoration: underline;
+    }
+
+    &::before
+    {
+      content: "";
+      display: block;
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.33337 7.33331V3.33331H8.66671V7.33331H12.6667V8.66665H8.66671V12.6666H7.33337V8.66665H3.33337V7.33331H7.33337Z' fill='%23276EF1'/%3E%3C/svg%3E%0A");
+    }
+  }
+
+  &_headerChange
+  {
+    @include flex(row, center, space-between);
+    border-radius: 2px 2px 0 0;
+    background: $color_light_low;
+    border: 1px solid $color_light;
+    border-bottom: 0;
+    padding: 16px 16px 0;
+  }
+
+  &_headerChangeTitle
+  {   
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 0
+  }
+
+  &_headerChangeLink
+  {
+    @include typographyBuilder(400, 12, 16);
+    @include flex(row, center, flex-start);
+
+    color: $color_blue;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+
+    &:hover
+    {
+      text-decoration: underline
+    }
+
+    &::before
+    {
+      @include fixedSize(16px);
+      content: "";
+      margin-right: 4px;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("data:image/svg+xml,%0A%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.21871 5.00001L5.51871 8.30001L4.57604 9.24267L0.333374 5.00001L4.57604 0.757339L5.51871 1.70001L2.21871 5.00001Z' fill='%23276EF1'/%3E%3C/svg%3E%0A");
+    }
+  }
+
+  &_invalidMsg
+  {
+    @include typographyBuilder(400, 12, 16);
+    @include flex(row, center, flex-start);
+    color: $color_red;
+    padding: 12px;
+    width: 100%;
+    background-color: $color_light_low;
+    border-radius: 2px;
+    margin-bottom: 24px;
+
+    &::before
+    {
+      @include fixedSize(14px);
+      content: "";
+      display: block;
+      margin-right: 10px;
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml,%0A%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.00004 13.6666C3.31804 13.6666 0.333374 10.682 0.333374 6.99998C0.333374 3.31798 3.31804 0.333313 7.00004 0.333313C10.682 0.333313 13.6667 3.31798 13.6667 6.99998C13.6667 10.682 10.682 13.6666 7.00004 13.6666ZM7.00004 12.3333C8.41453 12.3333 9.77108 11.7714 10.7713 10.7712C11.7715 9.77102 12.3334 8.41447 12.3334 6.99998C12.3334 5.58549 11.7715 4.22894 10.7713 3.22874C9.77108 2.22855 8.41453 1.66665 7.00004 1.66665C5.58555 1.66665 4.229 2.22855 3.2288 3.22874C2.22861 4.22894 1.66671 5.58549 1.66671 6.99998C1.66671 8.41447 2.22861 9.77102 3.2288 10.7712C4.229 11.7714 5.58555 12.3333 7.00004 12.3333ZM6.33337 8.99998H7.66671V10.3333H6.33337V8.99998ZM6.33337 3.66665H7.66671V7.66665H6.33337V3.66665Z' fill='%23E11900'/%3E%3C/svg%3E");
+    }
+  }
+
+  &_cartHeader
+  {
+    display: none;
+  }
+
+  &_cartItem
+  {
+    display: grid;
+    grid-template-columns: 72px 65px auto;
+    column-gap: 12px;
+    row-gap: 12px;
+    grid-template-areas:
+      "image title title"
+      "image qty price"
+      "image total total";
+    position: relative;
+    flex-flow: column wrap;
+    
+    &:not(:last-child)
+    {
+      margin-bottom: 24px;
+      border-bottom: 1px solid $color_light;
+      padding-bottom: 24px;
+    }
+  }
+
+  &_itemImage
+  {
+    @include fixedSize(72px);
+    grid-area: image;
+
+    & > img
+    {
+      @include fixedSize(72px);
+      object-fit: cover;
+    }
+  }
+
+  &_itemTitle
+  {
+    @include flex(row, flex-end, flex-start);
+    @include typographyBuilder(400, 16, 24);
+    grid-area: title;
+    color: $color_black_text;
+    
+    & > a
+    {
+      @include truncate();
+      @include typographyBuilder(400, 16, 24);
+      color: $color_black_text;
+      cursor: pointer;
+    }
+  }
+
+  &_itemPrice
+  {
+    @include flex(column, flex-start, center);
+    grid-area: price;
+  }
+
+  &_itemRegularPrice
+  {
+    @include typographyBuilder(400, 12, 16);
+    margin: 0;
+    color: $color_black_text;
+    
+    &[class*="discount"]
+    {
+      color: $color_black_text;
+      text-decoration-line: line-through;
+      margin-bottom: 5px;
+    }
+  }
+
+  &_itemSalePrice
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_red;
+    display: block;
+    margin: 0;
+  }
+
+  &_itemQty
+  {
+    grid-area: qty;
+
+    & > div[class*="cartdetails_error"]
+    {
+      &:empty
+      {
+        display: none;
+      }
+    }
+  }
+
+  &_error
+  {
+    @include typographyBuilder(400, 10, 16);
+    color: $color_red;
+    // margin-top: 12px;
+    max-width: 146px;
+  }
+
+  &_qtyBox
+  {
+    display: grid;
+    grid-template-areas:
+    "input btnMin"
+    "input btnPlus";
+    border: 1px solid $color_light_border;
+    border-radius: 3px;
+
+    button{
+      &:first-child,
+      &:last-child
+      {
+        @include fixedSize(24px);
+        color: $color_white;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        position: relative;
+
+        &::before
+        {
+          @include fixedSize(24px);
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        &:disabled
+        {
+          pointer-events: none;
+          opacity: .5;
+        }
+      }
+
+      &:first-child
+      {
+        grid-area: btnPlus;
+
+        &::before
+        {
+          background-image: url("data:image/svg+xml,%0A%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.99996 6.00002L0.756958 1.75702L2.17196 0.343018L4.99996 3.17202L7.82796 0.343018L9.24296 1.75702L4.99996 6.00002Z' fill='%23333333'/%3E%3C/svg%3E");
+        }
+      }
+      
+      &:last-child
+      {
+        grid-area: btnMin;
+        
+        &::before
+        {
+          background-image: url("data:image/svg+xml,%0A%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.99996 2.828L2.17196 5.657L0.756958 4.243L4.99996 0L9.24296 4.243L7.82796 5.657L4.99996 2.828Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+        }
+      }
+    }
+
+    input[type=number] {
+      @include typographyBuilder(400, 16, 24);
+      color: $color_black_text;
+      grid-area: input;
+      width: 100%;
+      border: 0;
+      padding: 12px 0 12px 12px;
+      border-radius: 3px;
+
+      &:focus
+      {
+        outline: 0;
+      }
+
+      /* Firefox */
+      -moz-appearance: textfield;
+
+      /* Chrome, Safari, Edge, Opera */
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  &_itemAmount
+  {
+    @include flex(column-reverse, flex-start, flex-start);
+    grid-area: total;
+  }
+
+  &_itemRegularAmount
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    margin: 0;
+
+    &::before
+    {
+      @include typographyBuilder(400, 12, 16);
+      content: "Subtotal";
+      display: block;
+      color: $color_grey;
+    }
+  }
+
+  &_itemRemove
+  {
+    @include flex(row, center, center);
+    position: absolute;
+    right: 0;
+    bottom: 24px;
+    width: 40px !important;
+    height: 40px;
+    background-color: $color_light_low;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  &_itemRemoveIcon
+  {
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.3334 3.99998H14.6667V5.33331H13.3334V14C13.3334 14.1768 13.2631 14.3464 13.1381 14.4714C13.0131 14.5964 12.8435 14.6666 12.6667 14.6666H3.33337C3.15656 14.6666 2.98699 14.5964 2.86197 14.4714C2.73695 14.3464 2.66671 14.1768 2.66671 14V5.33331H1.33337V3.99998H4.66671V1.99998C4.66671 1.82317 4.73695 1.6536 4.86197 1.52858C4.98699 1.40355 5.15656 1.33331 5.33337 1.33331H10.6667C10.8435 1.33331 11.0131 1.40355 11.1381 1.52858C11.2631 1.6536 11.3334 1.82317 11.3334 1.99998V3.99998ZM12 5.33331H4.00004V13.3333H12V5.33331ZM8.94271 9.33331L10.1214 10.512L9.17871 11.4546L8.00004 10.276L6.82137 11.4546L5.87871 10.512L7.05737 9.33331L5.87871 8.15465L6.82137 7.21198L8.00004 8.39065L9.17871 7.21198L10.1214 8.15465L8.94271 9.33331ZM6.00004 2.66665V3.99998H10V2.66665H6.00004Z' fill='%23666666'/%3E%3C/svg%3E%0A");
+  }
+
+  &_cartFooterTitle
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_grey;
+    margin-bottom: 8px;
+    margin-top: 24px;
+  }
+
+  &_emptyContainer
+  {
+    border: 1px dashed $color_light;
+    border-radius: 2px;
+  }
+
+  &_emptyIcon
+  {
+    display: block;
+    margin-bottom: 12px;
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 16.5H3C2.80109 16.5 2.61032 16.421 2.46967 16.2803C2.32902 16.1397 2.25 15.9489 2.25 15.75V2.25C2.25 2.05109 2.32902 1.86032 2.46967 1.71967C2.61032 1.57902 2.80109 1.5 3 1.5H15C15.1989 1.5 15.3897 1.57902 15.5303 1.71967C15.671 1.86032 15.75 2.05109 15.75 2.25V15.75C15.75 15.9489 15.671 16.1397 15.5303 16.2803C15.3897 16.421 15.1989 16.5 15 16.5ZM14.25 15V3H3.75V15H14.25ZM6.75 4.5V6C6.75 6.59674 6.98705 7.16903 7.40901 7.59099C7.83097 8.01295 8.40326 8.25 9 8.25C9.59674 8.25 10.169 8.01295 10.591 7.59099C11.0129 7.16903 11.25 6.59674 11.25 6V4.5H12.75V6C12.75 6.99456 12.3549 7.94839 11.6517 8.65165C10.9484 9.35491 9.99456 9.75 9 9.75C8.00544 9.75 7.05161 9.35491 6.34835 8.65165C5.64509 7.94839 5.25 6.99456 5.25 6V4.5H6.75Z' fill='%23A2A2A2'/%3E%3C/svg%3E%0A");
+  }
+
+  &_placeholder
+  {
+    width: 100%;
+    height: 183px;
+    margin-bottom: 24px;
+  }
+
+  &_discNote
+  {
+    @include typographyBuilder(400, 10, 16);
+    color: $color_red;
+    margin-bottom: 12px;
+    max-width: 146px;
+  }
+
+  &_errorSKUDes
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 24px 0;
+    background-color: $color_light_low;
+    padding: 10px;
+    border-radius: 2px;
+    text-align: center;
+  }
+}

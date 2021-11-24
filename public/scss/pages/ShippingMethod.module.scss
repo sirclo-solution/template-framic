@@ -1,0 +1,105 @@
+@import '../utils/variables';
+
+.shippingmethod
+{
+  &_shippingRadioDiv
+  {
+    @include flex(row, center, flex-start, true);
+    border: 1px solid $color_light;
+    padding: 14px 16px;
+    cursor: pointer;
+    position: relative;
+
+    &:not(:last-child)
+    {
+      margin-bottom: 12px;
+    }
+
+    &[class*="disabled"]
+    {
+      opacity: .5;
+      pointer-events: none;
+    }
+  }
+
+  &_warningPinPointText
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_red;
+    margin: 0;
+  }
+
+  &_warningPinPoint
+  {
+    order: 3;
+
+    &~div[class*="shippingmethod_shippingPriceDiv"]
+    {
+      display: none;
+    }
+  }
+
+  &_shippingPriceDiv
+  {
+    order: 3;
+    display: block;
+  }
+
+  &_shippingName
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_shippingNameDiv
+  {
+    width: 60%;
+    margin: 0 auto 0 12px;
+    order: 2;
+  }
+
+  &_shippingPrice
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_divInput
+  {
+    @include flex(row, center, flex-start);
+    order: 1;
+  }
+
+  &_inputClass
+  {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    background-clip: content-box;
+    border: 1px solid $color_black_text;
+    background-color: $color_white;
+    border-radius: 50%;
+
+    &:checked
+    {
+      background-color: $color_black_text;
+      padding: 2px;
+    }
+  }
+
+  &_pinPointLocation
+  {
+    margin-top: 10px;
+    order: 3;
+  }
+
+  &_shippingErrorMsg
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_red;
+    margin: 0;
+  }
+}

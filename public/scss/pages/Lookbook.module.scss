@@ -1,0 +1,131 @@
+@import '../utils/variables';
+
+.lookBook
+{
+  &_container
+  {
+    @include useContainer();
+    margin-bottom: 60px;
+  }
+
+  &_title
+  {
+    @include typographyBuilder(600, 20, 24);
+    @include useContainer();
+    margin-bottom: 30px;
+  }
+
+  &_itemParent
+  {
+    column-count: 3;
+    width: 100%;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      column-count: 1;
+    }
+  }
+
+  &_item
+  {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+  }
+  
+  &_itemImage
+  {
+    width: 100%;
+  }
+
+  &_label
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_grey;
+    margin-top: 5px;
+  }
+
+  &_link
+  {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+  }
+
+  &_imagePlaceholder
+  {
+    min-height: 150px;
+  }
+
+  &_titleError
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+  }
+
+  &_textError
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+  }  
+}
+
+.lookBookDetail
+{
+  &_itemParent
+  {
+    @include flex(row, center, center, true);
+    width: 100%;
+  }
+
+  &_imageDetail
+  {
+    width: calc(((100% - 48px) / 12) * 4);
+    margin: 0 24px 24px 0;
+
+    & > img 
+    {
+      width: 100%;
+    }
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    @media screen and (min-width: $breakpoint_max_md) 
+    {
+      &:nth-child(3n)
+      {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &_shareParent
+  {
+    border-top: 1px solid $color_light;
+    border-bottom: 1px solid $color_light;
+    padding: 24px 0;
+  }
+
+  &_back
+  {
+    margin: 24px 0;
+  }
+
+  &_backParent
+  {
+    @include flex(row, center, flex-start, true);
+    cursor: pointer;
+
+    & > div > img 
+    {
+      margin-right: 16px;
+    }
+  }
+
+}

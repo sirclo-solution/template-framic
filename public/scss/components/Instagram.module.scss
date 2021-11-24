@@ -1,0 +1,75 @@
+@import '../utils/variables';
+
+
+.instagram
+{
+  &_container
+  {
+    @include flex(row,center,center);
+    margin-top:80px;
+    
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      margin-top:42px;
+      @include flex(row,center,center,wrap);
+    }
+  }
+
+  &_image
+  {
+    @include fixedWidth(100%);
+    @include fixedHeight(207px);
+    object-fit: cover;
+  }
+
+  &_media
+  {
+    @include fixedWidth(calc(100% / 7));
+    
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixedWidth(calc(100% / 2));
+    }
+  }
+
+  &_cta
+  {
+    @include absolute(50px, 0, 0, calc(50% - 102px));
+    background: rgba($color_white, 0.75);;
+    cursor: pointer;
+    border: 2px solid $color_white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    border-radius: 2px;
+    width: 202px;
+    height: 108px;
+    text-align: center;
+
+    & > p {
+      @include typographyBuilder(400, 16, 24);
+      color: $color_black_text;
+    }
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include absolute(135px,0,0,calc(50% - 102px));
+    }
+  }
+
+  &_layout
+  {
+    @include position();
+    @include fixedHeight(207px);
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixedHeight(413px);
+    }
+  }
+
+  &_icon
+  {
+    margin: 22px 0 10px 0;
+  }
+}
+
+

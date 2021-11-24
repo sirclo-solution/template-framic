@@ -1,0 +1,181 @@
+@import '../utils/variables';
+
+.products
+{
+  &_container
+  {
+    @include useContainer();
+    @include flex(row, flex-start, space-between, true);
+    margin-top: 34px;
+  }
+
+  &_listWrapper 
+  {
+    @include fixedWidth(calc(((100% - 24px) / 12) * 9));
+    position: relative;
+    margin-bottom: 50px;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixedWidth(100%);
+    }
+  }
+
+  &_listHeaderContainer
+  {
+    margin-bottom: 24px;
+  }
+
+  &_listAdjustContainer
+  {
+    @include flex(row, center, space-between);
+    margin-bottom: 34px
+  }
+
+  &_listAdjustTitle
+  {
+    @include typographyBuilder(400, 16, 24);
+    @include flex(row, center, flex-start);
+    color: $color_black_text;
+    margin: 0;
+    cursor: pointer;
+
+    @media screen and (min-width: $breakpoint_min_md) 
+    {
+      display: none;
+    }
+  }
+
+  &_listAdjustIcon
+  {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.0002 11.9999V13.3332H2.00016V11.9999H14.0002ZM4.3975 2.60254L5.34016 3.54521L3.21883 5.66654L5.34016 7.78787L4.3975 8.73054L1.3335 5.66654L4.3975 2.60254ZM14.0002 7.33321V8.66654H8.00016V7.33321H14.0002ZM14.0002 2.66654V3.99987H8.00016V2.66654H14.0002Z' fill='%23333333'/%3E%3C/svg%3E");
+  }
+
+  &_listHeaderTitle
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    margin: 0
+  }
+
+  &_listClearContainer
+  {
+    @include flex(row, center, space-between);
+    margin: 0;
+  }
+
+  &_listClearButton
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_red_light;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+
+  }
+
+  &_listHeaderTotal
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_list 
+  {
+    @include flex(row, flex-start, flex-start, true);
+    margin-bottom: 42px;
+
+    & > div[class*="empty_container"]
+    {
+      &:not(:first-child)
+      {
+        display: none
+      }
+    }
+
+    & > div[class*="product_container"] 
+    {
+      @include fixedWidth(calc((100% - 48px) / 3));
+      margin-bottom: 24px;
+      margin-right: 24px;
+      
+      &:nth-child(3n+0) 
+      {
+        margin-right: 0;
+      }
+
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        @include fixedWidth(calc((100% - 16px) / 2));
+        margin-bottom: 16px;
+
+        &:nth-child(odd) 
+        {
+          margin-right: 16px;
+        }
+
+        &:nth-child(even) 
+        {
+          margin-right: 0;
+        }
+      }
+    }
+
+    & > div[class*="product_placeholder"]
+    {
+      @include fixedWidth(calc((100% - 48px) / 3));
+      margin-bottom: 24px;
+
+      &:nth-child(3n+0) 
+      {
+        margin-right: 0;
+      }
+
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        @include fixedWidth(calc((100% - 16px) / 2));
+        
+        &:nth-child(odd) 
+        {
+          margin-right: 16px;
+        }
+
+        &:nth-child(even) 
+        {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  &_backTopContainer
+  {
+    position: absolute;
+    top: 100vh;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    
+  }
+
+  &_backTopLink
+  {
+    position: sticky;
+    top: calc(100vh - 5rem);
+    display: block;
+    background-position: center;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $color_light;
+    background-color: $color_white;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.00023 2.828L2.05023 7.778L0.63623 6.364L7.00023 0L13.3642 6.364L11.9502 7.778L7.00023 2.828Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+  }
+}

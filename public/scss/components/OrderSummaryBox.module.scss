@@ -1,0 +1,560 @@
+@import '../utils/variables';
+
+.ordersummary
+{
+  &_container
+  {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 24px;
+    border-radius: 5px;
+    z-index: 4;
+    
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    &[class$="none"]
+    {
+      display: none;
+    }
+  }
+
+  &_header
+  {
+    order: 1;
+  }
+
+  &_detailExpandIcon,
+  &_detailCollapseIcon
+  {
+    display: block;
+    background:$color_light_low;
+    border-radius: 2px;
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.00011 3.02317L1.87511 7.14817L0.696777 5.96984L6.00011 0.666504L11.3034 5.96984L10.1251 7.14817L6.00011 3.02317Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+  }
+
+  &_detailCollapseIcon
+  {
+    transform: rotate(180deg);
+  }
+
+  &_subTotalText,
+  &_subTotalPrice
+  {
+    @include typographyBuilder(600, 16, 24);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_expandedLabel,
+  &_expandedPrice
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+
+  &_expandedDiv
+  {
+    margin-top: 24px;
+    padding: 12px 16px;
+    border: 1px solid $color_light;
+    border-bottom: 0;
+    background: $color_light_low;
+
+    & > *
+    {
+      @include flex(row, center, space-between);
+      
+      &:not(:last-child)
+      {
+        margin-bottom: 4px;
+      }
+
+      &:last-child
+      {
+        padding-bottom: 12px;
+        border-bottom: 1px dashed #BCBCBC;
+      }
+    }
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixed(auto, 0, 77px, 0);
+      @include fixedWidth(100%, true);
+      box-shadow: 0px -8px 16px rgba($color_black, 0.1);
+      background: $color_white;
+      padding: 20px;
+      border-radius: 6px 6px 0 0;
+
+      & > *
+      {  
+        &:last-child
+        {
+          padding: 0;
+          border: 0
+        }
+      }
+    }
+  }
+
+  &_subTotal
+  {
+    @include flex(row, center, space-between);
+    padding: 0 16px 12px;
+    margin-bottom: 24px;
+    border: 1px solid $color_light;
+    border-top: 0;
+    background: $color_light_low;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixed(auto, 0, 0, 0);
+      @include fixedWidth(100%, true);
+      background: $color_white;
+      display: block;
+      margin: 0;
+      z-index: 4;
+      padding: 20px;
+
+      & > div
+      {
+        @include typographyBuilder(700, 16, 20);
+        @include truncate(1);
+
+        &:first-of-type,
+        &:first-child
+        {
+            @include typographyBuilder(400, 14, 18);
+        }
+      }
+    }
+  }
+
+  &_footer
+  { 
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixed(auto, 0, 0, 0);
+      @include fixedWidth(100%, true);
+      @include flex(row, center, flex-end);
+      border-top: solid 1px $color_light_border;
+      background-color: transparent;
+      height: 80px;
+      margin: 0;
+      padding: 16px 20px;
+      z-index: 7;
+
+      & > button
+      {
+        @include fixedWidth(fit-content);
+      }
+    }
+  }
+
+  &_expandButton
+  {
+    display: none;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixed(auto, auto, 25px, 45%);
+      @include transition();
+      @include flex();
+      @include typographyBuilder(700, 14, 18);
+      z-index: 8;
+    }
+  }
+
+  &_voucherText,
+  &_pointsText
+  {
+    @include typographyBuilder(400, 16, 24);
+    @include flex(row, center, center);
+    color: $color_light_border;
+    margin: 0 auto 0 0;
+  }
+
+  &_voucherButton,
+  &_pointsButton,
+  &_voucherButtonApplied
+  {
+    @include flex(row, center, flex-start);
+    padding: 12px 20px;
+    border-radius: 2px;
+    border: 1px solid $color_light_border;
+    cursor: pointer;
+  }
+
+  &_voucherButton,
+  &_pointsButton
+  {
+    &::after
+    {
+      content: "";
+      display: block;
+      width: 15px;
+      height: 14px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml,%0A%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.00305 3.0605L1.5478 9.51575L0.487305 8.45525L6.9418 2H1.25305V0.5H9.50305V8.75H8.00305V3.0605Z' fill='%23333333'/%3E%3C/svg%3E");
+    }
+  }
+
+  &_pointsIcon,
+  &_voucherIcon,
+  &_voucherIconApplied
+  {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin-right: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &_voucherIcon,
+  &_voucherIconApplied
+  {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.25 13.75C7.25 13.4516 7.13147 13.1655 6.9205 12.9545C6.70952 12.7435 6.42337 12.625 6.125 12.625C5.82663 12.625 5.54048 12.7435 5.3295 12.9545C5.11853 13.1655 5 13.4516 5 13.75H1.25C1.05109 13.75 0.860322 13.671 0.71967 13.5303C0.579018 13.3897 0.5 13.1989 0.5 13V1C0.5 0.801088 0.579018 0.610322 0.71967 0.46967C0.860322 0.329018 1.05109 0.25 1.25 0.25H5C5 0.548369 5.11853 0.834517 5.3295 1.0455C5.54048 1.25647 5.82663 1.375 6.125 1.375C6.42337 1.375 6.70952 1.25647 6.9205 1.0455C7.13147 0.834517 7.25 0.548369 7.25 0.25H14.75C14.9489 0.25 15.1397 0.329018 15.2803 0.46967C15.421 0.610322 15.5 0.801088 15.5 1V5.125C15.0027 5.125 14.5258 5.32254 14.1742 5.67417C13.8225 6.02581 13.625 6.50272 13.625 7C13.625 7.49728 13.8225 7.97419 14.1742 8.32582C14.5258 8.67746 15.0027 8.875 15.5 8.875V13C15.5 13.1989 15.421 13.3897 15.2803 13.5303C15.1397 13.671 14.9489 13.75 14.75 13.75H7.25ZM6.125 5.875C6.42337 5.875 6.70952 5.75647 6.9205 5.5455C7.13147 5.33452 7.25 5.04837 7.25 4.75C7.25 4.45163 7.13147 4.16548 6.9205 3.9545C6.70952 3.74353 6.42337 3.625 6.125 3.625C5.82663 3.625 5.54048 3.74353 5.3295 3.9545C5.11853 4.16548 5 4.45163 5 4.75C5 5.04837 5.11853 5.33452 5.3295 5.5455C5.54048 5.75647 5.82663 5.875 6.125 5.875ZM6.125 10.375C6.42337 10.375 6.70952 10.2565 6.9205 10.0455C7.13147 9.83452 7.25 9.54837 7.25 9.25C7.25 8.95163 7.13147 8.66548 6.9205 8.4545C6.70952 8.24353 6.42337 8.125 6.125 8.125C5.82663 8.125 5.54048 8.24353 5.3295 8.4545C5.11853 8.66548 5 8.95163 5 9.25C5 9.54837 5.11853 9.83452 5.3295 10.0455C5.54048 10.2565 5.82663 10.375 6.125 10.375Z' fill='%23333333'/%3E%3C/svg%3E");
+  }
+
+  &_pointsIcon
+  {
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 15.5C3.85775 15.5 0.5 12.1423 0.5 8.00002C0.5 3.85777 3.85775 0.500015 8 0.500015C12.1423 0.500015 15.5 3.85777 15.5 8.00002C15.5 12.1423 12.1423 15.5 8 15.5ZM6.125 5.75002L4.25 7.62502L8 11.375L11.75 7.62502L9.875 5.75002H6.125Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+  }
+
+  &_voucherIconRemove
+  {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin-left: auto;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.00005 3.93949L8.71255 0.22699L9.77305 1.28749L6.06055 4.99999L9.77305 8.71249L8.71255 9.77299L5.00005 6.06049L1.28755 9.77299L0.227051 8.71249L3.93955 4.99999L0.227051 1.28749L1.28755 0.22699L5.00005 3.93949Z' fill='%23E11900'/%3E%3C/svg%3E");
+  }
+
+  &_voucherAppliedText
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    text-transform: uppercase;
+    margin: 0 auto 0 0;
+  }
+
+  &_pointsButton
+  {
+    margin-top: 12px;
+  }
+
+  &_numberOfPoints
+  {
+    margin-bottom: 24px
+  }
+
+  &_pointLabel
+  {
+    @include typographyBuilder(400, 16, 24);
+    display: block;
+    color: $color_black_text;
+    margin-bottom: 12px
+  }
+
+  &_totalPoints
+  {
+    @include flex(row, center, flex-start);
+    background-color: $color_light_dark;
+    padding: 12px;
+    border-radius: 2px;
+  }
+
+  &_pointValue
+  {
+    @include typographyBuilder(400, 12, 16);
+    display: block;
+    color: $color_black_text;
+  }
+
+  &_pointsForm
+  {
+    @include flex(row, center, center);
+    margin-bottom: 24px;
+
+    & > input
+    {
+      text-align: center;
+      order: 2;
+    }
+  }
+
+  &_changePoints
+  {
+    background-color: transparent;
+    padding: 11px 29px;
+    border: 0;
+    
+    &[class*="increment"]
+    {
+      order: 3
+    }
+
+    &[class*="decrement"]
+    {
+      order: 1
+    }
+  }
+
+  &_pointsWarning
+  {
+    margin-top: 12px;
+
+    & > p
+    {
+      @include typographyBuilder(400, 10, 16);
+      display: block;
+      margin: auto;
+      text-align: center;
+      max-width: 298px;
+      color: $color_grey;
+    }
+  }
+
+  &_popup
+  {
+    @include flex(row, center, center);
+    @include fixedSize(100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba($color_black, 0.8);
+  }
+
+  &_closeIcon
+  {
+    display: block;
+    width: 11px;
+    height: 11px;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.00011 4.82172L10.1251 0.696716L11.3034 1.87505L7.17844 6.00005L11.3034 10.1251L10.1251 11.3034L6.00011 7.17838L1.87511 11.3034L0.696777 10.1251L4.82178 6.00005L0.696777 1.87505L1.87511 0.696716L6.00011 4.82172Z' fill='%23333333'/%3E%3C/svg%3E");
+  }
+
+  &_closeButton
+  {
+    position: absolute;
+    top: 26px;
+    right: 16px;
+    background-color: transparent;
+    border: 0;
+    margin: 0 0 30px auto;
+    padding: 0;
+  }
+
+  &_voucherContainer,
+  &_pointsContainer
+  {
+    @include flex(column, flex-start, flex-start);
+    position: relative;
+    min-width: 340px;
+    background-color: $color_white;
+    padding: 20px 16px 24px;
+    border-radius: 3px;
+
+    & > div
+    {
+      width: 100%;
+    }
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixedWidth(calc(100% - 17px));
+      -webkit-overflow-scrolling: auto;
+    }
+  }
+
+  &_voucherContainer
+  {
+    padding-top: 45px;
+  }
+
+  &_voucherForm
+  {
+    @include flex(row, center, flex-start);
+    margin-bottom: 24px;
+
+    & > input
+    {
+      max-width: 186px;
+    }
+
+    & > button
+    {
+      margin-left: auto;
+      padding: 12px 16px;
+    }
+  }
+
+  &_voucherListHeader
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+    margin-bottom: 12px;
+  }
+
+  &_voucherDetail
+  {
+    border: 1px solid $color_light;
+    border-radius: 2px;
+  }
+
+  &_voucher
+  {
+    cursor: pointer;
+
+    &:not(:last-child)
+    {
+      margin-bottom: 10px;
+    }
+  }
+
+  &_deductionPrice
+  {
+    & ~ span[class*="ordersummary_expandedPrice"]
+    {
+      color: $color_red;
+    }
+  }
+
+  &_voucherList
+  {
+    @include useScrollbar();
+    overflow: auto;
+    width: 100%;
+    max-width: 308px;
+    max-height: 300px;
+  }
+
+  &_voucherDetailHeader
+  {
+    padding: 8px 12px;
+    border-bottom: 1px dashed $color_light_border;
+  }
+
+  &_voucherDetailEstimate
+  {
+    padding: 8px 12px;
+  }
+
+  &_voucherDetailEstimateDesc,
+  &_voucherDetailDesc
+  {
+    @include typographyBuilder(400, 10, 16);
+    color: $color_grey;
+    margin: 0;
+  }
+
+  &_voucherDetailDesc
+  {
+    @include typographyBuilder(400, 10, 16);
+    color: $color_grey;
+    margin: 0;
+  }
+
+  &_voucherDetailTitle
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    margin-bottom: 2px;
+  }
+
+  &_voucherDetailCode
+  {
+    @include flex(row, center, flex-start);
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+
+    & > span
+    {
+      @include flex(row, center, flex-start);
+      @include typographyBuilder(400, 12, 16);
+      margin-left: 5px;
+      color: $color_black_text;
+
+      & > span
+      {
+        width: 9px;
+        height: 8px;
+        background-repeat: no-repeat;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &_className
+  {
+    border-radius: 0 0 2px 2px;
+    background: $color_light_low;
+    border: 1px solid $color_light;
+    border-top: 0;
+    box-sizing: border-box;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  &_cartBody
+  {
+    @include useScrollbar();
+    overflow-x: auto;
+    max-height: 250px;
+    background-color: $color_white;
+    padding: 8px;
+  }
+
+  &_itemRemove,
+  &_itemQty,
+  &_continueShopping,
+  &_itemPrice
+  {
+    display: none !important;
+  }
+
+  &_itemRegularAmount
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+
+    &::before
+    {
+      display: none !important;
+    }
+  }
+  
+  &_itemAmount
+  {
+    justify-content: flex-end !important;
+  }
+
+  &_cartItem
+  {
+    grid-row-gap: 0 !important;
+    grid-template-areas:
+    "image title title"
+    "image total total"
+    "image total total" !important;
+  }
+}

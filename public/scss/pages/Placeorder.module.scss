@@ -1,0 +1,44 @@
+@import '../utils/variables';
+
+.placeorder
+{
+  &_checkoutAsMember
+  {
+    background: $color_light_low;
+    border-radius: 2px;
+    padding: 8px 12px;
+    margin-bottom: 24px
+  }
+  
+  &_loginLabel
+  {
+    @include typographyBuilder(400, 12, 16);
+    margin: 0;
+
+    & > span
+    {
+      margin-left: 4px;
+      color: $color_blue !important;
+
+      &:hover
+      {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &_paymentDetailsDeduction
+  {
+    text-decoration: line-through;
+    margin-right: 4px;
+  }
+
+  &_shippingCheckboxLabel,
+  &_signupLabel
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    margin: 0 0 0 12px;
+  }
+
+}

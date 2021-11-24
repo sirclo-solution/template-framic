@@ -1,0 +1,81 @@
+/**
+ * Font Faces - Inter
+ */
+
+
+@font-face 
+{
+    src: local('Inter Regular'), local('Inter-regular'), url('#{$font_path}/Inter-Regular.ttf');
+    font-family: 'Inter';
+    font-style: normal;
+    font-display: fallback;
+}
+
+/**
+ * Typography-related Mixins
+ */
+
+@mixin fontPrimary($font-weight: 400)
+{  
+    font-family: 'Inter', sans-serif;
+    font-weight: $font-weight;
+    font-style: normal;
+
+    @if ($font-weight > 400) {
+        -webkit-font-smoothing: antialiased;
+    }
+}
+
+
+/**
+ * Typography-related classes
+ */
+
+$headings: (
+    "1": 20,
+    "2": 18,
+    "3": 16,
+    "4": 15,
+    "5": 14,
+    "6": 12
+);
+
+@each $heading, $size in $headings
+{
+    /**
+     * Heading Texts
+     * 
+     * Usage:
+     * 
+     * @extend .typog_heading_1;
+     * ...
+     * @extend .typog_heading_6;
+     */
+    
+    .typog_heading_#{$heading}
+    {
+        @include fontPrimary(800);
+        @include fontSize($size);
+        @include lineHeight((calc($size * 150) / 100));
+    }
+}
+
+@mixin typography_builder($font_weight: 400, $font_size: 16, $line_height: 0)
+{
+    @include fontPrimary($font_weight);
+    @include fontSize($font_size);
+
+    @if $line_height == 0 
+    {
+        @include lineHeight(calc(($size * 150), 100));
+    }
+    @else
+    {
+        @include lineHeight($line_height);
+    }
+}
+
+@mixin typographyBuilder($font_weight: 400, $font_size: 16, $line_height: 0)
+{
+    @include typography_builder($font_weight, $font_size, $line_height);
+}

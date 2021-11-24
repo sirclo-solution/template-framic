@@ -1,0 +1,195 @@
+@import '../utils/variables';
+
+.mapChooseLocation
+{
+  @include transition();
+  @include flex(row, center, center);
+  @include typographyBuilder(400, 16, 24);
+  color: $color_black_text;
+  position: relative;
+  margin: 0;
+  padding: 0 15px;
+  border-radius: 2px;
+  border: solid 1px $color_grey_light;
+  background-color: $color_white;
+  text-align: center;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover
+  {
+    background-color: $color_grey_light;
+  }
+
+  & > svg
+  {
+    margin-right: 1rem;
+  }
+}
+
+.mapNote
+{
+  display: block;
+}
+
+.mapArea
+{
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+.mapPopup
+{
+  @include flex(row, center, center);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color:  rgba($color_black, 0.5);
+}
+
+.mapCloseIcon
+{
+  cursor: pointer;
+}
+
+.mapPopupContainer
+{
+  position: relative;
+  width: 50vw;
+  background: $color_white;
+  border-radius: 2px;
+
+  @media (max-width: #{$breakpoint_max_md})
+  {
+    margin: 0 1rem;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.mapPopupHeader
+{
+  @include flex(row-reverse, center, flex-start);
+  padding: 15px;
+  position: relative;
+}
+
+.mapPopupHeaderTitle
+{
+  @include typographyBuilder(600, 20, 24);
+  flex: 1;
+  color: $color_black_text;
+  text-align: center;
+}
+
+.mapPopupClose
+{
+  @include typographyBuilder(400, 16, 24);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  color: $color_black_text;
+
+  &:focus,
+  &:active
+  {
+    outline: 0;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.mapPopupNote
+{
+  @include typographyBuilder(400, 16, 24);
+  background: $color_red;
+  color: $color_white;
+  padding: 15px;
+  text-align: center;
+}
+
+.mapPopupMaps
+{
+  position: relative;
+  background-color: $color_white;
+  z-index: 1;
+  width: 100%;
+  height: 320px;
+
+  input
+  {
+    @include typographyBuilder(400, 16, 24);
+    width: 87%;
+    padding: 10px 15px;
+    border: 1px;
+    background: $color_white;
+    z-index: 2;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    left: 16px;
+    border-radius: 4px;
+    box-shadow: none;
+    outline: 0;
+  }
+
+  div[class*="autocomplete-dropdown-container"] 
+  {
+    z-index: 1;
+    width: 87%;
+    background: #fff;
+    position: absolute;
+    text-align: left;
+    top: 46px;
+    right: 12px;
+    left: 16px;
+
+    div 
+    {
+      padding: 10px;
+    }
+
+    div:nth-child(odd) 
+    {
+      background-color: #fff !important;
+    }
+
+    div:nth-child(even) 
+    {
+      background-color: #ededed !important;
+    }
+  }
+}
+
+.mapPopupCenterButton
+{
+  position: absolute;
+  right: 10px;
+  background: $color_white;
+  padding: 7.5px;
+  top: 12px;
+  border: none;
+  border-radius: 4px;
+}
+
+.mapPopupLabelAddress
+{
+  @include typographyBuilder(400, 12, 16);
+  background: $color_white;
+  color: $color_black_text;
+  padding: 15px;
+}
+
+.mapButtonFooter
+{
+  border-radius: 0 0 2px 2px;
+  margin: 16px auto;
+  width: calc(100% - 32px);
+}

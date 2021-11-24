@@ -1,0 +1,82 @@
+@import '../utils/variables';
+
+.testimonials
+{
+  &_container
+  {
+    @include useContainer();
+  }
+
+  &_title
+  {
+    @include typographyBuilder(600, 20, 24);
+    color : $color_black_text;
+  }
+
+  &_btnInput
+  {
+    width: 30%;
+  }
+
+  &_empty
+  {
+    @include flex(column, center, center);
+  }
+
+  &_containerForm
+  {
+    @include useScrollbar();
+    overflow: auto;
+    height: 70vh;
+    padding: 0 5px;
+    margin-top: 10px;
+
+    label
+    {
+      @include typographyBuilder(600, 12, 16);
+      color : $color_grey;
+      margin-top: 24px;
+    }
+  }
+
+  &_hide
+  {
+    display: none;
+  }
+
+  &_imageUpload
+  {
+    display: block;
+    width: 100%;
+    height: -webkit-calc(1.5em + 0.75rem + 2px);
+    height: -moz-calc(1.5em + 0.75rem + 2px);
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 3px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $color_grey_light;
+    background-color: $color_white;
+    background-clip: padding-box;
+    border: 1px solid $color_grey_light;
+    border-radius: 0.25rem;
+  }
+
+  &_containerImageUpload
+  {
+    margin-top: 12px;
+
+    & > span
+    {
+      @include typographyBuilder(600, 12, 16);
+      color : $color_grey;
+      margin-top: 24px;
+    }
+  }
+
+  &_verify
+  {
+    margin-bottom: 12px;
+    margin-top: 24px;
+  }
+}

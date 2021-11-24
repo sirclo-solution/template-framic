@@ -1,0 +1,888 @@
+@import '../utils/variables';
+@import './Form.module.scss';
+@import './Button.module.scss';
+
+.productdetail
+{
+  &_container
+  {
+    @include flex(row, flex-start, space-between, true);
+
+    &:first-child
+    {
+      @include useContainer();
+      
+      & > div
+      {
+        width: calc(((100% - 24px) / 12) * 6);
+  
+        @media screen and (max-width: $breakpoint_max_md) 
+        {
+          width: 100%;
+        }
+      }
+    }
+
+    &:nth-child(2)
+    {
+      margin: 24px 0;
+      padding: 24px 0;
+      background-color: $color_light_low;
+    }
+  }
+
+  &_imageRow
+  {
+    @include flex(row-reverse, flex-start, space-between);
+    position: relative;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    & > ul
+    {
+      @include absolute(0, auto, auto, 0);
+      @include useScrollbar();
+      display: block;
+      padding: 0 3px 0 0;
+      list-style: none;
+      overflow: auto;
+      height: 538px;
+      
+      li
+      {
+        &:not(:last-child)
+        {
+          margin-right: 4px;
+        }
+      }
+      
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        @include absolute(auto, auto, 0, auto);
+        @include flex(row, center, center);
+        width: 100%;
+        height: fit-content;
+      }
+    }
+  }
+
+  &_mainImage
+  {
+    width: calc(100% - 92px);
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      width: 100%;
+    }
+  }
+
+  &_arrowPrev,
+  &_arrowNext
+  {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 8px;
+    height: 13px;
+    background-repeat: no-repeat;
+  }
+
+
+  &_arrowPrev
+  {
+    left: 20px;
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='8' height='14' viewBox='0 0 8 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.82783 6.99999L7.77783 2.04999L6.36383 0.635986L-0.000167847 6.99999L6.36383 13.364L7.77783 11.95L2.82783 6.99999Z' fill='%23333333'/%3E%3C/svg%3E");
+  }
+
+  &_arrowNext
+  {
+    right: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='14' viewBox='0 0 8 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.17217 6.99999L0.222168 2.04999L1.63617 0.635986L8.00017 6.99999L1.63617 13.364L0.222168 11.95L5.17217 6.99999Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+  }
+
+  &_dot
+  {
+    color: $color_white
+  }
+
+  &_propertyRow
+  {
+    @include flex(column, flex-start, flex-start);
+
+    // Set order childern
+    & > div
+    {
+      &:first-child
+      {
+        order: 1;
+      }
+
+      &:nth-child(4)
+      {
+        order: 5;
+        width: 100%;
+      }
+
+      &[class*="productdetail_description"]
+      {
+        order: 4;
+      }
+
+      &[class*="productdetail_propertyInnerContainer"]
+      {
+        order: 5;
+      }
+
+      &[class*="productdetail_propertyFooterContainer"]
+      {
+        order: 6;
+      }
+
+      &[class*="productdetail_estimateShippingWrapper"]
+      {
+        order: 7;
+      }
+
+      &[class*="productdetail_share"]
+      {
+        order: 8;
+      }
+
+    }
+
+    & > h2
+    {
+      order: 2;
+    }
+
+    & > p 
+    {
+      order: 3;
+    }
+  }
+
+  &_propertyInnerContainer
+  {
+    width: 100%;
+  }
+
+  &_propertyFooterContainer
+  {
+    width: 100%;
+  }
+
+  &_propertyFooterButton
+  {
+    &:not(:last-child)
+    {
+      margin-bottom: 12px;
+    }
+
+    @media screen and (min-width: $breakpoint_min_lg) 
+    {
+      @include fixedSize(calc((50%) - 12px), true);
+      display: inline-block !important;
+      margin-left: 6px;
+  
+      &:not(:last-child)
+      {
+        margin-right: 6px;
+        margin-left: 0;
+      }
+    }
+  }
+  
+  &_addToCartBtn
+  {
+    @extend .btn_primaryLong;
+    
+    &:not(:last-child)
+    {
+      @extend .btn_secondaryLong;
+    }
+  }
+
+  &_buyNowBtn
+  {
+    @extend .btn_primaryLong;
+  }
+
+  &_addToCartBtn,
+  &_buyNowBtn
+  {
+    @extend .productdetail_propertyFooterButton;
+  }
+
+
+  &_thumbnailImage
+  {
+    width: 68px;
+    height: 90.67px;
+    object-fit: cover;
+    margin-bottom: 8px;
+    opacity: 0.25;
+    cursor: pointer;
+
+    &[class$="active"]
+    {
+      opacity: 1;
+    }
+  }
+
+  &_detailTitleStar
+  {
+    margin-bottom: 12px;
+  }
+
+  &_detailTitleStarNumber
+  {
+    @include typographyBuilder(400, 10, 16);
+    color: $color_black_text;
+    margin-left: 6px;
+  }
+
+  &_detailTitle
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    margin-bottom: 12px;
+  }
+
+  &_description
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_grey;
+    margin-bottom: 34px;
+
+    ul, p
+    {
+      margin: 0
+    }
+  }
+
+  &_priceSale
+  {
+    @include typographyBuilder(400, 20, 24);
+    color: $color_black_text;
+    margin-bottom: 24px;
+
+    &:nth-child(2)
+    {
+      color: $color_red
+    }
+  }
+
+  &_salePrice
+  {
+    @include typographyBuilder(400, 20, 24);
+    color: $color_black_text;
+    text-decoration-line: line-through;
+    margin-right: 12px;
+  }
+
+  &_variantOptionsContainer
+  {
+    margin-bottom: 34px;
+
+    &[id="size"]
+    {
+      & > div[class*="productdetail_variantOption"]
+      {
+        & > span
+        {
+          & > input
+          {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            display: none;
+
+            &:checked + label
+            {
+              background-color: $color_black_text;
+              color: $color_white;
+              border-radius: 2px;
+            }
+
+            &:disabled + label
+            {
+              opacity: .5 !important;
+              cursor: inherit !important;
+            }
+          }
+
+          & > label
+          {
+            @include typographyBuilder(400, 12, 16);
+            color: $color_black_text;
+            border: 1px solid $color_light;
+            box-sizing: border-box;
+            padding: 12px;
+            border-radius: 2px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    &[id="warna"]
+    {
+      & > div[class*="productdetail_variantOption"]
+      {
+        & > span
+        {
+          & > input
+          {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            display: none;
+
+            &:checked + label
+            {
+              background-color: $color_black_text;
+              color: $color_white;
+              border-radius: 2px;
+            }
+
+            &:disabled + label
+            {
+              opacity: .5 !important;
+              cursor: inherit !important;
+            }
+          }
+
+          & > label
+          {
+            @include typographyBuilder(400, 12, 16);
+            color: $color_black_text;
+            border: 1px solid $color_light;
+            box-sizing: border-box;
+            padding: 12px;
+            border-radius: 2px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  &_variantLabel
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_black_text;
+  }
+
+  &_variantOption
+  {
+    margin-top: 10px;
+
+    span
+    {
+      &:not(:last-child)
+      {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  &_qtyBox
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    width: fit-content;
+    border: 1px solid $color_light;
+    margin-bottom: 24px;
+
+    & > span
+    {
+      padding: 12px 15px;
+      cursor: pointer;
+    }
+
+    & > input
+    {
+      width: 50px;
+      padding: 12px 0;
+      border: 0;
+      text-align: center;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button
+      {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &:focus
+      {
+        outline: 0;
+      }
+    }
+  }
+
+  &_share
+  {
+    width: 100%;
+    border-top: 1px solid $color_light;
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  &_shareTitle
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_black_text;
+    margin-bottom: 14px;
+  }
+
+  &_tabContainer
+  {
+    @include useContainer();
+    width: 100%;
+
+  }
+
+  &_tabNavGroup
+  {
+    @include flex(row, center, flex-start);
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid $color_light;
+  }
+
+  &_tabNav
+  {
+    margin-right: 32px;
+    cursor: pointer;
+
+    & > p
+    {
+      @include typographyBuilder(400, 16, 24);
+      color: $color_grey_light;
+      cursor: pointer;
+    }
+
+    &[class*="active"]
+    {
+      border-bottom: 1px solid $color_black_text;
+
+      & > p
+      {
+        @include typographyBuilder(600, 16, 24);
+        color: $color_black_text;
+      }
+    }
+  }
+
+  &_tabInner
+  {
+    display: none;
+
+    &[class*="active"]
+    {
+      display: block;
+    }
+  }
+
+  &_tabAdditionalInfo
+  {
+
+    @include typographyBuilder(400, 16, 24);
+    color: $color_grey;
+
+    img
+    {
+      max-width: 100% !important;
+    }
+  }
+
+  &_placeholderImage
+  {
+    width: 100%;
+    height: 350px;
+  }
+
+  &_placeholderList
+  {
+    width: 100%;
+    height: 24px;
+    margin-bottom: 24px;
+  }
+
+  &_popUpCartProductContainer
+  {
+    @include flex(row, flex-start, flex-start);
+    background-color: $color_light_low;
+    padding: 12px;
+    margin: 24px 0;
+
+    & ~ button
+    {
+      &:not(:last-child)
+      {
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  &_popUpCartProductImage
+  {
+    @include fixedSize(64px);
+    object-fit: cover;
+    margin-right: 12px;
+  }
+
+  &_popUpCartProductTitle
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_black_text;
+    margin-bottom: 4px;
+  }
+
+  &_popUpCartProductPriceContainer
+  {
+    @include flex(row, center, flex-start, true);
+  }
+
+  &_popUpCartProductPrice
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    text-decoration-line: line-through;
+    margin: 0 4px 0 0;
+  }
+
+  &_popUpCartProductSalePrice
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+
+    &:nth-child(2)
+    {
+      color: $color_red
+    }
+  }
+
+  &_notifyMeSubmit
+  {
+    margin-top: 24px;
+
+    &::before
+    {
+      content: "";
+      display: block;
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml,%0A%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.3333 11.3333H14.6666V12.6666H1.33325V11.3333H2.66659V6.66665C2.66659 5.25216 3.22849 3.8956 4.22868 2.89541C5.22888 1.89522 6.58543 1.33331 7.99992 1.33331C9.41441 1.33331 10.771 1.89522 11.7712 2.89541C12.7714 3.8956 13.3333 5.25216 13.3333 6.66665V11.3333ZM5.99992 14H9.99992V15.3333H5.99992V14Z' fill='white'/%3E%3C/svg%3E");
+    }
+  }
+
+  &_popUpNotifymeContainer
+  {
+    margin: 22px auto 0;
+  }
+
+  &_popUpNotifymeDesc
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    text-align: center;
+    margin-bottom: 34px;
+  }
+
+  &_openOrderTitle
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_grey;
+    margin-bottom: 8px;
+  }
+
+  &_openOrder
+  {
+    width: 100%;
+    margin-bottom: 34px;
+  }
+
+  &_openOrderContainer
+  {
+    @include flex(row, center, flex-start);
+  }
+
+  &_countDownContainer
+  {
+    @include flex(row, center, flex-start);
+    border: 1px solid $color_light;
+    padding: 12px;
+
+    & > div
+    {
+      @include flex(row, center, flex-start);
+    }
+
+    & > span
+    {
+      margin: 0 4px;
+    }
+  }
+
+  &_countDownItem
+  {
+    @include typographyBuilder(600, 16, 24);
+    color: $color_red;
+    margin-right: 4px;
+  }
+
+  &_countDownItemText
+  {
+    @include typographyBuilder(600, 16, 24);
+    color: $color_black_text
+  }
+
+  &_openOrderDate,
+  &_openOrderTime,
+  &_openOrderTimeout
+  {
+    @include flex(row, center, flex-start);
+    @include typographyBuilder(600, 12, 16);
+    color: $color_black_text;
+    border: 1px solid $color_light;
+    padding: 12px;
+  }
+
+  &_openOrderDate
+  {
+    margin-right: 10px;
+  }
+
+  &_openOrderDateIcon,
+  &_openOrderTimeIcon
+  {
+    width: 18px;
+    height: 18px;
+    display: block;
+    margin-right: 12px;
+    background-repeat: no-repeat;
+  }
+
+  &_openOrderDateIcon
+  {
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.75 2.25H15.75C15.9489 2.25 16.1397 2.32902 16.2803 2.46967C16.421 2.61032 16.5 2.80109 16.5 3V15C16.5 15.1989 16.421 15.3897 16.2803 15.5303C16.1397 15.671 15.9489 15.75 15.75 15.75H2.25C2.05109 15.75 1.86032 15.671 1.71967 15.5303C1.57902 15.3897 1.5 15.1989 1.5 15V3C1.5 2.80109 1.57902 2.61032 1.71967 2.46967C1.86032 2.32902 2.05109 2.25 2.25 2.25H5.25V0.75H6.75V2.25H11.25V0.75H12.75V2.25ZM11.25 3.75H6.75V5.25H5.25V3.75H3V6.75H15V3.75H12.75V5.25H11.25V3.75ZM15 8.25H3V14.25H15V8.25Z' fill='%23E11900'/%3E%3C/svg%3E%0A");
+  }
+
+  &_openOrderTimeIcon
+  {
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 16.5C4.85775 16.5 1.5 13.1423 1.5 9C1.5 4.85775 4.85775 1.5 9 1.5C13.1423 1.5 16.5 4.85775 16.5 9C16.5 13.1423 13.1423 16.5 9 16.5ZM9 15C10.5913 15 12.1174 14.3679 13.2426 13.2426C14.3679 12.1174 15 10.5913 15 9C15 7.4087 14.3679 5.88258 13.2426 4.75736C12.1174 3.63214 10.5913 3 9 3C7.4087 3 5.88258 3.63214 4.75736 4.75736C3.63214 5.88258 3 7.4087 3 9C3 10.5913 3.63214 12.1174 4.75736 13.2426C5.88258 14.3679 7.4087 15 9 15ZM9.75 9H12.75V10.5H8.25V5.25H9.75V9Z' fill='%23E11900'/%3E%3C/svg%3E%0A");
+  }
+
+  &_openOrderTimeout
+  {
+    @include flex(row, center, flex-start);
+    @include typographyBuilder(600, 12, 16);
+    color: $color_red;
+    border: 1px solid $color_light;
+    padding: 12px;
+    width: fit-content;
+    margin-bottom: 24px;
+  }
+
+  &_openOrderTimeoutDesc,
+  &_notifyMeLabelWrapper
+  {
+    display: none;
+  }
+
+  &_estimateShippingWrapper
+  {
+    position: relative;
+    width: 100%;
+    border-top: 1px solid $color_light;
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  &_estimateShippingTitle
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_grey;
+    margin-bottom: 8px;
+  }
+
+  &_estimateShippingLogoImg
+  {
+    height: 24px;
+  }
+
+  &_estimateShippingDetail
+  {
+    @include flex(row-reverse, center, space-between);
+    width: 100%;
+    padding: 12px;
+    background-color: $color_light_low;
+    margin-bottom: 8px;
+  }
+
+  &_estimateShippingCost
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_estimateShippingShowCourier
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  &_estimateShippingPopupContainer
+  {
+    @include flex(row, center, center);
+    @include fixedSize(100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba($color_black, 0.8);
+  }
+
+  &_estimateShippingPopupContent
+  {
+    min-width: 340px;
+    background-color: $color_white;
+    padding: 24px 16px;
+    border-radius: 3px;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixedWidth(calc(100% - 17px));
+      -webkit-overflow-scrolling: auto;
+    }
+  }
+
+  &_estimateShippingPopupProviderImg
+  {
+    img
+    {
+      width: 34px;
+      padding: 5px;
+      object-fit: cover;
+      object-position: center;
+      background-size: 100% auto;
+      border: 0.5px solid $color_light;
+      border-radius: 2px;
+      margin-right: 12px;
+    }
+  }
+
+  &_estimateShippingPopupHeader
+  {
+    @include flex(row, center, center);
+  }
+
+  &_estimateShippingPopupTitle
+  {
+    @include typographyBuilder(600, 16, 24);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_estimateShippingPopupButton
+  {
+    font-size: 0;
+    color: $color_white;
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 5L5 15' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M5 5L15 15' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  }
+
+  &_estimateShippingPopupBody
+  {
+    margin: 10px 0 16px;
+    padding: 13px;
+    border-radius: 2px;
+    border: 1px solid $color_light;
+    background-color: $color_light_low;
+  }
+
+  &_estimateShippingPopupLineInfo
+  {
+    @include flex(row, center, flex-start);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid $color_light;
+
+    &:last-child
+    {
+      display: block;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border: 0;
+
+      & > div[class*="productdetail_estimateShippingPopupLabel"]
+      {
+        @extend .form_control;
+        display: none;
+      }
+    }
+  }
+
+  &_estimateShippingPopupLabel
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_grey;
+    width: 74px;
+    margin: 0;
+  }
+
+  &_estimateShippingPopupValue
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+  }
+  
+  &_estimateShippingPopupLineProvider
+  {
+    @include flex(row, center, flex-start);
+    margin-bottom: 24px;
+  }
+
+  &_estimateShippingPopupProviderValue
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 0 0 0 auto;
+  }
+
+  &_estimateShippingPopupProviderLabel
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_estimateShippingPopupProvider
+  {
+    @include useScrollbar();
+    max-height: 168px;
+    overflow: auto;
+  }
+}

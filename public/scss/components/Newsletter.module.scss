@@ -1,0 +1,84 @@
+@import '../utils/variables';
+
+.newsletter 
+{
+  &_overlay 
+  {
+    @include flex(row, center,center);
+    @include fixed(0,0,0,0);
+    background: rgba($color_black, 0.7);
+    transition: opacity 500ms;
+    opacity: 1;
+    z-index: 10;
+
+    &:empty
+    {
+      display: none;
+    }
+  }
+
+  &_container
+  {
+    width: 340px;
+    background-color: $color_white;
+    position: relative;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      width: calc(100% - 18px);
+    }
+
+    & > span
+    {
+      & > div:nth-child(2)
+      {
+        text-align: center;
+
+        h1, h2, h3, h4, h5, h6, strong
+        {
+          @include typographyBuilder(600, 20, 24);
+          color: $color_black_text;
+          padding: 0 16px;
+          margin-bottom: 12px;
+        }
+
+        p
+        {
+          @include typographyBuilder(400, 12, 16);
+          color: $color_grey;
+          padding: 0 16px;
+        }
+  
+        img 
+        {
+          width: 100% !important;
+          margin-bottom: 24px
+        }
+      }
+    }
+
+  }
+
+  &_close
+  {
+    @include absolute(10px, 10px, auto, auto);
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+
+    &:focus
+    {
+      outline: 0;
+    }
+  }
+
+  &_form
+  {
+    padding: 0 16px 24px;
+
+    input
+    {
+      margin-bottom: 24px;
+    }
+  }
+}

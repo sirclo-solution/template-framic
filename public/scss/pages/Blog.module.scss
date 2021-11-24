@@ -1,0 +1,290 @@
+@import '../utils/variables';
+
+.blog
+{
+  &_parent,
+  &_parentDetail
+  {
+    @include useContainer();
+    @include flex(row, flex-start, space-between,true);
+    margin-top: 22px;
+  }
+
+  &_detailHeader
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    h1, h2, h3, h4, h5, h6, strong
+    {
+      @include typographyBuilder(600, 20, 24);
+      color: $color_black_text;
+    }
+  }
+
+  &_parentDetail
+  {
+    position: relative;
+    margin-bottom: 60px;
+  }
+
+  &_container
+  {
+    padding: 16px;
+    background: $color_light_low;
+  }
+
+  &_listContent,
+  &_contentDetail
+  {
+    width: calc(((100% - 24px) / 12) * 8);
+    min-height: 100px;
+    position: relative;
+
+    &:last-child
+    {
+      width: 100%;
+    }
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      width: 100%;
+    }
+  }
+
+  &_listContent
+  {
+    margin-bottom: 60px;
+  }
+
+  &_listCategory,
+  &_listCategoryDetail
+  {
+    width: calc(((100% - 24px) / 12) * 4);
+    padding-left: 24px;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      width: 100%;
+      border-top: 1px solid $color_light;
+      padding-top: 24px;
+      margin-top: 26px;
+      padding-left: 0;
+    }
+  }
+
+  &_listCategoryDetail
+  {
+    margin-top: 60px;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      margin-top: 12px;
+    }
+  }
+
+  &_itemCategory
+  {
+    display: none;
+  }
+
+  &_item
+  {
+    @include flex(row,stretch,flex-start);
+    background-color: $color_light_low;
+    padding: 16px 16px 0 16px;
+    margin-bottom: 24px;
+    border-radius: 2px;
+    min-height: 104px;
+}
+
+  &_itemImage
+  {
+    @include fixedSize(42px);
+    object-fit: cover;
+  }
+
+  &_itemContent
+  {
+    margin-left: 12px;
+    padding-top: 0;
+    padding-left: 0;
+  }
+
+  &_itemContent > div 
+  {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &_itemTitle
+  {
+    @include typographyBuilder(600, 16, 24);
+    color: $color_black_text;
+    margin-bottom: 4px;
+    width: 100%;
+
+    &:hover,
+    &:active
+    {
+      text-decoration: none;
+      color: $color_black;
+    }
+  }
+
+  &_itemAuthor,
+  &_itemInnerFooter
+  {
+    color: $color_grey_light_text;
+    @include typographyBuilder(500, 10, 0);
+  }
+
+  &_itemInnerFooter
+  {
+    margin-left: 5px;
+  }
+
+  &_itemDescription
+  {
+    @include typographyBuilder(500, 12, 16);
+    color: $color_grey_light_text;
+    margin-top: 12px;
+    text-align: justify;
+    margin-left: -54px;
+
+  }
+
+  &_category
+  {
+    padding:0;
+    list-style-type: none;
+  }
+
+  &_categoryLink
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    text-decoration: none;
+  }
+
+  &_categoryItem
+  {
+    &:not(:last-child)
+    {
+      margin-bottom: 8px;
+    }
+  }
+
+
+  &_pagination
+  {
+    @include flex(row, center, center);
+    list-style-type: none;
+  }
+
+  &_paginationItem
+  {
+    padding: 10px 15px;
+    border: 1px solid $color_light;
+    border-radius: 2px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  &_paginationActive
+  {
+    background-color: $color_black;
+    color: $color_white;
+  }
+
+  &_detailContent > img 
+  {
+    width: 100%;
+  }
+
+  &_recent
+  {
+    list-style-type: none;
+    padding:0;
+  }
+
+  &_recentItem
+  {
+    @include flex(row, flex-start, flex-start);
+    border-bottom: 0.5px solid $color_light;
+    padding: 12px 0;
+  }
+
+  &_recentItemContent
+  {
+    margin-left: 16px;
+  }
+
+  &_recentItemContentTitle
+  {
+    text-decoration: none;
+    color: $color_black_text;
+
+    &:hover,
+    &:active
+    {
+      text-decoration: none;
+      color: $color_black;
+    }
+  }
+
+  &_titleSide
+  {
+    @include typographyBuilder(600, 16, 24);
+    color: $color_black_text;
+    margin-bottom: 16px
+  }
+
+  &_headerTitle
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    margin-bottom: 34px;
+  }
+
+  &_titleShare
+  {
+    @include typographyBuilder(600, 16, 24);
+    margin-top: 40px;
+  }
+
+  &_recentDate
+  {
+    @include typographyBuilder(400, 10, 16);
+    color: $color_grey_light_text;
+  }
+
+  &_headerImage
+  {
+    margin: 80px 0 40px;
+  }
+
+  &_headerImageBlogList,
+  &_headerImage
+  {
+    @include fixedWidth(100%);
+  }
+  
+  &_headerImageBlogList
+  {
+    margin-bottom: 25px;    
+  }
+
+  &_seeOther
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;  
+    cursor: pointer;
+
+    &:hover
+    {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@import '../utils/variables';
+
+.tautan
+{
+  &_container
+  {
+    width: 100%;
+    height: calc(100vh - 47px);
+
+    & > div 
+    {
+      height: 100%;
+      padding-top: 80px;
+
+      & > * 
+      {
+        max-width: 340px;
+        margin: 0 auto;
+
+        @media screen and (max-width: #{$breakpoint_max_md})
+        {
+          width: 100%;
+        }
+      }
+    }
+
+    & > div > img
+    {
+      display: block;
+      margin-bottom: 30px;
+    }
+
+    & > div > div
+    {
+      @include typographyBuilder(400, 16, 24);
+      text-align: center;
+    }
+
+    & > div > div:not(:nth-child(2))
+    {
+      @include flex(row, center, flex-end);
+      flex-direction: row-reverse;
+      box-shadow: 0px 4px 10px rgba($color_black, 0.1);
+      cursor: pointer;
+      margin-top: 12px;
+      padding: 12px;
+
+      p
+      {
+        margin: 0;
+      }
+
+      img
+      {
+        @include fixedSize(20px);
+        margin-right: 16px;
+      }
+    }
+
+    & > div > div:nth-child(3)
+    {
+      border: none;
+      text-align: center;
+      display: block;
+      margin: 0 auto 32px auto;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    & > div > div:nth-child(2)
+    {
+      @include typographyBuilder(600, 20, 24);
+    }
+    
+  }
+}
