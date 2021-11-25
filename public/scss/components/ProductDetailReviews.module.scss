@@ -1,0 +1,365 @@
+@import '../utils/variables';
+
+.productreviews
+{
+  &_wrapper
+  {
+    @include flex(column, flex-start, flex-start);
+  }
+  
+  &_reviewImageContainer
+  {
+    @include flex(row, center, flex-start);
+    @include useScrollbar();
+    overflow-x: auto;
+    padding: 0 0 12px;
+    width: 100%;
+    order: 1;
+    margin-bottom: 24px;
+  }
+
+  &_reviewImage
+  {
+    &:not(:last-child)
+    {
+      margin-right: 12px;
+    }
+
+    & > img
+    {
+      @include fixedSize(100px);
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
+
+  &_sort
+  {
+    order: 2;
+    margin-bottom: 24px
+  }
+
+  &_filters
+  {
+    @include flex(row, center, flex-start, true);
+    order: 3;
+    white-space: nowrap;
+    margin-bottom: 24px;
+  }
+
+  &_filter
+  {
+    border: 1px solid $color_light;
+    border-radius: 3px;
+    padding: 6px 18px;
+    cursor: pointer;
+    margin-right: 12px;
+
+    &:last-child 
+    {
+      margin-right: 0;
+    }
+
+    @media screen and (max-width: #{$breakpoint_max_md})
+    {
+      @include flex(row, center, center);
+      margin-bottom: 12px;
+    }
+  }
+
+  &_filterLabel
+  {
+    @include typographyBuilder(400, 14, 16);
+    color: $color_black_text;
+    margin-right: 4px;
+    margin: 0;
+  }
+
+  &_filterInput
+  {
+    display: none;
+  }
+
+  &_activeFilter
+  {
+    border: 1px solid $color_black;
+  }
+
+  &_reviewListContainer
+  {
+    order: 4;
+    position: relative;
+    padding-bottom: 23px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid $color_light;
+
+    & > div:first-child
+    {
+      @include flex(row, center, center);
+      width: fit-content;
+
+      & > span
+      {
+        margin-bottom: 0
+      }
+    }
+  }
+
+  &_reviewListImageContainer
+  {
+    @include flex(row, center, flex-start, true);
+  }
+
+  &_reviewListStarContainer
+  {
+    margin-right: 8px;
+  }
+
+  &_reviewListImage
+  {
+    & > img
+    {
+      @include fixedSize(100px);
+      cursor: pointer;
+      object-fit: cover;
+      margin-right: 12px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &_reviewListDescription
+  {
+    @include typographyBuilder(400, 10, 16);
+    color: $color_black_text;
+    margin-bottom: 12px;
+  }
+
+  &_reviewListFooter
+  {
+    @include flex(row, center, flex-start);
+    margin-top: 24px;
+  }
+
+  &_reviewListAuthor
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_black_text;
+    margin-right: 4px;
+  }
+
+  &_reviewListDate
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+  }
+
+  &_itemPerPage
+  {
+    @include flex(row, center, flex-end);
+    order: 5;
+    width: 100%;
+  }
+
+  &_itemPerPageLabel
+  {
+    & > p
+    {
+      @include typographyBuilder(400, 16, 24);
+      color: $color_black_text;
+      margin: 0;
+      margin-right: 16px;
+    }
+  }
+
+  &_itemPerPageOptions
+  {
+    position: relative;
+
+    &::after
+    {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 4px;
+      position: absolute;
+      top: 50%;
+      right: 17px;
+      transform: translateY(-50%);
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml,%0A%3Csvg width='9' height='4' viewBox='0 0 9 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 4.00024L0.5 0.000244141H8.5L4.5 4.00024Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+    }
+
+    & > select
+    {
+      @include typographyBuilder(500, 14, 16);
+      width: 58px;
+      padding: 8px 11px;
+      background-color: $color_white;
+      border-radius: 2px;
+      border: 1px solid $color_light;
+      cursor: pointer;
+
+      -moz-appearance:none; /* Firefox */
+      -webkit-appearance:none; /* Safari and Chrome */
+      appearance:none;
+    }
+  }
+
+  &_paggination
+  {
+    @include flex(row, center, center);
+    width: 100%;
+    order: 7;
+  }
+
+  &_reviewsPrevLabel,
+  &_reviewsNextLabel
+  {
+    display: block;
+    width: 6px;
+    height: 16.67px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &_reviewsPrevLabel
+  {
+    transform: rotate(180deg);
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.78132 5.00024L0.481323 1.70024L1.42399 0.757568L5.66666 5.00024L1.42399 9.2429L0.481323 8.30024L3.78132 5.00024Z' fill='%23333333'/%3E%3C/svg%3E");
+  }
+
+  &_reviewsNextLabel
+  {
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.78132 5.00024L0.481323 1.70024L1.42399 0.757568L5.66666 5.00024L1.42399 9.2429L0.481323 8.30024L3.78132 5.00024Z' fill='%23333333'/%3E%3C/svg%3E");
+  }
+
+  &_reviewPopupContainer
+  {
+    @include flex(row, center, center);
+    @include fixedSize(100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba($color_black, 0.8);
+  }
+
+  &_reviewPopupContent
+  {
+    background-color: $color_white;
+    max-width: 600px;
+    border-radius: 3px;
+    padding: 24px 16px;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixedWidth(calc(100% - 17px));
+      -webkit-overflow-scrolling: auto;
+    }
+  }
+
+  &_reviewPopupImagePopup
+  {
+    position: relative;
+    margin-bottom: 24px;
+
+    & > img
+    {
+      width: 100%;
+    }
+  }
+
+  &_iconLeft,
+  &_iconRight
+  {
+    display: block;
+    width: 10px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &_iconLeft
+  {
+    transform: rotate(180deg);
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.78132 5.00024L0.481323 1.70024L1.42399 0.757568L5.66666 5.00024L1.42399 9.2429L0.481323 8.30024L3.78132 5.00024Z' fill='%23333333'/%3E%3C/svg%3E");
+  }
+
+  &_iconRight
+  {
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.78132 5.00024L0.481323 1.70024L1.42399 0.757568L5.66666 5.00024L1.42399 9.2429L0.481323 8.30024L3.78132 5.00024Z' fill='%23333333'/%3E%3C/svg%3E");
+  }
+
+
+  &_iconClose
+  {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-bottom: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 5L5 15' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M5 5L15 15' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  }
+
+  &_reviewPopupLeftButton,
+  &_reviewPopupRightButton
+  {
+    position: absolute;
+    background-color: $color_white;
+    border: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &_reviewPopupLeftButton
+  {
+    left: 24px;
+  }
+
+  &_reviewPopupRightButton
+  {
+    right: 24px;
+  }
+
+  &_reviewPopupImagePreview
+  {
+    &:not(:last-child)
+    {
+      margin-right: 12px;
+    }
+
+    & > img
+    {
+      @include fixedSize(100px);
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
+
+  &_reviewPopupPreview
+  {
+    @include flex(row, center, flex-start);
+    @include useScrollbar();
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 0 12px;
+  }
+
+  &_emptyReview
+  {
+    @include typographyBuilder(400, 12, 16);
+    width: 100%;
+    color: $color_grey_light;
+    margin: 24px 0;
+    text-align: center;
+  }
+
+  &_placeholderImage
+  {
+    width: 100%;
+    height: 300px;
+  }
+}

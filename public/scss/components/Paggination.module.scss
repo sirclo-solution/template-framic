@@ -1,0 +1,29 @@
+@import '../utils/variables';
+
+.pagination
+{
+  &_paging
+  {
+    @include flex(row, center, center);
+    margin-top: 18px;
+  }
+
+  &_item
+  {
+    @include typographyBuilder(400, 14, 16);
+    color: $color_black_text;
+    list-style-type: none;
+    padding: 10px 16px;
+    border: 1px solid $color_light;
+    border-radius: 2px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  &_active
+  {
+    @include typographyBuilder(700, 14, 16);
+    color: $color_black_text;
+    border: 1px solid $color_black;
+  }
+}

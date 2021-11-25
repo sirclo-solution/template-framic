@@ -1,0 +1,1125 @@
+@import '../utils/variables';
+@import '../components/Button.module.scss';
+@import '../components/ShipmentTracker.module.scss';
+@import '../components/Form.module.scss';
+
+.account
+{
+  &_hideIcon,
+  &_viewIcon
+  {
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &_hideIcon
+  {
+    @include fixedSize(16px);
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0.5C12.1423 0.5 15.5 3.85775 15.5 8C15.5 12.1423 12.1423 15.5 8 15.5C3.85775 15.5 0.5 12.1423 0.5 8C0.5 3.85775 3.85775 0.5 8 0.5ZM8 2C6.4087 2 4.88258 2.63214 3.75736 3.75736C2.63214 4.88258 2 6.4087 2 8C2 9.5913 2.63214 11.1174 3.75736 12.2426C4.88258 13.3679 6.4087 14 8 14C9.5913 14 11.1174 13.3679 12.2426 12.2426C13.3679 11.1174 14 9.5913 14 8C14 6.4087 13.3679 4.88258 12.2426 3.75736C11.1174 2.63214 9.5913 2 8 2ZM8 4.25C8.78944 4.2503 9.55865 4.49973 10.198 4.96275C10.8374 5.42578 11.3144 6.07878 11.561 6.82872C11.8075 7.57867 11.8112 8.3873 11.5713 9.13942C11.3314 9.89153 10.8603 10.5488 10.2251 11.0175C9.58984 11.4862 8.82289 11.7425 8.03349 11.7498C7.24408 11.7572 6.47249 11.5152 5.82864 11.0584C5.18479 10.6016 4.70153 9.95325 4.4477 9.20573C4.19388 8.45821 4.18243 7.64965 4.415 6.89525C4.59044 7.28728 4.89521 7.60717 5.27829 7.80137C5.66138 7.99557 6.09954 8.05231 6.51946 7.96209C6.93938 7.87187 7.31557 7.64017 7.58508 7.30575C7.85459 6.97133 8.00107 6.5545 8 6.125C8.0001 5.76385 7.8959 5.41036 7.69992 5.10701C7.50394 4.80366 7.22452 4.56336 6.89525 4.415C7.24475 4.30775 7.61525 4.25 8 4.25Z' fill='%23333333'/%3E%3C/svg%3E"); 
+  }
+
+  &_viewIcon
+  {
+    @include fixedSize(17px);
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='18' height='11' viewBox='0 0 18 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.00658 10.0865L5.55833 9.69802L6.14858 7.49377C5.26506 7.16792 4.44392 6.69304 3.72083 6.08977L2.10608 7.70527L1.04483 6.64402L2.66033 5.02927C1.74839 3.93709 1.13565 2.62684 0.88208 1.22677L2.35808 0.95752C2.92733 4.10902 5.68433 6.50002 9.00008 6.50002C12.3151 6.50002 15.0728 4.10902 15.6421 0.95752L17.1181 1.22602C16.8649 2.62628 16.2524 3.9368 15.3406 5.02927L16.9553 6.64402L15.8941 7.70527L14.2793 6.08977C13.5562 6.69304 12.7351 7.16792 11.8516 7.49377L12.4418 9.69877L10.9936 10.0865L10.4026 7.88152C9.47434 8.04058 8.52582 8.04058 7.59758 7.88152L7.00658 10.0865Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+  }
+
+  &_wrapper
+  {
+    @include useContainer();
+    margin-bottom: 64px;
+  }
+
+  &_container
+  {
+    max-width: 519px;
+    margin: auto;
+  }
+
+  &_name
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    margin-bottom: 10px;
+  }
+
+  &_tab
+  {
+    @include flex(row, center, flex-start);
+    @include useScrollbar();
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid $color_light;
+
+    &::-webkit-scrollbar
+    {
+      display: none;
+    }
+    
+    &::-moz-scrollbar
+    {
+      display: none;
+    }
+  }
+
+  &_tabItem
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_grey_light;
+    margin-right: 24px;
+  }
+
+  &_linkTabItem
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_grey_light;
+    display: block;
+    padding-bottom: 11px;
+    cursor: pointer;
+
+    &:hover
+    {
+      color: $color_black_text;
+      text-decoration: none;
+    }
+  }
+
+  &_linkTabItemActive
+  {
+    color: $color_black_text;
+    border-bottom: 1px solid $color_black_text;
+  }
+
+  &_myAccountBody
+  {
+    padding: 0;
+    list-style: none;
+  }
+  
+  &_myAccountField
+  {
+    @include flex(row, center, flex-start);
+    margin-bottom: 12px;
+  }
+
+  &_myAccountLabel
+  {
+    @include typographyBuilder(400, 16, 24);
+    @include fixedWidth(142px);
+    color: $color_grey;
+    display: block;
+    margin-right: 24px;
+  }  
+
+  &_myAccountValue
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &_button
+  {
+    &:not(:last-child)
+    {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.membership
+{  
+  &_historyItem
+  {
+    border-bottom: 1px solid $color_light;
+    padding: 16px 0;
+    position: relative;
+
+    & > [class*="positive"]
+    {
+      @include typographyBuilder(400, 16, 24);
+      color: $color_green;
+      margin-right: 24px;
+    }
+
+    & > [class*="negative"]
+    {
+      @include typographyBuilder(400, 16, 24);
+      color: $color_red;
+      margin-right: 24px;
+    }
+
+    &::after
+    {
+      @include fixedSize(12px);
+      display: block; 
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 30px;
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='9' viewBox='0 0 6 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.65042 4.49973L0.175049 2.02523L1.4123 0.787109L5.12492 4.49973L1.4123 8.21236L0.175049 6.97423L2.65042 4.49973Z' fill='%23333333'/%3E%3C/svg%3E");
+    }
+  }
+
+  &_linkContinue
+  {
+    background-color: $color_light_dark;
+    padding: 10px 0 10px 32px;
+    position: relative;
+
+    & > p
+    {
+      @include typographyBuilder(400, 12, 14);
+      color: $color_black_text;
+      margin: 0;
+      display: inline; 
+    }
+    
+    & > a
+    {
+      @include typographyBuilder(600, 12, 14);
+      color: $color_blue;
+      display: inline;
+      margin-left: 3px; 
+    }
+    
+    &::before
+    {
+      @include fixedSize(12px);
+      display: inline-block; 
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6 10.7509C3.38057 10.7509 1.24914 8.61943 1.24914 6C1.24914 3.38057 3.38057 1.24914 6 1.24914C8.61943 1.24914 10.7509 3.38057 10.7509 6C10.7509 8.61943 8.61943 10.7509 6 10.7509ZM6 0C9.30857 0 12 2.69143 12 6C12 9.30857 9.30857 12 6 12C2.69143 12 0 9.30857 0 6C0 2.69143 2.69143 0 6 0ZM6.20629 8.11029H5.79429C5.51029 8.11029 5.27886 8.32 5.27886 8.57829V9.18057C5.27886 9.43829 5.51029 9.648 5.79429 9.648H6.20629C6.49029 9.648 6.72057 9.43829 6.72057 9.18057V8.57829C6.72057 8.32 6.49029 8.10971 6.20629 8.10971V8.11029ZM6.20743 2.27771H5.79314C5.50457 2.27771 5.27886 2.46743 5.27886 2.70857V7.18629C5.27886 7.428 5.50457 7.61714 5.79314 7.61714H6.20743C6.49543 7.61714 6.72057 7.42857 6.72057 7.18629V2.70857C6.72057 2.46743 6.49543 2.27771 6.20743 2.27771Z' fill='%23333333'/%3E%3C/svg%3E");
+    }
+  }
+
+  &_orderID
+  {
+    display: inline-block;
+    background-color: $color_light_dark;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+    border-radius: 2px;
+
+    & > p 
+    {
+      @include typographyBuilder(400, 10, 16);
+      color: $color_grey_light_text;
+      margin : 0;
+    }
+  }
+
+  &_transactionDate
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey_light;
+    margin: 0;
+  }
+
+  &_transactionType
+  {
+    @include typographyBuilder(400, 16, 24);
+    margin: 4px 0;
+    color: $color_black_text;
+  }
+
+  &_point
+  {
+    text-align: right;
+    margin-top: -44px;
+  }
+
+  &_itemPerPage
+  {
+    @include flex(row, center, flex-end);
+    margin-top: 16px;
+  }
+
+  &_itemPerPageLabel
+  {
+    & > p
+    {
+      margin: 0 16px 0 0;
+      @include typographyBuilder(400, 12, 16);
+      color: $color_black_text;
+    }
+  }
+
+  &_itemPerPageOptions
+  {
+   
+    & > select
+    {
+      @include typographyBuilder(400, 16, 24);
+      padding: 12px 16px;
+      border: 1px solid $color_light;
+      border-radius: 2px;
+    }
+  }
+
+  &_status
+  {
+    background: $color_light_dark;
+    border-radius: 2px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  &_accordionToggle
+  {
+    @include flex(row, center, flex-start);
+
+    & > p
+    {
+      @include typographyBuilder(600, 12, 16);
+      margin: 0 10px 0 0;
+      color: $color_black_text;
+    }
+  }
+
+  &_accordionIcon > svg
+  {
+    stroke : $color_black;
+  }
+
+  &_totalPoints
+  {
+    @include typographyBuilder(400, 12, 16);
+    text-align: right;
+    margin-top: -22px;
+    color: $color_grey;
+  }
+
+  &_prompt
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey_light;
+    margin: px 0 0 0;
+  }
+
+  &_progress 
+  {
+    background-color: $color_grey;
+    width: 100%;
+    border-radius: 6px;
+    height: 6px;
+
+    &::-webkit-progress-bar
+    {
+      background-color: $color_light;
+      border-radius: 6px;
+    }
+
+    &::-webkit-progress-value
+    {
+      background-color: $color_grey;
+      border-radius: 6px;
+    }
+
+    &::-moz-progress-bar
+    {
+      background-color: $color_grey;
+      border-radius: 6px;
+    }
+  }
+}
+
+.pagination
+{
+  &_paging
+  {
+    @include flex(row, center, center);
+    margin-top: 18px;
+  }
+
+  &_item
+  {
+    @include typographyBuilder(400, 14, 16);
+    color: $color_black_text;
+    list-style-type: none;
+    padding: 10px 16px;
+    border: 1px solid $color_light;
+    border-radius: 2px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  &_active
+  {
+    @include typographyBuilder(700, 14, 16);
+    color: $color_black_text;
+    border: 1px solid $color_black;
+  }
+}
+
+.notification
+{
+  &_desc
+  {
+    @include typographyBuilder(400, 12, 14);
+    background-color: $color_light_dark;
+    padding: 10px;
+    position: relative;
+    color: $color_black_text;
+    @include flex(row, center, center);
+
+    &::before
+    {
+      content: "";
+      display: block;
+      width: 25px;
+      height: 16px;
+      margin-right: 8px;
+      background-repeat: no-repeat;
+      z-index: 10;
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6 10.7509C3.38057 10.7509 1.24914 8.61943 1.24914 6C1.24914 3.38057 3.38057 1.24914 6 1.24914C8.61943 1.24914 10.7509 3.38057 10.7509 6C10.7509 8.61943 8.61943 10.7509 6 10.7509ZM6 0C9.30857 0 12 2.69143 12 6C12 9.30857 9.30857 12 6 12C2.69143 12 0 9.30857 0 6C0 2.69143 2.69143 0 6 0ZM6.20629 8.11029H5.79429C5.51029 8.11029 5.27886 8.32 5.27886 8.57829V9.18057C5.27886 9.43829 5.51029 9.648 5.79429 9.648H6.20629C6.49029 9.648 6.72057 9.43829 6.72057 9.18057V8.57829C6.72057 8.32 6.49029 8.10971 6.20629 8.10971V8.11029ZM6.20743 2.27771H5.79314C5.50457 2.27771 5.27886 2.46743 5.27886 2.70857V7.18629C5.27886 7.428 5.50457 7.61714 5.79314 7.61714H6.20743C6.49543 7.61714 6.72057 7.42857 6.72057 7.18629V2.70857C6.72057 2.46743 6.49543 2.27771 6.20743 2.27771Z' fill='%23333333'/%3E%3C/svg%3E");
+    }
+  }
+
+  &_mediaLabel
+  {
+    @include typographyBuilder(600, 16, 14);
+    color: $color_black_text;
+  }
+
+  &_mediaDesc
+  {
+    @include typographyBuilder(400, 12, 14);
+    color: $color_black_text;
+    margin-top: 4px;
+  }
+
+  &_mediaLabelContainer
+  {
+    @include flex(row,flex-start,flex-start);
+  
+    img
+    {
+      width: 20px;
+    }
+  
+    @media (max-width: #{$breakpoint_max_md})
+    {
+      max-width: calc(100% - 45px);
+    }
+  }
+
+  &_mediaParent
+  {
+    @include flex(row,flex-start,space-between);
+    min-height: 32px;
+    padding-top: 25px;
+  }
+  
+  &_mediaDetailLabel
+  {
+    margin-left: 12px;
+    font-size: 14px;
+    line-height: 18px;
+    color: $color_black_text;
+  }
+  
+  &_mediaDetailCheckboxContainer
+  {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 20px;
+    width: 20px;
+  }
+
+  &_mediaDetailCheckbox
+  {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  
+    &:checked ~ .notification_mediaDetailCheckboxLabel
+    {
+      background-color: $color_black_text;
+    }
+  
+    &:checked ~ .notification_mediaDetailCheckboxLabel:after
+    {
+      display: block;
+    }
+  
+    &:disabled ~ .notification_mediaDetailCheckboxLabel
+    {
+      background-color: $color_black_text;
+    }
+  }
+  
+  &_mediaDetailCheckboxLabel
+  {
+    height: 20px;
+    width: 20px;
+    background-color: gray;
+    margin-bottom: 0;
+    border-radius: 2px;
+  
+    &::after
+    {
+      content: "";
+      display: none;
+      position: absolute;
+      left: 7px;
+      top: 2px;
+      width: 7px;
+      height: 12px;
+      border: solid $color_white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+
+  &_mediaCheckbox
+  {
+    display: none;
+  
+    &:checked + .notification_mediaCheckboxSlider
+    {
+      background-color: $color_black_text;
+    }
+  
+    &:checked + .notification_mediaCheckboxSlider:before
+    {
+      transform: translateX(12px);
+    }
+  
+    &:disabled + .notification_mediaCheckboxSlider
+    {
+      background-color: $color_black_text;
+    }
+  }
+ 
+  &_mediaCheckboxSlider
+  {
+    @include absolute(0,0,0,0);
+    background-color: $color_grey;
+    cursor: pointer;
+    transition: .2s;
+    border-radius: 24px;
+  
+    &:before
+    {
+      content: "";
+      background-color: $color_white;
+      position: absolute;
+      bottom: 2px;
+      left: 2px;
+      width: 16px;
+      height: 15px;
+      border-radius: 38px;
+      transition: .2s;
+    }
+  }
+
+  &_mediaCheckboxContainer
+  {
+    flex: 0 1 auto;
+    margin: 0;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    width: 32px;
+  }
+
+  &_mediaDisable
+  {
+    opacity: 0.5;
+  }
+
+  &_mediaDetailContainer
+  {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 12px;
+    padding: 20px 12px;
+    border-radius: 4px;
+    background: $color_light_low;
+  }
+  
+  &_mediaInnerLabel
+  {
+    text-align: left;
+    margin-left: 12px;
+  }
+}
+
+.orderhistory
+{
+  &_orderInfoContainer
+  {
+    @include flex(row, center, flex-start);
+    background: $color_light_dark;
+    border-radius: 3px;
+    padding: 12px 10px;
+    margin-bottom: 16px
+  }
+
+  &_infoIcon
+  {
+    @include fixedSize(12px);
+    display: block;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6 10.7509C3.38057 10.7509 1.24914 8.61943 1.24914 6C1.24914 3.38057 3.38057 1.24914 6 1.24914C8.61943 1.24914 10.7509 3.38057 10.7509 6C10.7509 8.61943 8.61943 10.7509 6 10.7509ZM6 0C9.30857 0 12 2.69143 12 6C12 9.30857 9.30857 12 6 12C2.69143 12 0 9.30857 0 6C0 2.69143 2.69143 0 6 0ZM6.20629 8.11029H5.79429C5.51029 8.11029 5.27886 8.32 5.27886 8.57829V9.18057C5.27886 9.43829 5.51029 9.648 5.79429 9.648H6.20629C6.49029 9.648 6.72057 9.43829 6.72057 9.18057V8.57829C6.72057 8.32 6.49029 8.10971 6.20629 8.10971V8.11029ZM6.20743 2.27771H5.79314C5.50457 2.27771 5.27886 2.46743 5.27886 2.70857V7.18629C5.27886 7.428 5.50457 7.61714 5.79314 7.61714H6.20743C6.49543 7.61714 6.72057 7.42857 6.72057 7.18629V2.70857C6.72057 2.46743 6.49543 2.27771 6.20743 2.27771Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+  }
+
+  &_orderInfoLabel
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_orderInfoSearchHere
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_blue;
+    margin-left: 4px;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+
+    &:hover
+    {
+      text-decoration: underline;
+    }
+  }
+
+  &_orderedItems
+  {
+    padding: 0;
+    list-style: none;
+  }
+
+  &_orderedItemImage
+  {
+    @include fixedSize(64px);
+    object-fit: cover;
+    margin-right: 6px;
+    border-radius: 3px;
+  }
+
+  &_orderedItem
+  {
+    @include flex(row, flex-start, flex-start);
+    
+    &:not(:last-child)
+    {
+      margin-bottom: 16px
+    }
+  }
+
+  &_orderedItemDetailTitle
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    margin: 0 0 8px;
+  }
+
+  &_orderedItemDetailPrice
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_orderItem
+  {
+    @include flex(column, flex-start, flex-start);
+    position: relative;
+    border: solid 1px $color_light;
+    border-radius: 3px;
+    background-color: $color_white;
+    overflow: hidden;
+    outline: none;
+
+    &:hover,
+    &:focus
+    {
+      outline: none;
+    }
+
+    & + &
+    {
+      margin-top: 32px;
+    }
+  }
+
+  &_orderTitle
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_orderHeader
+  {
+    width: 100%;
+    order: 1;
+    cursor: pointer;
+    padding: 16px;
+    position: relative;
+  }
+
+  &_orderBody
+  {
+    width: 100%;
+    order: 3;
+  }
+
+  &_orderFooter
+  {
+    @include flex(row, center, space-between);
+    order: 2;
+    width: calc(100% - 32px);
+    margin:  0 16px;
+    background: $color_light_dark;
+    border-radius: 3px;
+    padding: 8px 12px;
+
+    & > span
+    {
+      @include typographyBuilder(500, 12, 16);
+      color: $color_black_text;
+      margin: 0;
+    }
+  }
+
+  &_totalCost
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_black_text;
+    margin: 0;
+  }
+
+  &_orderInnerHeader
+  {
+    width: calc(100% - 56px);
+
+    & > div //styling paymentStatus
+    {
+      @include typography_builder(400, 12, 16);
+      position: absolute;
+      right: 56px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $color_white;
+      padding: 4px 12px;
+      border-radius: 23px;
+      width: fit-content;
+      
+      @media (max-width: #{$breakpoint_max_md})
+      {
+        text-align: center;
+        width: calc(100% - 32px);
+        transform: none;
+        right: auto;
+        top: auto;
+        bottom: 16px;
+      }
+    }
+
+    &::after
+    {
+      @include fixedSize(32px);
+      content: "";
+      display: block;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: $color_light_dark;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("data:image/svg+xml,%3Csvg width='8' height='5' viewBox='0 0 8 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 4.66663L0 0.666626H8L4 4.66663Z' fill='%23333333'/%3E%3C/svg%3E");
+    
+      @media (max-width: #{$breakpoint_max_md})
+      {
+        top: 35%;
+      }
+    }
+  }
+
+  &_orderDate
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    width: calc(100% - 56px);
+    margin: 0;
+    
+    @media (max-width: #{$breakpoint_max_md})
+    {
+      margin-bottom: 30px;
+    }
+  }
+
+  &_orderedItemsContainer
+  {
+    border-top: 1px solid $color_light;
+    padding: 16px;
+  }
+
+  &_buyerNoteContainer
+  {
+    background: $color_light_low;
+    padding: 16px;
+  }
+
+  &_shippingContainer
+  {
+    background: $color_light_low;
+    padding: 0 16px;
+  }
+  
+  &_shippingDetails,
+  &_shippingMethodContainer,
+  &_paymentMethodContainer
+  {
+    border-top: 1px solid $color_light;
+    padding: 16px 0;
+  }
+
+  &_buyerNoteLabel,
+  &_shippingDetailsLabel,
+  &_shippingMethodLabel,
+  &_paymentMethodLabel
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_grey;
+    margin-bottom: 6px;
+  }
+
+  &_shippingDetailsValue,
+  &_shippingMethodValue
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin-bottom: 6px;
+  }
+
+  &_orderControl
+  {
+    @include flex(row-reverse, center, flex-start);
+    padding: 16px;
+
+    & > *
+    {
+      @include fixedWidth(50%);
+      font-size: 12px !important;
+      line-height: 16px !important;
+
+      &[data-identity="btn-invoice"]
+      {
+        @extend .btn_textLongSmall;
+        padding: 12px 7px !important;
+
+        &:not(:only-child)
+        {
+          @include fixedWidth(50%);
+        }
+
+        &::before
+        {
+          @include fixedSize(12px);
+          content: "";
+          display: inline-block;
+          margin-right: 6px;
+          background-repeat: no-repeat;
+          background-image: url("data:image/svg+xml,%3Csvg width='13' height='12' viewBox='0 0 13 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 9.5H2C1.86739 9.5 1.74021 9.44732 1.64645 9.35356C1.55268 9.25979 1.5 9.13261 1.5 9V4C1.5 3.86739 1.55268 3.74022 1.64645 3.64645C1.74021 3.55268 1.86739 3.5 2 3.5H3.5V1.5C3.5 1.36739 3.55268 1.24021 3.64645 1.14645C3.74022 1.05268 3.86739 1 4 1H9C9.13261 1 9.25979 1.05268 9.35355 1.14645C9.44732 1.24021 9.5 1.36739 9.5 1.5V3.5H11C11.1326 3.5 11.2598 3.55268 11.3536 3.64645C11.4473 3.74022 11.5 3.86739 11.5 4V9C11.5 9.13261 11.4473 9.25979 11.3536 9.35356C11.2598 9.44732 11.1326 9.5 11 9.5H9.5V10.5C9.5 10.6326 9.44732 10.7598 9.35355 10.8536C9.25979 10.9473 9.13261 11 9 11H4C3.86739 11 3.74022 10.9473 3.64645 10.8536C3.55268 10.7598 3.5 10.6326 3.5 10.5V9.5ZM3.5 8.5V8C3.5 7.86739 3.55268 7.74022 3.64645 7.64645C3.74022 7.55268 3.86739 7.5 4 7.5H9C9.13261 7.5 9.25979 7.55268 9.35355 7.64645C9.44732 7.74022 9.5 7.86739 9.5 8V8.5H10.5V4.5H2.5V8.5H3.5ZM4.5 2V3.5H8.5V2H4.5ZM4.5 8.5V10H8.5V8.5H4.5ZM3 5H4.5V6H3V5Z' fill='%23333333'/%3E%3C/svg%3E");
+        }
+      }
+
+      &[data-identity="btn-track-shipment"],
+      &[data-identity="btn-delivered"]
+      {
+        @extend .btn_secondaryLongSmall;
+        padding: 12px 7px !important;
+        
+        &:not(:only-child)
+        {
+          @include fixedWidth(50%);
+        }
+      }
+    }
+  }
+
+  &_popupConfirmationOrderContainer
+  {
+    @include flex(row, center, center);
+    @include fixedSize(100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba($color_black, 0.8);
+  }
+
+  &_popupConfirmationOrderContent
+  {
+    min-width: 340px;
+    background-color: $color_white;
+    padding: 24px 16px;
+    border-radius: 3px;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixedWidth(calc(100% - 17px));
+      -webkit-overflow-scrolling: auto;
+    }
+  }
+
+  &_popupConfirmationOrderTitle
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    margin-bottom: 22px;
+    text-align: center;
+  }
+
+  &_popupConfirmationOrderNote,
+  &_popupConfirmationOrderDescription
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_black_text;
+    margin-bottom: 6px;
+    text-align: center;
+    max-width: 308px;
+    padding: 10px;
+    background-color: $color_light_low;
+    max-width: 308px;
+    border-radius: 2px;
+  }
+
+  &_popupConfirmationOrderWrapButton
+  {
+    @include flex(column-reverse, flex-start, flex-start);
+    margin-top: 24px;
+
+    & > button
+    {
+      &:not(:last-child)
+      {
+        margin-top: 12px;
+      }
+    }
+  }
+
+  &_orderedItemsLabel
+  {
+    display: none;
+  }
+
+  &_shipmentTracking
+  {
+    @include flex(column, center, center);
+    @include fixedSize(100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba($color_black, 0.8);
+
+    & > div
+    {
+      min-width: 340px;
+      background-color: $color_white;
+      padding: 24px 16px;
+  
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        @include fixedWidth(calc(100% - 17px));
+        -webkit-overflow-scrolling: auto;
+      }
+
+      &[class*="shipmenttracker_shipmentHeader"]
+      {
+        & > p
+        {
+          @include typographyBuilder(400, 12, 16);
+          color: $color_grey;
+          margin-bottom: 4px;
+        }
+      }
+
+      &[class*="shipmenttracker_shipmentFooter"]
+      {
+        padding: 0;
+        
+        & > button
+        {
+          @extend .shipmenttracker_shipmentTrackButton;
+        }
+      }
+    }
+  }
+
+  &_shipmentHeaderText
+  {
+    @include typographyBuilder(600, 16, 24);
+    color: $color_black_text;
+    margin-bottom: 4px;
+  }
+
+  &_orderedItemDetailUploadReceipt
+  {
+    & > input
+    {
+      display: none;
+    }
+
+    & > label
+    {
+      @extend .btn_primarySmall;
+      padding: 12px 7px !important;
+      font-size: 12px !important;
+      line-height: 16px !important;
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  &_orderedItemDetailNeedReview,
+  &_orderedItemDetailReviewed
+  {
+    @include typographyBuilder(400, 12, 16);
+    margin-bottom: 0;
+
+    &:hover
+    {
+      color: $color_red;
+    }
+  }
+
+  &_orderedItemDetailReviewed
+  {
+    @include flex(row, center, flex-start);
+    pointer-events: none;
+    color: $color_green;
+    margin-top: 10px;
+
+    &::before
+    {
+      @include fixedSize(12px);
+      content: "";
+      display: inline-block;
+      background-repeat: no-repeat;
+      margin-right: 4px;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1322:11898)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.7503 6.00037C10.7503 8.61922 8.61886 10.7501 6 10.7501C3.38057 10.7501 1.24971 8.61922 1.24971 5.99979C1.24971 3.38037 3.38114 1.24951 6 1.24951C8.61886 1.24951 10.7503 3.38094 10.7503 5.99979V6.00037ZM6 0.000366211C9.30857 0.000366211 12 2.69179 12 6.00037C12 9.30894 9.30857 11.9992 6 11.9992C2.69143 11.9992 0 9.30894 0 6.00037C0 2.69179 2.69143 0.000366211 6 0.000366211ZM8.12343 4.10037H8.12229C8.05459 4.10014 7.98753 4.11342 7.92503 4.13942C7.86253 4.16542 7.80585 4.20362 7.75829 4.25179L5.60114 6.42322C5.53984 6.4821 5.45814 6.51498 5.37314 6.51498C5.28815 6.51498 5.20644 6.4821 5.14514 6.42322L4.23943 5.51465C4.15981 5.43419 4.05567 5.38252 3.94343 5.36779L3.876 5.36322C3.77472 5.36369 3.67583 5.39402 3.59171 5.45041C3.50758 5.5068 3.44195 5.58675 3.40304 5.68025C3.36413 5.77375 3.35365 5.87666 3.37293 5.97608C3.39221 6.07551 3.44039 6.16704 3.51143 6.23922L5.00857 7.7478C5.10571 7.84608 5.23543 7.89922 5.37314 7.89922C5.44102 7.89954 5.50827 7.8863 5.57097 7.8603C5.63367 7.8343 5.69055 7.79605 5.73829 7.7478L8.48857 4.97751C8.58363 4.88089 8.63691 4.75077 8.63691 4.61522C8.63691 4.47968 8.58363 4.34956 8.48857 4.25294C8.4409 4.20453 8.38405 4.1661 8.32136 4.1399C8.25866 4.11371 8.19138 4.10027 8.12343 4.10037Z' fill='%2305944F'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1322:11898'%3E%3Crect width='12' height='12' fill='white' transform='translate(0 0.000366211)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    }
+  }
+
+  &_orderedItemDetailNeedReview
+  {
+    @include flex(row, center, flex-start);
+    color: $color_red;
+    margin-top: 10px;
+
+    &::before
+    {
+      @include fixedSize(12px);
+      content: "";
+      display: inline-block;
+      background-repeat: no-repeat;
+      margin-right: 4px;
+      background-image: url("data:image/svg+xml,%0A%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 11.0004C3.2385 11.0004 1 8.76187 1 6.00037C1 3.23887 3.2385 1.00037 6 1.00037C8.7615 1.00037 11 3.23887 11 6.00037C11 8.76187 8.7615 11.0004 6 11.0004ZM6 10.0004C7.06087 10.0004 8.07828 9.57894 8.82843 8.82879C9.57857 8.07865 10 7.06123 10 6.00037C10 4.9395 9.57857 3.92208 8.82843 3.17194C8.07828 2.42179 7.06087 2.00037 6 2.00037C4.93913 2.00037 3.92172 2.42179 3.17157 3.17194C2.42143 3.92208 2 4.9395 2 6.00037C2 7.06123 2.42143 8.07865 3.17157 8.82879C3.92172 9.57894 4.93913 10.0004 6 10.0004ZM5.5 7.50037H6.5V8.50037H5.5V7.50037ZM5.5 3.50037H6.5V6.50037H5.5V3.50037Z' fill='%23E11900'/%3E%3C/svg%3E");
+    }
+  }
+
+  &_checkPaymentOrderContainer
+  {
+    @include flex(row, center, center);
+    @include fixedSize(100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba($color_black, 0.8);
+  }
+
+  &_checkPaymentOrderContainerBody
+  {
+    position: relative;
+    min-width: 340px;
+    background-color: $color_white;
+    padding: 24px 16px;
+    border-radius: 3px;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      @include fixedWidth(calc(100% - 17px));
+      -webkit-overflow-scrolling: auto;
+    }
+  }
+
+  &_checkPaymentOrderTitle
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    margin-bottom: 22px;
+    text-align: center;
+  }
+
+  &_checkPaymentOrderHeader
+  {
+    position: relative;
+  }
+
+  &_checkPaymentOrderCloseButton
+  {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    padding: 0;
+    outline: 0;
+    border: 0;
+  }
+
+  &_checkPaymentOrderDescription
+  {
+    @include typographyBuilder(400, 12, 16);
+    text-align: center;
+    color: $color_black_text;
+    max-width: 288px;
+    margin-bottom: 12px;
+  }
+
+  &_checkPaymentOrderInput
+  {
+    @extend .form_control;
+
+    & > input
+    {
+      @extend .form_inputLong;
+    }
+  }
+}

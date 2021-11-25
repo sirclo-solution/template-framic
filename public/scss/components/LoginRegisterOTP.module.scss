@@ -1,0 +1,271 @@
+@import '../utils/variables';
+
+.loginregister
+{
+  &_inputFormTitle
+  {
+    display: none;
+  }
+
+  &_title
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    margin-bottom: 24px;
+    order: 1;
+
+    &[class*="sso"]
+    {
+      text-align: center;
+    }
+  }
+
+  &_ssoContainer
+  {
+    display: block;
+  }
+
+  &_ssoButtonContainer
+  {
+    @include flex(row, flex-end, center);
+  }
+
+  &_ssoOr
+  {
+    @include flex(row, center, space-between);
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey_light;
+    margin-bottom: 24px;
+    
+
+    &::after,
+    &::before
+    {
+      content: "";
+      display: block;
+      width: 30%;
+      height: 1px;
+      background-color: $color_light;
+    }
+  }
+
+  &_ssoButton
+  {
+    @include fixedSize(21px);
+    box-shadow: none !important;
+    color: $color_white !important;
+    font-size: 0 !important;
+    border: 0 !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='21' height='22' viewBox='0 0 21 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M20.22 11.2301C20.22 10.5122 20.1556 9.82185 20.0359 9.15912H10.5V13.0757H15.9491C15.7144 14.3413 15.001 15.4136 13.9287 16.1316V18.672H17.2009C19.1155 16.9093 20.22 14.3137 20.22 11.2301Z' fill='%234285F4'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.5 21.125C13.2337 21.125 15.5257 20.2184 17.2009 18.672L13.9287 16.1316C13.022 16.7391 11.8622 17.098 10.5 17.098C7.86287 17.098 5.63077 15.3169 4.83457 12.9238H1.4519V15.5471C3.11793 18.8561 6.54202 21.125 10.5 21.125Z' fill='%2334A853'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.8346 12.9237C4.6321 12.3162 4.51705 11.6673 4.51705 11C4.51705 10.3327 4.6321 9.68374 4.8346 9.07624V6.45294H1.45193C0.766193 7.81982 0.375 9.36618 0.375 11C0.375 12.6338 0.766193 14.1802 1.45193 15.547L4.8346 12.9237Z' fill='%23FBBC05'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.5 4.90199C11.9865 4.90199 13.3212 5.41284 14.3705 6.41614L17.2745 3.5121C15.5211 1.8783 13.2291 0.875 10.5 0.875C6.54202 0.875 3.11793 3.14392 1.4519 6.45295L4.83457 9.07625C5.63077 6.68307 7.86287 4.90199 10.5 4.90199Z' fill='%23EA4335'/%3E%3C/svg%3E%0A");
+    margin: 0 24px;
+
+    svg,
+    div
+    {
+      display: none;
+    }
+
+    span
+    {
+      display: block;
+    }
+
+    &[class*="metro"]
+    {
+      background-image: url("data:image/svg+xml,%3Csvg width='21' height='22' viewBox='0 0 21 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0)'%3E%3Cpath d='M19.5072 0.875H1.49185C0.874947 0.875309 0.374846 1.37572 0.375 1.99277V20.0082C0.375309 20.6251 0.875719 21.1252 1.49277 21.125H19.5072C20.1244 21.1252 20.6248 20.6249 20.625 20.0077C20.625 20.0075 20.625 20.0074 20.625 20.0072V1.99185C20.6247 1.37495 20.1243 0.874846 19.5072 0.875Z' fill='%234267B2'/%3E%3Cpath d='M14.3562 21.125V13.2939H16.9962L17.3917 10.2288H14.3562V8.27655C14.3562 7.39114 14.602 6.78784 15.8716 6.78784H17.4807V4.05373C17.2008 4.0165 16.2403 3.93323 15.1227 3.93323C12.7892 3.93323 11.1921 5.35706 11.1921 7.97297V10.2288H8.56201V13.2939H11.1921V21.125H14.3562Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0'%3E%3Crect width='20.25' height='20.25' fill='white' transform='translate(0.375 0.875)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+    }
+
+    &[class*="whatsapp-input"]
+    {
+      background-image: url("data:image/svg+xml,%3Csvg width='21' height='20' viewBox='0 0 21 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.743 5.85399L9.99 0.30999C10.1454 0.216739 10.3233 0.16748 10.5045 0.16748C10.6857 0.16748 10.8636 0.216739 11.019 0.30999L20.257 5.85499C20.3311 5.8994 20.3925 5.96227 20.4351 6.03746C20.4776 6.11264 20.5 6.19758 20.5 6.28399V19C20.5 19.2652 20.3946 19.5196 20.2071 19.7071C20.0196 19.8946 19.7652 20 19.5 20H1.5C1.23478 20 0.98043 19.8946 0.792893 19.7071C0.605357 19.5196 0.5 19.2652 0.5 19V6.28299C0.499982 6.19658 0.522358 6.11164 0.564945 6.03646C0.607533 5.96127 0.668879 5.8984 0.743 5.85399ZM16.846 7.24399L10.561 12.683L4.147 7.23799L2.853 8.76199L10.573 15.317L18.154 8.75699L16.846 7.24399Z' fill='%23666666'/%3E%3C/svg%3E%0A");
+    }
+    
+    &[class*="email"]
+    {
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.00401338 20L1.35601 15.032C0.465151 13.5049 -0.00289063 11.768 1.34322e-05 10C1.34322e-05 4.477 4.47701 0 10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C8.23279 20.0029 6.49667 19.5352 4.97001 18.645L0.00401338 20ZM6.39101 5.308C6.26188 5.31602 6.13569 5.35003 6.02001 5.408C5.91153 5.46943 5.81251 5.54622 5.72601 5.636C5.60601 5.749 5.53801 5.847 5.46501 5.942C5.09542 6.423 4.89662 7.01342 4.90001 7.62C4.90201 8.11 5.03001 8.587 5.23001 9.033C5.63901 9.935 6.31201 10.89 7.20101 11.775C7.41501 11.988 7.62401 12.202 7.84901 12.401C8.9524 13.3725 10.2673 14.073 11.689 14.447L12.258 14.534C12.443 14.544 12.628 14.53 12.814 14.521C13.1053 14.506 13.3896 14.4271 13.647 14.29C13.813 14.202 13.891 14.158 14.03 14.07C14.03 14.07 14.073 14.042 14.155 13.98C14.29 13.88 14.373 13.809 14.485 13.692C14.568 13.606 14.64 13.505 14.695 13.39C14.773 13.227 14.851 12.916 14.883 12.657C14.907 12.459 14.9 12.351 14.897 12.284C14.893 12.177 14.804 12.066 14.707 12.019L14.125 11.758C14.125 11.758 13.255 11.379 12.724 11.137C12.668 11.1126 12.608 11.0987 12.547 11.096C12.4786 11.089 12.4095 11.0967 12.3443 11.1186C12.2791 11.1405 12.2193 11.1761 12.169 11.223V11.221C12.164 11.221 12.097 11.278 11.374 12.154C11.3325 12.2098 11.2754 12.2519 11.2098 12.2751C11.1443 12.2982 11.0733 12.3013 11.006 12.284C10.9409 12.2666 10.877 12.2445 10.815 12.218C10.691 12.166 10.648 12.146 10.563 12.109L10.558 12.107C9.98592 11.8572 9.45624 11.5198 8.98801 11.107C8.86201 10.997 8.74501 10.877 8.62501 10.761C8.23159 10.3842 7.88873 9.95801 7.60501 9.493L7.54601 9.398C7.50364 9.33416 7.46937 9.2653 7.44401 9.193C7.40601 9.046 7.50501 8.928 7.50501 8.928C7.50501 8.928 7.74801 8.662 7.86101 8.518C7.9551 8.39832 8.04289 8.27382 8.12401 8.145C8.24201 7.955 8.27901 7.76 8.21701 7.609C7.93701 6.925 7.64701 6.244 7.34901 5.568C7.29001 5.434 7.11501 5.338 6.95601 5.319C6.90201 5.313 6.84801 5.307 6.79401 5.303C6.65972 5.29633 6.52515 5.29766 6.39101 5.307V5.308Z' fill='%2353B671'/%3E%3C/svg%3E");
+    }
+  }
+
+  &_inputFormContainer
+  {
+    display: block;
+  }
+
+  &_footer
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    display: block;
+    text-align: center;
+    padding: 14px 0;
+    margin: 24px 0;
+
+    & > a
+    {
+      @include typographyBuilder(600, 16, 24);
+      color: $color_black_text;
+    }
+  }
+
+  &_inputFormDescription
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_grey;
+    display: block;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  &_inputLabel
+  {
+    @include typographyBuilder(600, 12, 16);
+    color: $color_grey;
+    margin-bottom: 8px;
+  }
+
+  &_formWAContainer
+  {
+    & > button
+    {
+      margin-top: 24px;
+    }
+  }
+
+  &_inputDescription
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+    margin-top: 12px;
+    padding: 10px;
+    text-align: center;
+    background: $color_light_low_extra;
+
+    & > span
+    {
+      display: inline-block;
+      color: $color_blue;
+      margin: 0 4px;
+    }
+  }
+
+  &_confirmationContainer
+  {
+    position: relative;
+  }
+
+  &_confirmationBackContainer
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &_confirmationBackLabel
+  {
+    @include fixedSize(24px);
+    display: block;
+    font-size: 0;
+    color: $color_white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.828 6.99999L9.192 1.63599L7.778 0.221985L9.53674e-07 7.99999L7.778 15.778L9.192 14.364L3.828 8.99999H16V6.99999H3.828Z' fill='%23222222'/%3E%3C/svg%3E");
+  }
+
+  &_confirmationHeaderTitle,
+  &_verificationTitle,
+  &_chooseAccountTitle
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  &_confirmationHeaderSubtitle,
+  &_infoLabel,
+  &_chooseAccountDescription
+  {
+    @include typographyBuilder(400, 16, 24);
+    display: block;
+    text-align: center;
+    color: $color_grey;
+    margin-bottom: 28px;
+  }
+
+  &_noWhatsAppLabel,
+  &_footerLabel
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_grey;
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  &_fieldOTPInputContainer
+  {
+    @include flex(row, center, space-between);
+    max-width: 350px;
+    margin: 0 auto 39px;
+  }
+
+  &_fieldOTPInput
+  {
+    @include typographyBuilder(600, 20, 24);
+    color: $color_black_text;
+    text-align: center;
+    width: calc(100% / 5);
+    padding: 15px 14px;
+    border-radius: 2px;
+    border: 1px solid $color_grey_light;
+
+    &:focus
+    {
+      border: 1px solid $color_grey_light;
+    }
+
+    &:not(:last-child)
+    {
+      margin-right: 10px;
+    }
+  }
+
+  &_accountOptionsContainer
+  {
+    margin-bottom: 24px;
+  }
+
+  &_accountOption
+  {
+    padding: 10px 16px;
+    border: 1px solid $color_grey_light;
+    border-radius: 2px;
+    cursor: pointer;
+
+    &:not(:last-child)
+    {
+      margin-bottom: 12px;
+    }
+  }
+
+  &_selectedAccount
+  {
+    border: 1px solid $color_black_text;
+  }
+
+  &_accountName
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    text-transform: capitalize;
+    margin: 0
+  }
+
+  &_accountEmail
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey_light;
+  }
+}
