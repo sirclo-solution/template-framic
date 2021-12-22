@@ -70,7 +70,7 @@ const LookbookCategory: FC<any> = ({
                 title={i18n.t("lookbook.empty")}
               />
               <div
-                onClick={() => Router.back()}
+                onClick={() => Router.push('/[lng]', `/${lng}`)}
                 className={styles.lookBook_backButton}
               >
                 {i18n.t("global.back")}

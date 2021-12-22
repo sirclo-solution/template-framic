@@ -35,6 +35,18 @@
     background: $color_light_low;
   }
 
+  &_emptyContainer
+  {
+    @include flex(column, center, center);
+  }
+
+  &_backButton
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    cursor: pointer;
+  }
+
   &_listContent,
   &_contentDetail
   {
