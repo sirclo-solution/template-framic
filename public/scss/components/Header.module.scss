@@ -15,17 +15,6 @@
       background-color: $color_white;
       min-width: 100%;
       left: 0;
-
-      & > div
-      {
-        @include useContainer();
-        padding: 0 18px;
-
-        @media screen and (max-width: $breakpoint_max_md) 
-        {
-          padding: 0;
-        }
-      }
     }
   }
 
@@ -35,8 +24,13 @@
     background-color: $color_white;
     padding-top: 20px !important;
     padding-bottom: 20px !important;
+
+    &[class*="scrolled"]
+    {
+      @include useContainer();
+    }
   }
-  
+
   &_menu
   {
     display: block;

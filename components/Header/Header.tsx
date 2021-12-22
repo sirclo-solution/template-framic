@@ -74,7 +74,7 @@ const Header: FC<any> = ({
         </div>
       }
       <header className={`${styles.header_wrapper}  ${scrolled ? "scrolled" : ""}`}>
-        <div className={`${styles.header_container}`}>
+        <div className={`${styles.header_container} ${scrolled ? "scrolled" : ""}`}>
           <span className={styles.header_menu} onClick={toogleMenu} />
           <div className={styles.header_logoContainer}>
             <LazyLoadComponent
