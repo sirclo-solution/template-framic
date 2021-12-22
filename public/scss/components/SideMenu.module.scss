@@ -57,6 +57,11 @@
     padding: 14px 0;
     cursor: pointer;
 
+    &:hover
+    {
+      color: $color_grey_light_text;
+    }
+
     &::before
     {
       width: 14px;
