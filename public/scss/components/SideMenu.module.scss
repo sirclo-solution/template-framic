@@ -1,6 +1,6 @@
 @import '../utils/variables';
 
-.sidemenu 
+.sidemenu
 {
   @include fixedHeight(100%);
   width: 388px;
@@ -256,6 +256,19 @@
   {
     @include typographyBuilder(400, 16, 24);
     color: $color_black_text;
+
+    &:hover {
+      color: $color_grey_light_text;
+    }
+  }
+
+  &_active
+  {
+    color: $color_grey_light_text;
+
+    &:hover {
+      color: $color_grey_light_text;
+    }
   }
 
   &_navChildNav
