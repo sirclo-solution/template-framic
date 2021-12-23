@@ -1,6 +1,6 @@
 @import '../utils/variables';
 
-.sidemenu 
+.sidemenu
 {
   @include fixedHeight(100%);
   width: 388px;
@@ -56,6 +56,11 @@
     border-bottom: 1px solid $color_light;
     padding: 14px 0;
     cursor: pointer;
+
+    &:hover
+    {
+      color: $color_grey_light_text;
+    }
 
     &::before
     {
@@ -256,6 +261,19 @@
   {
     @include typographyBuilder(400, 16, 24);
     color: $color_black_text;
+
+    &:hover {
+      color: $color_grey_light_text;
+    }
+  }
+
+  &_active
+  {
+    color: $color_grey_light_text;
+
+    &:hover {
+      color: $color_grey_light_text;
+    }
   }
 
   &_navChildNav

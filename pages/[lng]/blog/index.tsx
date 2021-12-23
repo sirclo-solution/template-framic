@@ -1,5 +1,6 @@
 /* library package */
 import { FC, useState } from 'react'
+import Router from 'next/router'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   useI18n,
@@ -105,10 +106,18 @@ const Blog: FC<any> = ({
               </>
             }
             emptyStateComponent={
-              <EmptyComponent
-                classes={classesEmptyComponent}
-                title={i18n.t("blog.isEmpty")}
-              />
+              <div className={styles.blog_emptyContainer}>
+                <EmptyComponent
+                  classes={classesEmptyComponent}
+                  title={i18n.t("blog.isEmpty")}
+                />
+                <div
+                  onClick={() => Router.push('/[lng]', `/${lng}`)}
+                  className={styles.blog_backButton}
+                >
+                  {i18n.t("global.back")}
+                </div>
+              </div>
             }
           />
         </div>

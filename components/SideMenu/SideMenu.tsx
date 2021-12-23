@@ -43,6 +43,7 @@ const classesCollapsibleNav = {
   parentNavClassName: styles.sidemenu_parentNav,
   navValueClassName: styles.sidemenu_navValue,
   navValueContainerClassName: styles.sidemenu_navValueContainer,
+  navValueActiveClassName: styles.sidemenu_active,
   childNavClassName: styles.sidemenu_navChildNav,
   subChildNavClassName: styles.sidemenu_navChildNav,
 };

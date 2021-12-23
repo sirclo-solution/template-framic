@@ -2,10 +2,16 @@
 
 .lookBook
 {
-  &_container
+  &_container,
+  &_emptyContainer
   {
     @include useContainer();
     margin-bottom: 60px;
+  }
+
+  &_emptyContainer
+  {
+    @include flex(column, center, center);
   }
 
   &_title
@@ -32,7 +38,7 @@
     display: inline-block;
     position: relative;
   }
-  
+
   &_itemImage
   {
     width: 100%;
@@ -69,7 +75,14 @@
   {
     @include typographyBuilder(400, 12, 16);
     color: $color_black_text;
-  }  
+  }
+
+  &_backButton
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    cursor: pointer;
+  }
 }
 
 .lookBookDetail

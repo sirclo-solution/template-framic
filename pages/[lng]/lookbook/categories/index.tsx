@@ -65,9 +65,17 @@ const LookbookCategory: FC<any> = ({
             </div>
           }
           emptyStateComponent={
-            <EmptyComponent
-              title={i18n.t("lookbook.empty")}
-            />
+            <div className={styles.lookBook_emptyContainer}>
+              <EmptyComponent
+                title={i18n.t("lookbook.empty")}
+              />
+              <div
+                onClick={() => Router.push('/[lng]', `/${lng}`)}
+                className={styles.lookBook_backButton}
+              >
+                {i18n.t("global.back")}
+              </div>
+            </div>
           }
           errorComponent={
             <div className={styles.lookBook_container}>
