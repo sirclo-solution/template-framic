@@ -166,6 +166,10 @@
     @include typographyBuilder(400, 16, 24);
     color: $color_black_text;
     text-decoration: none;
+
+    &:hover{
+      color: $color_black_text;
+    }
   }
 
   &_categoryItem

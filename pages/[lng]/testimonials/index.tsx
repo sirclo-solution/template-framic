@@ -81,6 +81,7 @@ const TestimonialsPage: FC<any> = ({
       lngDict={lngDict}
       brand={brand}
       withAllowed={testimonialAllowed}
+      setSEO={{ title: i18n.t("testimonial.title") }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.testimonials_container}>

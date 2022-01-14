@@ -43,6 +43,7 @@ const ResetPasswordPage: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
+      setSEO={{ title: i18n.t("resetPassword.reset") }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.resetPassword_wrapper}>

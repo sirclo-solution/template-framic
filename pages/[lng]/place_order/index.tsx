@@ -93,6 +93,7 @@ const PlaceOrderPage: FC<any> = ({
         brand={brand}
         withHeader={false}
         withFooter={false}
+        setSEO={{ title: i18n.t("orderSummary.placeOrder") }}
       >
         <ChekoutComponent
           lng={lng}

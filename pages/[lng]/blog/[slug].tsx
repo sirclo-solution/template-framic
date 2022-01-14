@@ -65,7 +65,13 @@ const BlogSlug: FC<any> = ({
   const linksBreadcrumb = [i18n.t("header.home"), i18n.t("blog.title"), title]
 
   return (
-    <Layout i18n={i18n} lng={lng} lngDict={lngDict} brand={brand}>
+    <Layout
+      i18n={i18n}
+      lng={lng}
+      lngDict={lngDict}
+      brand={brand}
+      setSEO={{ title: title }}
+    >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.blog_parentDetail}>
         <div className={styles.blog_contentDetail}>
@@ -86,17 +92,17 @@ const BlogSlug: FC<any> = ({
           <SocialShare urlSite={urlSite} />
         </div>
         <div className={styles.blog_listCategoryDetail}>
-        {(totalCategories > 0 || totalCategories === null) &&
-          <>
-            <h2 className={styles.blog_titleSide}>
-              {i18n.t("blog.categories")}
-            </h2>
-            <BlogCategories
-              classes={classesBlogCategories}
-              getCategoriesCount={(categoriesCount) => setTotalCategories(categoriesCount)}
-            />
-          </>
-        }
+          {(totalCategories > 0 || totalCategories === null) &&
+            <>
+              <h2 className={styles.blog_titleSide}>
+                {i18n.t("blog.categories")}
+              </h2>
+              <BlogCategories
+                classes={classesBlogCategories}
+                getCategoriesCount={(categoriesCount) => setTotalCategories(categoriesCount)}
+              />
+            </>
+          }
           <h3 className={styles.blog_titleSide}>{i18n.t('blog.otherArticle')}</h3>
 
           <BlogRecent

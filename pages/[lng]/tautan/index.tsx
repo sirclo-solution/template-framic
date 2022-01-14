@@ -33,6 +33,7 @@ const TautanPage: FC<any> = ({
       brand={brand}
       withHeader={false}
       withFooter={false}
+      setSEO={{ title: i18n.t("global.links") }}
     >
       <div className={styles.tautan_container}>
         <Links classes={classesLinks} />

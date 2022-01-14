@@ -106,7 +106,13 @@ const PaymentConfirmationPage: FC<any> = ({
   }
 
   return (
-    <Layout i18n={i18n} lng={lng} lngDict={lngDict} brand={brand}>
+    <Layout
+      i18n={i18n}
+      lng={lng}
+      lngDict={lngDict}
+      brand={brand}
+      setSEO={{ title: i18n.t("paymentNotif.title") }}
+    >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.paymentConfirmation_container}>
         {orderID ? (

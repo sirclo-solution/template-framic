@@ -35,6 +35,7 @@ const Cart: FC<CartPropType> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
+      setSEO={{title: `${i18n.t("cart.title")}`}}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
 

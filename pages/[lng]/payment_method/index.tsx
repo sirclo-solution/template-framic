@@ -106,6 +106,7 @@ const PaymentMethods: FC<any> = ({
         brand={brand}
         withHeader={false}
         withFooter={false}
+        setSEO={{ title: i18n.t("payment.title") }}
       >
         <ChekoutComponent
           lng={lng}
