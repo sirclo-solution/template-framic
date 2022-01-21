@@ -78,6 +78,9 @@ const Blog: FC<any> = ({
       lngDict={lngDict}
       brand={brand}
       withAllowed={BlogAllowed}
+      setSEO={{
+        title: i18n.t("blog.title") 
+      }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.blog_parent}>

@@ -45,6 +45,7 @@ const LookbookCategory: FC<any> = ({
       lngDict={lngDict}
       brand={brand}
       withAllowed={LookbookAllowed}
+      setSEO={{ title: i18n.t("lookbook.title") }}
     >
       <div>
         <Breadcrumb links={linksBreadcrumb} lng={lng} />

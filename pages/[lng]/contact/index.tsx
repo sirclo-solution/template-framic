@@ -44,6 +44,7 @@ const ContactPage: FC<any> = ({
       lngDict={lngDict}
       brand={brand}
       withAllowed={allowedEnquiry}
+      setSEO={{ title: i18n.t("contact.title") }}
     >
       <div className={styles.contact_container}>
         <Breadcrumb links={linksBreadcrumb} lng={lng} />

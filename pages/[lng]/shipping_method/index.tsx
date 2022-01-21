@@ -81,6 +81,7 @@ const ShippingMethodPage: FC<any> = ({
         brand={brand}
         withHeader={false}
         withFooter={false}
+        setSEO={{ title: i18n.t("shipping.title") }}
       >
         <ChekoutComponent
           lng={lng}

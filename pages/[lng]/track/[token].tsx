@@ -40,6 +40,7 @@ const TrackerPage: FC<any> = ({
       i18n={i18n}
       lng={lng}
       lngDict={lngDict}
+      setSEO={{ title: i18n.t("shipping.track") }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.track_wrapper}>

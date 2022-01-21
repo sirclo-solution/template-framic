@@ -48,6 +48,7 @@ const LoginPage: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
+      setSEO={{ title: i18n.t("login.login") }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.login_wrapper}>

@@ -14,7 +14,7 @@ import styles from 'public/scss/pages/ThankYou.module.scss'
 
 const classesThankYouPage = {
   thankYouClassName: styles.thankYou_container,
-  buttonClassName:  `${stylesButton.btn_primaryLong} ${styles.thankYou_btnConfirm}`, 
+  buttonClassName: `${stylesButton.btn_primaryLong} ${styles.thankYou_btnConfirm}`,
   bankAccountLogoClassName: styles.thankYou_bankAccountLogo,
   bankAccountTitleClassName: styles.thankYou_bankAccountTitle,
   bankAccountTitleSectionClassName: styles.thankYou_bankAccountTitleSection,
@@ -50,9 +50,15 @@ const ThankYouPage: FC<any> = ({
   const i18n: any = useI18n()
 
   return (
-    <Layout i18n={i18n} lng={lng} lngDict={lngDict} brand={brand}>
+    <Layout
+      i18n={i18n}
+      lng={lng}
+      lngDict={lngDict}
+      brand={brand}
+      setSEO={{ title: i18n.t("thankYou.thanks") }}
+    >
       <ThankYou
-        thankYouImageURL={<img className={styles.thankYou_imageSuccess} src="/images/icon-success.png"/>}
+        thankYouImageURL={<img className={styles.thankYou_imageSuccess} src="/images/icon-success.png" />}
         classes={classesThankYouPage}
         withDelay
         onSuccessMsg={(msg: string) => toast.success(msg)}

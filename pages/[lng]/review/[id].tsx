@@ -112,6 +112,7 @@ const ReviewPage: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
+      setSEO={{ title: i18n.t("orderReview.title") }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.orderReview_wrapper}>

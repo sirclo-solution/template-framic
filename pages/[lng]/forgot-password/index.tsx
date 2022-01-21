@@ -35,6 +35,7 @@ const ForgotPassword: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
+      setSEO={{ title: i18n.t("forgotPassword.title") }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.forgotPassword_wrapper}>

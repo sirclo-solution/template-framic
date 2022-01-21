@@ -64,6 +64,7 @@ const RegisterPage: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
+      setSEO={{ title: i18n.t("register.title") }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.register_wrapper}>

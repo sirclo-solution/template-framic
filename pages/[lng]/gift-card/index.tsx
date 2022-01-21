@@ -32,7 +32,7 @@ const GiftCardPage: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
-      titleHeader={i18n.t('giftCard.title')}
+      setSEO={{ title: i18n.t("giftCard.title") }}
     >
       <div className={styles.giftCard_container}>
         <Breadcrumb links={linksBreadcrumb} lng={lng} />

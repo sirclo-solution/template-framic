@@ -215,6 +215,9 @@ const AccountsPage: FC<AccountPageProps> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
+      setSEO={{
+        title: i18n.t("account.myAccount")
+      }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
 
