@@ -36,7 +36,7 @@ const LookbookSinglePage: FC<any> = ({
   const router = useRouter()
   const size = useWindowSize()
   const LookbookAllowed = isLookbookAllowed()
-  
+
   const [title, setTitle] = useState<string>('')
   const linksBreadcrumb = [i18n.t("header.home"), i18n.t("lookbook.title"), title]
 
@@ -90,7 +90,7 @@ const LookbookSinglePage: FC<any> = ({
           </div>
           <div className={styles.lookBookDetail_backParent}>
             <div>
-              <img src="/images/back.svg"/>
+              <img src="/images/back.svg" />
             </div>
             <div className={styles.lookBookDetail_back} onClick={() => router.back()}>{i18n.t('lookbook.back')}</div>
           </div>
@@ -104,14 +104,14 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
   req,
 }) => {
-  const { default: lngDict = {} } = await import(`locales/${params.lng}.json`)
-
   const brand = await useBrand(req)
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const urlSite = `https://${req.headers.host}/${params.lng}/lookbook/categories/${params.slug}`
 
   return {
     props: {
-      lng: params.lng,
+      lng: defaultLanguage,
       slug: params.slug,
       lngDict,
       brand: brand || '',

@@ -5,6 +5,8 @@ import {
   ShipmentTracker,
   useI18n
 } from '@sirclo/nexus'
+/* library template */
+import { useBrand } from 'lib/useBrand'
 /* component */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
@@ -63,16 +65,17 @@ const TrackerPage: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const lng = params.lng == "en" ? "en" : "id"
-
-  const { default: lngDict = {} } = await import(
-    `locales/${lng}.json`
-  )
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  params
+}) => {
+  const brand = await useBrand(req)
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 
   return {
     props: {
-      lng: lng,
+      lng: defaultLanguage,
       lngDict,
       order_token: params.token
     },

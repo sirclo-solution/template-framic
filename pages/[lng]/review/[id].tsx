@@ -59,11 +59,11 @@ const classesOrderReview = {
   popupConfirmationSubmitContainerClassName: styles.orderReview_popupConfirmationSubmitContainer,
   popupConfirmationSubmitContentClassName: styles.orderReview_popupConfirmationSubmitContent,
   popupConfirmationSubmitTitleClassName: styles.orderReview_popupConfirmationSubmitTitle,
-  popupConfirmationSubmitDescriptionClassName:  styles.orderReview_popupConfirmationSubmitDescription,
+  popupConfirmationSubmitDescriptionClassName: styles.orderReview_popupConfirmationSubmitDescription,
   popupConfirmationSubmitWrapButtonClassName: styles.orderReview_popupConfirmationSubmitWrapButton,
   popupConfirmationSubmitButtonConfirmClassName: stylesButton.btn_secondaryLong,
   popupConfirmationSubmitButtonNoClassName: stylesButton.btn_primaryLong,
-  
+
   openReviewButtonClassName: styles.orderReview_openReviewButton,
   reviewCardContainerClassName: styles.orderReview_reviewCardContainer,
   tileRatingClassName: styles.orderReview_tileRating,
@@ -81,7 +81,7 @@ const classesOrderReview = {
   reviewPopupLeftButtonClassName: styles.orderReview_reviewPopupLeftButton,
   reviewPopupRightButtonClassName: styles.orderReview_reviewPopupRightButton,
   reviewPopupPreviewClassName: styles.orderReview_reviewPopupPreview,
-  reviewPopupImagePreviewClassName:styles.orderReview_reviewPopupImagePreview
+  reviewPopupImagePreviewClassName: styles.orderReview_reviewPopupImagePreview
 };
 
 const paginationClasses = {
@@ -138,15 +138,13 @@ const ReviewPage: FC<any> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
-  const { default: lngDict = {} } = await import(
-    `locales/${params.lng}.json`
-  );
-
-  const brand = await useBrand(req);
+  const brand = await useBrand(req)
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 
   return {
     props: {
-      lng: params.lng,
+      lng: defaultLanguage,
       lngDict,
       brand: brand || ''
     },

@@ -140,22 +140,21 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
   req,
 }) => {
+  const brand = await useBrand(req);
   const { slug } = params;
-  const { default: lngDict = {} } = await import(`locales/${params.lng}.json`)
-
-  const brand = await useBrand(req)
-
-  const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`
+  const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`;
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
   const headerImage = await getBlogHeaderImage(GRAPHQL_URI(req));
 
   return {
     props: {
-      lng: params.lng,
+      lng: defaultLanguage,
       lngDict,
       headerImage,
-      slug: params.slug,
+      slug,
       brand: brand || '',
-      urlSite: urlSite,
+      urlSite
     },
   };
 };

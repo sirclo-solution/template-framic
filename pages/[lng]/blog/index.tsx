@@ -79,7 +79,7 @@ const Blog: FC<any> = ({
       brand={brand}
       withAllowed={BlogAllowed}
       setSEO={{
-        title: i18n.t("blog.title") 
+        title: i18n.t("blog.title")
       }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
@@ -141,16 +141,14 @@ const Blog: FC<any> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
-  const { default: lngDict = {} } = await import(
-    `locales/${params.lng}.json`
-  );
-
   const brand = await useBrand(req);
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
   const headerImage = await getBlogHeaderImage(GRAPHQL_URI(req));
 
   return {
     props: {
-      lng: params.lng,
+      lng: defaultLanguage,
       lngDict,
       headerImage,
       brand: brand || ""

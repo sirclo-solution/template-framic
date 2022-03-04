@@ -41,10 +41,10 @@ const Product: FC<ProductProps> = ({
       lngDict={lngDict}
       brand={brand}
       setSEO={{
-        title:data?.details[0]?.name || "",
-        description:data?.SEOs[0]?.description || "",
-        keywords:data?.SEOs[0]?.keywords?.join(", ") || "",
-        image:data?.imageURLs || "",
+        title: data?.details[0]?.name || "",
+        description: data?.SEOs[0]?.description || "",
+        keywords: data?.SEOs[0]?.keywords?.join(", ") || "",
+        image: data?.imageURLs || "",
       }}
     >
       <Breadcrumb
@@ -73,14 +73,13 @@ export async function getServerSideProps({ req, params }) {
   const { slug } = params
   const data = await getProductDetail(GRAPHQL_URI(req), slug)
   const brand = await useBrand(req)
-
-  const { default: lngDict = {} } = await import(`locales/${params.lng}.json`)
-
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const urlSite = `https://${req.headers.host}/${params.lng}/product/${slug}`
 
   return {
     props: {
-      lng: params.lng,
+      lng: defaultLanguage,
       slug,
       lngDict,
       data: data || null,

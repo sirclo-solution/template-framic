@@ -63,17 +63,16 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const { default: lngDict = {} } = await import(
-    `locales/${params.lng}.json`
-  )
-
   const brand = await useBrand(req)
   const cookies = parseCookies(req)
-  redirectIfAuthenticated(res, cookies, 'account')
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
+
+  redirectIfAuthenticated(res, cookies, 'account', defaultLanguage)
 
   return {
     props: {
-      lng: params.lng,
+      lng: defaultLanguage,
       lngDict,
       brand: brand || ""
     }

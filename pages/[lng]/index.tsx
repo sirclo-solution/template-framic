@@ -12,7 +12,6 @@ import Instagram from 'components/Instagram'
 import BannerComponent from 'components/BannerComponent'
 import ProductsComponent from 'components/ProductsComponent';
 /* library template */
-import { parseCookies } from 'lib/parseCookies'
 import { GRAPHQL_URI } from 'lib/Constants'
 import { useBrand } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
@@ -35,17 +34,17 @@ const Home: FC<any> = ({
   }, [isReady]);
 
   return (
-    <Layout 
-      i18n={i18n} 
-      lng={lng} 
-      lngDict={lngDict} 
+    <Layout
+      i18n={i18n}
+      lng={lng}
+      lngDict={lngDict}
       brand={brand}
     >
       <section className={styles.homepage_container}>
         <BannerComponent
           dataBanners={dataBanners?.data}
           isReady={isReady}
-        />  
+        />
         <WidgetHomepageTop />
         <ProductsComponent
           lng={lng}
@@ -60,17 +59,17 @@ const Home: FC<any> = ({
           as={`/${lng}/products`}
         >
           <div className={styles.homepage_linkAllProduct}>
-            <img src='/images/product.svg'/>
+            <img src='/images/product.svg' />
             <p className={styles.homepage_textSeeProduct}>
               {i18n.t('product.seeAllProduct')}
             </p>
-            <ChevronRight className={styles.homepage_rightArrow}/>
+            <ChevronRight className={styles.homepage_rightArrow} />
           </div>
         </Link>
       </section>
-      
-      <Instagram 
-        size={size} 
+
+      <Instagram
+        size={size}
         i18n={i18n}
         brand={brand}
       />
@@ -83,28 +82,23 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params,
 }: any) => {
-  const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico'];
-
-  if (allowedUri.indexOf(params.lng.toString()) == -1) {
-    const cookies = parseCookies(req);
-
-    res.writeHead(307, {
-      Location: cookies.ACTIVE_LNG
-        ? '/' + cookies.ACTIVE_LNG + '/' + params.lng
-        : '/id/' + params.lng,
-    });
-
-    res.end();
-  }
-
-  const { default: lngDict = {} } = await import(`locales/${params.lng}.json`);
 
   const brand = await useBrand(req);
   const dataBanners = await getBanner(GRAPHQL_URI(req));
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
+  const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico'];
+
+  if (allowedUri.indexOf(params.lng.toString()) == -1) {
+    res.writeHead(307, {
+      Location: `/${defaultLanguage}/` + params.lng
+    })
+    res.end()
+  }
 
   return {
     props: {
-      lng: params.lng,
+      lng: defaultLanguage,
       lngDict,
       brand: brand || '',
       dataBanners,
