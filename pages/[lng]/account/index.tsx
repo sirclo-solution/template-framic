@@ -70,7 +70,7 @@ const classesAccount = {
   passwordStrengthLabelClassName: stylesPassword.passwordStrength_label,
   passwordCriteriaClassName: stylesPassword.passwordStrength_criteriaItem,
   passwordCriteriaListClassName: stylesPassword.passwordStrength_criteria,
-   /* Membership History */
+  /* Membership History */
   loyaltyPointContainerClassName: styles.account_loyalty,
   membershipStatusClassName: styles.membership_status,
   accordionClassName: styles.membership_accordion,
@@ -92,7 +92,7 @@ const classesAccount = {
   itemPerPageOptionsClassName: styles.membership_itemPerPageOptions,
   buttonContinueClassName: `btn ${styles.btn_primary} ${styles.btn_long}`,
   //order history info
-  checkPaymentOrderContainerClassName:  styles.orderhistory_checkPaymentOrderContainer,
+  checkPaymentOrderContainerClassName: styles.orderhistory_checkPaymentOrderContainer,
   checkPaymentOrderContainerBodyClassName: styles.orderhistory_checkPaymentOrderContainerBody,
   checkPaymentOrderHeaderClassName: styles.orderhistory_checkPaymentOrderHeader,
   checkPaymentOrderTitleClassName: styles.orderhistory_checkPaymentOrderTitle,
@@ -111,7 +111,7 @@ const classesAccount = {
   orderedItemDetailTitleClassName: styles.orderhistory_orderedItemDetailTitle,
   orderedItemDetailPriceClassName: styles.orderhistory_orderedItemDetailPrice,
   orderTitleClassName: styles.orderhistory_orderTitle,
-  orderHeaderClassName:styles.orderhistory_orderHeader,
+  orderHeaderClassName: styles.orderhistory_orderHeader,
   orderDateClassName: styles.orderhistory_orderDate,
   orderInnerHeaderClassName: styles.orderhistory_orderInnerHeader,
   orderBodyClassName: styles.orderhistory_orderBody,
@@ -243,16 +243,16 @@ const AccountsPage: FC<AccountPageProps> = ({
             mapButtonCloseIcon={<XIcon />}
             mapCenterIcon={<Crosshair />}
             membershipPaginationClasses={orderHistoryPaginationClasses}
-            membershipPaginationNextLabel={<ChevronRight/>}
-            membershipPaginationPrevLabel={<ChevronLeft/>}
+            membershipPaginationNextLabel={<ChevronRight />}
+            membershipPaginationPrevLabel={<ChevronLeft />}
             showSettingNotification={true}
             icons={{
               accordionIcon: <ChevronDown size={20} color="#2296CB" />,
               closeIcon: <XIcon />,
               infoIcon: <span className={styles.orderhistory_infoIcon} />,
               iconTracker: <img src="/images/motorcycle.svg" alt="motorcycle" />,
-              whatsApp: <img src="/images/whatsapp.png"/>,
-              email: <img src="/images/email.png"/>
+              whatsApp: <img src="/images/whatsapp.png" />,
+              email: <img src="/images/email.png" />
             }}
           />
         </div>
@@ -266,19 +266,20 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const { default: lngDict = {} } = await import(
-    `locales/${params.lng}.json`
-  )
-
   const brand = await useBrand(req)
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+
+  const { default: lngDict = {} } = await import(
+    `locales/${defaultLanguage}.json`
+  )
 
   if (res) {
     const cookies = parseCookies(req)
-    const auth = cookies.AUTH_KEY
+    const auth = cookies.AUTH_KEY;
 
     if (!auth) {
-      res.writeHead(301, {
-        Location: `/${cookies.ACTIVE_LNG || "id"}/login`,
+      res.writeHead(307, {
+        Location: `/${defaultLanguage || "id"}/login`,
       })
       res.end()
     }
@@ -286,7 +287,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
-      lng: params.lng,
+      lng: defaultLanguage,
       lngDict,
       brand: brand || ""
     }

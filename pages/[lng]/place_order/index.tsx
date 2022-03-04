@@ -115,15 +115,13 @@ const PlaceOrderPage: FC<any> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  const { default: lngDict = {} } = await import(
-    `locales/${params.lng}.json`
-  )
-
   const brand = await useBrand(req)
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 
   return {
     props: {
-      lng: params.lng,
+      lng: defaultLanguage,
       lngDict,
       brand: brand || ""
     }
