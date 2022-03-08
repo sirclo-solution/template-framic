@@ -1,4 +1,4 @@
-import globby from "globby";
+import globby from 'globby'
 import {
   getProducts,
   getCategories,
@@ -6,35 +6,44 @@ import {
   getBlogs,
   getArticles,
   getAllowedActions,
-} from "@sirclo/nexus";
-import { GRAPHQL_URI } from "lib/Constants";
+  getProductCount,
+} from '@sirclo/nexus'
+import { GRAPHQL_URI } from 'lib/Constants'
 
-const Sitemap = () => <></>;
-export default Sitemap;
+const Sitemap = () => <></>
+
+export default Sitemap
 
 export async function getServerSideProps({ req, res }) {
   let pages = await globby([
-    "pages/**/*.tsx",
-    "!pages/**/[*.tsx",
-    "!pages/*.*",
+    'pages/**/*.tsx',
+    '!pages/**/[*.tsx',
+    '!pages/*.*',
   ]);
 
-  const languages = ["id", "en"];
-  const allowedActions = await getAllowedActions(GRAPHQL_URI(req));
-  const products = await getProducts(GRAPHQL_URI(req));
-  const categories = await getCategories(GRAPHQL_URI(req));
-  const allArticles = await getArticles(GRAPHQL_URI(req));
-  const articles = allArticles?.filter(item => item.isActive === true);
+  const languages = ["id", "en"]
+  const allowedActions = await getAllowedActions(GRAPHQL_URI(req))
+  const categories = await getCategories(GRAPHQL_URI(req))
+  const allArticles = await getArticles(GRAPHQL_URI(req))
+  const articles = allArticles?.filter(item => item.isActive === true)
 
-  const blogs = allowedActions['BLOG_VIEW'] ? await getBlogs(GRAPHQL_URI(req)) : [];
-  const lookbooks = allowedActions['LOOKBOOK_VIEW'] ? await getLookbooks(GRAPHQL_URI(req)) : [];
+  let products: Array<any> = []
+  const { totalItems } = await getProductCount(GRAPHQL_URI(req))
+  const totalPage: number = Math.ceil(totalItems / 100)
+  for (let i = 0; i < totalPage && i < 10; i++) {
+    const result = await getProducts(GRAPHQL_URI(req), i)
+    products.push(...result.items)
+  }
+
+  const blogs = allowedActions['BLOG_VIEW'] ? await getBlogs(GRAPHQL_URI(req)) : []
+  const lookbooks = allowedActions['LOOKBOOK_VIEW'] ? await getLookbooks(GRAPHQL_URI(req)) : []
 
   if (!allowedActions['BLOG_VIEW']) {
-    pages = pages.filter(page => page.includes('/blog'));
+    pages = pages.filter(page => page.includes('/blog'))
   }
 
   if (!allowedActions['LOOKBOOK_VIEW']) {
-    pages = pages.filter(page => page.includes('/lookbook'));
+    pages = pages.filter(page => page.includes('/lookbook'))
   }
 
   const sitemap = `
@@ -58,7 +67,7 @@ export async function getServerSideProps({ req, res }) {
             </url>
           `
         )}
-        `.replace(",", "");
+        `.replace(",", "")
       })
       .join("")}
 
@@ -71,7 +80,7 @@ export async function getServerSideProps({ req, res }) {
             </url>
           `
         )} 
-        `.replace(",", "");
+        `.replace(",", "")
       })
       .join("")}
 
@@ -84,7 +93,7 @@ export async function getServerSideProps({ req, res }) {
               </url>
             `
         )} 
-        `.replace(",", "");
+        `.replace(",", "")
       })
       .join("")}
 
@@ -97,7 +106,7 @@ export async function getServerSideProps({ req, res }) {
               </url>
             `
         )} 
-        `.replace(",", "");
+        `.replace(",", "")
       })
       .join("")}
 
@@ -110,7 +119,7 @@ export async function getServerSideProps({ req, res }) {
               </url>
             `
         )} 
-        `.replace(",", "");
+        `.replace(",", "")
       })
       .join("")}
 
@@ -123,19 +132,19 @@ export async function getServerSideProps({ req, res }) {
               </url>
             `
         )} 
-        `.replace(",", "");
+        `.replace(",", "")
       })
       .join("")}
 
     </urlset>
-  `.trim();
+  `.trim()
 
   res.writeHead(200, {
     "Content-Length": Buffer.byteLength(sitemap),
     "Content-Type": "application/xml",
   });
-  res.write(sitemap);
-  res.end();
+  res.write(sitemap)
+  res.end()
 
   return { props: {} };
 }

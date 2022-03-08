@@ -525,14 +525,6 @@
     padding: 8px;
   }
 
-  &_itemRemove,
-  &_itemQty,
-  &_continueShopping,
-  &_itemPrice
-  {
-    display: none !important;
-  }
-
   &_itemRegularAmount
   {
     @include typographyBuilder(400, 12, 16);
@@ -543,18 +535,134 @@
       display: none !important;
     }
   }
+
+  &_cartItemPaymentMethod
+  {
+    grid-template-areas:
+        "image title title"
+        "image total total" !important;
+  }
   
+  &_itemTitle
+  {
+    @include typographyBuilder(400, 12, 24);
+    grid-area: title;
+    color: $color_black_text;
+    
+    & > a
+    {
+      @include truncate();
+      color: $color_black_text;
+      cursor: pointer;
+    }
+  }
+
   &_itemAmount
   {
     justify-content: flex-end !important;
+
+    &PaymentMethod
+    {
+      grid-row: 2 !important;
+    }
   }
 
-  &_cartItem
+  &_qtyBox
   {
-    grid-row-gap: 0 !important;
+    display: grid;
     grid-template-areas:
-    "image title title"
-    "image total total"
-    "image total total" !important;
+    "input btnMin"
+    "input btnPlus";
+    border: 1px solid $color_light_border;
+    border-radius: 3px;
+
+    button
+    {
+      &:first-child,
+      &:last-child
+      {
+        @include fixedSize(16px);
+        color: $color_white;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        position: relative;
+
+        &::before
+        {
+          @include fixedSize(16px);
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        &:disabled
+        {
+          pointer-events: none;
+          opacity: .5;
+        }
+      }
+
+      &:first-child
+      {
+        grid-area: btnPlus;
+
+        &::before
+        {
+          background-image: url("data:image/svg+xml,%0A%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.99996 6.00002L0.756958 1.75702L2.17196 0.343018L4.99996 3.17202L7.82796 0.343018L9.24296 1.75702L4.99996 6.00002Z' fill='%23333333'/%3E%3C/svg%3E");
+        }
+      }
+      
+      &:last-child
+      {
+        grid-area: btnMin;
+        
+        &::before
+        {
+          background-image: url("data:image/svg+xml,%0A%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.99996 2.828L2.17196 5.657L0.756958 4.243L4.99996 0L9.24296 4.243L7.82796 5.657L4.99996 2.828Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+        }
+      }
+    }
+
+    input[type=number] 
+    {
+      @include typographyBuilder(400, 12, 16);
+      color: $color_black_text;
+      grid-area: input;
+      width: 100%;
+      border: 0;
+      padding: 4px 0 4px 12px;
+      border-radius: 3px;
+
+      &:focus
+      {
+        outline: 0;
+      }
+
+      /* Firefox */
+      -moz-appearance: textfield;
+
+      /* Chrome, Safari, Edge, Opera */
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button 
+      {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  &_selectedVariantContainer
+  {
+    @include flex(row, center, flex-start);
+  }
+
+  &_selectedVariant
+  {
+    margin-right: 3px;
   }
 }

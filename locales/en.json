@@ -103,7 +103,9 @@
     "seeOther": "See other article"
   },
   "cart": {
+    "addNote": "Add note",
     "amount": "Amount",
+    "change": "Change",
     "closeOrderProduct": "Close Order Product",
     "errorSKUDesc": "There were problems when adding items. Please delete all items you ordered, then go through the repurchase process",
     "errorSKUTitle": "Sorry, the order cannot be processed",
@@ -114,7 +116,9 @@
     "noteToSeller": "Note to Seller",
     "outofStock": "Out of Stock",
     "price": "Price",
+    "productNotePlaceholder": "Write a note here",
     "quantity": "Quantity",
+    "save": "Save",
     "shopNow": "Shop Now",
     "shopAgain": "Add other products",
     "title": "Cart",

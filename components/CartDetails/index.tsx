@@ -37,6 +37,7 @@ const classesCartDetails = {
   itemAmountClassName: styles.cartdetails_itemAmount,
   itemRegularAmountClassName: styles.cartdetails_itemRegularAmount,
   qtyBoxClassName: styles.cartdetails_qtyBox,
+  itemNoteClassName: styles.cartdetails_btnItemNotes,
   cartFooterTitleClassName: styles.cartdetails_cartFooterTitle,
   itemDiscountNoteClassName: styles.cartdetails_discNote,
   cartFooterTextareaClassName: stylesForm.form_input,
@@ -86,6 +87,17 @@ const CartDetailsComponent: FC<CartDetailsComponentType> = ({
         itemRedirectPathPrefix="product"
         onErrorMsg={tooglePopupErrorAddToCart}
         onInvalidMsg={(msg) => setInvalidMsg(msg)}
+        withProductNote
+        productNoteButtonElement={{
+          filled: <span>{i18n.t("cart.change")}</span>,
+          save: <span>{i18n.t("cart.save")}</span>,
+          empty: (
+            <>
+              <span className={styles.cartdetails_itemEditNote} />
+              <span>{i18n.t("cart.addNote")}</span>
+            </>
+          )
+        }}
         removeIcon={<span className={styles.cartdetails_itemRemoveIcon} />}
         loadingComponent={
           <Placeholder classes={classesPlaceholder} withList listMany={3} />
