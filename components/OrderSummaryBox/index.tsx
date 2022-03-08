@@ -5,7 +5,8 @@ import Router from 'next/router'
 import {
   useI18n,
   OrderSummary,
-  CartSummary
+  CartSummary,
+  CartDetails
 } from '@sirclo/nexus'
 /* component */
 import Placeholder from 'components/Placeholder'
@@ -78,15 +79,18 @@ const classesCartDetails = {
   itemRemoveClassName: `${stylesCart.cartdetails_itemRemove} ${styles.ordersummary_itemRemove}`,
   itemQtyClassName: `${stylesCart.cartdetails_itemQty} ${styles.ordersummary_itemQty}`,
   itemPriceClassName: `${stylesCart.cartdetails_itemPrice} ${styles.ordersummary_itemPrice}`,
-  itemRegularAmountClassName: `${stylesCart.cartdetails_itemRegularAmount} ${styles.ordersummary_itemRegularAmount}`,
+  itemRegularAmountClassName: `${styles.ordersummary_itemRegularAmount}`,
   itemAmountClassName: `${stylesCart.cartdetails_itemAmount} ${styles.ordersummary_itemAmount}`,
-  itemClassName: `${stylesCart.cartdetails_cartItem} ${styles.ordersummary_cartItem}`,
+  itemClassName: stylesCart.cartdetails_cartItem,
   cartHeaderClassName: stylesCart.cartdetails_cartHeader,
+  selectedVariantContainerClassName: styles.ordersummary_selectedVariantContainer,
+  selectedVariantClassName: styles.ordersummary_selectedVariant,
   itemImageClassName: stylesCart.cartdetails_itemImage,
-  itemTitleClassName: stylesCart.cartdetails_itemTitle,
+  itemTitleClassName: styles.ordersummary_itemTitle,
   itemRegularPriceClassName: stylesCart.cartdetails_itemRegularPrice,
   itemSalePriceClassName: stylesCart.cartdetails_itemSalePrice,
-  qtyBoxClassName: stylesCart.cartdetails_qtyBox,
+  qtyBoxClassName: styles.ordersummary_qtyBox,
+  itemNoteClassName: stylesCart.cartdetails_btnItemNotes,
   cartFooterTitleClassName: stylesCart.cartdetails_cartFooterTitle,
   itemDiscountNoteClassName: stylesCart.cartdetails_discNote,
   cartFooterTextareaClassName: stylesForm.form_input,
@@ -106,7 +110,19 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
   const classesOrderSum = () => {
     return {
       ...classesOrderSummary,
-      containerClassName: `${styles.ordersummary_container} ${page === "payment_method" ? "none" : ""}`
+      headerClassName: `${styles.ordersummary_header} ${page === "payment_method" ? "d-none" : ""}`
+    }
+  }
+
+  const classesCartDet = () => {
+    return {
+      ...classesCartDetails,
+      itemClassName: `${stylesCart.cartdetails_cartItem} ${page === "payment_method" ? styles.ordersummary_cartItemPaymentMethod : ""}`,
+      itemNoteClassName: `${stylesCart.cartdetails_btnItemNotes} ${page === "payment_method" ? "d-none" : ""}`,
+      itemQtyClassName: `${stylesCart.cartdetails_itemQty} ${styles.ordersummary_itemQty} ${page === "payment_method" ? "d-none" : ""}`,
+      itemPriceClassName: `${stylesCart.cartdetails_itemPrice} ${styles.ordersummary_itemPrice} ${page === "payment_method" ? "d-none" : ""}`,
+      itemRemoveClassName: `${stylesCart.cartdetails_itemRemove} ${styles.ordersummary_itemRemove} ${page === "payment_method" ? "d-none" : ""}`,
+      itemAmountClassName: `${stylesCart.cartdetails_itemAmount} ${page === "payment_method" ? styles.ordersummary_itemAmountPaymentMethod : ""}`
     }
   }
 
@@ -144,33 +160,46 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
           {i18n.t("global.changes")}&nbsp;{i18n.t("cart.title")}
         </button>
       </div>
-      <CartSummary
-        cartProps={{
-          classes: classesCartDetails,
-          withoutQtyInput: false,
-          onErrorMsg: (msg) => toast.error(msg),
-          loadingComponent: <Placeholder classes={classesPlaceholder} withList listMany={3} />
+      <CartDetails
+        withSeparatedVariant={true}
+        classes={classesCartDet()}
+        itemRedirectPathPrefix={`/product`}
+        isEditable={false}
+        removeIcon={<span className={stylesCart.cartdetails_itemRemoveIcon} />}
+        onErrorMsg={(msg) => toast.error(msg)}
+        withProductNote
+        productNoteButtonElement={{
+          filled: <span>{i18n.t("cart.change")}</span>,
+          save: <span>{i18n.t("cart.save")}</span>,
+          empty: (
+            <>
+              <span className={stylesCart.cartdetails_itemEditNote} />
+              <span>{i18n.t("cart.addNote")}</span>
+            </>
+          )
         }}
-        orderSummaryProps={{
-          classes: classesOrderSum(),
-          withoutButton: page === "payment_method",
-          isAccordion: true,
-          page: page,
-          currency: "IDR",
-          submitButtonLabel: i18n.t("orderSummary.placeOrder"),
-          onErrorMsg: () => setShowModalErrorAddToCart(!showModalErrorAddToCart),
-          onErrorMsgCoupon: (msg: string) => toast.error(msg),
-          loadingComponent: <div className="spinner-border" />,
-          icons: {
-            pointsApplied: <span className={styles.ordersummary_voucherIconApplied} />,
-            voucher: <span className={styles.ordersummary_voucherIcon} />,
-            points: <span className={styles.ordersummary_pointsIcon} />,
-            close: <span className={styles.ordersummary_closeIcon} />,
-            voucherApplied: <span className={styles.ordersummary_voucherIconApplied} />,
-            voucherRemoved: <span className={styles.ordersummary_voucherIconRemove} />,
-            expand: <span className={styles.ordersummary_detailExpandIcon} />,
-            collapse: <span className={styles.ordersummary_detailCollapseIcon} />,
-          }
+      />
+      <OrderSummary
+        classes={classesOrderSum()}
+        currency="IDR"
+        submitButtonLabel={i18n.t("orderSummary.placeOrder")}
+        continueShoppingLabel={i18n.t("orderSummary.continueShopping")}
+        page={page}
+        onSaveCartError={() => toast.error(i18n.t("global.error"))}
+        onErrorMsg={() => setShowModalErrorAddToCart(!showModalErrorAddToCart)}
+        onErrorMsgCoupon={(msg: string) => toast.error(msg)}
+        isAccordion
+        onAddressInvalid={(e) => toast.error(e)}
+        loadingComponent={<Placeholder classes={classesPlaceholder} withList listMany={3} />}
+        icons={{
+          voucher: <span className={styles.ordersummary_voucherIcon} />,
+          points: <span className={styles.ordersummary_pointsIcon} />,
+          pointsApplied: <span className={styles.ordersummary_voucherIconApplied} />,
+          close: <span className={styles.ordersummary_closeIcon} />,
+          voucherApplied: <span className={styles.ordersummary_voucherIconApplied} />,
+          voucherRemoved: <span className={styles.ordersummary_voucherIconRemove} />,
+          expand: <span className={styles.ordersummary_detailExpandIcon} />,
+          collapse: <span className={styles.ordersummary_detailCollapseIcon} />,
         }}
       />
     </>
