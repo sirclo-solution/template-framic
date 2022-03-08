@@ -116,12 +116,12 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
   const classesCartDet = () => {
     return {
       ...classesCartDetails,
-      itemClassName: `${stylesCart.cartdetails_cartItem} ${page === "payment_method" ? styles.ordersummary_cartItemPaymentMethod : ""}`,
-      itemNoteClassName: `${stylesCart.cartdetails_btnItemNotes} ${page === "payment_method" ? "d-none" : ""}`,
-      itemQtyClassName: `${stylesCart.cartdetails_itemQty} ${styles.ordersummary_itemQty} ${page === "payment_method" ? "d-none" : ""}`,
-      itemPriceClassName: `${stylesCart.cartdetails_itemPrice} ${styles.ordersummary_itemPrice} ${page === "payment_method" ? "d-none" : ""}`,
-      itemRemoveClassName: `${stylesCart.cartdetails_itemRemove} ${styles.ordersummary_itemRemove} ${page === "payment_method" ? "d-none" : ""}`,
-      itemAmountClassName: `${stylesCart.cartdetails_itemAmount} ${page === "payment_method" ? styles.ordersummary_itemAmountPaymentMethod : ""}`
+      itemClassName: `${stylesCart.cartdetails_cartItem} ${page === "payment_method" && styles.ordersummary_cartItemPaymentMethod}`,
+      itemNoteClassName: `${stylesCart.cartdetails_btnItemNotes} ${page === "payment_method" && "d-none"}`,
+      itemQtyClassName: `${stylesCart.cartdetails_itemQty} ${styles.ordersummary_itemQty} ${page === "payment_method" && "d-none"}`,
+      itemPriceClassName: `${stylesCart.cartdetails_itemPrice} ${styles.ordersummary_itemPrice} ${page === "payment_method" && "d-none"}`,
+      itemRemoveClassName: `${stylesCart.cartdetails_itemRemove} ${styles.ordersummary_itemRemove} ${page === "payment_method" && "d-none"}`,
+      itemAmountClassName: `${stylesCart.cartdetails_itemAmount} ${page === "payment_method" && styles.ordersummary_itemAmountPaymentMethod}`
     }
   }
 
