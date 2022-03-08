@@ -576,7 +576,8 @@
     border: 1px solid $color_light_border;
     border-radius: 3px;
 
-    button{
+    button
+    {
       &:first-child,
       &:last-child
       {
@@ -627,7 +628,8 @@
       }
     }
 
-    input[type=number] {
+    input[type=number] 
+    {
       @include typographyBuilder(400, 12, 16);
       color: $color_black_text;
       grid-area: input;
@@ -646,7 +648,8 @@
 
       /* Chrome, Safari, Edge, Opera */
       &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
+      &::-webkit-inner-spin-button 
+      {
         -webkit-appearance: none;
         margin: 0;
       }

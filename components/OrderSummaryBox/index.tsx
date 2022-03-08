@@ -5,7 +5,6 @@ import Router from 'next/router'
 import {
   useI18n,
   OrderSummary,
-  CartSummary,
   CartDetails
 } from '@sirclo/nexus'
 /* component */
