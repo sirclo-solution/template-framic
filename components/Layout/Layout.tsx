@@ -71,21 +71,22 @@ const Layout: React.FC<LayoutPropType> = ({
   return (
     <>
       <Head>
-        <title>{brand?.settings?.websiteTitle}</title>
         {brand?.settings?.hideFromSearchEngine && (
           <meta name="robots" content="noindex, nofollow"></meta>
         )}
         {brand?.googleAdsWebsiteMetaToken &&
           <meta name="google-site-verification" content={getToken()} />
         }
-        
+
+        <title>{brand?.settings?.websiteTitle} {setSEO?.title && "-"} {setSEO?.title}</title>
+
         {setSEO &&
-          <SEO 
-            title={setSEO.title}
-            description={setSEO.description}
-            keywords={setSEO.keywords}
-            image={setSEO.image}
-            url={setSEO.url}
+          <SEO
+            title={setSEO?.title}
+            description={setSEO?.description}
+            keywords={setSEO?.keywords}
+            image={setSEO?.image}
+            url={setSEO?.url}
           />
         }
         <link
@@ -121,8 +122,8 @@ const Layout: React.FC<LayoutPropType> = ({
         image={brand?.logoURL}
       />
       {withHeader &&
-        <Header 
-          lng={lng} 
+        <Header
+          lng={lng}
           brand={brand}
         />
       }

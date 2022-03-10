@@ -39,6 +39,7 @@ const Home: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
+      setSEO={{ title: i18n.t("header.home") }}
     >
       <section className={styles.homepage_container}>
         <BannerComponent
