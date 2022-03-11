@@ -13,17 +13,17 @@
     "city": "District / Region",
     "cityPlaceholder": "Type the name of your district/region",
     "completed": "Completed",
-    "completedSuccess": "Successfully Complete Order",
     "completedFailed": "Failed to Complete Order",
-    "completedOrderTitle": "Complete Order",
-    "completedOrderNote": "By clicking Done, the purchase funds will be forwarded to the Seller ",
-    "completedOrderDescription": "Make sure the product has been received and in accordance with your order",
-    "completedOrderBtnYes": "Yes",
     "completedOrderBtnNo": "No",
+    "completedOrderBtnYes": "Yes",
+    "completedOrderDescription": "Make sure the product has been received and in accordance with your order",
+    "completedOrderNote": "By clicking Done, the purchase funds will be forwarded to the Seller ",
+    "completedOrderTitle": "Complete Order",
+    "completedSuccess": "Successfully Complete Order",
+    "confirming": "Waiting confirmation",
     "confirmNewPassword": "Confirm New Password",
     "confirmPayment": "Confirm Payment",
     "confirmPaymentSuccess": "Confirm Payment Successful",
-    "confirming": "Waiting confirmation",
     "delivered": "Delivered",
     "deliveryAddress": "Delivered Address",
     "editAccount": "Edit Account",
@@ -53,9 +53,9 @@
     "newPassword": "New Password",
     "noOrder": "You have no order yet.",
     "oldPassword": "Old Password",
+    "orderedItem": "Ordered items",
     "orderHistory": "Order history",
     "orderNumber": "Order number",
-    "orderedItem": "Ordered items",
     "otherItems": "Other Items",
     "paid": "Paid",
     "passwordError": "Password change failed, please try again later.",
@@ -95,12 +95,12 @@
     "categoriesBlog": "Blog Categories",
     "isEmpty": "Blog is empty",
     "leaveReply": "Leave a reply",
+    "otherArticle": "Other Article",
     "postComment": "Post a comment",
     "recentPost": "Recent Post",
-    "title": "Blogs",
+    "seeOther": "See other article",
     "share": "Share",
-    "otherArticle": "Other Article",
-    "seeOther": "See other article"
+    "title": "Blogs"
   },
   "cart": {
     "amount": "Amount",
@@ -115,8 +115,8 @@
     "outofStock": "Out of Stock",
     "price": "Price",
     "quantity": "Quantity",
-    "shopNow": "Shop Now",
     "shopAgain": "Add other products",
+    "shopNow": "Shop Now",
     "title": "Cart",
     "total": "You have {TOTAL} items",
     "unknownSKU": "Unknown SKU",
@@ -172,7 +172,8 @@
   },
   "forgotPassword": {
     "requestFail": "Password reset request fail.",
-    "requestSuccessful": "Password reset request successful. Please check your email."
+    "requestSuccessful": "Password reset request successful. Please check your email.",
+    "title": "Forgot Password"
   },
   "giftCard": {
     "desc": "Give someone something to smile about by purchasing our online gift card. An email containing the e-gift card will be sent to them and they can spend it on any item(s).",
@@ -245,16 +246,16 @@
     "withEmail": "Email"
   },
   "lookbook": {
+    "back": "Back to lookbook list",
+    "empty": "Lookbook is empty",
     "errorButton": "Return to Home Page",
     "errorDesc": "Please try again later",
     "errorTitle": "Error",
     "isEmpty": "Lookbook is empty",
     "seeCollection": "See Collection",
     "seeMore": "See More",
-    "title": "Lookbook",
-    "empty": "Lookbook is empty",
     "share": "Share Lookbook",
-    "back": "Back to lookbook list"
+    "title": "Lookbook"
   },
   "membership": {
     "exchangePoints": "Redeem your Point",
@@ -274,6 +275,13 @@
     "submitError": "Failed subscribe",
     "submitSuccess": "Success subscribe",
     "subscribe": "Subscribe"
+  },
+  "notificationOptIn": {
+    "checkboxLabel": "I want to receive order status via social media",
+    "continuePayment": "Continue to Payment",
+    "description": "You will get a notification of your order via the whatsapp number below",
+    "proceedToPayment": "Proceed to Payment",
+    "title": "Update via Social Media"
   },
   "notifyMe": {
     "emailInputPlaceholder": "Eg. myemail@gmail.com",
@@ -298,10 +306,10 @@
     "ratingHelper": "Choose star rating",
     "review": "Review",
     "reviewValidation": "Minimum 20 characters",
-    "subTitle": "How is the quality of this product?",
     "submit": "Submit Review",
     "submitError": "Submit Review fail.",
     "submitSuccess": "Review Successfully submitted!",
+    "subTitle": "How is the quality of this product?",
     "title": "Write a Review",
     "transactionDate": "Transaction date",
     "writeReview": "Write Review",
@@ -330,6 +338,7 @@
     "agreement": "I agree to Terms of Use and Privacy Policy",
     "availCoupon": "Available Coupon",
     "availPoint": "Available Point",
+    "confirm": "Send Proof of Payment",
     "discountBundle": "Discount Bundle",
     "fee": "Fee",
     "generateLinkFailed": "Failed to use this payment method",
@@ -338,52 +347,52 @@
     "prepayment": "Your order is being processed, please do not leave this page.",
     "shipping": "Shipping",
     "title": "Payment",
+    "to": "Destination of bank transfer",
+    "total": "Total Bill",
     "uniqueCode": "Unique Code",
     "voucher": "Voucher",
-    "warning": "Unable to proceed transaction amount below 10,000",
-    "total": "Total Bill",
-    "to": "Destination of bank transfer",
-    "confirm": "Send Proof of Payment"
+    "warning": "Unable to proceed transaction amount below 10,000"
   },
   "paymentConfirm": {
     "amountTransfered": "Amount Transfered",
+    "checkOrder": "Check Order",
     "confirm": "Confirm payment",
+    "confirmationPaymentSuccess": "Payment confirmation successful",
     "continue": "Continue shopping",
+    "descCheckYoutOrder": "To confirm payment, please enter your email and order ID.",
+    "details": "Details",
     "doesNotEqual": "Amount transfered is unsuitable",
+    "email": "Email",
+    "emailNotMatch": "Email does not match the order number",
     "failed": "Payment confirmation failed! Please check your Order ID.",
     "file": "Receipt file",
     "heading": "Payment Confirmation",
+    "infoUpload": "Proof of payment that has been sent cannot be reupload, please make sure the data you are about to send is correct!",
+    "invalidFileType": "File Type not supported",
+    "optional": "Optional",
+    "orderId": "Order ID",
+    "orderIdNotFound": "Order ID not found",
+    "placeholderEmail": "user@gmail.com",
+    "placeholderOrderId": "Order ID",
+    "pleaseLogin": "Your order ID not found. Please login with your account.",
+    "title": "Payment Confirmation",
+    "titleCheckYoutOrder": "Check Order ID",
     "to": "Payment to",
     "totalAmount": "Total amount payable for this order is:",
     "transactionDate": "Transaction Date",
     "unauthorize": "Payment confirmation has failed, please login first and try again",
     "uploadFailed": "File upload failed. Please try again.",
-    "wrongEmail": "Please use the email that you used to create the order",
-    "orderIdNotFound": "Order ID not found",
-    "emailNotMatch": "Email does not match the order number",
-    "titleCheckYoutOrder": "Check Order ID",
-    "descCheckYoutOrder": "To confirm payment, please enter your email and order ID.",
-    "orderId": "Order ID",
-    "placeholderOrderId":  "Order ID",
-    "email": "Email",
-    "placeholderEmail": "user@gmail.com",
-    "checkOrder": "Check Order",
-    "details": "Details",
-    "optional": "Optional",
-    "invalidFileType": "File Type not supported",
-    "confirmationPaymentSuccess": "Payment confirmation successful",
-    "pleaseLogin": "Your order ID not found. Please login with your account.",
-    "infoUpload": "Proof of payment that has been sent cannot be reupload, please make sure the data you are about to send is correct!"
+    "wrongEmail": "Please use the email that you used to create the order"
   },
   "paymentStatus": {
     "continueShopping": "Continue Shopping",
     "failedDesc": "Your payment failed to process. Please make a repayment process",
     "orderNotFound": "Order Not Found",
+    "orderNotFoundDesc": "Your payment number not found",
     "titleFailed": "Payment Failed",
     "titleUnfinish": "Incomplete Payment",
     "tryAgain": "Try Again",
-    "unfinishDesc": "Your payment is incomplete. Please make a repayment process",
-    "orderNotFoundDesc" : "Your payment number not found"
+    "unfinishDesc": "Your payment is incomplete. Please make a repayment process"
   },
   "placeOrder": {
     "checkOrder": "Check Orders",
@@ -395,8 +404,8 @@
     "userInformation": "Information"
   },
   "product": {
-    "addToCart": "Add To Cart",
     "additionalInfo": "Additional Info",
+    "addToCart": "Add To Cart",
     "adjust": "Adjust",
     "all": "All Products",
     "back": "Back",
@@ -447,6 +456,7 @@
     "reviewsPerPage": "Reviews per page",
     "sale": "Sale",
     "seeAll": "See All",
+    "seeAllCategory": "+ See all category",
     "seeAllProduct": "See all products",
     "share": "Share",
     "shareProduct": "Share Product",
@@ -463,8 +473,7 @@
     "weight": "Weight",
     "whatsapp": "Whatsapp",
     "writeReview": "Write Review",
-    "yourReview": "Your Review",
-    "seeAllCategory": "+ See all category"
+    "yourReview": "Your Review"
   },
   "register": {
     "address": "Address",
@@ -543,9 +552,9 @@
     "submittedDescending": "Recent review"
   },
   "settingNotification": {
-    "title": "Notification",
     "description": "You will get all notification from this store according to the medium you activated below",
-    "emailDescription": "All notification by email cannot changed"
+    "emailDescription": "All notification by email cannot changed",
+    "title": "Notification"
   },
   "shipping": {
     "allocating": "Looking for a driver",
@@ -562,10 +571,11 @@
     "pickingUp": "Driver is on the way to pick up",
     "returned": "Driver will return the order to merchant",
     "setPinpoint": "Set Location Pin",
-    "shipTo": "Ship to",
     "shippingMethod": "Shipping Method",
+    "shipTo": "Ship to",
     "subtitleContactInfo": "*a bill will be sent to this contact",
     "subtitleShipTo": "*your order will be shipped",
+    "title": "Shipping",
     "track": "Track your order",
     "trackDriver": "Track Driver",
     "updatePinpoint": "Change Location Pin"
@@ -608,14 +618,14 @@
     "moreReview": "More Review",
     "no": "No",
     "publishTestimonial": "May we publish your testimonial on our website?",
+    "sendTestimonial": "Send Testimonial",
     "submitBtn": "Submit",
     "successUpload": "Upload image success",
     "title": "Testimonial",
     "weHave": "We Have ",
     "weHave2": " testimonials from our loyal customers",
     "writeReview": "Write Review",
-    "yes": "Yes",
-    "sendTestimonial": "Send Testimonial"
+    "yes": "Yes"
   },
   "testimonials": {
     "contentLabel": "Review",
@@ -655,12 +665,12 @@
     "inputWhatsApp": "Enter your Whatsapp number to login our store",
     "insertVerificationCode": "Enter verification code (OTP)",
     "loginWithAnotherMethod": "Sign in using another method",
-    "noWhatsApp": "Don't have whatsapp?",
     "notReceivedMessage": "Haven't received the message yet?",
+    "noWhatsApp": "Don't have whatsapp?",
     "otpSent": "We have sent a verification code via Whatsapp number ",
     "privacyPolicy": "Privacy Policy",
-    "resend": "Resend code OTP",
     "requestOTPTimeOut": "The OTP code has been sent, please wait 1 minute to resend the OTP code",
+    "resend": "Resend code OTP",
     "seconds": "sec",
     "sendOTP": "Send code OTP",
     "termsAndCondition": "Terms and Condition",
@@ -671,17 +681,10 @@
     "wrongOTP": "Incorrect OTP code"
   },
   "whatsAppOTPInputRegis": {
+    "chooseAnyAccountToLogin": "You have multiple accounts registered, please select one to login",
     "continue": "Register",
     "disclaimer": "By clicking 'Register', you agree to receive notifications via Whatsapp",
-    "loginWithAnotherMethod": "Register using another method",
-    "chooseAnyAccountToLogin": "You have multiple accounts registered, please select one to login",
-    "inputWhatsApp": "Enter your Whatsapp number to register to our store"
-  },
-  "notificationOptIn": {
-    "checkboxLabel": "I want to receive order status via social media",
-    "continuePayment": "Continue to Payment",
-    "description": "You will get a notification of your order via the whatsapp number below",
-    "proceedToPayment": "Proceed to Payment",
-    "title": "Update via Social Media"
+    "inputWhatsApp": "Enter your Whatsapp number to register to our store",
+    "loginWithAnotherMethod": "Register using another method"
   }
 }

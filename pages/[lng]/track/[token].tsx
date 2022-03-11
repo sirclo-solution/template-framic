@@ -32,6 +32,7 @@ const classesTrackerPage = {
 const TrackerPage: FC<any> = ({
   lng,
   lngDict,
+  brand,
   order_token
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n()
@@ -42,6 +43,7 @@ const TrackerPage: FC<any> = ({
       i18n={i18n}
       lng={lng}
       lngDict={lngDict}
+      brand={brand}
       setSEO={{ title: i18n.t("shipping.track") }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
@@ -77,6 +79,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     props: {
       lng: defaultLanguage,
       lngDict,
+      brand: brand || "",
       order_token: params.token
     },
   }

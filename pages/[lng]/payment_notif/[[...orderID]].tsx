@@ -111,7 +111,7 @@ const PaymentConfirmationPage: FC<any> = ({
       lng={lng}
       lngDict={lngDict}
       brand={brand}
-      setSEO={{ title: i18n.t("paymentNotif.title") }}
+      setSEO={{ title: i18n.t("paymentConfirm.title") }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.paymentConfirmation_container}>
