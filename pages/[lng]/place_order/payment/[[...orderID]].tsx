@@ -58,7 +58,7 @@ const PaymentStatus: FC<any> = ({
       i18n={i18n}
       lng={lng}
       brand={brand}
-      setSEO={{ title: i18n.t("orderSummary.placeOrder") }}
+      setSEO={{ title: i18n.t("paymentStatus.title") }}
     >
       <section>
         <div className={styles.paymentStatus_heading}>

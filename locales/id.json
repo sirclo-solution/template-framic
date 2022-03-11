@@ -394,6 +394,7 @@
     "failedDesc": "Pembayaran Anda gagal diproses",
     "orderNotFound": "Pesanan Tidak Ditemukan",
     "orderNotFoundDesc": "Mohon maaf, nomor pesanan Anda tidak dapat kami temukan.",
+    "title": "Status Pembayaran",
     "titleFailed": "Pembayaran Gagal",
     "titleUnfinish": "Pembayaran tidak lengkap",
     "tryAgain": "Coba lagi",

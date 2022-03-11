@@ -394,6 +394,7 @@
     "failedDesc": "Your payment failed to process. Please make a repayment process",
     "orderNotFound": "Order Not Found",
     "orderNotFoundDesc": "Your payment number not found",
+    "title": "Payment Status",
     "titleFailed": "Payment Failed",
     "titleUnfinish": "Incomplete Payment",
     "tryAgain": "Try Again",
