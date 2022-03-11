@@ -124,7 +124,8 @@
     grid-template-areas:
       "image title title"
       "image qty price"
-      "image total total";
+      "image total total"
+      "image notes notes";
     position: relative;
     flex-flow: column wrap;
     
@@ -390,5 +391,57 @@
     padding: 10px;
     border-radius: 2px;
     text-align: center;
+  }
+
+  &_btnItemNotes
+  {
+    @include flex(column, left, left);
+    @include typographyBuilder(600, 12, 16);
+    grid-area: notes;
+    margin: 0 25% 0 0;
+    text-transform: none;
+    color: $color_black_text;
+
+    button
+    {
+      @include fontSize(12);
+      border: none;
+      padding: 5px 0;
+      width: fit-content;
+      background-color: transparent;
+
+      span
+      {
+        vertical-align: top;
+        color: $color_blue;
+        display: inline-block;
+      }
+    }
+
+    input
+    {
+      border: 1px solid $color_light;
+      padding: 10px 15px;
+      margin-bottom: 3px;
+      outline: none;
+    }
+  }
+
+  &_itemEditNote
+  {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin: -2px 5px 0 0;
+    background-color: $color_danger_lighter;
+    border-radius: 3px;
+    background-image: url("data:image/svg+xml,%3Csvg width='9' height='9' viewBox='0 0 9 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.95 1.91439L7.071 4.03589L2.121 8.98539H0V6.86389L4.95 1.91389V1.91439ZM5.657 1.20739L6.7175 0.146393C6.81126 0.0526573 6.93842 -4.76837e-07 7.071 -4.76837e-07C7.20358 -4.76837e-07 7.33074 0.0526573 7.4245 0.146393L8.839 1.56089C8.93274 1.65466 8.98539 1.78181 8.98539 1.91439C8.98539 2.04698 8.93274 2.17413 8.839 2.26789L7.778 3.32839L5.657 1.20739Z' fill='%23F62805'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    & ~ span
+    {
+      color: $color_black_text !important;
+    }
   }
 }

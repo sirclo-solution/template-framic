@@ -116,7 +116,6 @@ const ProductFilterSort: FC<ProductFilterSortType> = ({
         </p>
         <ProductCategory
           classes={classesProductCategory}
-          categoryClassName="products-menuCenterFilterSortToggle"
           dropdownIcon={<ChevronDown />}
           getData={handleSetLengthCategory}
           itemPerPage={limitCategory}
