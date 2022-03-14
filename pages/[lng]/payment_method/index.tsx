@@ -40,6 +40,12 @@ const classesListPaymentMethod = {
   promotionButtonGroupClassName: styles.paymentmethod_promotionButtonGroup,
   buttonClassName: stylesButton.btn_primaryLong,
 
+  travelokaPayLaterHeaderClassName: styles.paymentmethod_travelokaPayLaterHeader,
+  travelokaPayLaterFooterClassName: styles.paymentmethod_travelokaPayLaterFooter,
+  travelokaPayLaterFooterTextClassName: styles.paymentmethod_travelokaPayLaterFooterText,
+  travelokaPayLaterFooterImgClassName: styles.paymentmethod_travelokaPayLaterFooterImg,
+  travelokaPayLaterFooterLinkClassName: styles.paymentmethod_travelokaPayLaterFooterLink,
+
   couponButtonClassName: `${stylesOrderSummaryBox.ordersummary_voucherButton} ${styles.paymentmethod_voucherButton}`,
   popupClassName: stylesOrderSummaryBox.ordersummary_popup,
   voucherContainerClassName: stylesOrderSummaryBox.ordersummary_voucherContainer,
@@ -73,7 +79,7 @@ const classesListPaymentMethod = {
   continueShoppingClassName: stylesOrderSummaryBox.ordersummary_continueShopping,
   pointsSubmitButtonClassName: stylesButton.btn_primaryLong,
 
-  radioButtonClassName: styles.paymentmethod_radioButton,
+  radioButtonClassName: styles.paymentmethod_radioButton
 }
 
 type PrivateComponentPropsType = {

@@ -354,6 +354,9 @@
     "title": "Payment",
     "to": "Destination of bank transfer",
     "total": "Total Bill",
+    "travelokaPayLaterHeader": "Recommended",
+    "travelokaPayLaterLink": "Activate your Traveloka PayLater now!",
+    "travelokaPayLaterText": "Turn your payments into installments via",
     "uniqueCode": "Unique Code",
     "voucher": "Voucher",
     "warning": "Unable to proceed transaction amount below 10,000"
