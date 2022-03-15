@@ -259,7 +259,7 @@
 
     p
     {
-      font-size: 12px;
+      @include typographyBuilder(600, 12px, 16px);
       margin-bottom: 0;
     }
 
@@ -276,7 +276,7 @@
 
   &_travelokaPayLaterFooter
   {
-    font-size: 12px;
+    @include typographyBuilder(600, 12px, 16px);
     background: $color_light;
     width: 100%;
     padding: 8px 10px !important;
