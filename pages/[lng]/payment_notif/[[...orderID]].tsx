@@ -22,11 +22,15 @@ import stylesThankyou from 'public/scss/pages/ThankYou.module.scss'
 import stylesButton from 'public/scss/components/Button.module.scss'
 
 const classesPaymentConfirmation = {
-  paymentConfirmationDivClassName: styles.paymentNotif_form,
-  paymentInfoUploadClassName: styles.paymentNotif_info,
+  paymentConfirmationDivClassName: styles.paymentConfirmationDiv,
+  paymentInfoUploadClassName: styles.paymentInfoUpload,
   inputContainerClassName: styles.paymentConfirmation_inputContainer,
+  labelClassName: styles.label,
   inputClassName: styles.paymentConfirmation_inputUpload,
   selectClassName: `form-control`,
+  uploadedImageClassName: styles.uploadedImage,
+  uploadedNameImageClassName: styles.uploadedNameImage,
+  uploadedRemoveImageClassName: styles.uploadedRemoveImage,
 
   buttonConfirmClassName: `${styles.paymentConfirmation_containerButton} ${stylesButton.btn_primaryLong}`,
   detailContainerClassName: styles.paymentConfirmation_detailContainer,
@@ -114,7 +118,7 @@ const PaymentConfirmationPage: FC<any> = ({
       setSEO={{ title: i18n.t("paymentConfirm.title") }}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
-      <div className={styles.paymentConfirmation_container}>
+      <div className={`${styles.paymentConfirmation_container} ${lng}`}>
         {orderID ? (
           <>
             <h3 className={styles.paymentConfirmation_title}>

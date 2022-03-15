@@ -109,6 +109,27 @@
   &_bankAccountContainer
   {
     margin-top: 24px;
+
+    & > div
+    {
+      &:not(:last-child),
+      &:not(:last-of-type),
+      {
+        &:not(:only-child),
+        &:not(:only-of-type)
+        {
+          [class*="_bankAccountHeader__"]
+          {
+            border-bottom: none;
+
+            & + [class*="_bankAccountBody__"]
+            {
+              border-top: solid 1px $color_light;
+            }
+          }
+        }
+      }
+    }
   }
 
   &_detailHeader
