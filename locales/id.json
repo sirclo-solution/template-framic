@@ -354,6 +354,9 @@
     "title": "Pembayaran",
     "to": "Tujuan bank transfer",
     "total": "Total Tagihan",
+    "travelokaPayLaterHeader": "Rekomendasi",
+    "travelokaPayLaterLink": "Aktifkan Traveloka PayLater-mu sekarang!",
+    "travelokaPayLaterText": "Ubah pembayaranmu jadi cicilan melalui Aplikasi",
     "uniqueCode": "Kode Unik",
     "voucher": "Voucher",
     "warning": "Transaksi di bawah 10,000 tidak dapat diproses"

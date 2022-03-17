@@ -5,6 +5,7 @@
   &_paymentItemEnabled
   {
     @include flex(row, center, flex-start, true);
+    @include position(relative);
     border: 1px solid $color_light;
     box-sizing: border-box;
     border-radius: 2px;
@@ -28,6 +29,8 @@
 
   &_paymentImg
   {
+    align-items: flex-end;
+
     &:empty
     {
       display: none
@@ -36,6 +39,7 @@
     & > img
     {
       @include fixedHeight(24px);
+      @include fixedWidth(70px);
     }
   }
 
@@ -243,5 +247,61 @@
       background-color: $color_black_text;
       padding: 2px;
     }
+  }
+
+  &_travelokaPayLaterHeader
+  {
+    background: $color_green;
+    color: $color_white;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0 !important;
+
+    p
+    {
+      @include typographyBuilder(600, 12px, 16px);
+      margin-bottom: 0;
+    }
+
+    & ~ div[class*="paymentType"]
+    {
+      width: calc(100% - 90px);
+    }
+
+    & ~ div[class*="paymentImg"]
+    {
+      width: 90px;
+    }
+  }
+
+  &_travelokaPayLaterFooter
+  {
+    @include typographyBuilder(600, 12px, 16px);
+    background: $color_light;
+    width: 100%;
+    padding: 8px 10px !important;
+    text-align: center;
+  }
+
+  &_travelokaPayLaterFooterText
+  {
+    margin-bottom: 0;
+    color: $color_grey;
+  }
+
+  &_travelokaPayLaterFooterImg
+  {
+    display: inline-block;
+
+    img
+    {
+      @include position(relative, -3px);
+      height: 14px;
+    }
+  }
+
+  &_travelokaPayLaterFooterLink
+  {
+    color: $color_blue;
   }
 }
