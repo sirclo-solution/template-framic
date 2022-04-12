@@ -1,5 +1,5 @@
 /* library package */
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import Link from 'next/link'
 import {
   useI18n,
@@ -20,6 +20,7 @@ type ChekoutComponentType = {
   page: "place_order"
   | "shipping_method"
   | "payment_method"
+  children: ReactNode
 }
 
 const classesCustomerDetail = {
