@@ -32,9 +32,13 @@ const ProductsWidget: FC<ProductsWidgetType> = ({
   return (
     <div>
       <div className={styles.widget_productsHeader}>
-        <h2 className={styles.widget_productsLabel}>{i18n.t("product.featuredProducts")}</h2>
-        <Link href='/[lng]/products' as={`/${lng}/products?categories=${tagName}`}>
-          <span className={styles.widget_productsLink}>{i18n.t("product.seeAll")}</span>
+        <h2 className={styles.widget_productsLabel}>
+          {i18n.t("product.featuredProducts")}
+        </h2>
+        <Link href='/[lng]/products' as={`/${lng}/products?tagname=${tagName}`}>
+          <span className={styles.widget_productsLink}>
+            {i18n.t("product.seeAll")}
+          </span>
         </Link>
       </div>
       <div className={styles.widget_productsContainer}>
@@ -48,7 +52,11 @@ const ProductsWidget: FC<ProductsWidgetType> = ({
           lazyLoadedImage={false}
           classes={classProducts}
           loadingComponent={
-            <Placeholder classes={classPlaceholder} withList listMany={itemPerPage} />
+            <Placeholder 
+              classes={classPlaceholder}
+              withList 
+              listMany={itemPerPage} 
+            />
           }
           thumborSetting={{
             width: size.width < 768 ? 300 : 500,
