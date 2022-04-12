@@ -56,6 +56,7 @@ type PrivateComponentPropsType = {
 }
 
 const PrivateRouteWrapper = ({ children }: PrivateComponentPropsType) => (
+  // @ts-ignore
   <PrivateRoute
     page="shipping_method"
     loadingComponent={<LoaderPages />}
