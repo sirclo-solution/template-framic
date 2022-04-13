@@ -9,7 +9,7 @@ type SEOProps = {
 const SEO = ({
   title,
   description,
-  keywords,
+  keywords = '',
   image,
   url
 }: SEOProps) => (
@@ -40,7 +40,7 @@ const SEO = ({
         <meta property="twitter:url" content={url} key="twitterurl" />
       </>
     )}
-    {keywords && <meta name="keyword" content={keywords}></meta>}
+    <meta name="keyword" content={keywords} />
     <link rel="manifest" href="/manifest.json" />
   </>
 );
