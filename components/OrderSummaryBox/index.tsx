@@ -178,7 +178,7 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
               save: <span>{i18n.t("cart.save")}</span>,
               empty: (
                 <>
-                  <span className={stylesCart.cartdetails_itemEditNote} />
+                  <span className={stylesCart.cartdetails_itemEditNote}></span>
                   <span>{i18n.t("cart.addNote")}</span>
                 </>
               )
@@ -201,14 +201,14 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
         onErrorMsgCoupon={(msg: string) => toast.error(msg)}
         onAddressInvalid={(e) => toast.error(e)}
         icons={{
-          voucher: <span className={styles.ordersummary_voucherIcon} />,
-          points: <span className={styles.ordersummary_pointsIcon} />,
-          pointsApplied: <span className={styles.ordersummary_voucherIconApplied} />,
-          close: <span className={styles.ordersummary_closeIcon} />,
-          voucherApplied: <span className={styles.ordersummary_voucherIconApplied} />,
-          voucherRemoved: <span className={styles.ordersummary_voucherIconRemove} />,
-          expand: <span className={styles.ordersummary_detailExpandIcon} />,
-          collapse: <span className={styles.ordersummary_detailCollapseIcon} />,
+          voucher: <span className={styles.ordersummary_voucherIcon}></span>,
+          points: <span className={styles.ordersummary_pointsIcon}></span>,
+          pointsApplied: <span className={styles.ordersummary_voucherIconApplied}></span>,
+          close: <span className={styles.ordersummary_closeIcon}></span>,
+          voucherApplied: <span className={styles.ordersummary_voucherIconApplied}></span>,
+          voucherRemoved: <span className={styles.ordersummary_voucherIconRemove}></span>,
+          expand: <span className={styles.ordersummary_detailExpandIcon}></span>,
+          collapse: <span className={styles.ordersummary_detailCollapseIcon}></span>,
         }}
         loadingComponent={
           <Placeholder classes={classesPlaceholder} withList listMany={3} />

@@ -73,28 +73,26 @@ const Layout: React.FC<LayoutPropType> = ({
       <Head>
        
         {/* SEO Heading */}
-        {setSEO &&
-          <SEO
-            title={
-              setSEO?.title || 
-              brand?.settings?.websiteTitle
-            }
-            description={
-              setSEO?.description || 
-              brand?.settings?.websiteDescription
-            }
-            image={
-              setSEO?.image || 
-              brand?.logoURL
-            }
-            keywords={setSEO?.keywords}
-            url={setSEO?.url}
-          />
-        }
+        <SEO
+          title={
+            setSEO?.title || 
+            brand?.settings?.websiteTitle
+          }
+          description={
+            setSEO?.description || 
+            brand?.settings?.websiteDescription
+          }
+          image={
+            setSEO?.image || 
+            brand?.logoURL
+          }
+          keywords={setSEO?.keywords}
+          url={setSEO?.url}
+        />
 
         {/* default heading */}
         {brand?.settings?.hideFromSearchEngine && (
-          <meta name="robots" content="noindex, nofollow"></meta>
+          <meta name="robots" content="noindex, nofollow" />
         )}
         {brand?.googleAdsWebsiteMetaToken &&
           <meta name="google-site-verification" content={getToken()} />
