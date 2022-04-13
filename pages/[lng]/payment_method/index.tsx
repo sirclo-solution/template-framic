@@ -63,6 +63,10 @@ const classesListPaymentMethod = {
   voucherDetailCodeClassName: stylesOrderSummaryBox.ordersummary_voucherDetailCode,
   voucherDetailEstimateDescClassName: stylesOrderSummaryBox.ordersummary_voucherDetailEstimateDesc,
   voucherListClassName: stylesOrderSummaryBox.ordersummary_voucherList,
+  voucherListHeaderIconClassName: stylesOrderSummaryBox.ordersummary_voucherListHeaderIcon,
+  voucherDetailInvalidClassName: stylesOrderSummaryBox.ordersummary_voucherDetailInvalid,
+  voucherTitleClassName: stylesOrderSummaryBox.ordersummary_voucherTitle,
+  voucherListItemsClassName: stylesOrderSummaryBox.ordersummary_voucherListItems,
   voucherButtonRemoveClassName: styles.paymentmethod_voucherButtonRemove,
   pointButtonRemoveClassName: styles.paymentmethod_pointButtonRemove,
 
@@ -120,17 +124,21 @@ const PaymentMethods: FC<any> = ({
           page="payment_method"
         >
           <ListPaymentMethod
+            isCouponAccordion
+            withCouponTitle
             withNotificationOptInModal={hasOtp}
             classes={classesListPaymentMethod}
             onErrorMsg={(msg: string) => toast.error(msg)}
             onErrorMsgCoupon={(msg: string) => toast.error(msg)}
-            closeButtonIcon={<span className={stylesOrderSummaryBox.ordersummary_closeIcon} />}
-            pointAppliedIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconApplied} />}
-            pointIcon={<span className={stylesOrderSummaryBox.ordersummary_pointsIcon} />}
-            voucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIcon} />}
-            voucherAppliedIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconApplied} />}
-            removePointIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove} />}
-            removeVoucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove} />}
+            closeButtonIcon={<span className={stylesOrderSummaryBox.ordersummary_closeIcon}></span>}
+            pointAppliedIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconApplied}></span>}
+            pointIcon={<span className={stylesOrderSummaryBox.ordersummary_pointsIcon}></span>}
+            voucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIcon}></span>}
+            voucherAppliedIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconApplied}></span>}
+            removePointIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove}></span>}
+            removeVoucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove}></span>}
+            expand={<span className={stylesOrderSummaryBox.ordersummary_detailExpandIcon}></span>}
+            collapse={<span className={stylesOrderSummaryBox.ordersummary_detailCollapseIcon}></span>}
             loaderElement={
               <p className={styles.paymentmethod_loaderElement}>{i18n.t("global.loading")}</p>
             }

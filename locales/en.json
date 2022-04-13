@@ -145,11 +145,13 @@
   },
   "coupon": {
     "apply": "Apply",
-    "code": "Coupon Code : ",
+    "code": "Use Coupon",
     "couponPlaceholder": "Input your voucher",
     "discount": "Discount",
+    "empty": "No coupon yet",
     "enough": "You can get discount",
     "header": "Vouchers available",
+    "invalidTitle": "Coupon that still can't be used",
     "max": "Maximum discount",
     "minPoints": "Minimal points to redeem is",
     "minPurchase": "With minimum purchase",
@@ -161,6 +163,7 @@
     "redeem": "Redeem",
     "use": "Use",
     "valid": "Valid Until",
+    "validTitle": "Available Coupons",
     "youHave": "You Have"
   },
   "customerDetail": {

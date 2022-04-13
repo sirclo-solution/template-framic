@@ -180,8 +180,10 @@
   {
     @include typographyBuilder(400, 16, 24);
     @include flex(row, center, center);
+    @include truncate();
     color: $color_light_border;
     margin: 0 auto 0 0;
+    padding-right: calc(9px + .3vw);
   }
 
   &_voucherButton,
@@ -189,7 +191,7 @@
   &_voucherButtonApplied
   {
     @include flex(row, center, flex-start);
-    padding: 12px 20px;
+    padding: 12px calc(10px + .5vw);
     border-radius: 2px;
     border: 1px solid $color_light_border;
     cursor: pointer;
@@ -200,10 +202,10 @@
   {
     &::after
     {
+      @include fixedWidth('15px');
+      @include fixedHeight('14px');
       content: "";
       display: block;
-      width: 15px;
-      height: 14px;
       background-position: center;
       background-repeat: no-repeat;
       background-image: url("data:image/svg+xml,%0A%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.00305 3.0605L1.5478 9.51575L0.487305 8.45525L6.9418 2H1.25305V0.5H9.50305V8.75H8.00305V3.0605Z' fill='%23333333'/%3E%3C/svg%3E");
@@ -251,6 +253,57 @@
     color: $color_black_text;
     text-transform: uppercase;
     margin: 0 auto 0 0;
+  }
+
+  &_voucherTitle
+  {
+    @include typographyBuilder(400, 16, 24);
+    @include flex(row, center, flex-start);
+    color: $color_black_text;
+    text-transform: uppercase;
+    margin: 0 auto 24px 0;
+
+    &::before
+    {
+      @extend .ordersummary_voucherIcon;
+      content: '';
+    }
+  }
+
+  &_voucherDetailInvalid
+  {
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  &_voucherListItems
+  {
+    max-height: 280px;
+    overflow: auto;
+  }
+
+  &_voucherEmpty
+  {
+      @include flex(column, center, center);
+      position: relative;
+      margin: 16px auto;
+      padding: 0;
+      min-height: 100px;
+
+      > span 
+      {
+        margin: 0
+      }
+
+      > p
+      {
+          @include flex(row, center, center);
+          @include typographyBuilder(400, 12, 16);
+          color: $color_black_text;
+          position: relative;
+          margin: 13px 0 0;
+          padding: 0;
+      }
   }
 
   &_pointsButton
@@ -355,7 +408,7 @@
   &_closeButton
   {
     position: absolute;
-    top: 26px;
+    top: 24px;
     right: 16px;
     background-color: transparent;
     border: 0;
@@ -367,10 +420,10 @@
   &_pointsContainer
   {
     @include flex(column, flex-start, flex-start);
+    @include fixedWidth('337px');
     position: relative;
-    min-width: 340px;
     background-color: $color_white;
-    padding: 20px 16px 24px;
+    padding: calc(12px + .6vw) calc(12px + .6vw);
     border-radius: 3px;
 
     & > div
@@ -380,14 +433,14 @@
 
     @media screen and (max-width: $breakpoint_max_md) 
     {
-      @include fixedWidth(calc(100% - 17px));
+      @include fixedWidth(calc(100% - 19px));
       -webkit-overflow-scrolling: auto;
     }
   }
 
   &_voucherContainer
   {
-    padding-top: 45px;
+    padding-top: 16px;
   }
 
   &_voucherForm
@@ -397,7 +450,7 @@
 
     & > input
     {
-      max-width: 186px;
+      margin-right: 12px;
     }
 
     & > button
@@ -409,9 +462,17 @@
 
   &_voucherListHeader
   {
-    @include typographyBuilder(400, 12, 16);
-    color: $color_grey;
+    @include typographyBuilder(600, 12, 16);
+    @include flex(row, center, space-between);
+    color: $color_black_text;
     margin-bottom: 12px;
+    cursor: pointer;
+
+    > span {
+      > span {
+        background-color: transparent;
+      }
+    }
   }
 
   &_voucherDetail
@@ -442,9 +503,6 @@
   {
     @include useScrollbar();
     overflow: auto;
-    width: 100%;
-    max-width: 308px;
-    max-height: 300px;
   }
 
   &_voucherDetailHeader

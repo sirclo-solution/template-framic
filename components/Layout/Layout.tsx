@@ -71,24 +71,33 @@ const Layout: React.FC<LayoutPropType> = ({
   return (
     <>
       <Head>
+       
+        {/* SEO Heading */}
+        <SEO
+          title={
+            setSEO?.title || 
+            brand?.settings?.websiteTitle
+          }
+          description={
+            setSEO?.description || 
+            brand?.settings?.websiteDescription
+          }
+          image={
+            setSEO?.image || 
+            brand?.logoURL
+          }
+          keywords={setSEO?.keywords}
+          url={setSEO?.url}
+        />
+
+        {/* default heading */}
         {brand?.settings?.hideFromSearchEngine && (
-          <meta name="robots" content="noindex, nofollow"></meta>
+          <meta name="robots" content="noindex, nofollow" />
         )}
         {brand?.googleAdsWebsiteMetaToken &&
           <meta name="google-site-verification" content={getToken()} />
         }
-
         <title>{brand?.settings?.websiteTitle} {setSEO?.title && "-"} {setSEO?.title}</title>
-
-        {setSEO &&
-          <SEO
-            title={setSEO?.title}
-            description={setSEO?.description}
-            keywords={setSEO?.keywords}
-            image={setSEO?.image}
-            url={setSEO?.url}
-          />
-        }
         <link
           rel="shortcut icon"
           href={brand?.settings?.faviconURL}
@@ -116,11 +125,7 @@ const Layout: React.FC<LayoutPropType> = ({
         <link rel="preconnect" href="https://thumbor.sirclocdn.com" />
         <link rel="preconnect" href="https://storage.googleapis.com" />
       </Head>
-      <SEO
-        title={brand?.settings?.websiteTitle}
-        description={brand?.settings?.websiteDescription}
-        image={brand?.logoURL}
-      />
+      
       {withHeader &&
         <Header
           lng={lng}

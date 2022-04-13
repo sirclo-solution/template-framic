@@ -56,6 +56,10 @@ const classesOrderSummary = {
   voucherDetailCodeClassName: styles.ordersummary_voucherDetailCode,
   voucherDetailEstimateDescClassName: styles.ordersummary_voucherDetailEstimateDesc,
   voucherListClassName: styles.ordersummary_voucherList,
+  voucherListHeaderIconClassName: styles.ordersummary_voucherListHeaderIcon,
+  voucherDetailInvalidClassName: styles.ordersummary_voucherDetailInvalid,
+  voucherTitleClassName: styles.ordersummary_voucherTitle,
+  voucherListItemsClassName: styles.ordersummary_voucherListItems,
   deductionPriceClassName: styles.ordersummary_deductionPrice,
 
   pointsButtonClassName: styles.ordersummary_pointsButton,
@@ -109,97 +113,112 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
   const classesOrderSum = () => {
     return {
       ...classesOrderSummary,
-      headerClassName: `${styles.ordersummary_header} ${page === "payment_method" ? "d-none" : ""}`
+      headerClassName: `
+        ${styles.ordersummary_header} 
+        ${page === "payment_method" ? "d-none" : ""}
+      `
     }
   }
 
   const classesCartDet = () => {
     return {
       ...classesCartDetails,
-      itemClassName: `${stylesCart.cartdetails_cartItem} ${page === "payment_method" && styles.ordersummary_cartItemPaymentMethod}`,
-      itemNoteClassName: `${stylesCart.cartdetails_btnItemNotes} ${page === "payment_method" && "d-none"}`,
-      itemQtyClassName: `${stylesCart.cartdetails_itemQty} ${styles.ordersummary_itemQty} ${page === "payment_method" && "d-none"}`,
-      itemPriceClassName: `${stylesCart.cartdetails_itemPrice} ${styles.ordersummary_itemPrice} ${page === "payment_method" && "d-none"}`,
-      itemRemoveClassName: `${stylesCart.cartdetails_itemRemove} ${styles.ordersummary_itemRemove} ${page === "payment_method" && "d-none"}`,
-      itemAmountClassName: `${stylesCart.cartdetails_itemAmount} ${page === "payment_method" && styles.ordersummary_itemAmountPaymentMethod}`
+      itemClassName: `
+        ${stylesCart.cartdetails_cartItem} 
+        ${page === "payment_method" && styles.ordersummary_cartItemPaymentMethod}
+      `,
+      itemNoteClassName: `
+        ${stylesCart.cartdetails_btnItemNotes} 
+        ${page === "payment_method" && "d-none"}
+      `,
+      itemQtyClassName: `
+        ${stylesCart.cartdetails_itemQty} 
+        ${styles.ordersummary_itemQty} 
+        ${page === "payment_method" && "d-none"}
+      `,
+      itemPriceClassName: `
+        ${stylesCart.cartdetails_itemPrice} 
+        ${styles.ordersummary_itemPrice} 
+        ${page === "payment_method" && "d-none"}
+      `,
+      itemRemoveClassName: `
+        ${stylesCart.cartdetails_itemRemove} 
+        ${styles.ordersummary_itemRemove} 
+        ${page === "payment_method" && "d-none"}
+      `,
+      itemAmountClassName: `
+        ${stylesCart.cartdetails_itemAmount} 
+        ${page === "payment_method" && styles.ordersummary_itemAmountPaymentMethod}
+      `
     }
   }
 
-  return page === "cart" ? (
-    <OrderSummary
-      classes={classesOrderSummary}
-      currency="IDR"
-      submitButtonLabel={i18n.t("orderSummary.placeOrder")}
-      continueShoppingLabel={i18n.t("orderSummary.continueShopping")}
-      page={page}
-      onSaveCartError={() => toast.error(i18n.t("global.error"))}
-      onErrorMsg={() => setShowModalErrorAddToCart(!showModalErrorAddToCart)}
-      onErrorMsgCoupon={(msg: string) => toast.error(msg)}
-      isAccordion
-      onAddressInvalid={(e) => toast.error(e)}
-      icons={{
-        voucher: <span className={styles.ordersummary_voucherIcon} />,
-        points: <span className={styles.ordersummary_pointsIcon} />,
-        pointsApplied: <span className={styles.ordersummary_voucherIconApplied} />,
-        close: <span className={styles.ordersummary_closeIcon} />,
-        voucherApplied: <span className={styles.ordersummary_voucherIconApplied} />,
-        voucherRemoved: <span className={styles.ordersummary_voucherIconRemove} />,
-        expand: <span className={styles.ordersummary_detailExpandIcon} />,
-        collapse: <span className={styles.ordersummary_detailCollapseIcon} />,
-      }}
-      loadingComponent={<div className="spinner-border" />}
-    />
-  ) : (
+  return (
     <>
-      <div className={stylesCart.cartdetails_headerChange}>
-        <h3 className={stylesCart.cartdetails_headerChangeTitle}>{i18n.t("cart.title")}</h3>
-        <button
-          className={stylesCart.cartdetails_headerChangeLink}
-          onClick={() => Router.push("/[lng]/cart", `/${lng}/cart`)}>
-          {i18n.t("global.changes")}&nbsp;{i18n.t("cart.title")}
-        </button>
-      </div>
-      <CartDetails
-        withSeparatedVariant={true}
-        classes={classesCartDet()}
-        itemRedirectPathPrefix={`/product`}
-        isEditable={false}
-        removeIcon={<span className={stylesCart.cartdetails_itemRemoveIcon} />}
-        onErrorMsg={(msg) => toast.error(msg)}
-        withProductNote
-        productNoteButtonElement={{
-          filled: <span>{i18n.t("cart.change")}</span>,
-          save: <span>{i18n.t("cart.save")}</span>,
-          empty: (
-            <>
-              <span className={stylesCart.cartdetails_itemEditNote} />
-              <span>{i18n.t("cart.addNote")}</span>
-            </>
-          )
-        }}
-      />
+      {page !== "cart" &&
+        <>
+          <div className={stylesCart.cartdetails_headerChange}>
+            <h3 className={stylesCart.cartdetails_headerChangeTitle}>{i18n.t("cart.title")}</h3>
+            <button
+              className={stylesCart.cartdetails_headerChangeLink}
+              onClick={() => Router.push("/[lng]/cart", `/${lng}/cart`)}>
+              {i18n.t("global.changes")}&nbsp;{i18n.t("cart.title")}
+            </button>
+          </div>
+          <CartDetails
+            withSeparatedVariant={true}
+            classes={classesCartDet()}
+            itemRedirectPathPrefix={`/product`}
+            isEditable={false}
+            removeIcon={<span className={stylesCart.cartdetails_itemRemoveIcon} />}
+            onErrorMsg={(msg) => toast.error(msg)}
+            withProductNote
+            productNoteButtonElement={{
+              filled: <span>{i18n.t("cart.change")}</span>,
+              save: <span>{i18n.t("cart.save")}</span>,
+              empty: (
+                <>
+                  <span className={stylesCart.cartdetails_itemEditNote}></span>
+                  <span>{i18n.t("cart.addNote")}</span>
+                </>
+              )
+            }}
+          />
+        </>
+      }
+
       <OrderSummary
+        page={page}
+        isAccordion
+        isCouponAccordion
+        withCouponTitle
         classes={classesOrderSum()}
         currency="IDR"
         submitButtonLabel={i18n.t("orderSummary.placeOrder")}
         continueShoppingLabel={i18n.t("orderSummary.continueShopping")}
-        page={page}
         onSaveCartError={() => toast.error(i18n.t("global.error"))}
         onErrorMsg={() => setShowModalErrorAddToCart(!showModalErrorAddToCart)}
         onErrorMsgCoupon={(msg: string) => toast.error(msg)}
-        isAccordion
         onAddressInvalid={(e) => toast.error(e)}
-        loadingComponent={<Placeholder classes={classesPlaceholder} withList listMany={3} />}
         icons={{
-          voucher: <span className={styles.ordersummary_voucherIcon} />,
-          points: <span className={styles.ordersummary_pointsIcon} />,
-          pointsApplied: <span className={styles.ordersummary_voucherIconApplied} />,
-          close: <span className={styles.ordersummary_closeIcon} />,
-          voucherApplied: <span className={styles.ordersummary_voucherIconApplied} />,
-          voucherRemoved: <span className={styles.ordersummary_voucherIconRemove} />,
-          expand: <span className={styles.ordersummary_detailExpandIcon} />,
-          collapse: <span className={styles.ordersummary_detailCollapseIcon} />,
+          voucher: <span className={styles.ordersummary_voucherIcon}></span>,
+          points: <span className={styles.ordersummary_pointsIcon}></span>,
+          pointsApplied: <span className={styles.ordersummary_voucherIconApplied}></span>,
+          close: <span className={styles.ordersummary_closeIcon}></span>,
+          voucherApplied: <span className={styles.ordersummary_voucherIconApplied}></span>,
+          voucherRemoved: <span className={styles.ordersummary_voucherIconRemove}></span>,
+          expand: <span className={styles.ordersummary_detailExpandIcon}></span>,
+          collapse: <span className={styles.ordersummary_detailCollapseIcon}></span>,
         }}
+        loadingComponent={
+          <Placeholder classes={classesPlaceholder} withList listMany={3} />
+        }
+        emptyComponentCoupon={
+          <div className={styles.ordersummary_voucherEmpty}>
+            <span className={styles.ordersummary_voucherIcon} />
+            <p>{i18n.t("coupon.empty")}</p>
+          </div>
+        }
       />
     </>
   )
