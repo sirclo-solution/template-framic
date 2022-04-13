@@ -130,15 +130,15 @@ const PaymentMethods: FC<any> = ({
             classes={classesListPaymentMethod}
             onErrorMsg={(msg: string) => toast.error(msg)}
             onErrorMsgCoupon={(msg: string) => toast.error(msg)}
-            closeButtonIcon={<span className={stylesOrderSummaryBox.ordersummary_closeIcon} />}
-            pointAppliedIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconApplied} />}
-            pointIcon={<span className={stylesOrderSummaryBox.ordersummary_pointsIcon} />}
-            voucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIcon} />}
-            voucherAppliedIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconApplied} />}
-            removePointIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove} />}
-            removeVoucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove} />}
-            expand={<span className={stylesOrderSummaryBox.ordersummary_detailExpandIcon} />}
-            collapse={<span className={stylesOrderSummaryBox.ordersummary_detailCollapseIcon} />}
+            closeButtonIcon={<span className={stylesOrderSummaryBox.ordersummary_closeIcon}></span>}
+            pointAppliedIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconApplied}></span>}
+            pointIcon={<span className={stylesOrderSummaryBox.ordersummary_pointsIcon}></span>}
+            voucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIcon}></span>}
+            voucherAppliedIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconApplied}></span>}
+            removePointIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove}></span>}
+            removeVoucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove}></span>}
+            expand={<span className={stylesOrderSummaryBox.ordersummary_detailExpandIcon}></span>}
+            collapse={<span className={stylesOrderSummaryBox.ordersummary_detailCollapseIcon}></span>}
             loaderElement={
               <p className={styles.paymentmethod_loaderElement}>{i18n.t("global.loading")}</p>
             }
