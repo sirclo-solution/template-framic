@@ -63,6 +63,10 @@ const classesListPaymentMethod = {
   voucherDetailCodeClassName: stylesOrderSummaryBox.ordersummary_voucherDetailCode,
   voucherDetailEstimateDescClassName: stylesOrderSummaryBox.ordersummary_voucherDetailEstimateDesc,
   voucherListClassName: stylesOrderSummaryBox.ordersummary_voucherList,
+  voucherListHeaderIconClassName: stylesOrderSummaryBox.ordersummary_voucherListHeaderIcon,
+  voucherDetailInvalidClassName: stylesOrderSummaryBox.ordersummary_voucherDetailInvalid,
+  voucherTitleClassName: stylesOrderSummaryBox.ordersummary_voucherTitle,
+  voucherListItemsClassName: stylesOrderSummaryBox.ordersummary_voucherListItems,
   voucherButtonRemoveClassName: styles.paymentmethod_voucherButtonRemove,
   pointButtonRemoveClassName: styles.paymentmethod_pointButtonRemove,
 
@@ -120,6 +124,8 @@ const PaymentMethods: FC<any> = ({
           page="payment_method"
         >
           <ListPaymentMethod
+            isCouponAccordion
+            withCouponTitle
             withNotificationOptInModal={hasOtp}
             classes={classesListPaymentMethod}
             onErrorMsg={(msg: string) => toast.error(msg)}
@@ -131,6 +137,8 @@ const PaymentMethods: FC<any> = ({
             voucherAppliedIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconApplied} />}
             removePointIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove} />}
             removeVoucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove} />}
+            expand={<span className={stylesOrderSummaryBox.ordersummary_detailExpandIcon} />}
+            collapse={<span className={stylesOrderSummaryBox.ordersummary_detailCollapseIcon} />}
             loaderElement={
               <p className={styles.paymentmethod_loaderElement}>{i18n.t("global.loading")}</p>
             }

@@ -145,11 +145,13 @@
   },
   "coupon": {
     "apply": "Terapkan",
-    "code": "Kode kupon : ",
+    "code": "Gunakan Kupon",
     "couponPlaceholder": "Kode kupon",
     "discount": "Diskon",
+    "empty": "Belum ada kupon",
     "enough": "Anda mendapat potongan sebesar",
     "header": "Voucher tersedia",
+    "invalidTitle": "Kupon yang masih belum bisa digunakan",
     "max": "Maksimal potongan",
     "minPoints": "Minimal poin yang ditukarkan adalah",
     "minPurchase": "dengan minimal belanja",
@@ -161,6 +163,7 @@
     "redeem": "Tukarkan",
     "use": "Gunakan",
     "valid": "Dapat digunakan hingga",
+    "validTitle": "Kupon Tersedia",
     "youHave": "Anda Punya"
   },
   "customerDetail": {

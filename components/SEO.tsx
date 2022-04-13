@@ -1,5 +1,3 @@
-import Head from "next/head";
-
 type SEOProps = {
   title?: string;
   description?: string;
@@ -15,7 +13,7 @@ const SEO = ({
   image,
   url
 }: SEOProps) => (
-  <Head>
+  <>
     {title && (
       <>
         <meta property="og:title" content={title} key="ogtitle" />
@@ -44,7 +42,7 @@ const SEO = ({
     )}
     {keywords && <meta name="keyword" content={keywords}></meta>}
     <link rel="manifest" href="/manifest.json" />
-  </Head>
+  </>
 );
 
 export default SEO;
