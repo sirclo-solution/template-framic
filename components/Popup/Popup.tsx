@@ -7,7 +7,7 @@ export type PopupPropsType = {
   setPopup: (value: boolean) => void
   withClose?: boolean
   maxWidth?: string
-  children?: any
+  children?: React.ReactNode
 }
 
 const Popup: FC<PopupPropsType> = ({
