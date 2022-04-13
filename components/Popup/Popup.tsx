@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import styles from 'public/scss/components/Popup.module.scss'
 
 export type PopupPropsType = {
@@ -7,10 +7,9 @@ export type PopupPropsType = {
   setPopup: (value: boolean) => void
   withClose?: boolean
   maxWidth?: string
-  children?: React.ReactNode
 }
 
-const Popup: FC<PopupPropsType> = ({
+const Popup: FC<PropsWithChildren<PopupPropsType>> = ({
   title,
   isOpen,
   setPopup,
