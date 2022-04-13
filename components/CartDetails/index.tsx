@@ -118,23 +118,19 @@ const CartDetailsComponent: FC<CartDetailsComponentType> = ({
       />
 
       {/* PopUp ErrorAddToCart */}
-      <>
-        <Popup
-          setPopup={tooglePopupErrorAddToCart}
-          isOpen={showModalErrorAddToCart}
-          title={i18n.t("cart.errorSKUTitle")}
-          withClose={false}
-          maxWidth="340px"
-        >
-          <>
-            <p className={styles.cartdetails_errorSKUDes}>{i18n.t("cart.errorSKUDesc")}</p>
-            <button
-              className={stylesButton.btn_textLong}
-              onClick={tooglePopupErrorAddToCart}
-            >{i18n.t("global.back")}</button>
-          </>
-        </Popup>
-      </>
+      <Popup
+        setPopup={tooglePopupErrorAddToCart}
+        isOpen={showModalErrorAddToCart}
+        title={i18n.t("cart.errorSKUTitle")}
+        withClose={false}
+        maxWidth="340px"
+      >
+        <p className={styles.cartdetails_errorSKUDes}>{i18n.t("cart.errorSKUDesc")}</p>
+        <button
+          className={stylesButton.btn_textLong}
+          onClick={tooglePopupErrorAddToCart}
+        >{i18n.t("global.back")}</button>
+      </Popup>
     </>
   )
 }
