@@ -85,6 +85,7 @@ const ProductRecomendation: FC<Iprops> = ({
         filter={{ openOrderScheduled: false, published: true }}
         fullPath={`product/{id}`}
         pathPrefix={`product`}
+        isFlipImage={true}
         itemPerPage={4}
         newPagination
         buttonNext={<span className={styles.productrecomendation_nextIcon} />}

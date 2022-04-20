@@ -49,6 +49,7 @@ const ProductsWidget: FC<ProductsWidgetType> = ({
           isButton
           fullPath={`product/{id}`}
           pathPrefix={`product`}
+          isFlipImage={true}
           lazyLoadedImage={false}
           classes={classProducts}
           loadingComponent={

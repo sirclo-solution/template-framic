@@ -103,6 +103,7 @@ const ProductsList: FC<ProductsListType> = ({
           collectionSlug={categories}
           tagName={tagname || ""}
           filter={filterProduct}
+          isFlipImage={true}
           withSeparatedVariant={true}
           fullPath={`product/{id}`}
           pathPrefix={`product`}
