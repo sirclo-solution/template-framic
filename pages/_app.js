@@ -11,7 +11,10 @@ import {
   I18n
 } from "@sirclo/nexus";
 import { PageTransition } from "next-page-transitions";
+import { handleWebVitals } from 'lib/handleWebVitals';
 import MaintenanceMode from "@sirclo/nexus/lib/component/MaintenanceMode";
+
+export const reportWebVitals = (metric) => handleWebVitals(metric);
 
 const classesMaintenance = {
   maintenanceContainerClassName: 'maintenance__container',
