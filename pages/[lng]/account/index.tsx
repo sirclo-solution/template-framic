@@ -58,7 +58,8 @@ const classesAccount = {
   mapHeaderNoteClassName: styleMapLocation.mapPopupNote,
   mapLabelAddressClassName: styleMapLocation.mapPopupLabelAddress,
   mapCenterButtonClassName: styleMapLocation.mapPopupCenterButton,
-  mapButtonFooterClassName: `${stylesButton.btn_primaryLong} ${styleMapLocation.mapButtonFooter}`,
+  mapButtonFooterClassName: `${stylesButton.btn_primary} ${styleMapLocation.mapButtonFooter}`,
+  mapPinPointIconClassName: styleMapLocation.mapPinPointIcon,
   /* change password clases */
   inputLabelClassName: styles.account_edit__label,
   inputClassName: stylesForm.form_inputLong,

@@ -48,7 +48,8 @@ const classesShippingMethod = {
   mapHeaderNoteClassName: styleMapLocation.mapPopupNote,
   mapLabelAddressClassName: styleMapLocation.mapPopupLabelAddress,
   mapCenterButtonClassName: styleMapLocation.mapPopupCenterButton,
-  mapButtonFooterClassName: `${stylesButton.btn_primaryLong} ${styleMapLocation.mapButtonFooter}`,
+  mapButtonFooterClassName: `${stylesButton.btn_primary} ${styleMapLocation.mapButtonFooter}`,
+  mapPinPointIconClassName: styleMapLocation.mapPinPointIcon,
 }
 
 type PrivateComponentPropsType = {

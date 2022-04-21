@@ -28,6 +28,18 @@
   }
 }
 
+.mapPinPointIcon
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
+
 .mapNote
 {
   display: block;
@@ -126,15 +138,14 @@
   input
   {
     @include typographyBuilder(400, 16, 24);
-    width: 87%;
+    width: calc(100% - 47px);
     padding: 10px 15px;
     border: 1px;
     background: $color_white;
     z-index: 2;
     position: absolute;
     top: 12px;
-    right: 12px;
-    left: 16px;
+    margin-left: 24px;
     border-radius: 4px;
     box-shadow: none;
     outline: 0;
@@ -143,13 +154,12 @@
   div[class*="autocomplete-dropdown-container"] 
   {
     z-index: 1;
-    width: 87%;
+    width: calc(100% - 47px);
     background: #fff;
     position: absolute;
     text-align: left;
     top: 46px;
-    right: 12px;
-    left: 16px;
+    margin-left: 24px;
 
     div 
     {

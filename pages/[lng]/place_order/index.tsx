@@ -51,6 +51,7 @@ const classesPlaceOrderForm = {
   mapLabelAddressClassName: styleMapLocation.mapPopupLabelAddress,
   mapCenterButtonClassName: styleMapLocation.mapPopupCenterButton,
   mapButtonFooterClassName: `${stylesButton.btn_primary} ${styleMapLocation.mapButtonFooter}`,
+  mapPinPointIconClassName: styleMapLocation.mapPinPointIcon,
   paymentDetailsDeductionClassName: styles.placeorder_paymentDetailsDeduction,
 
   headerLabelClassName: styles.register_headerLabel,
