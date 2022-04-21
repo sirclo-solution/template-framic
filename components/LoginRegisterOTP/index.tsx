@@ -38,6 +38,8 @@ const classesWhatsAppOTP = {
   inputFormDescriptionClassName: styles.loginregister_inputFormDescription,
   btnSubmitClassName: stylesButton.btn_primaryLong,
   inputDescriptionClassName: styles.loginregister_inputDescription,
+  disclaimerMessageContainerClassName: styles.loginregister_disclaimer,
+
   //confirmation
   confirmationContainerClassName: styles.loginregister_confirmationContainer,
   confirmationBackContainerClassName: styles.loginregister_confirmationBackContainer,

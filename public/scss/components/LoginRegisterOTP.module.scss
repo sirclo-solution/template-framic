@@ -162,6 +162,7 @@
     top: 0;
     left: 0;
   }
+  
 
   &_confirmationBackLabel
   {
@@ -172,6 +173,20 @@
     background-position: center;
     background-repeat: no-repeat;
     background-image: url("data:image/svg+xml,%0A%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.828 6.99999L9.192 1.63599L7.778 0.221985L9.53674e-07 7.99999L7.778 15.778L9.192 14.364L3.828 8.99999H16V6.99999H3.828Z' fill='%23222222'/%3E%3C/svg%3E");
+  }
+
+  &_disclaimer
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+    margin: 24px 0 0;
+    text-align: center;
+
+    & > a
+    {
+      color: $color_blue;
+      text-decoration: none;
+    }
   }
 
   &_confirmationHeaderTitle,
