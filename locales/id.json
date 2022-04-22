@@ -121,7 +121,6 @@
     "save": "Simpan",
     "shopNow": "Belanja Sekarang",
     "shopAgain": "Belanja lagi",
-    "shopNow": "Belanja Sekarang",
     "title": "Keranjang",
     "total": "Terdapat {TOTAL} barang",
     "unknownSKU": "SKU tidak diketahui",
@@ -285,6 +284,7 @@
     "upLevelPrompt": "Lakukan {MINIMUM_ORDER} transaksi pembelian untuk mencapai {NEXT_LEVEL}",
     "usePoints": "Gunakan Poin Anda",
     "warning": "Anda tidak bisa mendapatkan poin dari transaksi pembelian dengan menggunakan poin",
+    "youHave": "Anda memiliki",
     "yourPoints": "Poin Anda"
   },
   "newsletter": {
