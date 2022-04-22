@@ -38,3 +38,33 @@ body
     }
   } 
 }
+
+
+.maintenance{
+
+  &__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 2em 10em 2em !important;
+    height: 100vh;
+
+    &--images
+    {
+      text-align: center;
+      
+
+      &-img
+      {
+        margin: 3em auto 0 auto !important;
+      }
+    }
+  }
+
+  &__info
+  {
+    font-size: 16px !important;
+    max-width: 70% !important;
+  }
+}
