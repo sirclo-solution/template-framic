@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import { withBrand, Newsletter } from '@sirclo/nexus'
 import Head from 'next/head'
 import { X as XIcon } from 'react-feather'
+import useWindowSize from 'lib/useWindowSize'
 /* component */
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -33,12 +34,18 @@ type LayoutPropType = {
 };
 
 const classesNewsletterPopup = {
-  containerClassName: stylesNewsLetter.newsletter_container,
-  closeButtonClassName: stylesNewsLetter.newsletter_close,
-  formContainerClassName: stylesNewsLetter.newsletter_form,
-  labelClassName: "d-none",
-  inputClassName: stylesForm.form_inputLong,
-  buttonClassName: stylesButtons.btn_primaryLong,
+  newsLetterWrapperClassName: stylesNewsLetter.newsletter_wrapper,
+  newsLetterContainerClassName: stylesNewsLetter.newsletter_container,
+  newsLetterCloseButtonClassName: stylesNewsLetter.newsletter_close,
+  newsLetterContentContainerClassName: stylesNewsLetter.contentContainer,
+  newsLetterContentClassName: stylesNewsLetter.newsletter_content,
+  newsLetterImageContainerClassName: stylesNewsLetter.newsletter_imageContainer,
+  newsLetterImageClassName: stylesNewsLetter.newsletter_image,
+  newsLetterNoThanksButtonClassName: stylesNewsLetter.button,
+  newsLetterFormContainerClassName: stylesNewsLetter.newsletter_form,
+  newsLetterFormLabelClassName: 'd-none',
+  newsLetterFormInputClassName: stylesForm.form_inputLong,
+  newsLetterFormButtonClassName: stylesButtons.btn_primaryLong,
 }
 
 const Layout: React.FC<LayoutPropType> = ({
@@ -53,7 +60,7 @@ const Layout: React.FC<LayoutPropType> = ({
   setSEO,
   ...props
 }) => {
-
+  const size = useWindowSize()
   const getToken = (): string => {
     const googleAdsWebsiteMetaToken = brand?.googleAdsWebsiteMetaToken
     const token: string = googleAdsWebsiteMetaToken.replace(/.*content="([^"]*)".*/, "$1")
@@ -147,6 +154,11 @@ const Layout: React.FC<LayoutPropType> = ({
           buttonComponent={i18n.t("newsletter.subscribe")}
           onComplete={() => toast.success(i18n.t("newsletter.submitSuccess"))}
           onError={() => toast.error(i18n.t("newsletter.submitError"))}
+          thumborSetting={{
+            width: size.width < 768 ? 512 : 800,
+            format: 'webp',
+            quality: 85,
+          }}
         />
       </div>
       <Footer brand={brand} withFooter={withFooter} />
