@@ -58,7 +58,7 @@
   &_content
   {
     text-align: center;
-    margin: 1.25rem 0 1.25rem 0;
+    margin: 1.25rem 0 0 0;
 
           h1, h2, h3, h4, h5, h6, strong
           {
@@ -103,7 +103,7 @@
 
   &_close
   {
-    @include absolute(10px, 10px, auto, auto);
+    @include absolute(3px, 8px, auto, auto);
     background-color: transparent;
     border: 0;
     padding: 0;
@@ -116,7 +116,7 @@
 
   &_form
   {
-    padding: 0 16px 24px;
+    padding: 10px 16px 24px;
 
     input
     {

@@ -30,9 +30,8 @@
 
 .mapPinPointIcon
 {
+  @include absolute(50%, auto, auto, 50%);
   position: absolute;
-  top: 50%;
-  left: 50%;
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
@@ -138,13 +137,13 @@
   input
   {
     @include typographyBuilder(400, 16, 24);
+    @include absolute(12px, auto, auto, auto);
     width: calc(100% - 47px);
     padding: 10px 15px;
     border: 1px;
     background: $color_white;
     z-index: 2;
     position: absolute;
-    top: 12px;
     margin-left: 24px;
     border-radius: 4px;
     box-shadow: none;
@@ -153,12 +152,12 @@
 
   div[class*="autocomplete-dropdown-container"] 
   {
+    @include absolute(46px, auto, auto, auto);
     z-index: 1;
     width: calc(100% - 47px);
     background: #fff;
     position: absolute;
     text-align: left;
-    top: 46px;
     margin-left: 24px;
 
     div 

@@ -121,7 +121,6 @@
     "save": "Save",
     "shopNow": "Shop Now",
     "shopAgain": "Add other products",
-    "shopNow": "Shop Now",
     "title": "Cart",
     "total": "You have {TOTAL} items",
     "unknownSKU": "Unknown SKU",
@@ -171,12 +170,12 @@
   },
   "disclaimer": {
     "contact": "By clicking the 'Submit' button, the Customer expresses approval if the Merchant uses the details provided to contact the Customer about your special request or question. Visit the {PRIVACY_POLICY} page for details on how we manage customer information.",
+    "loginByEmail": "By clicking 'Login', you agree and acknowledge {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} of {BRAND_NAME}",
+    "privacyPolicy": "Privacy Policy",
     "registerByEmail": "By clicking 'Register', you agree and acknowledge {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} of {BRAND_NAME}",
-    "whatsappOTP": "By clicking 'Login/Register' you agree to receive notifications via WhatsApp and acknowledge {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} from {BRAND_NAME}",
     "shippingMethod": "By clicking 'Order' you agree and acknowledge {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} of {BRAND_NAME}",
     "termsAndCondition": "Terms & Conditions",
-    "privacyPolicy": "Privacy Policy",
-    "loginByEmail": "By clicking 'Login', you agree and acknowledge {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} of {BRAND_NAME}"
+    "whatsappOTP": "By clicking 'Login/Register' you agree to receive notifications via WhatsApp and acknowledge {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} from {BRAND_NAME}"
   },
   "error": {
     "2900067": "Failed get price",

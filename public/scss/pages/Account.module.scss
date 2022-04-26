@@ -280,11 +280,11 @@
   
   &_group
   {
+    @include flex(row, flex-start, flex-start);
     background: $color_light_dark;
     border-radius: 2px;
     padding: 16px;
     margin-bottom: 24px;
-    display: flex;
 
     p
     {
