@@ -297,13 +297,14 @@
     @include typographyBuilder(600, 12, 16);
   }
   
-  &_points{
-    @include typographyBuilder(400, 12, 16);    
-  }
-  &_points::before
+  &_points
   {
-    content: ' \2022';
-    margin: 0px 6px;
+    @include typographyBuilder(400, 12, 16);  
+    
+    &::before{
+      content: ' \2022';
+      margin: 0px 6px;
+    }
   }
 
   &_accordionToggle

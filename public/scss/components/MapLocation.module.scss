@@ -31,13 +31,10 @@
 .mapPinPointIcon
 {
   @include absolute(50%, auto, auto, 50%);
-  position: absolute;
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
 }
-
-
 
 .mapNote
 {
