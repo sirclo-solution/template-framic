@@ -176,13 +176,12 @@
 
 .mapPopupCenterButton
 {
-  position: absolute;
-  right: 10px;
-  background: $color_white;
+  @include absolute(13px, 30px, auto, auto);
+  background: transparent;
   padding: 7.5px;
-  top: 12px;
   border: none;
   border-radius: 4px;
+  z-index: 10;
 }
 
 .mapPopupLabelAddress
