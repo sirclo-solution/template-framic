@@ -39,7 +39,8 @@ body
   } 
 }
 
-.maintenance{
+.maintenance
+{
   &__container
   {
     @include flex(column, center, center);

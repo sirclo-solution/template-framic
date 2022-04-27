@@ -301,7 +301,8 @@
   {
     @include typographyBuilder(400, 12, 16);  
     
-    &::before{
+    &::before
+    {
       content: ' \2022';
       margin: 0px 6px;
     }
