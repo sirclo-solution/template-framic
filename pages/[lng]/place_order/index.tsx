@@ -69,7 +69,6 @@ const classesPlaceOrderForm = {
 }
 
 const PrivateRouteWrapper = ({ children }: PrivateComponentPropsType) => (
-  // @ts-ignore
   <PrivateRoute
     page="place_order"
     loadingComponent={<LoaderPages />}
