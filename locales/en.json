@@ -121,7 +121,6 @@
     "save": "Save",
     "shopNow": "Shop Now",
     "shopAgain": "Add other products",
-    "shopNow": "Shop Now",
     "title": "Cart",
     "total": "You have {TOTAL} items",
     "unknownSKU": "Unknown SKU",
@@ -168,6 +167,15 @@
   },
   "customerDetail": {
     "changePin": "Change Pin"
+  },
+  "disclaimer": {
+    "contact": "By clicking the 'Submit' button, the Customer expresses approval if the Merchant uses the details provided to contact the Customer about your special request or question. Visit the {PRIVACY_POLICY} page for details on how we manage customer information.",
+    "loginByEmail": "By clicking 'Login', you agree and acknowledge {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} of {BRAND_NAME}",
+    "privacyPolicy": "Privacy Policy",
+    "registerByEmail": "By clicking 'Register', you agree and acknowledge {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} of {BRAND_NAME}",
+    "shippingMethod": "By clicking 'Order' you agree and acknowledge {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} of {BRAND_NAME}",
+    "termsAndCondition": "Terms & Conditions",
+    "whatsappOTP": "By clicking 'Login/Register' you agree to receive notifications via WhatsApp and acknowledge {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} from {BRAND_NAME}"
   },
   "error": {
     "2900067": "Failed get price",
@@ -265,6 +273,14 @@
     "share": "Share Lookbook",
     "title": "Lookbook"
   },
+  "map": {
+    "cityDistrictNotFound": "District not found. Please swipe the location pin",
+    "outOfReachDesc": "Please go to international shipping to make deliveries outside of Indonesia",
+    "outOfReachLabel": "Location out of reach",
+    "pinpointMismatch": "The location you selected does not match the specified point",
+    "searchLocation": "Search location",
+    "searchLocationPlaceholder": "Search location in here"
+  },
   "membership": {
     "exchangePoints": "Redeem your Point",
     "getPointPrompt": "Get points on your transactions",
@@ -276,6 +292,7 @@
     "upLevelPrompt": "Make {MINIMUM_ORDER} transaction(s) left to reach {NEXT_LEVEL}",
     "usePoints": "Use Point",
     "warning": "You will not earn Points from transactions made with points",
+    "youHave": "You have",
     "yourPoints": "Your Point"
   },
   "newsletter": {

@@ -22,6 +22,7 @@ const classesContact = {
   buttonContainerClassName: styles.contact_buttonContainer,
   buttonClassName: stylesButton.btn_primaryLong,
   widgetClassName: styles.contact_widget,
+  disclaimerMessageContainerClassName: styles.contact_disclaimer,
 }
 
 const classesPlaceholderContact = {

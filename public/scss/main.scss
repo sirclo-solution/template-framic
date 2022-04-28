@@ -38,3 +38,35 @@ body
     }
   } 
 }
+
+.maintenance
+{
+  &__container
+  {
+    @include flex(column, center, center);
+    @include fixedWidth(100vw);
+    @include fixedHeight(100vh);
+    padding: 2em 2em 10em 2em !important;
+ 
+    &--images
+    {
+      text-align: center;
+
+      &-img
+      {
+        margin: 3em auto 0 auto !important;
+      }
+    }
+  }
+
+  &__title
+  {
+    @include typographyBuilder(600, 24, 36);
+  }
+
+  &__info
+  {
+    @include typographyBuilder(400, 16);
+    max-width: 70% !important;
+  }
+}

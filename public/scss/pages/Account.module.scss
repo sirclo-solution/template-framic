@@ -277,6 +277,36 @@
     padding: 16px;
     margin-bottom: 24px;
   }
+  
+  &_group
+  {
+    @include flex(row, flex-start, flex-start);
+    background: $color_light_dark;
+    border-radius: 2px;
+    padding: 16px;
+    margin-bottom: 24px;
+
+    p
+    {
+      margin: 0;
+    }
+  }
+
+  &_group_title
+  {
+    @include typographyBuilder(600, 12, 16);
+  }
+  
+  &_points
+  {
+    @include typographyBuilder(400, 12, 16);  
+    
+    &::before
+    {
+      content: ' \2022';
+      margin: 0px 6px;
+    }
+  }
 
   &_accordionToggle
   {

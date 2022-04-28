@@ -36,6 +36,7 @@ const classesRegister = {
   verificationContainerClassName: styles.register_verificationContainer,
   labelRequiredClassName: stylesForm.form_label,
   inputClassName: stylesForm.form_inputLong,
+  disclaimerMessageContainerClassName: styles.register_disclaimer,
 
   // Password Field
   passwordStrengthBarContainerClassName: stylesPassword.passwordStrength,

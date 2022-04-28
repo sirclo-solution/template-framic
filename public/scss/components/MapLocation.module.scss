@@ -28,6 +28,14 @@
   }
 }
 
+.mapPinPointIcon
+{
+  @include absolute(50%, auto, auto, 50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .mapNote
 {
   display: block;
@@ -126,15 +134,14 @@
   input
   {
     @include typographyBuilder(400, 16, 24);
-    width: 87%;
+    @include absolute(12px, auto, auto, auto);
+    width: calc(100% - 47px);
     padding: 10px 15px;
     border: 1px;
     background: $color_white;
     z-index: 2;
     position: absolute;
-    top: 12px;
-    right: 12px;
-    left: 16px;
+    margin-left: 24px;
     border-radius: 4px;
     box-shadow: none;
     outline: 0;
@@ -142,14 +149,13 @@
 
   div[class*="autocomplete-dropdown-container"] 
   {
+    @include absolute(46px, auto, auto, auto);
     z-index: 1;
-    width: 87%;
+    width: calc(100% - 47px);
     background: #fff;
     position: absolute;
     text-align: left;
-    top: 46px;
-    right: 12px;
-    left: 16px;
+    margin-left: 24px;
 
     div 
     {
@@ -170,13 +176,12 @@
 
 .mapPopupCenterButton
 {
-  position: absolute;
-  right: 10px;
-  background: $color_white;
+  @include absolute(13px, 30px, auto, auto);
+  background: transparent;
   padding: 7.5px;
-  top: 12px;
   border: none;
   border-radius: 4px;
+  z-index: 10;
 }
 
 .mapPopupLabelAddress

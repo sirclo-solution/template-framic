@@ -69,6 +69,20 @@
     display: none;
   }
 
+  &_disclaimer
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_grey;
+    margin: 24px 0 0;
+    text-align: center;
+
+    & > a
+    {
+      color: $color_blue;
+      text-decoration: none;
+    }
+  }
+
   img,
   video,
   iframe
