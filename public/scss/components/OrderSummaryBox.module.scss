@@ -195,6 +195,9 @@
     border-radius: 2px;
     border: 1px solid $color_light_border;
     cursor: pointer;
+    white-space: normal;
+    word-break: break-all;
+    vertical-align: middle;
   }
 
   &_voucherButton,
@@ -253,6 +256,10 @@
     color: $color_black_text;
     text-transform: uppercase;
     margin: 0 auto 0 0;
+    display: inline-block;
+    white-space: normal;
+    word-break: break-all;
+    vertical-align: middle;
   }
 
   &_voucherTitle
@@ -536,25 +543,35 @@
     @include typographyBuilder(400, 16, 24);
     color: $color_black_text;
     margin-bottom: 2px;
+    display: inline-block;
+    white-space: normal;
+    word-break: break-all;
+    vertical-align: middle;
   }
 
   &_voucherDetailCode
   {
-    @include flex(row, center, flex-start);
+    @include fixedWidth(100%);
     @include typographyBuilder(400, 12, 16);
+    display: inline;
+    vertical-align: middle;
     color: $color_grey;
     text-transform: uppercase;
     margin-bottom: 2px;
 
     & > span
     {
-      @include flex(row, center, flex-start);
       @include typographyBuilder(400, 12, 16);
       margin-left: 5px;
       color: $color_black_text;
+      max-width: 100%;
+      white-space: normal;
+      word-break: break-all;
+      vertical-align: middle;
 
       & > span
       {
+        display: inline-block;
         width: 9px;
         height: 8px;
         background-repeat: no-repeat;
