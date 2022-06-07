@@ -68,6 +68,7 @@ const classesListPaymentMethod = {
   voucherTitleClassName: stylesOrderSummaryBox.ordersummary_voucherTitle,
   voucherListItemsClassName: stylesOrderSummaryBox.ordersummary_voucherListItems,
   voucherButtonRemoveClassName: styles.paymentmethod_voucherButtonRemove,
+  voucherAppliedTextClassName: styles.paymentmethod_voucherAppliedText,
   pointButtonRemoveClassName: styles.paymentmethod_pointButtonRemove,
 
   pointButtonClassName: `${stylesOrderSummaryBox.ordersummary_pointsButton} ${styles.paymentmethod_pointsButton}`,
