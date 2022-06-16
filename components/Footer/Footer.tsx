@@ -3,7 +3,7 @@ import { FC } from 'react'
 import {
   isCopyrightAllowed,
   Widget,
-  // SocialMediaIcons
+  SocialMediaIcons
 } from '@sirclo/nexus'
 /* library template */
 import useWindowSize from 'lib/useWindowSize'
@@ -12,18 +12,18 @@ import Placeholder from '../Placeholder'
 
 import styles from 'public/scss/components/Footer.module.scss'
 
-// const socialMediaIcons = {
-//   facebook: <img src="/images/facebook.svg" alt="facebook" />,
-//   twitter: <img src="/images/twitter.svg" alt="twitter" />,
-//   instagram: <img src="/images/instagram.svg" alt="instagram" />,
-//   // youtube: <img src="/images/youtube.svg" alt="youtube" />,
-//   // tiktok: <img src="/images/tiktok.svg" alt="tiktok" />
-// };
+const socialMediaIcons = {
+  facebook: <img src="/images/facebook.svg" alt="facebook" />,
+  twitter: <img src="/images/twitter.svg" alt="twitter" />,
+  instagram: <img src="/images/instagram.svg" alt="instagram" />,
+  youtube: <img src="/images/youtube.svg" alt="youtube" />,
+  tiktok: <img src="/images/tiktok.svg" alt="tiktok" />
+};
 
-// const classesMediaSocial = {
-//   socialMediaIconContainer: styles.footer_socialContainer,
-//   socialMediaIcon: styles.footer_socialItem,
-// }
+const classesMediaSocial = {
+  socialMediaIconContainer: styles.footer_socialContainer,
+  socialMediaIcon: styles.footer_socialItem,
+}
 
 const classesPlaceholderWidgetLink = {
   placeholderList: styles.footer_placeholderWidgetLink,
@@ -58,10 +58,10 @@ const Footer: FC<any> = ({ brand, withFooter }) => {
                 quality: 85
               }}
             />
-            {/* <SocialMediaIcons
+            <SocialMediaIcons
               socialMediaIcons={socialMediaIcons}
               classes={classesMediaSocial}
-            /> */}
+            />
             <Widget
               pos="footer-1"
               widgetClassName={styles.footer_link}
