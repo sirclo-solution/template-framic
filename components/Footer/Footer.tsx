@@ -58,10 +58,10 @@ const Footer: FC<any> = ({ brand, withFooter }) => {
                 quality: 85
               }}
             />
-            <SocialMediaIcons
+            {/* <SocialMediaIcons
               socialMediaIcons={socialMediaIcons}
               classes={classesMediaSocial}
-            />
+            /> */}
             <Widget
               pos="footer-1"
               widgetClassName={styles.footer_link}
