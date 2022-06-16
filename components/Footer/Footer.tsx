@@ -16,8 +16,8 @@ const socialMediaIcons = {
   facebook: <img src="/images/facebook.svg" alt="facebook" />,
   twitter: <img src="/images/twitter.svg" alt="twitter" />,
   instagram: <img src="/images/instagram.svg" alt="instagram" />,
-  // youtube: <img src="/images/youtube.svg" alt="youtube" />,
-  // tiktok: <img src="/images/tiktok.svg" alt="tiktok" />
+  youtube: <img src="/images/youtube.svg" alt="youtube" />,
+  tiktok: <img src="/images/tiktok.svg" alt="tiktok" />
 };
 
 const classesMediaSocial = {
