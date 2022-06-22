@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@brainhubeu/react-carousel": "^1.19.14",
-    "@sirclo/nexus": "2.11.5",
+    "@elgorditosalsero/react-gtm-hook": "^2.4.0",
+    "@sirclo/nexus": "2.12.2",
     "bootstrap": "^4.5.0",
     "cookie": "^0.4.1",
     "env-cmd": "^10.1.0",
@@ -35,5 +36,11 @@
     "npm-link-shared": "^0.5.6",
     "typescript": "^3.9.5",
     "url-loader": "^4.1.0"
+  },
+  "overrides": {
+    "@elgorditosalsero/react-gtm-hook": {
+      "react": "^16.13.1",
+      "react-dom": "^16.13.1"
+    }
   }
 }

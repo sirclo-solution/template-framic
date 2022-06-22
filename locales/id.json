@@ -169,13 +169,13 @@
     "changePin": "Ganti Pin"
   },
   "disclaimer": {
-    "contact": "Dengan mengklik tombol 'Kirimkan', Customer menyatakan persetujuan apabila Merchant menggunakan detail yang diberikan untuk menghubungi Customer tentang permintaan atau pertanyaan khusus Anda. Kunjungi halaman {PRIVACY_POLICY} untuk detail mekanisme kami mengelola informasi Customer.",
-    "loginByEmail": "Dengan klik 'Masuk' berarti Anda setuju dan mengetahui {TERMS_AND_CONDITIONS} serta {PRIVACY_POLICY} dari {BRAND_NAME}",
+    "contact": "Dengan menekan tombol 'Kirimkan', Customer menyatakan persetujuan apabila Merchant menggunakan detail yang diberikan untuk menghubungi Customer tentang permintaan atau pertanyaan khusus Anda. Kunjungi halaman {PRIVACY_POLICY} untuk detail mekanisme kami mengelola informasi Customer.",
+    "loginByEmail": "Dengan menekan tombol 'Masuk', saya mengetahui dan menyetujui {TERMS_AND_CONDITIONS} serta {PRIVACY_POLICY} dari {BRAND_NAME}.",
     "privacyPolicy": "Kebijakan Privasi",
-    "registerByEmail": "Dengan klik 'Daftar' berarti Anda setuju dan mengetahui {TERMS_AND_CONDITIONS} serta {PRIVACY_POLICY} dari {BRAND_NAME}",
-    "shippingMethod": "Dengan klik 'Pesan' Anda anda setuju dan mengetahui {TERMS_AND_CONDITIONS} serta {PRIVACY_POLICY} dari {BRAND_NAME}",
-    "termsAndCondition": "Syarat & Ketentuan",
-    "whatsappOTP": "Dengan klik 'Masuk/Daftar' berarti Anda setuju menerima pemberitahuan melalui WhatsApp dan mengetahui {TERMS_AND_CONDITIONS} serta {PRIVACY_POLICY} dari {BRAND_NAME}"
+    "registerByEmail": "Dengan menekan tombol 'Daftar', saya mengetahui dan menyetujui {TERMS_AND_CONDITIONS} serta {PRIVACY_POLICY} dari {BRAND_NAME}.",
+    "shippingMethod": "Dengan menekan tombol 'Pesan Sekarang', saya mengetahui dan menyetujui {TERMS_AND_CONDITIONS} serta {PRIVACY_POLICY} dari {BRAND_NAME}.",
+    "termsAndConditions": "Syarat & Ketentuan",
+    "whatsappOTP": "Dengan menekan tombol 'Masuk/Daftar', saya setuju untuk menerima pemberitahuan melalui WhatsApp dan mengetahui {TERMS_AND_CONDITIONS} serta {PRIVACY_POLICY} dari {BRAND_NAME}."
   },
   "error": {
     "2900067": "Gagal mendapatkan harga",

@@ -10,6 +10,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import SEO from '../SEO'
 import PageNotFound from 'components/PageNotFound'
+import GoogleTagManager from 'components/GoogleTagManager'
 // styles
 import stylesNewsLetter from 'public/scss/components/Newsletter.module.scss'
 import stylesForm from 'public/scss/components/Form.module.scss'
@@ -76,21 +77,23 @@ const Layout: React.FC<LayoutPropType> = ({
   }, [brand])
 
   return (
-    <>
+    <GoogleTagManager
+      containerID={brand?.settings?.googleTagManager?.specs?.containerId}
+    >
       <Head>
-       
+
         {/* SEO Heading */}
         <SEO
           title={
-            setSEO?.title || 
+            setSEO?.title ||
             brand?.settings?.websiteTitle
           }
           description={
-            setSEO?.description || 
+            setSEO?.description ||
             brand?.settings?.websiteDescription
           }
           image={
-            setSEO?.image || 
+            setSEO?.image ||
             brand?.logoURL
           }
           keywords={setSEO?.keywords}
@@ -132,7 +135,7 @@ const Layout: React.FC<LayoutPropType> = ({
         <link rel="preconnect" href="https://thumbor.sirclocdn.com" />
         <link rel="preconnect" href="https://storage.googleapis.com" />
       </Head>
-      
+
       {withHeader &&
         <Header
           lng={lng}
@@ -162,7 +165,7 @@ const Layout: React.FC<LayoutPropType> = ({
         />
       </div>
       <Footer brand={brand} withFooter={withFooter} />
-    </>
+    </GoogleTagManager>
   );
 };
 
