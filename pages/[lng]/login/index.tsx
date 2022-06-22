@@ -59,6 +59,13 @@ const LoginPage: FC<any> = ({
             hasOtp={hasOtp}
             brand={brand}
             title={i18n.t("login.title")}
+            customLocales={{
+              continue: i18n.t("whatsAppOTPInput.continue"),
+              disclaimer: i18n.t("whatsAppOTPInput.disclaimer"),
+              inputWhatsApp: i18n.t("whatsAppOTPInput.inputWhatsApp"),
+              loginWithAnotherMethod: i18n.t("whatsAppOTPInput.loginWithAnotherMethod"),
+              chooseAnyAccountToLogin: i18n.t("whatsAppOTPInput.chooseAnyAccountToLogin"),
+            }}
             hasGoogleAuth={hasGoogleAuth}
             hasFacebookAuth={hasFacebookAuth}
           >

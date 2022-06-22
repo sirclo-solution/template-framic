@@ -75,6 +75,13 @@ const RegisterPage: FC<any> = ({
             hasOtp={hasOtp}
             brand={brand}
             title={i18n.t("register.title")}
+            customLocales={{
+              continue: i18n.t("whatsAppOTPInputRegis.continue"),
+              disclaimer: i18n.t("whatsAppOTPInputRegis.disclaimer"),
+              inputWhatsApp: i18n.t("whatsAppOTPInputRegis.inputWhatsApp"),
+              loginWithAnotherMethod: i18n.t("whatsAppOTPInputRegis.loginWithAnotherMethod"),
+              chooseAnyAccountToLogin: i18n.t("whatsAppOTPInputRegis.chooseAnyAccountToLogin"),
+            }}
             hasGoogleAuth={hasGoogleAuth}
             hasFacebookAuth={hasFacebookAuth}
           >

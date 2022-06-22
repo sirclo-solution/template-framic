@@ -1,6 +1,6 @@
 /* Library Packages */
-import { 
-  FC, 
+import {
+  FC,
   useState,
   ReactNode
 } from 'react'
@@ -23,6 +23,7 @@ type LoginRegisterOTPPropsType = {
   hasGoogleAuth: IncomingMessage
   hasFacebookAuth: IncomingMessage
   title?: string
+  customLocales?: any
   type: "login" | "register"
   brand: any
   children: ReactNode
@@ -75,6 +76,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
   hasOtp,
   children,
   title,
+  customLocales,
   hasGoogleAuth,
   hasFacebookAuth,
 }) => {
@@ -101,7 +103,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
   return (
     <>
       {((step === steps.email || step === steps.wa) && title) &&
-        <h3 className={`${styles.loginregister_title} ${ step === steps.email || !hasOtp  ? "" : "sso"}`}>{title}</h3>
+        <h3 className={`${styles.loginregister_title} ${step === steps.email || !hasOtp ? "" : "sso"}`}>{title}</h3>
       }
 
       {step === steps.email || !hasOtp ?
@@ -116,11 +118,11 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
           loginRedirectPath="account"
           loadingComponent={<></>}
           customLocales={{
-            continue: i18n.t("title.title"),
-            disclaimer: i18n.t("title.disclaimer"),
-            inputWhatsApp: i18n.t("title.inputWhatsApp"),
-            loginWithAnotherMethod: i18n.t("title.loginWithAnotherMethod"),
-            chooseAnyAccountToLogin: i18n.t("title.chooseAnyAccountToLogin"),
+            continue: customLocales.continue,
+            disclaimer: customLocales.disclaimer,
+            inputWhatsApp: customLocales.inputWhatsApp,
+            loginWithAnotherMethod: customLocales.loginWithAnotherMethod,
+            chooseAnyAccountToLogin: customLocales.chooseAnyAccountToLogin,
           }}
         />
       }
