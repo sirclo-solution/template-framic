@@ -85,7 +85,7 @@ const Header: FC<any> = ({
               <Logo
                 imageClassName={styles.header_logo}
                 thumborSetting={{
-                  width: size.width < 575 ? 200 : 400,
+                  width: size.width < 575 ? 350 : 400,
                   quality: 90
                 }}
                 lazyLoadedImage={false}
