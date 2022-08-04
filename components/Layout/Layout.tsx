@@ -107,6 +107,12 @@ const Layout: React.FC<LayoutPropType> = ({
         {brand?.googleAdsWebsiteMetaToken &&
           <meta name="google-site-verification" content={getToken()} />
         }
+        {brand?.settings?.googleSearchConsole?.metaTagCode && (
+          <meta
+            name="google-site-verification"
+            content={brand?.settings?.googleSearchConsole?.metaTagCode}
+          />
+        )}
         <title>{brand?.settings?.websiteTitle} {setSEO?.title && "-"} {setSEO?.title}</title>
         <link
           rel="shortcut icon"
