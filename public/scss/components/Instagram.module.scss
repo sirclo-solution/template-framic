@@ -6,11 +6,9 @@
   &_container
   {
     @include flex(row,center,center);
-    margin-top:80px;
     
     @media screen and (max-width: $breakpoint_max_md) 
     {
-      margin-top:42px;
       @include flex(row,center,center,wrap);
     }
   }
@@ -71,5 +69,3 @@
     margin: 22px 0 10px 0;
   }
 }
-
-
