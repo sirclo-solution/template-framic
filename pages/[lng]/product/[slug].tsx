@@ -12,6 +12,7 @@ import { GRAPHQL_URI } from 'components/Constants'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import ProductDetailComponent from 'components/ProductDetailComponent'
 import ProductsComponent from 'components/ProductsComponent'
+import ProductDetailComponentWrapper from 'components/ProductDetailComponent/ProductDetailComponentWrapper'
 
 interface ProductProps {
   lng?: string
@@ -52,7 +53,14 @@ const Product: FC<ProductProps> = ({
         lng={lng}
       />
 
-      <ProductDetailComponent
+      {/* <ProductDetailComponent
+        slug={slug}
+        lng={lng}
+        data={data}
+        urlSite={urlSite}
+      /> */}
+
+      <ProductDetailComponentWrapper
         slug={slug}
         lng={lng}
         data={data}

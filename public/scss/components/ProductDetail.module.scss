@@ -366,6 +366,28 @@
             padding: 12px;
             border-radius: 2px;
             cursor: pointer;
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            text-align: center;
+
+            text
+            {
+              margin-bottom: 2px;
+              color: blue;
+            }
+
+            &::before
+            {
+              content: "";
+              width: 15px;
+              height: 15px;
+              background: red;
+              display: inline-block;
+              border-radius: 50%;
+              margin-right: 12px;
+              margin-top: 2px;
+            }
           }
         }
       }
