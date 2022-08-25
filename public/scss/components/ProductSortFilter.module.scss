@@ -150,6 +150,12 @@
     position: relative;
   }
 
+  &_filterSlider
+  {
+    width: calc(100% - 20px);
+    position: absolute;
+  }
+
   &_filterSliderRail
   {
     position: absolute;
@@ -326,6 +332,7 @@
     @media screen and (max-width: $breakpoint_max_md) 
     {
       z-index: 12;
+      padding: 32px 24px;
     }
   }
 
