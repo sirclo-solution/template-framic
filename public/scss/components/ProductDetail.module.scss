@@ -358,14 +358,13 @@
 
           & > label
           {
+            @include fixedSize(40px);
             box-sizing: border-box;
             -moz-box-sizing: border-box;
             -webkit-box-sizing: border-box;
             outline: 1px solid transparent;
             border-radius: 50%;
             border: 3px solid $color_white;
-            width: 40px;
-            height: 40px;
             cursor: pointer;
             text-align: center;
             font-size: 0;
