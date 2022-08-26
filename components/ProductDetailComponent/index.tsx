@@ -2,7 +2,6 @@
 import { FC, useState } from 'react'
 import Router from 'next/router'
 import {
-  getProductDetail,
   ProductDetail,
   Tabs,
   useI18n

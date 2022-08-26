@@ -53,20 +53,13 @@ const Product: FC<ProductProps> = ({
         lng={lng}
       />
 
-      {/* <ProductDetailComponent
-        slug={slug}
-        lng={lng}
-        data={data}
-        urlSite={urlSite}
-      /> */}
-
-      <ProductDetailComponentWrapper
+      <ProductDetailComponent
         slug={slug}
         lng={lng}
         data={data}
         urlSite={urlSite}
       />
-
+      
       <ProductsComponent
         type="recomendation"
         slug={slug}
