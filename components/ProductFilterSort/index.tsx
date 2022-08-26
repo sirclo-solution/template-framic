@@ -71,9 +71,9 @@ const ProductFilterSort: FC<ProductFilterSortType> = ({
   handleOpenSortFilter,
   size
 }) => {
-  const [limitCategory, setLimitCategory] = useState<number>(2)
+  const [limitCategory, setLimitCategory] = useState<number>(15)
   const [lengthCategory, setLengthCategory] = useState<number>(0)
-  const [showSeeMore, setShowSeeMore] = useState<boolean>(false)
+  const [showSeeMore, setShowSeeMore] = useState<boolean>(true)
 
   const handleSeeMoreCategory = () => {
     setShowSeeMore(true)
@@ -119,6 +119,7 @@ const ProductFilterSort: FC<ProductFilterSortType> = ({
           dropdownIcon={<ChevronDown />}
           getData={handleSetLengthCategory}
           itemPerPage={limitCategory}
+          productCategoryType={'LIMIT'}
           loadingComponent={
             <Placeholder
               classes={classesPlaceholderSort}

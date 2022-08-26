@@ -16,7 +16,13 @@
     background-color: $color_light_dark;
     color: $color_black;
     margin-top: 42px;
+    margin-bottom: 80px;
     cursor: pointer;
+    
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      margin-bottom: 42px;
+    }
 
     & > img 
     {

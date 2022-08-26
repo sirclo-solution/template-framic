@@ -1,5 +1,5 @@
 /* library package */
-import { FC } from 'react'
+import { FC, useState } from 'react'
 /* component */
 import { InstagramFeed } from '@sirclo/nexus'
 import Placeholder from 'components/Placeholder'
@@ -34,6 +34,7 @@ const Instagram: FC<iProps> = ({
   i18n,
   brand
 }) => {
+  const [isIGConnected, setIsIGConnected] = useState<boolean>(true)
   const postLimit = size.width < 768 ? 4 : 7
 
   const handleFollowButton = () => {
@@ -41,7 +42,7 @@ const Instagram: FC<iProps> = ({
   }
 
   return (
-    <div className={classesInstagramFeed.layoutClassName}>
+    <div className={isIGConnected ? classesInstagramFeed.layoutClassName : "d-none"}>
       <InstagramFeed
         slidesPerPage={size.width < 768 ? false : 6}
         slidesPerScroll={size.width < 768 ? false : 1}
@@ -55,6 +56,7 @@ const Instagram: FC<iProps> = ({
           format: 'webp',
         }}
         classes={classesInstagramFeed}
+        onErrorStatus={(status) => setIsIGConnected(!status)}
         loadingComponent={
           <div className={classesInstagramFeed.containerClassName}>
             <Placeholder classes={classesPlaceholderCollapsibleNav} withImage />
