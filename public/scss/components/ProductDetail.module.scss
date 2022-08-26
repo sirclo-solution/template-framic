@@ -289,53 +289,52 @@
   {
     margin-bottom: 34px;
 
-    &[id="size"]
+    & > div[class*="productdetail_variantOption"]
     {
-      & > div[class*="productdetail_variantOption"]
+      & > span
       {
-        & > span
+        & > input
         {
-          & > input
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          display: none;
+
+          &:checked + label
           {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            display: none;
-
-            &:checked + label
-            {
-              background-color: $color_black_text;
-              color: $color_white;
-              border-radius: 2px;
-            }
-
-            &:disabled + label
-            {
-              opacity: .5 !important;
-              cursor: inherit !important;
-            }
-          }
-
-          & > label
-          {
-            @include typographyBuilder(400, 12, 16);
-            color: $color_black_text;
-            border: 1px solid $color_light;
-            box-sizing: border-box;
-            padding: 12px;
+            background-color: $color_black_text;
+            color: $color_white;
             border-radius: 2px;
-            cursor: pointer;
           }
+
+          &:disabled + label
+          {
+            opacity: .5 !important;
+            cursor: inherit !important;
+          }
+        }
+
+        & > label
+        {
+          @include typographyBuilder(400, 12, 16);
+          color: $color_black_text;
+          border: 1px solid $color_light;
+          box-sizing: border-box;
+          padding: 12px;
+          border-radius: 2px;
+          cursor: pointer;
         }
       }
     }
 
-    &[id="warna"]
+    &[id="colors"]
     {
       & > div[class*="productdetail_variantOption"]
       {
         & > span
         {
+          margin: 16px 16px 8px 8px;
+
           & > input
           {
             -webkit-appearance: none;
@@ -345,9 +344,8 @@
 
             &:checked + label
             {
-              background-color: $color_black_text;
-              color: $color_white;
-              border-radius: 2px;
+              outline: 1px solid $color_black_dark;
+              border-radius: 50%;
             }
 
             &:disabled + label
@@ -359,13 +357,22 @@
 
           & > label
           {
-            @include typographyBuilder(400, 12, 16);
-            color: $color_black_text;
-            border: 1px solid $color_light;
+            @include fixedSize(40px);
             box-sizing: border-box;
-            padding: 12px;
-            border-radius: 2px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            outline: 1px solid transparent;
+            border-radius: 50%;
+            border: 3px solid $color_white;
             cursor: pointer;
+            text-align: center;
+            font-size: 0;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+
+            &:hover
+            {
+              outline: 1px solid $color_grey;
+            }
           }
         }
       }

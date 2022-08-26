@@ -159,6 +159,7 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
         lazyLoadedImage={false}
         classes={classesProductDetail}
         isButton={{ 0: true, 1: true }}
+        enableAutoColorVariant
         enableArrow={enableArrowDots}
         enableDots={enableArrowDots}
         enableTabs
