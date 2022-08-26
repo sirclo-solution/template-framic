@@ -291,41 +291,40 @@
 
     & > div[class*="productdetail_variantOption"]
     {
-        & > span
+      & > span
+      {
+        & > input
         {
-          & > input
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          display: none;
+
+          &:checked + label
           {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            display: none;
-
-            &:checked + label
-            {
-              background-color: $color_black_text;
-              color: $color_white;
-              border-radius: 2px;
-            }
-
-            &:disabled + label
-            {
-              opacity: .5 !important;
-              cursor: inherit !important;
-            }
+            background-color: $color_black_text;
+            color: $color_white;
+            border-radius: 2px;
           }
 
-          & > label
+          &:disabled + label
           {
-            @include typographyBuilder(400, 12, 16);
-            color: $color_black_text;
-            border: 1px solid $color_light;
-            box-sizing: border-box;
-            padding: 12px;
-            border-radius: 2px;
-            cursor: pointer;
+            opacity: .5 !important;
+            cursor: inherit !important;
           }
         }
-      
+
+        & > label
+        {
+          @include typographyBuilder(400, 12, 16);
+          color: $color_black_text;
+          border: 1px solid $color_light;
+          box-sizing: border-box;
+          padding: 12px;
+          border-radius: 2px;
+          cursor: pointer;
+        }
+      }
     }
 
     &[id="colors"]
