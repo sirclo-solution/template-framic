@@ -66,9 +66,9 @@ const ProductsPage: FC<any> = ({
         <div className={styles.products_listWrapper}>
           <div className={styles.products_listHeaderContainer}>
             <div className={styles.products_listAdjustContainer}>
-              <h3 className={styles.products_listHeaderTitle}>
+              <h1 className={styles.products_listHeaderTitle}>
                 {i18n.t('product.all')}
-              </h3>
+              </h1>
               <label
                 className={styles.products_listAdjustTitle}
                 onClick={handleOpenSortFilter}
