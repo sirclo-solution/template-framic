@@ -14,6 +14,7 @@ import { useWhatsAppOTPSetting } from 'lib/useAuthMethod'
 /* component */
 import Layout from 'components/Layout/Layout'
 import ChekoutComponent from 'components/ChekoutComponent'
+import Loader from 'components/Loader/Loader'
 /* styles */
 import styles from 'public/scss/pages/PaymentMethod.module.scss'
 import stylesButton from 'public/scss/components/Button.module.scss'
@@ -67,6 +68,8 @@ const classesListPaymentMethod = {
   voucherDetailInvalidClassName: stylesOrderSummaryBox.ordersummary_voucherDetailInvalid,
   voucherTitleClassName: stylesOrderSummaryBox.ordersummary_voucherTitle,
   voucherListItemsClassName: stylesOrderSummaryBox.ordersummary_voucherListItems,
+  voucherBankLogoContainerClassName: stylesOrderSummaryBox.ordersummary_voucherBankContainer,
+  voucherBankLogoImageClassName: stylesOrderSummaryBox.ordersummary_voucherBankImage,
   voucherButtonRemoveClassName: styles.paymentmethod_voucherButtonRemove,
   voucherAppliedTextClassName: styles.paymentmethod_voucherAppliedText,
   pointButtonRemoveClassName: styles.paymentmethod_pointButtonRemove,
@@ -139,6 +142,11 @@ const PaymentMethods: FC<any> = ({
             removeVoucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconRemove}></span>}
             expand={<span className={stylesOrderSummaryBox.ordersummary_detailExpandIcon}></span>}
             collapse={<span className={stylesOrderSummaryBox.ordersummary_detailCollapseIcon}></span>}
+            couponLoadingComponent={
+              <div className={stylesOrderSummaryBox.ordersummary_couponLoading}>
+                <Loader color="text-dark" withText/>
+              </div>
+            }
             loaderElement={
               <p className={styles.paymentmethod_loaderElement}>{i18n.t("global.loading")}</p>
             }

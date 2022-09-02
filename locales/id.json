@@ -241,7 +241,7 @@
     "cta": "Ikuti kami "
   },
   "loader": {
-    "loading": "Menunggu"
+    "loading": "Memuat"
   },
   "login": {
     "clickHere": "Lupa kata sandi?",
@@ -255,14 +255,14 @@
     "or": "atau masuk dengan",
     "password": "Kata Sandi",
     "register": "Daftar",
-    "sso": "{SSO_PROVIDER}",
+    "sso": "Login dengan {SSO_PROVIDER}",
     "success": "Login berhasil",
     "title": "Masuk",
     "toRegister": "Daftar",
     "verifyLoginAttempt": "Mohon verifikasi bahwa anda adalah manusia!",
     "welcome": "Selamat datang kembali. Masuk menggunakan email dan kata sandi Anda.",
     "whatsapp": "Whatsapp",
-    "withEmail": "Email"
+    "withEmail": "Login dengan Email"
   },
   "lookbook": {
     "back": "Kembali ke Daftar Lookbook",
@@ -567,11 +567,12 @@
     "promo": "Masukan info kredensial Anda untuk masuk",
     "register": "Daftar",
     "required": "harus diisi",
-    "sso": "{SSO_PROVIDER}",
+    "sso": "Daftar dengan {SSO_PROVIDER}",
     "success": "Berhasil mendaftar",
     "successConfPassword": "Berhasil menyimpan kata sandi!",
     "title": "Daftar",
-    "verificationFailed": "Gagal verifikasi"
+    "verificationFailed": "Verifikasi gagal",
+    "withEmail": "Daftar dengan Email"
   },
   "resetPassword": {
     "enterEmailBody": "Silahkan masukan e-mail yang sudah didaftarkan. Kami akan kirimkan link undangan untuk atur ulang kata sandi anda.",
@@ -600,6 +601,7 @@
     "delivered": "Pembeli telah menerima pesanan",
     "inDelivery": "Kurir dalam perjalanan menuju pembeli",
     "inTransit": "Pesanan tiba di",
+    "moreShipping": "Pilih Metode Pengiriman Lainnya",
     "noDriver": "Gagal menemukan kurir",
     "noShipping": "Tidak ada pengiriman tersedia",
     "notCoverage": "Lokasi anda tidak terjangkau",

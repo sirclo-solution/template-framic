@@ -36,6 +36,7 @@ const classesShippingMethod = {
   warningPinPointTextClassName: styles.shippingmethod_warningPinPointText,
   warningPinPointClassName: styles.shippingmethod_warningPinPoint,
   shippingPriceDivClass: styles.shippingmethod_shippingPriceDiv,
+  moreShippingClassName: styles.shippingmethod_moreShipping,
   mapSelectAreaClassName: stylesButton.btn_secondaryLongSmall,
   mapPopupClassName: styleMapLocation.mapPopup,
   mapNoteClassName: styleMapLocation.mapNote,

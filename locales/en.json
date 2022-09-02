@@ -255,14 +255,14 @@
     "or": "or login with",
     "password": "Password",
     "register": "Register",
-    "sso": "{SSO_PROVIDER}",
+    "sso": "Sign in with {SSO_PROVIDER}",
     "success": "Login success",
     "title": "Login",
     "toRegister": "Register",
     "verifyLoginAttempt": "Please verify that you are human!",
     "welcome": "Welcome back. Log in using your e-email and password.",
     "whatsapp": "Whatsapp",
-    "withEmail": "Email"
+    "withEmail": "Sign in Email"
   },
   "lookbook": {
     "back": "Back to lookbook list",
@@ -566,10 +566,12 @@
     "promo": "Enter your credentials to log in",
     "register": "Register",
     "required": "are required",
+    "sso": "Register with {SSO_PROVIDER}",
     "success": "Register Successful",
     "successConfPassword": "Password reset succesfully!",
     "title": "Register",
-    "verificationFailed": "Verification failed"
+    "verificationFailed": "Verification failed",
+    "withEmail": "Register with Email"
   },
   "resetPassword": {
     "enterEmailBody": "Please enter the e-mail that has been registered. We will send you an invitation link to reset your password.",
@@ -598,6 +600,7 @@
     "delivered": "Buyer has received the order",
     "inDelivery": "Driver is on the way to send your order",
     "inTransit": "Order in transit",
+    "moreShipping": "Choose Other Shipping Method",
     "noDriver": "Failed to find the driver",
     "noShipping": "No shipping method available",
     "notCoverage": "Your area is not on our coverage",
