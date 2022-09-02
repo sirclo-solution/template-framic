@@ -146,7 +146,7 @@
   },
   "coupon": {
     "apply": "Apply",
-    "code": "Use Coupon",
+    "code": "Coupon Code",
     "couponPlaceholder": "Input your voucher",
     "discount": "Discount",
     "empty": "No coupon yet",

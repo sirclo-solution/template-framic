@@ -30,7 +30,8 @@
     @include flex(row, center, center);
     gap: 20px;
 
-    br{
+    br
+    {
       display: none;
     }
   }
@@ -57,10 +58,10 @@
   &_ssoButton
   {
     @include fixedSize(21px);
+    @include fontSize(0);
     box-shadow: none !important;
     color: $color_white !important;
-    font-size: 0 !important;
-    border: 1px solid #DEE0E3 !important;
+    border: 1px solid $color_dark_white_border !important;
     border-radius: 4px;
     padding: 19px;
     background-color: transparent !important;

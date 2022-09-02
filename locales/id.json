@@ -146,7 +146,7 @@
   },
   "coupon": {
     "apply": "Terapkan",
-    "code": "Gunakan Kupon",
+    "code": "Kode Kupon",
     "couponPlaceholder": "Kode kupon",
     "discount": "Diskon",
     "empty": "Belum ada kupon",
