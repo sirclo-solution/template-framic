@@ -22,6 +22,14 @@
     }
   }
 
+  &_moreShipping
+  {
+    @include typographyBuilder(400, 14, 16);
+    cursor: pointer;
+    color: $color_grey_light_text;
+    margin-top: 20px
+  }
+
   &_warningPinPointText
   {
     @include typographyBuilder(400, 12, 16);

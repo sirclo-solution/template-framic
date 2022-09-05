@@ -9,6 +9,7 @@ import {
 } from '@sirclo/nexus'
 /* component */
 import Placeholder from 'components/Placeholder'
+import Loader from 'components/Loader/Loader'
 /* styles */
 import styles from 'public/scss/components/OrderSummaryBox.module.scss'
 import stylesButton from 'public/scss/components/Button.module.scss'
@@ -36,6 +37,8 @@ const classesOrderSummary = {
   voucherTextClassName: styles.ordersummary_voucherText,
   voucherButtonClassName: styles.ordersummary_voucherButton,
   voucherButtonAppliedClassName: styles.ordersummary_voucherButtonApplied,
+  voucherBankLogoContainerClassName: styles.ordersummary_voucherBankContainer,
+  voucherBankLogoImageClassName: styles.ordersummary_voucherBankImage,
   voucherAppliedTextClassName: styles.ordersummary_voucherAppliedText,
   submitButtonClassName: stylesButton.btn_primaryLong,
   expandButtonClassName: styles.ordersummary_expandButton,
@@ -201,6 +204,11 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
         onErrorMsg={() => setShowModalErrorAddToCart(!showModalErrorAddToCart)}
         onErrorMsgCoupon={(msg: string) => toast.error(msg)}
         onAddressInvalid={(e) => toast.error(e)}
+        couponLoadingComponent={
+          <div className={styles.ordersummary_couponLoading}>
+            <Loader color="" withText/>
+          </div>
+        }
         icons={{
           voucher: <span className={styles.ordersummary_voucherIcon}></span>,
           points: <span className={styles.ordersummary_pointsIcon}></span>,

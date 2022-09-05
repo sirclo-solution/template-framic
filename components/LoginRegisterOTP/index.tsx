@@ -162,6 +162,12 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
                 <SingleSignOn
                   className={styles.loginregister_ssoButton}
                   buttonText={i18n.t("login.sso")}
+                  googleButtonType={'icon'}
+                  googleButtonSize={'large'}
+                  googleButtonWidth={'120px'}
+                  googleButtonShape={'rectangular'}
+                  googleButtonTheme={'outline'}
+                  googleButtonLogoAlignment={'center'}
                   onErrorMsg={(msg: string) => toast.error(msg)}
                   loadingComponent={
                     <div className="text-center">

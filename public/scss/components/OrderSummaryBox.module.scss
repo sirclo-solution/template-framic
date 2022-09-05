@@ -186,6 +186,25 @@
     padding-right: calc(9px + .3vw);
   }
 
+  &_couponLoading
+  {
+    @include flex(row, center, flex-start);
+  }
+
+  &_voucherBankContainer
+  {
+    @include flex(row, center, flex-start, true);
+    padding: 8px 14px;
+    gap: 12px;
+    background-color: $color_light_dark 
+  }
+
+  &_voucherBankImage
+  {
+    height: 24px;
+    width: 40px;
+  }
+
   &_voucherButton,
   &_pointsButton,
   &_voucherButtonApplied

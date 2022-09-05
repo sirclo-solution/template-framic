@@ -27,7 +27,13 @@
 
   &_ssoButtonContainer
   {
-    @include flex(row, flex-end, center);
+    @include flex(row, center, center);
+    gap: 20px;
+
+    br
+    {
+      display: none;
+    }
   }
 
   &_ssoOr
@@ -52,15 +58,17 @@
   &_ssoButton
   {
     @include fixedSize(21px);
+    @include fontSize(0);
     box-shadow: none !important;
     color: $color_white !important;
-    font-size: 0 !important;
-    border: 0 !important;
+    border: 1px solid $color_dark_white_border !important;
+    border-radius: 4px;
+    padding: 19px;
     background-color: transparent !important;
     background-repeat: no-repeat;
     background-position: center;
     background-image: url("data:image/svg+xml,%3Csvg width='21' height='22' viewBox='0 0 21 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M20.22 11.2301C20.22 10.5122 20.1556 9.82185 20.0359 9.15912H10.5V13.0757H15.9491C15.7144 14.3413 15.001 15.4136 13.9287 16.1316V18.672H17.2009C19.1155 16.9093 20.22 14.3137 20.22 11.2301Z' fill='%234285F4'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.5 21.125C13.2337 21.125 15.5257 20.2184 17.2009 18.672L13.9287 16.1316C13.022 16.7391 11.8622 17.098 10.5 17.098C7.86287 17.098 5.63077 15.3169 4.83457 12.9238H1.4519V15.5471C3.11793 18.8561 6.54202 21.125 10.5 21.125Z' fill='%2334A853'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.8346 12.9237C4.6321 12.3162 4.51705 11.6673 4.51705 11C4.51705 10.3327 4.6321 9.68374 4.8346 9.07624V6.45294H1.45193C0.766193 7.81982 0.375 9.36618 0.375 11C0.375 12.6338 0.766193 14.1802 1.45193 15.547L4.8346 12.9237Z' fill='%23FBBC05'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.5 4.90199C11.9865 4.90199 13.3212 5.41284 14.3705 6.41614L17.2745 3.5121C15.5211 1.8783 13.2291 0.875 10.5 0.875C6.54202 0.875 3.11793 3.14392 1.4519 6.45295L4.83457 9.07625C5.63077 6.68307 7.86287 4.90199 10.5 4.90199Z' fill='%23EA4335'/%3E%3C/svg%3E%0A");
-    margin: 0 24px;
+    margin: 0;
 
     svg,
     div
