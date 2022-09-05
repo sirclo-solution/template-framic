@@ -206,7 +206,7 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
         onAddressInvalid={(e) => toast.error(e)}
         couponLoadingComponent={
           <div className={styles.ordersummary_couponLoading}>
-            <Loader color="text-dark" withText/>
+            <Loader color="" withText/>
           </div>
         }
         icons={{
