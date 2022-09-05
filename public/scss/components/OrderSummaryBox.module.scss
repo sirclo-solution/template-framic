@@ -196,7 +196,7 @@
     @include flex(row, center, flex-start, true);
     padding: 8px 14px;
     gap: 12px;
-    background-color: #F2F2F2;
+    background-color: $color_light_dark 
   }
 
   &_voucherBankImage
