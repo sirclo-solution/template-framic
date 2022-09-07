@@ -2,11 +2,9 @@
 import {
   FC,
   useState,
-  useRef,
   ReactNode
 } from 'react'
 import { toast } from 'react-toastify'
-import ReCAPTCHA from 'react-google-recaptcha'
 import { IncomingMessage } from 'http'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -25,6 +23,7 @@ type LoginRegisterOTPPropsType = {
   hasOtp: IncomingMessage
   hasGoogleAuth: IncomingMessage
   hasFacebookAuth: IncomingMessage
+  getReCAPTCHAToken?: () => Promise<string>;
   title?: string
   customLocales?: any
   type: "login" | "register"
@@ -82,17 +81,11 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
   customLocales,
   hasGoogleAuth,
   hasFacebookAuth,
+  getReCAPTCHAToken
 }) => {
   const i18n: any = useI18n()
   const router: any = useRouter()
   const query = router?.query || {}
-  const recaptchaRef = useRef<any>()
-
-  const getReCAPTCHAToken = async () => {
-    const token = await recaptchaRef.current.executeAsync()
-    recaptchaRef.current.reset()
-    return token
-  }
 
   const steps = {
     email: "email",
@@ -200,11 +193,6 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
           }
         </>
       }
-      <ReCAPTCHA
-        ref={recaptchaRef}
-        sitekey={process.env.NEXT_PUBLIC_SITEKEY_RECAPTCHA_INVISIBLE}
-        size='invisible'
-      />
     </>
   )
 }

@@ -1,8 +1,9 @@
 /* library package */
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
 import { Login, useI18n } from '@sirclo/nexus'
+import ReCAPTCHA from 'react-google-recaptcha'
 /* library template */
 import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
 import { parseCookies } from 'lib/parseCookies'
@@ -40,8 +41,15 @@ const LoginPage: FC<any> = ({
   hasFacebookAuth
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n()
+  const recaptchaRef = useRef<any>()
 
   const linksBreadcrumb = [`${i18n.t("header.home")}`, `${i18n.t("login.title")}`]
+
+  const getReCAPTCHAToken = async () => {
+    const token = await recaptchaRef.current.executeAsync()
+    recaptchaRef.current.reset()
+    return token
+  }
 
   return (
     <Layout
@@ -56,6 +64,7 @@ const LoginPage: FC<any> = ({
         <div className={styles.login_container}>
           <LoginRegisterOTP
             type="login"
+            getReCAPTCHAToken={getReCAPTCHAToken}
             hasOtp={hasOtp}
             brand={brand}
             title={i18n.t("login.title")}
@@ -82,6 +91,11 @@ const LoginPage: FC<any> = ({
           </LoginRegisterOTP>
         </div>
       </div>
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={process.env.NEXT_PUBLIC_SITEKEY_RECAPTCHA_INVISIBLE}
+        size='invisible'
+      />
     </Layout>
   )
 }

@@ -18,6 +18,11 @@ body
   @include useScrollbar();
 }
 
+[class="grecaptcha-badge"]
+{
+  z-index: 2;
+}
+
 .page-transition {
 
   &-enter {
