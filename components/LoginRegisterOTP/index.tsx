@@ -2,9 +2,11 @@
 import {
   FC,
   useState,
+  useRef,
   ReactNode
 } from 'react'
 import { toast } from 'react-toastify'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { IncomingMessage } from 'http'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -13,6 +15,7 @@ import {
   useI18n,
   WhatsAppOTPInput
 } from '@sirclo/nexus'
+
 // styles
 import styles from 'public/scss/components/LoginRegisterOTP.module.scss'
 import stylesButton from 'public/scss/components/Button.module.scss'
@@ -83,6 +86,13 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
   const i18n: any = useI18n()
   const router: any = useRouter()
   const query = router?.query || {}
+  const recaptchaRef = useRef<any>()
+
+  const getReCAPTCHAToken = async () => {
+    const token = await recaptchaRef.current.executeAsync()
+    recaptchaRef.current.reset()
+    return token
+  }
 
   const steps = {
     email: "email",
@@ -117,6 +127,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
           onErrorMsg={(msg) => toast.error(msg)}
           loginRedirectPath="account"
           loadingComponent={<></>}
+          getReCAPTCHAToken={getReCAPTCHAToken}
           customLocales={{
             continue: customLocales.continue,
             disclaimer: customLocales.disclaimer,
@@ -189,6 +200,11 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
           }
         </>
       }
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={process.env.NEXT_PUBLIC_SITEKEY_RECAPTCHA_INVISIBLE}
+        size='invisible'
+      />
     </>
   )
 }
