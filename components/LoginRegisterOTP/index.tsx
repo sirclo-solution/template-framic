@@ -23,7 +23,7 @@ type LoginRegisterOTPPropsType = {
   hasOtp: IncomingMessage
   hasGoogleAuth: IncomingMessage
   hasFacebookAuth: IncomingMessage
-  getReCAPTCHAToken?: () => Promise<string>;
+  getReCAPTCHAToken?: () => Promise<string>
   title?: string
   customLocales?: any
   type: "login" | "register"
