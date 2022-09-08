@@ -1,5 +1,5 @@
 /* library package */
-import { FC, useRef } from 'react'
+import { FC, useRef, useEffect } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
 import { Login, useI18n } from '@sirclo/nexus'
@@ -50,6 +50,10 @@ const LoginPage: FC<any> = ({
     recaptchaRef.current.reset()
     return token
   }
+
+  useEffect(() => {
+    document.body.classList.add("login");
+  }, []);
 
   return (
     <Layout

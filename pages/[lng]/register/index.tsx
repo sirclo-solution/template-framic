@@ -1,5 +1,5 @@
 /* library package */
-import { FC, useState, useRef} from 'react'
+import { FC, useState, useRef, useEffect} from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Router from 'next/router'
 import { toast } from 'react-toastify'
@@ -65,6 +65,10 @@ const RegisterPage: FC<any> = ({
     recaptchaRef.current.reset()
     return token
   }
+
+  useEffect(() => {
+    document.body.classList.add("register");
+  }, []);
 
   return (
     <Layout
