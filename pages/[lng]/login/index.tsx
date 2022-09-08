@@ -52,8 +52,8 @@ const LoginPage: FC<any> = ({
   }
 
   useEffect(() => {
-    document.body.classList.add("login");
-  }, []);
+    document.body.classList.add("login")
+  }, [])
 
   return (
     <Layout

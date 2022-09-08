@@ -67,8 +67,8 @@ const RegisterPage: FC<any> = ({
   }
 
   useEffect(() => {
-    document.body.classList.add("register");
-  }, []);
+    document.body.classList.add("register")
+  }, [])
 
   return (
     <Layout
