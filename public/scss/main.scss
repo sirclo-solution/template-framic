@@ -18,6 +18,27 @@ body
   @include useScrollbar();
 }
 
+[class*="auth"]
+{
+  [id*="gb-widget-"]
+  {
+    bottom: calc(14px + 60px + 12px) !important;
+  }
+
+  @media (max-width: 991px)
+  {
+    [id*="gb-widget-"]
+    {
+      bottom: calc(14px + 60px + 12px + 56px) !important;
+    }
+
+    [class*="grecaptcha-badge"]
+    {
+      bottom: calc(14px + 56px) !important;
+    }
+  }
+}
+
 .page-transition {
 
   &-enter {

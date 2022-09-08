@@ -13,6 +13,7 @@ import {
   useI18n,
   WhatsAppOTPInput
 } from '@sirclo/nexus'
+
 // styles
 import styles from 'public/scss/components/LoginRegisterOTP.module.scss'
 import stylesButton from 'public/scss/components/Button.module.scss'
@@ -22,6 +23,7 @@ type LoginRegisterOTPPropsType = {
   hasOtp: IncomingMessage
   hasGoogleAuth: IncomingMessage
   hasFacebookAuth: IncomingMessage
+  getReCAPTCHAToken?: () => Promise<string>
   title?: string
   customLocales?: any
   type: "login" | "register"
@@ -79,6 +81,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
   customLocales,
   hasGoogleAuth,
   hasFacebookAuth,
+  getReCAPTCHAToken
 }) => {
   const i18n: any = useI18n()
   const router: any = useRouter()
@@ -117,6 +120,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
           onErrorMsg={(msg) => toast.error(msg)}
           loginRedirectPath="account"
           loadingComponent={<></>}
+          getReCAPTCHAToken={getReCAPTCHAToken}
           customLocales={{
             continue: customLocales.continue,
             disclaimer: customLocales.disclaimer,

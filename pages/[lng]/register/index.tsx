@@ -1,7 +1,12 @@
 /* library package */
-import { FC, useState } from 'react'
+import { 
+  FC,
+  useState,
+  useRef,
+  useEffect
+} from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import ReCAPTCHA from 'react-google-recaptcha'
 import {
@@ -55,9 +60,35 @@ const RegisterPage: FC<any> = ({
   hasFacebookAuth
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n()
+  const recaptchaRef = useRef<any>()
+  const router: any = useRouter()
 
   const [isVerified, setIsVerified] = useState<boolean>(false)
-  const linksBreadcrumb = [`${i18n.t("header.home")}`, `${i18n.t("register.title")}`]
+  const linksBreadcrumb = [i18n.t("header.home"), i18n.t("register.title")]
+
+  const getReCAPTCHAToken = async () => {
+    const token = await recaptchaRef.current.executeAsync()
+    recaptchaRef.current.reset()
+    return token
+  }
+
+  useEffect(() => {
+    if (!document.body.classList.contains("auth")){
+      document.body.classList.add("auth")
+    }
+  }, [])
+
+  useEffect(() => {
+    const removeAuthClassName = () => {
+      document.body.classList.remove("auth")
+    }
+
+    router.events.on('routeChangeComplete', removeAuthClassName)
+
+    return () => {
+      router.events.off('routeChangeComplete', removeAuthClassName)
+    }
+  }, [])
 
   return (
     <Layout
@@ -72,6 +103,7 @@ const RegisterPage: FC<any> = ({
         <div className={styles.register_container}>
           <LoginRegisterOTP
             type="register"
+            getReCAPTCHAToken={getReCAPTCHAToken}
             hasOtp={hasOtp}
             brand={brand}
             title={i18n.t("register.title")}
@@ -109,6 +141,11 @@ const RegisterPage: FC<any> = ({
           </LoginRegisterOTP>
         </div>
       </div>
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={process.env.NEXT_PUBLIC_SITEKEY_RECAPTCHA_INVISIBLE}
+        size='invisible'
+      />
     </Layout>
   )
 }
