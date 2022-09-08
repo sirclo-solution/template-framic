@@ -58,7 +58,7 @@ const RegisterPage: FC<any> = ({
   const recaptchaRef = useRef<any>()
 
   const [isVerified, setIsVerified] = useState<boolean>(false)
-  const linksBreadcrumb = [`${i18n.t("header.home")}`, `${i18n.t("register.title")}`]
+  const linksBreadcrumb = [i18n.t("header.home"), i18n.t("register.title")]
 
   const getReCAPTCHAToken = async () => {
     const token = await recaptchaRef.current.executeAsync()
