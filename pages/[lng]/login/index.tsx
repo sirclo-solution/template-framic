@@ -1,6 +1,7 @@
 /* library package */
 import { FC, useRef, useEffect } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { Login, useI18n } from '@sirclo/nexus'
 import ReCAPTCHA from 'react-google-recaptcha'
@@ -21,7 +22,6 @@ import LoginRegisterOTP from 'components/LoginRegisterOTP'
 import styles from 'public/scss/pages/Login.module.scss'
 import stylesButton from 'public/scss/components/Button.module.scss'
 import stylesForm from 'public/scss/components/Form.module.scss'
-import { useRouter } from 'next/router'
 
 const loginClasses = {
   containerClassName: styles.login_formContainer,
