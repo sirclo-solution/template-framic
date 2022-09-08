@@ -1,7 +1,12 @@
 /* library package */
-import { FC, useState, useRef, useEffect} from 'react'
+import { 
+  FC,
+  useState,
+  useRef,
+  useEffect
+} from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import ReCAPTCHA from 'react-google-recaptcha'
 import {
@@ -56,6 +61,7 @@ const RegisterPage: FC<any> = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n()
   const recaptchaRef = useRef<any>()
+  const router: any = useRouter()
 
   const [isVerified, setIsVerified] = useState<boolean>(false)
   const linksBreadcrumb = [i18n.t("header.home"), i18n.t("register.title")]
@@ -67,7 +73,21 @@ const RegisterPage: FC<any> = ({
   }
 
   useEffect(() => {
-    document.body.classList.add("register")
+    if (!document.body.classList.contains("auth")){
+      document.body.classList.add("auth")
+    }
+  }, [])
+
+  useEffect(() => {
+    const removeAuthClassName = () => {
+      document.body.classList.remove("auth")
+    }
+
+    router.events.on('routeChangeComplete', removeAuthClassName)
+
+    return () => {
+      router.events.off('routeChangeComplete', removeAuthClassName)
+    }
   }, [])
 
   return (

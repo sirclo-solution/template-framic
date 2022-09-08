@@ -21,6 +21,7 @@ import LoginRegisterOTP from 'components/LoginRegisterOTP'
 import styles from 'public/scss/pages/Login.module.scss'
 import stylesButton from 'public/scss/components/Button.module.scss'
 import stylesForm from 'public/scss/components/Form.module.scss'
+import { useRouter } from 'next/router'
 
 const loginClasses = {
   containerClassName: styles.login_formContainer,
@@ -42,8 +43,10 @@ const LoginPage: FC<any> = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n()
   const recaptchaRef = useRef<any>()
+  const router: any = useRouter()
 
-  const linksBreadcrumb = [`${i18n.t("header.home")}`, `${i18n.t("login.title")}`]
+
+  const linksBreadcrumb = [i18n.t("header.home"), i18n.t("login.title")]
 
   const getReCAPTCHAToken = async () => {
     const token = await recaptchaRef.current.executeAsync()
@@ -52,7 +55,21 @@ const LoginPage: FC<any> = ({
   }
 
   useEffect(() => {
-    document.body.classList.add("login")
+    if (!document.body.classList.contains("auth")){
+      document.body.classList.add("auth")
+    }
+  }, [])
+
+  useEffect(() => {
+    const removeAuthClassName = () => {
+      document.body.classList.remove("auth")
+    }
+
+    router.events.on('routeChangeComplete', removeAuthClassName)
+
+    return () => {
+      router.events.off('routeChangeComplete', removeAuthClassName)
+    }
   }, [])
 
   return (

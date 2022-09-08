@@ -18,8 +18,7 @@ body
   @include useScrollbar();
 }
 
-[class*="login"],
-[class*="register"]
+[class*="auth"]
 {
   [id*="gb-widget-"]
   {
