@@ -13,7 +13,6 @@ import Loader from "components/Loader/Loader";
 import Breadcrumb from "components/Breadcrumb/Breadcrumb";
 
 import styles from "public/scss/pages/Legal.module.scss";
-import useWindowSize from "lib/useWindowSize";
 
 type TDataLegal = {
 	title: string;
