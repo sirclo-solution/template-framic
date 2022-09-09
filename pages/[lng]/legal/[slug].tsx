@@ -39,7 +39,6 @@ const LegalPage: FC<any> = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	const i18n: any = useI18n();
     const router = useRouter();
-    const size = useWindowSize();
 	const [data, setData] = useState<TDataLegal>();
 	const linksBreadcrumb = [`${i18n.t("header.home")}`, data?.title];
 	const layoutProps = {
