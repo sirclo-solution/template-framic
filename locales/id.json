@@ -240,6 +240,11 @@
   "instagram": {
     "cta": "Ikuti kami "
   },
+  "legal": {
+    "privacyPolicy": "Kebijakan Privasi",
+    "refundPolicy": "Kebijakan Pengembalian Dana",
+    "termsAndConditions": "Syarat & Ketentuan"
+  },
   "loader": {
     "loading": "Memuat"
   },
