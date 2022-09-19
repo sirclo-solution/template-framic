@@ -42,6 +42,8 @@ const classesOrderSummary = {
   voucherAppliedTextClassName: styles.ordersummary_voucherAppliedText,
   submitButtonClassName: stylesButton.btn_primaryLong,
   expandButtonClassName: styles.ordersummary_expandButton,
+  voucherShipperLogoContainerClassName: styles.ordersummary_voucherShippingContainer,
+  voucherShipperLogoImageClassName: styles.ordersummary_voucherShippingImage,
 
   popupClassName: styles.ordersummary_popup,
   voucherContainerClassName: styles.ordersummary_voucherContainer,

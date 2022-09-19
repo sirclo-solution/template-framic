@@ -151,7 +151,7 @@
     "discount": "Diskon",
     "empty": "Belum ada kupon",
     "enough": "Anda mendapat potongan sebesar",
-    "header": "Voucher tersedia",
+    "header": "Kupon tersedia",
     "invalidTitle": "Kupon yang masih belum bisa digunakan",
     "max": "Maksimal potongan",
     "minPoints": "Minimal poin yang ditukarkan adalah",
@@ -359,9 +359,9 @@
     "subTotal": "Subtotal",
     "total": "Total",
     "usePoints": "Gunakan poin",
-    "useVoucher": "Gunakan voucher",
+    "useVoucher": "Gunakan kupon",
     "viewCart": "Lihat Keranjang",
-    "voucherApplied": "Voucher digunakan"
+    "voucherApplied": "Kupon digunakan"
   },
   "pageHeader": {
     "back": "Kembali"
@@ -385,7 +385,7 @@
     "travelokaPayLaterLink": "Aktifkan Traveloka PayLater-mu sekarang!",
     "travelokaPayLaterText": "Ubah pembayaranmu jadi cicilan melalui Aplikasi",
     "uniqueCode": "Kode Unik",
-    "voucher": "Voucher",
+    "voucher": "Kupon",
     "warning": "Transaksi di bawah 10,000 tidak dapat diproses"
   },
   "paymentConfirm": {
