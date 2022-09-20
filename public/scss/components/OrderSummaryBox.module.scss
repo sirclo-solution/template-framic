@@ -200,17 +200,17 @@
     {
       display: inline-block;
       vertical-align: top;
-      margin: 0px 0px 4px 8px
+      margin: 0px 0px 4px 8px;
     }
 
     span 
     {
       @include flex(column, center, center, wrap);
+      @include fontSize(8);
       height: 24px;
       padding: 4px;
       background-color: $color_white;
       border-radius: 3px;
-      font-size: 8px;
       object-fit: contain;
     }
   }
@@ -220,7 +220,7 @@
   {
     height: 24px;
     width: 40px;
-    padding: 4px 4px;
+    padding: 4px;
     object-fit: contain;
   }
 
@@ -489,7 +489,7 @@
 
     @media screen and (max-width: $breakpoint_max_md) 
     {
-      @include fixedWidth(370px);
+      @include fixedWidth('370px');
       -webkit-overflow-scrolling: auto;
     }
   }
@@ -578,6 +578,7 @@
     @include typographyBuilder(400, 10, 16);
     color: $color_grey;
     margin: 0;
+    
     & > span
     {
       margin-left: 6px;
