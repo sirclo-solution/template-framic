@@ -70,6 +70,8 @@ const classesListPaymentMethod = {
   voucherListItemsClassName: stylesOrderSummaryBox.ordersummary_voucherListItems,
   voucherBankLogoContainerClassName: stylesOrderSummaryBox.ordersummary_voucherBankContainer,
   voucherBankLogoImageClassName: stylesOrderSummaryBox.ordersummary_voucherBankImage,
+  voucherShipperLogoContainerClassName: stylesOrderSummaryBox.ordersummary_voucherShippingContainer,
+  voucherShipperLogoImageClassName: stylesOrderSummaryBox.ordersummary_voucherShippingImage,
   voucherButtonRemoveClassName: styles.paymentmethod_voucherButtonRemove,
   voucherAppliedTextClassName: styles.paymentmethod_voucherAppliedText,
   pointButtonRemoveClassName: styles.paymentmethod_pointButtonRemove,
