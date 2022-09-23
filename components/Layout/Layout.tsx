@@ -170,7 +170,7 @@ const Layout: React.FC<LayoutPropType> = ({
           }}
         />
       </div>
-      <Footer brand={brand} withFooter={withFooter} />
+      <Footer withFooter={withFooter} />
     </GoogleTagManager>
   );
 };

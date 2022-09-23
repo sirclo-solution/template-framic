@@ -1,7 +1,7 @@
 /* library package */
 import { FC } from 'react'
 import {
-  isCopyrightAllowed,
+  Copyright,
   Widget,
   SocialMediaIcons
 } from '@sirclo/nexus'
@@ -33,9 +33,8 @@ const classesPlaceholderWidgetLogoDescription = {
   placeholderList: styles.footer_placeholderWidgetLogoDescription,
 }
 
-const Footer: FC<any> = ({ brand, withFooter }) => {
-  const size: any = useWindowSize();
-  const allowedCopyright = isCopyrightAllowed();
+const Footer: FC<any> = ({ withFooter }) => {
+  const size: any = useWindowSize()
 
   return (
     <div className={styles.footer_wrapper}>
@@ -83,13 +82,7 @@ const Footer: FC<any> = ({ brand, withFooter }) => {
           </>}
 
         <footer className={styles.footer_copyright}>
-          {allowedCopyright ?
-            <>
-              {brand?.settings?.websiteTitle || ""}
-              {(brand?.settings?.websiteTitle && allowedCopyright) && ` - `}
-              POWERED BY&nbsp;<a href="https://store.sirclo.com" target="_blank">SIRCLO</a>
-            </>
-            :
+          <Copyright>
             <Widget
               pos="copyright-and-policy"
               thumborSetting={{
@@ -98,7 +91,7 @@ const Footer: FC<any> = ({ brand, withFooter }) => {
                 quality: 5,
               }}
             />
-          }
+          </Copyright>
         </footer>
       </div>
     </div>
