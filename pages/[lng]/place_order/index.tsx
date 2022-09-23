@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import {
   useI18n,
   PlaceOrderForm,
+  PlaceOrderFormv2,
   PrivateRoute
 } from '@sirclo/nexus'
 import {
@@ -38,7 +39,14 @@ const classesPlaceOrderForm = {
   signupLabelClassName: styles.placeorder_signupLabel,
   checkoutAsMemberClassName: styles.placeorder_checkoutAsMember,
   loginLabelClassName: styles.placeorder_loginLabel,
-  mapSelectAreaClassName: stylesButton.btn_secondaryLongSmall,
+  mapSelectAreaClassName: `${stylesButton.btn_secondaryLongSmall} ${styleMapLocation.mapSelectArea}`,
+  mapSelectAreaSpanClassName: styleMapLocation.mapSelectAreaSpan,
+  mapButtonInputManualContainerClassName: "place-order_mapButtonInputManualContainer",
+  mapButtonInputManualTitleClassName: "place-order_mapButtonInputManualTitle",
+  mapFormAddressClassName: "place-order_mapFormAddress",
+  mapFooterContainerClassName: "place-order_mapFooterContainer",
+  mapButtonFooterContainerClassName: "place-order_mapButtonFooterContainer",
+  mapSearchCloseButtonClassName: "place-order_mapSearchCloseButton",
   mapPopupClassName: styleMapLocation.mapPopup,
   mapNoteClassName: styleMapLocation.mapNote,
   mapAreaClassName: styleMapLocation.mapArea,
@@ -59,6 +67,16 @@ const classesPlaceOrderForm = {
   buttonClassName: stylesButton.btn_primaryLong,
   verificationContainerClassName: styles.register_verificationContainer,
   labelRequiredClassName: stylesForm.form_label,
+
+  // Address Popup
+  shippingAreaPopupClassName: styleMapLocation.mapPopup,
+  shippingAreaPopupBackgroundClassName: styleMapLocation.mapPopupContainer,
+  shippingAreaPopupHeaderClassName: styleMapLocation.shippingAreaPopupHeader,
+  shippingAreaCloseButtonClassName: styleMapLocation.shippingAreaCloseButton,
+  formClassName: styleMapLocation.form,
+  addressMapButtonMapContainerClassName: styles.placeorder_addressMapButtonMapContainer,
+  addressMapButtonMapLabelClassName: styles.placeorder_addressMapButtonMapLabel,
+  addressMapButtonMapButtonClassName: styles.placeorder_addressMapButtonMapButton,
 
   // Password Field
   passwordStrengthBarContainerClassName: stylesPassword.passwordStrength,
@@ -100,14 +118,15 @@ const PlaceOrderPage: FC<any> = ({
           lng={lng}
           page="place_order"
         >
-          <PlaceOrderForm
-            classes={classesPlaceOrderForm}
+          <PlaceOrderFormv2
+            classes={{ ...classesPlaceOrderForm, addressPopupButtonClassName: `${stylesButton.btn_primaryLong} ${styles.placeorder_addressPopupButton} ${lng}` }}
             signupLabelPosition="bottom"
             passwordFulfilledCriteriaIcon={<CheckCircle color="green" size={16} />}
             passwordUnfulfilledCriteriaIcon={<CheckCircle color="gray" size={16} />}
             onErrorMsg={(msg) => toast.error(msg)}
             mapButtonCloseIcon={<XIcon />}
             mapCenterIcon={<Crosshair />}
+
           />
         </ChekoutComponent>
       </Layout>

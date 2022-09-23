@@ -41,4 +41,53 @@
     margin: 0 0 0 12px;
   }
 
+  &_addressMapButtonMapContainer
+  {
+    @include flex(column, flex-start, flex-start);
+    position: relative;
+    margin: 0 0 16px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: rgba(39, 110, 241, 0.1);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-image: url("data:image/svg+xml,%3Csvg width='37' height='37' viewBox='0 0 37 37' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.25' clip-path='url(%23clip0_3188_13939)'%3E%3Cpath d='M35.9628 24.0047L23.5 36.4675L11.0372 24.0047C8.57229 21.5398 6.89369 18.3993 6.21364 14.9804C5.5336 11.5615 5.88264 8.01768 7.21664 4.79715C8.55065 1.57661 10.8097 -1.17602 13.7081 -3.11267C16.6065 -5.04932 20.0141 -6.08301 23.5 -6.08301C26.9859 -6.08301 30.3935 -5.04932 33.2919 -3.11267C36.1903 -1.17602 38.4494 1.57661 39.7834 4.79715C41.1174 8.01768 41.4664 11.5615 40.7864 14.9804C40.1063 18.3993 38.4277 21.5398 35.9628 24.0047V24.0047ZM23.5 15.4585C24.5388 15.4585 25.535 15.0459 26.2695 14.3113C27.004 13.5768 27.4167 12.5806 27.4167 11.5418C27.4167 10.5031 27.004 9.50686 26.2695 8.77234C25.535 8.03782 24.5388 7.62517 23.5 7.62517C22.4612 7.62517 21.465 8.03782 20.7305 8.77234C19.996 9.50686 19.5833 10.5031 19.5833 11.5418C19.5833 12.5806 19.996 13.5768 20.7305 14.3113C21.465 15.0459 22.4612 15.4585 23.5 15.4585Z' fill='%23276EF1'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3188_13939'%3E%3Crect width='47' height='47' fill='white' transform='translate(0 -10)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+  }  
+
+  &_addressMapButtonMapLabel
+  {
+    @include typographyBuilder(400, 12, 16);
+  }
+
+  &_addressMapButtonMapButton
+  {
+    @include typographyBuilder(500, 12, 16);
+    color: $color_blue;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  &_addressPopupButton
+  {
+    @include fixedWidth(100%);
+    @include buttonVariant($color_white, $color_black_text, $color_black_text);
+    position: relative;
+    height: 48px;
+
+    &::before
+    {
+      content: "Simpan";
+      @include flex(row, center, center);
+      @include fixedWidth(100%);
+      @include typographyBuilder(400, 16, 24);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
+
 }
