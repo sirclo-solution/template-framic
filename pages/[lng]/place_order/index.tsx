@@ -5,14 +5,14 @@ import dynamic from 'next/dynamic'
 import { toast } from 'react-toastify'
 import {
   useI18n,
-  PlaceOrderForm,
   PlaceOrderFormv2,
   PrivateRoute
 } from '@sirclo/nexus'
 import {
   X as XIcon,
+  ArrowLeft,
   CheckCircle,
-  Crosshair,
+  Crosshair
 } from 'react-feather'
 /* library template */
 import { useBrand } from 'lib/useBrand'
@@ -39,14 +39,22 @@ const classesPlaceOrderForm = {
   signupLabelClassName: styles.placeorder_signupLabel,
   checkoutAsMemberClassName: styles.placeorder_checkoutAsMember,
   loginLabelClassName: styles.placeorder_loginLabel,
+  mapContainerClassName: styles.placeorder_mapContainer,
+  mapAddressContainerClassName: styles.placeorder_mapAddressContainer,
+  mapFullAddressClassName: styles.placeorder_mapFullAddress,
+  mapCityClassName: styles.placeorder_mapCity,
+  mapPostCodeClassName: styles.placeorder_mapPostCode,
+  mapChangeAddressButtonClassName: styleMapLocation.mapButtonInputManualButton,
   mapSelectAreaClassName: `${stylesButton.btn_secondaryLongSmall} ${styleMapLocation.mapSelectArea}`,
   mapSelectAreaSpanClassName: styleMapLocation.mapSelectAreaSpan,
-  mapButtonInputManualContainerClassName: "place-order_mapButtonInputManualContainer",
-  mapButtonInputManualTitleClassName: "place-order_mapButtonInputManualTitle",
-  mapFormAddressClassName: "place-order_mapFormAddress",
-  mapFooterContainerClassName: "place-order_mapFooterContainer",
-  mapButtonFooterContainerClassName: "place-order_mapButtonFooterContainer",
-  mapSearchCloseButtonClassName: "place-order_mapSearchCloseButton",
+  mapButtonInputManualContainerClassName: styleMapLocation.mapButtonInputManualContainer,  
+  mapButtonInputManualTitleClassName: styleMapLocation.mapButtonInputManualTitle,
+  mapButtonInputManualButtonClassName: styleMapLocation.mapButtonInputManualButton,
+  mapFormAddressClassName:  styleMapLocation.mapFormAddress,
+  mapDistrictLabelClassName: styleMapLocation.mapDistrictLabel,
+  mapSearchBarContainerClassName: styleMapLocation.mapSearchBarContainer,
+  mapSearchBarClassName: styleMapLocation.mapSearchBar,
+  mapSearchCloseButtonClassName: styleMapLocation.mapSearchCloseButton,
   mapPopupClassName: styleMapLocation.mapPopup,
   mapNoteClassName: styleMapLocation.mapNote,
   mapAreaClassName: styleMapLocation.mapArea,
@@ -124,9 +132,9 @@ const PlaceOrderPage: FC<any> = ({
             passwordFulfilledCriteriaIcon={<CheckCircle color="green" size={16} />}
             passwordUnfulfilledCriteriaIcon={<CheckCircle color="gray" size={16} />}
             onErrorMsg={(msg) => toast.error(msg)}
+            backIcon={<ArrowLeft />}
             mapButtonCloseIcon={<XIcon />}
             mapCenterIcon={<Crosshair />}
-
           />
         </ChekoutComponent>
       </Layout>
