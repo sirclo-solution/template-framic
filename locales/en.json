@@ -63,7 +63,7 @@
     "passwordSuccess": "Password changed successfully",
     "paymentMethod": "Payment Method",
     "paymentStatus": "Payment Status",
-    "placedOn": "Placed on",
+    "placedOn": "",
     "points": "Points",
     "postalCode": "Postal Code",
     "postalCodePlaceholder": "Input your postal code",
