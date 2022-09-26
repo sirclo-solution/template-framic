@@ -97,8 +97,7 @@ const ShippingMethodPage: FC<any> = ({
             onErrorMsg={(msg) => toast.error(msg)}
             mapButtonCloseIcon={<XIcon />}
             mapCenterIcon={<Crosshair />}
-            mapBackIcon={<ArrowLeft />}
-            
+            mapBackIcon={<ArrowLeft />}           
           />
         </ChekoutComponent>
       </Layout>
