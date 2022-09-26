@@ -283,15 +283,15 @@
   "map": {
     "cityDistrictNotFound": "District not found. Please swipe the location pin",
     "inputManual": "Enter Location Manually",
-		"inputWithMap": "Enter the address using the map",
+    "inputWithMap": "Enter the address using the map",
     "outOfReachDesc": "Please go to international shipping to make deliveries outside of Indonesia",
     "outOfReachLabel": "Location out of reach",
     "pinpointMismatch": "The location you selected does not match the specified point",
     "searchLocation": "Search location",
     "searchLocationPlaceholder": "Search location in here",
-		"titleInputManual": "Having trouble finding your location on the map?",
-		"titleInputMap": "Having trouble finding your sub-district/region?",
-		"useCurrentLocation": "Use current location"
+    "titleInputManual": "Having trouble finding your location on the map?",
+    "titleInputMap": "Having trouble finding your sub-district/region?",
+    "useCurrentLocation": "Use current location"
   },
   "membership": {
     "exchangePoints": "Redeem your Point",
