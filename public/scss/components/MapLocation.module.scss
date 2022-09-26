@@ -135,18 +135,12 @@
         }
       }
     }
-
-    @media (max-width: #{$breakpoint_max_md})
-    {
-      padding: 0;
-    }
   }
 
   @media (max-width: #{$breakpoint_max_md})
   {
-    margin: 0 1rem;
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 }
 
