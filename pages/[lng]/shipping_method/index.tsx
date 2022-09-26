@@ -98,6 +98,7 @@ const ShippingMethodPage: FC<any> = ({
             mapButtonCloseIcon={<XIcon />}
             mapCenterIcon={<Crosshair />}
             mapBackIcon={<ArrowLeft />}
+            
           />
         </ChekoutComponent>
       </Layout>
