@@ -284,15 +284,15 @@
   "map": {
     "cityDistrictNotFound": "Wilayah/Kecamatan tidak ditemukan. Harap menggeser pin lokasi",
     "inputManual": "Masukkan Lokasi Manual",
-		"inputWithMap": "Masukkan alamat menggunakan peta",
+    "inputWithMap": "Masukkan alamat menggunakan peta",
     "outOfReachDesc": "Silahkan ke pengiriman internasional untuk melakukan pengiriman ke luar wilayah Indonesia",
     "outOfReachLabel": "Lokasi diluar jangkauan",
     "pinpointMismatch": "Lokasi yang Anda pilih tidak sesuai dengan titik yang ditentukan",
     "searchLocation": "Cari lokasi",
     "searchLocationPlaceholder": "Cari lokasi anda di sini",
     "titleInputManual": "Kesulitan menemukan lokasi Anda di peta?",
-		"titleInputMap": "Kesulitan menemukan kecamatan/wilayah Anda?",
-		"useCurrentLocation": "Gunakan lokasi saat ini"
+    "titleInputMap": "Kesulitan menemukan kecamatan/wilayah Anda?",
+    "useCurrentLocation": "Gunakan lokasi saat ini"
   },
   "membership": {
     "exchangePoints": "Tukar Poin Anda",

@@ -83,9 +83,7 @@
       @include flex(row, center, center);
       @include fixedWidth(100%);
       @include typographyBuilder(400, 16, 24);
-      position: absolute;
-      top: 50%;
-      left: 50%;
+      @include absolute(50%, auto, auto, 50%);
       transform: translate3d(-50%, -50%, 0);
     }
 
@@ -161,9 +159,7 @@
   &_mapFullAddress,
   &_mapCity
   {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    @include textOverflow();
     max-width: 440px;
 
     @media (max-width: #{$breakpoint_max_md})
