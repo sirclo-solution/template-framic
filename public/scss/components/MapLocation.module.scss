@@ -201,7 +201,6 @@
     border: 1px solid $color_light;
     background: $color_white;
     z-index: 2;
-    position: absolute;
     margin-left: 16px;
     border-radius: 4px;
     box-shadow: none;
@@ -234,7 +233,7 @@
 
     div:nth-child(even) 
     {
-      background-color: #ededed !important;
+      background-color: $color_light_alt !important;
     }
   }
 
