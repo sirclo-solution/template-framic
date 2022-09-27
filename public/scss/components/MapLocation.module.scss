@@ -41,6 +41,29 @@
   display: block;
 }
 
+.mapSelectArea
+{
+  @include flex(row, center, flex-start);
+  padding: 12px 18px !important;
+  border: 1px dashed $color_light;
+}
+
+.mapSelectAreaSpan
+{
+  @include flex(row, center, center);
+  color: $color_grey_light;
+
+  &::before
+    {
+      content: "";
+      @include fixedSize(18px);
+      display: block;
+      margin-right: 12px;
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_3229_14475)'%3E%3Cpath d='M9 15.6749L12.7125 11.9624C13.4467 11.2282 13.9466 10.2927 14.1492 9.27435C14.3517 8.25596 14.2477 7.20039 13.8503 6.24111C13.4529 5.28183 12.78 4.46192 11.9167 3.88507C11.0533 3.30821 10.0383 3.00032 9 3.00032C7.96167 3.00032 6.94666 3.30821 6.08332 3.88507C5.21997 4.46192 4.54706 5.28183 4.14969 6.24111C3.75231 7.20039 3.64831 8.25596 3.85084 9.27435C4.05337 10.2927 4.55333 11.2282 5.2875 11.9624L9 15.6749ZM9 17.7959L4.227 13.0229C3.28301 12.0789 2.64014 10.8762 2.3797 9.56683C2.11925 8.25746 2.25293 6.90026 2.76382 5.66687C3.27472 4.43347 4.13988 3.37927 5.24991 2.63757C6.35994 1.89588 7.66498 1.5 9 1.5C10.335 1.5 11.6401 1.89588 12.7501 2.63757C13.8601 3.37927 14.7253 4.43347 15.2362 5.66687C15.7471 6.90026 15.8808 8.25746 15.6203 9.56683C15.3599 10.8762 14.717 12.0789 13.773 13.0229L9 17.7959ZM8.25 7.49994V5.24994H9.75V7.49994H12V8.99994H9.75V11.2499H8.25V8.99994H6V7.49994H8.25Z' fill='%23A2A2A2'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3229_14475'%3E%3Crect width='18' height='18' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+    }
+}
+
 .mapArea
 {
   width: 100%;
@@ -51,12 +74,11 @@
 .mapPopup
 {
   @include flex(row, center, center);
+  @include fixedSize(100%);
   position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
   background-color:  rgba($color_black, 0.5);
 }
 
@@ -72,11 +94,51 @@
   background: $color_white;
   border-radius: 2px;
 
+  & > form
+  {
+    padding: 24px 18px;
+
+    input[name="postalCode"]
+    {
+      width: 160px;
+    }
+
+    div[class*="css-"][class$="-container"]
+    {
+      padding: 0;
+    }
+
+    [class*="css-"][class$="-container"]
+    {
+      [class^=" css-"][class$="-control"]
+      {
+        height: 100%;
+        align-content: center;
+
+        &::before
+        {
+          content: "";
+          background: $color_white;
+          color: $color_black;
+          padding: 10px;
+          border: none;
+          margin-right: 8px;
+          background-size: 100%;
+          background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_3242_878)'%3E%3Cpath d='M15.0258 13.8478L18.595 17.4162L17.4158 18.5953L13.8475 15.0262C12.5198 16.0905 10.8683 16.6694 9.16666 16.667C5.02666 16.667 1.66666 13.307 1.66666 9.16699C1.66666 5.02699 5.02666 1.66699 9.16666 1.66699C13.3067 1.66699 16.6667 5.02699 16.6667 9.16699C16.6691 10.8687 16.0902 12.5201 15.0258 13.8478ZM13.3542 13.2295C14.4118 12.1419 15.0024 10.684 15 9.16699C15 5.94366 12.3892 3.33366 9.16666 3.33366C5.94332 3.33366 3.33332 5.94366 3.33332 9.16699C3.33332 12.3895 5.94332 15.0003 9.16666 15.0003C10.6837 15.0027 12.1416 14.4121 13.2292 13.3545L13.3542 13.2295Z' fill='%23333333'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3242_878'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+        }
+          
+        [class^=" css-"][class$="-placeholder"]
+        {
+          @include textOverflow();
+        }
+      }
+    }
+  }
+
   @media (max-width: #{$breakpoint_max_md})
   {
-    margin: 0 1rem;
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 }
 
@@ -127,35 +189,37 @@
 {
   position: relative;
   background-color: $color_white;
-  z-index: 1;
-  width: 100%;
-  height: 320px;
+  margin: 0;
+  padding: 0;
 
   input
   {
     @include typographyBuilder(400, 16, 24);
     @include absolute(12px, auto, auto, auto);
-    width: calc(100% - 47px);
-    padding: 10px 15px;
-    border: 1px;
+    width: calc(100% - 62px);
+    padding: 10px 20px 10px 50px;
+    border: 1px solid $color_light;
     background: $color_white;
     z-index: 2;
-    position: absolute;
-    margin-left: 24px;
+    margin-left: 16px;
     border-radius: 4px;
     box-shadow: none;
     outline: 0;
+    background-color: $color_white;
+    background-repeat: no-repeat;
+    background-position: 20px center;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.0208 11.0779L14.8762 13.9326L13.9328 14.8759L11.0782 12.0206C10.016 12.8721 8.69483 13.3352 7.3335 13.3332C4.0215 13.3332 1.3335 10.6452 1.3335 7.33325C1.3335 4.02125 4.0215 1.33325 7.3335 1.33325C10.6455 1.33325 13.3335 4.02125 13.3335 7.33325C13.3354 8.69458 12.8723 10.0157 12.0208 11.0779ZM10.6835 10.5832C11.5296 9.71317 12.0021 8.54687 12.0002 7.33325C12.0002 4.75458 9.9115 2.66658 7.3335 2.66658C4.75483 2.66658 2.66683 4.75458 2.66683 7.33325C2.66683 9.91125 4.75483 11.9999 7.3335 11.9999C8.54712 12.0018 9.71342 11.5293 10.5835 10.6832L10.6835 10.5832Z' fill='%232A2A2A'/%3E%3C/svg%3E%0A");
   }
 
   div[class*="autocomplete-dropdown-container"] 
   {
     @include absolute(46px, auto, auto, auto);
     z-index: 1;
-    width: calc(100% - 47px);
-    background: #fff;
-    position: absolute;
+    width: calc(100% - 64px);
+    background: $color_white;
     text-align: left;
-    margin-left: 24px;
+    margin-top: 10px;
+    margin-left: 40px;
 
     div 
     {
@@ -169,32 +233,136 @@
 
     div:nth-child(even) 
     {
-      background-color: #ededed !important;
+      background-color: $color_light_alt !important;
+    }
+  }
+
+  [class*="mapSearchBarContainerClassName"]
+  {
+    @extend .mapSearchBarContainer
+  }
+}
+
+.mapPopupMapsAccount
+{
+  [class*="mapSearchCloseButtonClassName"]
+  {
+    display: none;
+  }
+}
+
+.mapSearchBarContainer
+{
+  @include flex(row, center, flex-start);
+  position: relative;
+  margin: 0;
+  padding: 0 10px;
+  min-height: 72px;
+
+  & + div
+  {
+    @include fixedHeight(190px);
+
+    @media screen and (max-width: 991px)
+    {
+      @include fixedHeight(320px);
     }
   }
 }
 
+.mapSearchBar
+{
+  span
+  {
+    position: absolute;
+    top: 22px;
+    left: 66px;
+    z-index: 3;
+  }
+}
+
+.mapSearchCloseButton
+{
+  padding: 0;
+  border-style: none;
+  background: transparent;
+  font-size: 16px;
+}
+
 .mapPopupCenterButton
 {
-  @include absolute(13px, 30px, auto, auto);
-  background: transparent;
+  @include absolute(80px, 10px, auto, auto);
+  font-size: 0;
+  background: $color_white;
   padding: 7.5px;
   border: none;
   border-radius: 4px;
-  z-index: 10;
+  z-index: 1;
+}
+
+.mapDistrictLabel
+{
+  @include typographyBuilder(600, 12, 16);
+  margin: 12px 16px 6px;
 }
 
 .mapPopupLabelAddress
 {
   @include typographyBuilder(400, 12, 16);
   background: $color_white;
-  color: $color_black_text;
-  padding: 15px;
+  color: $color_grey;
+  margin: 0 16px;
+}
+
+.mapButtonInputManualContainer
+{
+  @include flex(column, center, center);
+  margin: 16px 0 20px;
+}
+
+.mapButtonInputManualTitle
+{
+  @include typographyBuilder(400, 12, 16);
+}
+
+.mapButtonInputManualButton
+{
+  @include typographyBuilder(600, 12, 16);
+  color: $color_blue;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.mapFormAddress
+{
+  margin: 16px;
 }
 
 .mapButtonFooter
 {
   border-radius: 0 0 2px 2px;
-  margin: 16px auto;
+  width: 100%;
+}
+
+.mapButtonFooterShipping
+{
+  margin: 28px 16px 12px;
   width: calc(100% - 32px);
+}
+
+.shippingAreaPopupHeader 
+{
+  @include flex(row, center, center);
+  @include typographyBuilder(600, 16, 24);
+  padding: 12px;
+  border-bottom: 1px solid $color_light;
+}
+
+.shippingAreaCloseButton
+{
+  @include position(absolute, 12px, 12px);
+  border: none;
+  appearance: none;
+  background: no-repeat;
 }

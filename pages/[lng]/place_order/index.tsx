@@ -5,13 +5,14 @@ import dynamic from 'next/dynamic'
 import { toast } from 'react-toastify'
 import {
   useI18n,
-  PlaceOrderForm,
+  PlaceOrderFormv2,
   PrivateRoute
 } from '@sirclo/nexus'
 import {
   X as XIcon,
+  ArrowLeft,
   CheckCircle,
-  Crosshair,
+  Crosshair
 } from 'react-feather'
 /* library template */
 import { useBrand } from 'lib/useBrand'
@@ -38,7 +39,22 @@ const classesPlaceOrderForm = {
   signupLabelClassName: styles.placeorder_signupLabel,
   checkoutAsMemberClassName: styles.placeorder_checkoutAsMember,
   loginLabelClassName: styles.placeorder_loginLabel,
-  mapSelectAreaClassName: stylesButton.btn_secondaryLongSmall,
+  mapContainerClassName: styles.placeorder_mapContainer,
+  mapAddressContainerClassName: styles.placeorder_mapAddressContainer,
+  mapFullAddressClassName: styles.placeorder_mapFullAddress,
+  mapCityClassName: styles.placeorder_mapCity,
+  mapPostCodeClassName: styles.placeorder_mapPostCode,
+  mapChangeAddressButtonClassName: styleMapLocation.mapButtonInputManualButton,
+  mapSelectAreaClassName: `${stylesButton.btn_secondaryLongSmall} ${styleMapLocation.mapSelectArea}`,
+  mapSelectAreaSpanClassName: styleMapLocation.mapSelectAreaSpan,
+  mapButtonInputManualContainerClassName: styleMapLocation.mapButtonInputManualContainer,  
+  mapButtonInputManualTitleClassName: styleMapLocation.mapButtonInputManualTitle,
+  mapButtonInputManualButtonClassName: styleMapLocation.mapButtonInputManualButton,
+  mapFormAddressClassName:  styleMapLocation.mapFormAddress,
+  mapDistrictLabelClassName: styleMapLocation.mapDistrictLabel,
+  mapSearchBarContainerClassName: styleMapLocation.mapSearchBarContainer,
+  mapSearchBarClassName: styleMapLocation.mapSearchBar,
+  mapSearchCloseButtonClassName: styleMapLocation.mapSearchCloseButton,
   mapPopupClassName: styleMapLocation.mapPopup,
   mapNoteClassName: styleMapLocation.mapNote,
   mapAreaClassName: styleMapLocation.mapArea,
@@ -59,6 +75,16 @@ const classesPlaceOrderForm = {
   buttonClassName: stylesButton.btn_primaryLong,
   verificationContainerClassName: styles.register_verificationContainer,
   labelRequiredClassName: stylesForm.form_label,
+
+  // Address Popup
+  shippingAreaPopupClassName: styleMapLocation.mapPopup,
+  shippingAreaPopupBackgroundClassName: styleMapLocation.mapPopupContainer,
+  shippingAreaPopupHeaderClassName: styleMapLocation.shippingAreaPopupHeader,
+  shippingAreaCloseButtonClassName: styleMapLocation.shippingAreaCloseButton,
+  formClassName: styleMapLocation.form,
+  addressMapButtonMapContainerClassName: styles.placeorder_addressMapButtonMapContainer,
+  addressMapButtonMapLabelClassName: styles.placeorder_addressMapButtonMapLabel,
+  addressMapButtonMapButtonClassName: styles.placeorder_addressMapButtonMapButton,
 
   // Password Field
   passwordStrengthBarContainerClassName: stylesPassword.passwordStrength,
@@ -100,12 +126,13 @@ const PlaceOrderPage: FC<any> = ({
           lng={lng}
           page="place_order"
         >
-          <PlaceOrderForm
-            classes={classesPlaceOrderForm}
+          <PlaceOrderFormv2
+            classes={{ ...classesPlaceOrderForm, addressPopupButtonClassName: `${stylesButton.btn_primaryLong} ${styles.placeorder_addressPopupButton} ${lng}` }}
             signupLabelPosition="bottom"
             passwordFulfilledCriteriaIcon={<CheckCircle color="green" size={16} />}
             passwordUnfulfilledCriteriaIcon={<CheckCircle color="gray" size={16} />}
             onErrorMsg={(msg) => toast.error(msg)}
+            backIcon={<ArrowLeft />}
             mapButtonCloseIcon={<XIcon />}
             mapCenterIcon={<Crosshair />}
           />
