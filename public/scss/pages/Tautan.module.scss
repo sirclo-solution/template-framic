@@ -1,42 +1,42 @@
 @import '../utils/variables';
 
-.tautan
+.tautan 
 {
-  &_container
+  &_container 
   {
     width: 100%;
     height: calc(100vh - 47px);
+    overflow: auto;
 
     & > div 
     {
+      @include flex(column, center, flex-start);
       height: 100%;
-      padding-top: 80px;
+      padding: 80px 0 20px;
+      overflow: auto;
 
       & > * 
       {
+        width: 100%;
         max-width: 340px;
         margin: 0 auto;
-
-        @media screen and (max-width: #{$breakpoint_max_md})
-        {
-          width: 100%;
-        }
       }
     }
 
-    & > div > img
+    & > div > img 
     {
       display: block;
       margin-bottom: 30px;
+      max-width: 200px;
     }
 
-    & > div > div
+    & > div > div 
     {
       @include typographyBuilder(400, 16, 24);
       text-align: center;
     }
 
-    & > div > div:not(:nth-child(2))
+    & > div > div:not(:nth-child(2)) 
     {
       @include flex(row, center, flex-end);
       flex-direction: row-reverse;
@@ -45,19 +45,18 @@
       margin-top: 12px;
       padding: 12px;
 
-      p
+      p 
       {
         margin: 0;
       }
 
-      img
-      {
+      img {
         @include fixedSize(20px);
         margin-right: 16px;
       }
     }
 
-    & > div > div:nth-child(3)
+    & > div > div:nth-child(3) 
     {
       border: none;
       text-align: center;
@@ -67,10 +66,9 @@
       box-shadow: none;
     }
 
-    & > div > div:nth-child(2)
+    & > div > div:nth-child(2) 
     {
       @include typographyBuilder(600, 20, 24);
     }
-    
   }
 }
