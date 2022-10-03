@@ -11,6 +11,7 @@ import {
 import {
   X as XIcon,
   Crosshair,
+  ArrowLeft
 } from 'react-feather'
 /* library template */
 import { useBrand } from 'lib/useBrand'
@@ -48,9 +49,11 @@ const classesShippingMethod = {
   mapHeaderCloseButtonClassName: styleMapLocation.mapPopupClose,
   mapHeaderNoteClassName: styleMapLocation.mapPopupNote,
   mapLabelAddressClassName: styleMapLocation.mapPopupLabelAddress,
+  mapSearchCloseButtonClassName: styleMapLocation.mapSearchCloseButton,
   mapCenterButtonClassName: styleMapLocation.mapPopupCenterButton,
-  mapButtonFooterClassName: `${stylesButton.btn_primary} ${styleMapLocation.mapButtonFooter}`,
+  mapButtonFooterClassName: `${stylesButton.btn_primary} ${styleMapLocation.mapButtonFooter} ${styleMapLocation.mapButtonFooterShipping}`,
   mapPinPointIconClassName: styleMapLocation.mapPinPointIcon,
+  
 }
 
 type PrivateComponentPropsType = {
@@ -94,6 +97,7 @@ const ShippingMethodPage: FC<any> = ({
             onErrorMsg={(msg) => toast.error(msg)}
             mapButtonCloseIcon={<XIcon />}
             mapCenterIcon={<Crosshair />}
+            mapBackIcon={<ArrowLeft />}           
           />
         </ChekoutComponent>
       </Layout>
