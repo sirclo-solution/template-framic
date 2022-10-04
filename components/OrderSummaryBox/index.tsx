@@ -49,6 +49,7 @@ const classesOrderSummary = {
   voucherContainerClassName: styles.ordersummary_voucherContainer,
   closeButtonClassName: styles.ordersummary_closeButton,
   voucherFormClassName: styles.ordersummary_voucherForm,
+  voucherFormContainerClassName: styles.ordersummary_voucherFormContainer,
   voucherInputClassName: stylesForm.form_inputLong,
   voucherSubmitButtonClassName: stylesButton.btn_primary,
   voucherListHeaderClassName: styles.ordersummary_voucherListHeader,
@@ -58,13 +59,44 @@ const classesOrderSummary = {
   voucherDetailEstimateClassName: styles.ordersummary_voucherDetailEstimate,
   voucherDetailDescClassName: styles.ordersummary_voucherDetailDesc,
   voucherDetailTitleClassName: styles.ordersummary_voucherDetailTitle,
-  voucherDetailCodeClassName: styles.ordersummary_voucherDetailCode,
+  // voucherDetailCodeClassName: styles.ordersummary_voucherDetailCode,
+  voucherDetailCodeClassName: 'd-none',
   voucherDetailEstimateDescClassName: styles.ordersummary_voucherDetailEstimateDesc,
+
+  voucherDetailViewDetailsClassName: styles.ordersummary_voucherDetailViewDetails,
+  voucherDetailPopUpContainerClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpBackgroundClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpBodyClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpHeaderClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpHeaderTitleClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpCloseClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpDescContainerClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpDescDateClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpCodeContainerClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpCodeTitleClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpCodeCopyContainerClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpCodeCopyTitleClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpCodeCopyButtonClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpUseCouponClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpTermsContainerClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpTermsItemsClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailPopUpTermsTitleClassName: styles.ordersummary_voucherDetailEstimateDesc,
+  voucherDetailApplyedClassName: styles.ordersummary_voucherDetailEstimateDesc,
+
   voucherListClassName: styles.ordersummary_voucherList,
+  voucherValidListClassName: styles.ordersummary_voucherValidList,
+  voucherInvalidListClassName: styles.ordersummary_voucherInvalidList,
   voucherListHeaderIconClassName: styles.ordersummary_voucherListHeaderIcon,
   voucherDetailInvalidClassName: styles.ordersummary_voucherDetailInvalid,
-  voucherTitleClassName: styles.ordersummary_voucherTitle,
+  // voucherTitleClassName: styles.ordersummary_voucherTitle,
+  voucherTitleClassName: 'd-none',
   voucherListItemsClassName: styles.ordersummary_voucherListItems,
+  voucherButtonRemoveClassName: styles.ordersummary_voucherRemove,
+  voucherTitleInputClassName: styles.ordersummary_voucherTitleInput,
+  voucherSubTitleInputClassName: styles.ordersummary_voucherSubTitleInput,
+  voucherInputContainerClassName: styles.ordersummary_voucherInputContainer,
+  voucherShowMoreContainerClassName: styles.ordersummary_voucherShowMoreContainer,
+  voucherShowMoreButtonClassName: styles.ordersummary_voucherShowMoreButton,
   deductionPriceClassName: styles.ordersummary_deductionPrice,
   disclaimerMessageContainerClassName: 'd-none',
 
@@ -196,7 +228,7 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
       <OrderSummary
         page={page}
         isAccordion
-        isCouponAccordion
+        // isCouponAccordion
         withCouponTitle
         classes={classesOrderSum()}
         currency="IDR"

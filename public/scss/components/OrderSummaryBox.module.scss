@@ -315,6 +315,48 @@
     }
   }
 
+  &_voucherTitleInput
+  {
+    @include typographyBuilder(400, 16, 24);
+    color: $color_black_text;
+    margin: 0;
+    // text-transform: capitalize;
+
+    &::before
+    {
+      @extend .ordersummary_voucherIcon;
+      position: relative;
+      top: 13px;
+      margin-right: 10px;
+      content: '';
+      float: left;
+    }
+  }
+
+  &_voucherSubTitleInput
+  {
+    @include typographyBuilder(400, 12, 16);
+    position: relative;
+    left: 25px;
+    color: $color_grey_light;
+  }
+
+  &_voucherInputContainer
+  {
+    @include flex(row, center, flex-start);
+    // display: flex;
+    // align-items: center;
+    // justify-content: flex-start;
+    gap: 12px;
+    height: 48px;
+    border-radius: 2px;
+    margin-top: 12px;
+
+    & > input {
+      max-width: 300px;
+    }
+  }
+
   &_voucherDetailInvalid
   {
     opacity: .5;
@@ -323,8 +365,11 @@
 
   &_voucherListItems
   {
-    max-height: 280px;
-    overflow: auto;
+    @include flex(row, flex-start, flex-start);
+    gap: 16px;
+    flex-wrap: wrap;
+    // max-height: 280px;
+    // overflow: auto;
   }
 
   &_voucherEmpty
@@ -463,13 +508,23 @@
 
   &_closeButton
   {
-    position: absolute;
-    top: 24px;
-    right: 16px;
+    // position: absolute;
+    // top: 24px;
+    // right: 16px;
+    position: relative;
+    top: 0;
+    right: 0;
+    float: right;
     background-color: transparent;
     border: 0;
     margin: 0 0 30px auto;
     padding: 0;
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      top: 30px;
+      right: 6px;
+    }
   }
 
   &_voucherContainer,
@@ -496,13 +551,34 @@
 
   &_voucherContainer
   {
-    padding-top: 16px;
+    // padding-top: 16px;
+    @include fixedWidth(100vw);
+    @include fixedHeight(100vh);
+    // background-color: $color_white;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  &_voucherFormContainer
+  {
+    @include flex(row, center, center);
+    border-bottom: 1px solid $color_light;
+    padding: 24px 0;
   }
 
   &_voucherForm
   {
-    @include flex(row, center, flex-start);
-    margin-bottom: 24px;
+    // @include flex(row, center, flex-start);
+    // margin-bottom: 24px;
+
+    // margin: calc(16px + 1.6vh) calc(8px + 0.8vw);
+    max-width: 1170px;
+    width: 100%;
+
+    @media screen and (max-width: 767px)
+    {
+      margin: calc(8px + 0.8vh) calc(8px + 0.8vw);
+    }
 
     & > input
     {
@@ -520,8 +596,8 @@
   {
     @include typographyBuilder(600, 12, 16);
     @include flex(row, center, space-between);
-    color: $color_black_text;
-    margin-bottom: 12px;
+    color: $color_grey;
+    margin-bottom: 8px;
     cursor: pointer;
 
     > span {
@@ -537,14 +613,36 @@
     border-radius: 2px;
   }
 
+  &_voucherDetailViewDetails
+  {
+    @include typographyBuilder(400, 12, 16);
+    cursor: pointer;
+    position: relative;
+    right: 12px;
+    top: 12px;
+    float: right;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    color: $color_blue;
+    background-color: $color_white;
+  }
+
   &_voucher
   {
+    @include fixedWidth(calc((100% - 32px) / 3));
     cursor: pointer;
+    position: relative;
+    // margin: 0 16px 16px 0;
+    // gap: 16px;
+    border: 1px solid $color_grey;
+    border-radius: 2px;
+    flex-wrap: nowrap;
 
-    &:not(:last-child)
-    {
-      margin-bottom: 10px;
-    }
+    // &:not(:last-child)
+    // {
+    //   margin-bottom: 10px;
+    // }
   }
 
   &_deductionPrice
@@ -557,8 +655,51 @@
 
   &_voucherList
   {
-    @include useScrollbar();
-    overflow: auto;
+    // @include useScrollbar();
+    // overflow: auto;
+    max-width: 1170px;
+    // margin: 34px auto 0;
+  }
+
+  &_voucherValidList,
+  &_voucherInvalidList
+  {
+    @include flex(column, center, center);
+    // position: relative;
+    // width: 100%;
+    width: 100vw;
+    // padding: calc(8px + 0.8vh) calc(8px + 0.8vw);
+
+    & > * {
+      // display: block;
+      width: 100%;
+      max-width: 1170px; 
+      // margin: 0;
+    }
+  }
+
+  &_voucherValidList
+  {
+    // border-bottom: 6px solid $color_gray;
+    // margin-top: calc(26px + 2.6vh);
+    padding: 24px 0 34px;
+    border-bottom: 6px solid $color_light;
+    
+    // @media screen and (max-width: 575px) {
+      //   margin-top: calc(11px + 1.1vh);
+      // }
+    }
+    
+    &_voucherInvalidList
+    {
+      @include flex(column, center, center);
+      padding-top: 24px;
+    // padding-bottom: 200px;
+    // margin-top: calc(17px + 1.7vh);
+
+    // @media screen and (max-width: 575px) {
+    //   margin-top: calc(13px + 1.3vh);
+    // }
   }
 
   &_voucherDetailHeader
