@@ -59,7 +59,6 @@ const classesOrderSummary = {
   voucherDetailEstimateClassName: styles.ordersummary_voucherDetailEstimate,
   voucherDetailDescClassName: styles.ordersummary_voucherDetailDesc,
   voucherDetailTitleClassName: styles.ordersummary_voucherDetailTitle,
-  // voucherDetailCodeClassName: styles.ordersummary_voucherDetailCode,
   voucherDetailCodeClassName: 'd-none',
   voucherDetailEstimateDescClassName: styles.ordersummary_voucherDetailEstimateDesc,
 
@@ -88,7 +87,6 @@ const classesOrderSummary = {
   voucherInvalidListClassName: styles.ordersummary_voucherInvalidList,
   voucherListHeaderIconClassName: styles.ordersummary_voucherListHeaderIcon,
   voucherDetailInvalidClassName: styles.ordersummary_voucherDetailInvalid,
-  // voucherTitleClassName: styles.ordersummary_voucherTitle,
   voucherTitleClassName: 'd-none',
   voucherListItemsClassName: styles.ordersummary_voucherListItems,
   voucherButtonRemoveClassName: styles.ordersummary_voucherRemove,
@@ -228,7 +226,6 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
       <OrderSummary
         page={page}
         isAccordion
-        // isCouponAccordion
         withCouponTitle
         classes={classesOrderSum()}
         currency="IDR"
