@@ -474,7 +474,7 @@
   {
     @include flex(row, center, center);
     @include fixedSize(100%);
-    @include position(fixed, 0, auto, auto, 0);
+    @include fixed(0, auto, auto, 0);
     z-index: 10;
     background-color: rgba($color_black, 0.8);
 
@@ -594,7 +594,7 @@
   &_voucherDetailViewDetails
   {
     @include typographyBuilder(400, 12, 16);
-    @include position(relative, 0, 0, auto, auto);
+    @include position(relative, 12px, 12px, auto, auto);
     float: right;
     padding: 0;
     outline: 0;
@@ -694,7 +694,7 @@
   &_voucherDetailTitle
   {
     @include typographyBuilder(400, 16, 24);
-    @include fixedWidth(70%);
+    @include fixedWidth(65%);
     @include textOverflow();
     display: block;
     color: $color_black_text;
@@ -735,7 +735,8 @@
   &_voucherDetailPopUpContainer
   {
     @include flex(row, center, center);
-    @include position(fixed, 0, auto, auto, 0);
+    @include fixed(0, auto, auto, 0);
+    @include fixedSize(100%);
     z-index: 11;
     height: 100%;
     width: 100%;
@@ -769,7 +770,7 @@
     
     @media screen and (max-width: $breakpoint_max_sm) {
       @include fixedWidth(100vw);
-      @include position(absolute, auto, auto, 0, 0);
+      @include absolute(auto, auto, 0, 0);
       border-radius: 3px 3px 0 0;
     }
   }
