@@ -61,7 +61,6 @@ const classesOrderSummary = {
   voucherDetailTitleClassName: styles.ordersummary_voucherDetailTitle,
   voucherDetailCodeClassName: 'd-none',
   voucherDetailEstimateDescClassName: styles.ordersummary_voucherDetailEstimateDesc,
-
   voucherDetailViewDetailsClassName: styles.ordersummary_voucherDetailViewDetails,
   voucherDetailPopUpContainerClassName: styles.ordersummary_voucherDetailPopUpContainer,
   voucherDetailPopUpBackgroundClassName: styles.ordersummary_voucherDetailPopUpHeader,
@@ -81,7 +80,6 @@ const classesOrderSummary = {
   voucherDetailPopUpTermsItemsClassName: styles.ordersummary_voucherDetailPopUpTermsItems,
   voucherDetailPopUpTermsTitleClassName: styles.ordersummary_voucherDetailPopUpTermsTitle,
   voucherDetailApplyedClassName: styles.ordersummary_voucherDetailApplyed,
-
   voucherListClassName: styles.ordersummary_voucherList,
   voucherValidListClassName: styles.ordersummary_voucherValidList,
   voucherInvalidListClassName: styles.ordersummary_voucherInvalidList,
