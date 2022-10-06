@@ -324,8 +324,7 @@
     &::before
     {
       @extend .ordersummary_voucherIcon;
-      position: relative;
-      top: 13px;
+      @include position(relative, 13px);
       margin-right: 10px;
       content: '';
       float: left;
@@ -335,8 +334,7 @@
   &_voucherSubTitleInput
   {
     @include typographyBuilder(400, 12, 16);
-    position: relative;
-    left: 25px;
+    @include position(relative, auto, auto, auto, 25px);
     color: $color_grey_light;
   }
 
@@ -476,9 +474,7 @@
   {
     @include flex(row, center, center);
     @include fixedSize(100%);
-    position: fixed;
-    top: 0;
-    left: 0;
+    @include position(fixed, 0, auto, auto, 0);
     z-index: 10;
     background-color: rgba($color_black, 0.8);
 
@@ -507,9 +503,7 @@
 
   &_closeButton
   {
-    position: relative;
-    top: 0;
-    right: 0;
+    @include position(relative, 0, 0, auto, auto);
     float: right;
     background-color: transparent;
     border: 0;
@@ -600,9 +594,7 @@
   &_voucherDetailViewDetails
   {
     @include typographyBuilder(400, 12, 16);
-    position: relative;
-    right: 12px;
-    top: 12px;
+    @include position(relative, 0, 0, auto, auto);
     float: right;
     padding: 0;
     outline: 0;
