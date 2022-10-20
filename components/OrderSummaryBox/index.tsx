@@ -79,7 +79,7 @@ const classesOrderSummary = {
   voucherDetailPopUpTermsContainerClassName: styles.ordersummary_voucherDetailPopUpTermsContainer,
   voucherDetailPopUpTermsItemsClassName: styles.ordersummary_voucherDetailPopUpTermsItems,
   voucherDetailPopUpTermsTitleClassName: styles.ordersummary_voucherDetailPopUpTermsTitle,
-  voucherDetailApplyedClassName: styles.ordersummary_voucherDetailApplyed,
+  voucherDetailApplyedClassName: styles.ordersummary_voucherDetailApplied,
   voucherListClassName: styles.ordersummary_voucherList,
   voucherValidListClassName: styles.ordersummary_voucherValidList,
   voucherInvalidListClassName: styles.ordersummary_voucherInvalidList,
@@ -230,6 +230,7 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
         submitButtonLabel={i18n.t("orderSummary.placeOrder")}
         continueShoppingLabel={i18n.t("orderSummary.continueShopping")}
         onSaveCartError={() => toast.error(i18n.t("global.error"))}
+        onSuccessCopyCodeCoupon={() => toast.success(i18n.t("coupon.successCopyCode"))}
         onErrorMsg={() => setShowModalErrorAddToCart(!showModalErrorAddToCart)}
         onErrorMsgCoupon={(msg: string) => toast.error(msg)}
         onAddressInvalid={(e) => toast.error(e)}
