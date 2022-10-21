@@ -907,6 +907,11 @@
     background: $color_black_text;
     border-radius: 2px;
     border: 0;
+
+    &:disabled
+    {
+      background: $color_light;
+    }
   }
 
   &_voucherDetailApplied
