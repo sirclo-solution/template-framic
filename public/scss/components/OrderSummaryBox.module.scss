@@ -354,8 +354,13 @@
 
   &_voucherDetailInvalid
   {
-    opacity: .5;
-    pointer-events: none;
+    cursor: default !important;
+    
+    & > [class*="voucherDetail_"]
+    {
+      opacity: .5;
+      pointer-events: none;
+    }
   }
 
   &_voucherListItems
@@ -902,6 +907,11 @@
     background: $color_black_text;
     border-radius: 2px;
     border: 0;
+
+    &:disabled
+    {
+      background: $color_light;
+    }
   }
 
   &_voucherDetailApplied
@@ -929,6 +939,7 @@
     {
       @include flex(row, center, center);
       padding: 8px 0;
+      margin-top: 8px;
       
       @media screen and (max-width: $breakpoint_max_sm)
       {
