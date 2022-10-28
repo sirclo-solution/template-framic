@@ -26,9 +26,6 @@
   &_itemTop
   {
     position: relative;
-    margin-top: 41px;
-    margin-bottom: 42px;
-   
 
     &:hover{
       cursor: pointer;
@@ -80,7 +77,6 @@
   &_productsContainer
   {
     @include flex(row, flex-start, flex-start, true);
-    margin-bottom: 42px;
 
     & > div[class*="product_container"]
     { 
@@ -138,7 +134,7 @@
   &_productsHeader
   {
     @include flex(row, center, space-between);
-    margin-bottom: 24px;
+    margin: 24px 0 12px;
   }
 
   &_itemBottom
@@ -200,5 +196,17 @@
   &_placeholder
   {
     height: 431px;
+  }
+}
+
+.ProductCategoryImg
+{
+  width: 100%;
+  height: 150px;
+
+  @media screen and (max-width: $breakpoint_min_sm) 
+  {
+    border: none;
+    padding: 0;
   }
 }
