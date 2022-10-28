@@ -1,5 +1,9 @@
 /* library package */
-import { FC, useEffect, useState } from 'react'
+import { 
+  FC, 
+  useEffect, 
+  useState 
+} from 'react'
 import Link from 'next/link'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { getBanner, useI18n } from '@sirclo/nexus'
@@ -15,7 +19,6 @@ import ProductsComponent from 'components/ProductsComponent';
 import { GRAPHQL_URI } from 'lib/Constants'
 import { useBrand } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
-
 
 import styles from 'public/scss/pages/Home.module.scss'
 
@@ -46,12 +49,29 @@ const Home: FC<any> = ({
           dataBanners={dataBanners?.data}
           isReady={isReady}
         />
-        <WidgetHomepageTop />
+        <ProductsComponent 
+          type='category'
+          lng={lng}
+          i18n={i18n}
+        />
         <ProductsComponent
           lng={lng}
           i18n={i18n}
           type="widget"
           tagName="featured"
+          itemPerPage={4}
+        />
+        <ProductsComponent 
+          lng={lng}
+          i18n={i18n}
+          type="highlight 1"
+          itemPerPage={4}
+        />
+        <WidgetHomepageTop />
+        <ProductsComponent 
+          lng={lng}
+          i18n={i18n}
+          type="highlight 2"
           itemPerPage={4}
         />
         <WidgetHomepageBottom />
