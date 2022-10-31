@@ -1,7 +1,7 @@
 /* library package */
 import { FC } from 'react'
 import { ProductHighlights } from '@sirclo/nexus'
-import { LazyLoadComponent } from "react-lazy-load-image-component";
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 /* library template */
 import useWindowSize from 'lib/useWindowSize'
 /* component */
@@ -12,8 +12,8 @@ import styles from 'public/scss/components/WidgetHomePage.module.scss'
 export type ProductHighlightType = {
   classPlaceholder: any
   classProducts: any
-  display?: "Display1" | "Display2";
-  isLastSection?: boolean;
+  display?: "Display1" | "Display2"
+  isLastSection?: boolean
   itemPerPage: number
 }
 

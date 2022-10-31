@@ -1,7 +1,7 @@
 /* library package */
 import { FC } from 'react'
 import { ProductCategory } from '@sirclo/nexus'
-import { LazyLoadComponent } from "react-lazy-load-image-component";
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 /* library template */
 import useWindowSize from 'lib/useWindowSize'
 /* component */
