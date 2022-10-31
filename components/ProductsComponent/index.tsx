@@ -2,7 +2,7 @@
 import { FC, useState } from 'react'
 /* component */
 import ProductsList from './ProductsList'
-import ProductsWidget from './ProductsWidget'
+// import ProductsWidget from './ProductsWidget'
 import ProductHighlight from './ProductHighlight'
 import ProductsCategory from './ProductsCategory'
 import ProductRecomendation from './ProductRecomendation'
@@ -10,7 +10,7 @@ import ProductRecomendation from './ProductRecomendation'
 import styles from 'public/scss/components/Product.module.scss'
 
 export type ProductsComponentType = {
-  type: "list" | "widget" | "recomendation" | "category" | "highlight 1" | "highlight 2"
+  type: "list" | "recomendation" | "category" | "highlight 1" | "highlight 2"
   i18n: any
   lng: string
   slug?: string | string[]
@@ -61,14 +61,22 @@ const classesPlaceholderProducts = {
 const ProductsComponent: FC<ProductsComponentType> = ({
   type = "list",
   i18n,
-  tagName,
+  // tagName,
   slug,
   SKUs,
   itemPerPage = 4,
   collectionSlug,
   filterProduct,
   getTotalProduct,
+<<<<<<< HEAD
   lng,
+=======
+  getTitleSectionProductHighlight,
+  isProductHighlightBySlug,
+  productHighlightListSlug,
+  getTotalProductPerPage
+  // lng,
+>>>>>>> 50dfb6f (remove products widget)
 }) => {
   const [totalProducts, setTotalProducts] = useState(null)
 
@@ -82,16 +90,6 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       classPlaceholder={classesPlaceholderProducts}
       collectionSlug={collectionSlug}
       filterProduct={filterProduct}
-    />
-  ) : type === "widget" ? (
-    <ProductsWidget
-      i18n={i18n}
-      lng={lng}
-      tagName={tagName}
-      itemPerPage={itemPerPage}
-      classPlaceholder={classesPlaceholderProducts}
-      classProducts={classesProducts}
-      setTotalProducts={setTotalProducts}
     />
   ) : type === "recomendation" ? (
     <ProductRecomendation
