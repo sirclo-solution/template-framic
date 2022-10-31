@@ -268,9 +268,7 @@
   &_itemsImagesName 
   {
     @include typographyBuilder(600, 24, 24);
-    position: absolute;
-    top: 16px;
-    left: 16px;
+    @include absolute(16px, auto, auto, 16px);
     text-transform: capitalize;
     color: $color_white;
     text-align: left;
