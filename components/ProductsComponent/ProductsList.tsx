@@ -16,6 +16,7 @@ type ProductsListType = {
   collectionSlug: string
   filterProduct: any
   getTotalProduct: (data: any) => void
+  isProductHighlight?: boolean
 }
 
 type classesProductType = {
@@ -48,13 +49,20 @@ const ProductsList: FC<ProductsListType> = ({
   classPlaceholder,
   i18n,
   getTotalProduct,
-  filterProduct
+  filterProduct,
+  isProductHighlight
 }) => {
   const size = useWindowSize()
   const categories: string = useQuery("categories")
   const tagname: string = useQuery('tagname')
 
   const [pageInfo, setPageInfo] = useState({
+    pageNumber: 0,
+    itemPerPage: 6,
+    totalItems: 0,
+  })
+
+  const [productHighlightPageInfo, setProductHighlightPageInfo] = useState({
     pageNumber: 0,
     itemPerPage: 6,
     totalItems: 0,
@@ -99,6 +107,7 @@ const ProductsList: FC<ProductsListType> = ({
           key={i}
           pageNumber={i}
           itemPerPage={6}
+          isProductSectionHighlight={isProductHighlight}
           getPageInfo={(data: any) => handlePageInfo(data)}
           collectionSlug={categories}
           tagName={tagname || ""}

@@ -154,6 +154,30 @@
     }
   }
 
+  &_productHighlightlist
+  {
+    & > div[class*="product_container"]
+    {
+      @include fixedWidth(calc((100% - 72px) / 4));
+
+      &:nth-child(3n+0) 
+      {
+        margin-right: 24px;
+      }
+
+      &:nth-child(4n+0) 
+      {
+        margin-right: 0;
+      }
+      
+    }
+  }
+
+  &_productHighlightListWrapper
+  {
+    @include fixedWidth(100%);
+  }
+
   &_backTopContainer
   {
     position: absolute;
