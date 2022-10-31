@@ -58,13 +58,13 @@ const Home: FC<any> = ({
           lng={lng}
           i18n={i18n}
         />
-        <ProductsComponent
+        {/* <ProductsComponent
           lng={lng}
           i18n={i18n}
           type="widget"
           tagName="featured"
           itemPerPage={4}
-        />
+        /> */}
         <ProductsComponent 
           lng={lng}
           i18n={i18n}

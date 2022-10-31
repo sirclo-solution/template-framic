@@ -2,7 +2,7 @@
 import { FC, useState } from 'react'
 /* component */
 import ProductsList from './ProductsList'
-import ProductsWidget from './ProductsWidget'
+// import ProductsWidget from './ProductsWidget'
 import ProductHighlight from './ProductHighlight'
 import ProductsCategory from './ProductsCategory'
 import ProductRecomendation from './ProductRecomendation'
@@ -10,7 +10,7 @@ import ProductRecomendation from './ProductRecomendation'
 import styles from 'public/scss/components/Product.module.scss'
 
 export type ProductsComponentType = {
-  type: "list" | "widget" | "recomendation" | "category" | "highlight 1" | "highlight 2"
+  type: "list" | "recomendation" | "category" | "highlight 1" | "highlight 2"
   i18n: any
   lng: string
   slug?: string | string[]
@@ -65,7 +65,7 @@ const classesPlaceholderProducts = {
 const ProductsComponent: FC<ProductsComponentType> = ({
   type = "list",
   i18n,
-  tagName,
+  // tagName,
   slug,
   SKUs,
   itemPerPage = 4,
@@ -75,8 +75,8 @@ const ProductsComponent: FC<ProductsComponentType> = ({
   getTitleSectionProductHighlight,
   isProductHighlightBySlug,
   productHighlightListSlug,
-  getTotalProductPerPage,
-  lng
+  getTotalProductPerPage
+  // lng,
 }) => {
   const [totalProducts, setTotalProducts] = useState(null)
 
@@ -94,16 +94,6 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       productHighlightSlug={productHighlightListSlug}
       getTitleProductHighlight={getTitleSectionProductHighlight}
       getTotalProductPerPage={getTotalProductPerPage}
-    />
-  ) : type === "widget" ? (
-    <ProductsWidget
-      i18n={i18n}
-      lng={lng}
-      tagName={tagName}
-      itemPerPage={itemPerPage}
-      classPlaceholder={classesPlaceholderProducts}
-      classProducts={classesProducts}
-      setTotalProducts={setTotalProducts}
     />
   ) : type === "recomendation" ? (
     <ProductRecomendation
