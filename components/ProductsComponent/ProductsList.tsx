@@ -16,7 +16,10 @@ type ProductsListType = {
   collectionSlug: string
   filterProduct: any
   getTotalProduct: (data: any) => void
+  getTotalProductPerPage?: (data: any) => void
   isProductHighlight?: boolean
+  productHighlightSlug?: string
+  getTitleProductHighlight?: (value: string) => void
 }
 
 type classesProductType = {
@@ -49,24 +52,25 @@ const ProductsList: FC<ProductsListType> = ({
   classPlaceholder,
   i18n,
   getTotalProduct,
+  getTotalProductPerPage,
   filterProduct,
-  isProductHighlight
+  isProductHighlight,
+  productHighlightSlug,
+  getTitleProductHighlight,
 }) => {
   const size = useWindowSize()
   const categories: string = useQuery("categories")
   const tagname: string = useQuery('tagname')
 
+  
   const [pageInfo, setPageInfo] = useState({
     pageNumber: 0,
-    itemPerPage: 6,
+    itemPerPage: isProductHighlight ? 8 : 6,
     totalItems: 0,
+    totalItemPerPage: 0
   })
 
-  const [productHighlightPageInfo, setProductHighlightPageInfo] = useState({
-    pageNumber: 0,
-    itemPerPage: 6,
-    totalItems: 0,
-  })
+  const [currTotalItems, setCurrTotalItems] = useState<number>(0)
   
   const totalPage = Math.ceil(pageInfo.totalItems / pageInfo.itemPerPage)
   const { currPage, setCurrPage } = useInfiniteScroll(pageInfo, 'products_list:last-child')
@@ -95,8 +99,15 @@ const ProductsList: FC<ProductsListType> = ({
     }
   })
 
+  useEffect(() => {
+    if(isProductHighlight) {
+      getTotalProductPerPage(currTotalItems)
+    }
+  },[currTotalItems])
+
   const handlePageInfo = (data: any) => {
     setPageInfo(data)
+    setCurrTotalItems(currTotalItems + data?.totalItemPerPage)
     getTotalProduct(data?.totalItems)
   }
 
@@ -106,9 +117,11 @@ const ProductsList: FC<ProductsListType> = ({
         <Products
           key={i}
           pageNumber={i}
-          itemPerPage={6}
+          itemPerPage={isProductHighlight ? 8 : 6}
           isProductSectionHighlight={isProductHighlight}
+          getTitleProductSection={getTitleProductHighlight}
           getPageInfo={(data: any) => handlePageInfo(data)}
+          slug={productHighlightSlug}
           collectionSlug={categories}
           tagName={tagname || ""}
           filter={filterProduct}
@@ -127,7 +140,7 @@ const ProductsList: FC<ProductsListType> = ({
             <EmptyComponent title={i18n.t("product.isEmpty")} />
           }
           loadingComponent={
-            <Placeholder classes={classPlaceholder} withList listMany={6} />
+            <Placeholder classes={classPlaceholder} withList listMany={isProductHighlight ? 8 : 6} />
           }
         />
       ))}

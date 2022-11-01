@@ -20,7 +20,10 @@ export type ProductsComponentType = {
   itemPerPage?: number
   filterProduct?: any
   getTotalProduct?: any
+  getTotalProductPerPage?: any
   isProductHighlightBySlug?: boolean
+  productHighlightListSlug?: string
+  getTitleSectionProductHighlight?: (value: string) => void;
 }
 
 const classesProducts = {
@@ -69,7 +72,10 @@ const ProductsComponent: FC<ProductsComponentType> = ({
   collectionSlug,
   filterProduct,
   getTotalProduct,
+  getTitleSectionProductHighlight,
   isProductHighlightBySlug,
+  productHighlightListSlug,
+  getTotalProductPerPage,
   lng
 }) => {
   const [totalProducts, setTotalProducts] = useState(null)
@@ -85,6 +91,9 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       collectionSlug={collectionSlug}
       filterProduct={filterProduct}
       isProductHighlight={isProductHighlightBySlug}
+      productHighlightSlug={productHighlightListSlug}
+      getTitleProductHighlight={getTitleSectionProductHighlight}
+      getTotalProductPerPage={getTotalProductPerPage}
     />
   ) : type === "widget" ? (
     <ProductsWidget
