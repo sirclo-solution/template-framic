@@ -154,28 +154,41 @@
     }
   }
 
-  &_productHighlightlist
-  {
-    & > div[class*="product_container"]
-    {
-      @include fixedWidth(calc((100% - 72px) / 4));
-
-      &:nth-child(3n+0) 
-      {
-        margin-right: 24px;
-      }
-
-      &:nth-child(4n+0) 
-      {
-        margin-right: 0;
-      }
-      
-    }
-  }
 
   &_productHighlightListWrapper
   {
     @include fixedWidth(100%);
+
+    & div[class*="product_container"]
+    {
+      margin-bottom: 24px;
+    }
+
+    & div[class*="product_placeholder"]
+    {
+      @include fixedWidth(calc((100% - 72px) / 4));
+      margin-bottom: 24px;
+
+      &:nth-child(4n) 
+      {
+        margin-right: 0;
+      }
+
+      @media screen and (max-width: $breakpoint_max_md) 
+      {
+        @include fixedWidth(calc((100% - 16px) / 2));
+        
+        &:nth-child(odd) 
+        {
+          margin-right: 16px;
+        }
+
+        &:nth-child(even) 
+        {
+          margin-right: 0;
+        }
+      }
+    }
   }
 
   &_backTopContainer

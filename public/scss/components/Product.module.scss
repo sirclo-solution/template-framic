@@ -171,7 +171,7 @@
     { 
       @include fixedWidth(calc((100% - 72px) / 4));
 
-      &:not(:last-child)
+      &:not(:nth-child(4n))
       {
         margin-right: 24px;
       }
