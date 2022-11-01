@@ -101,9 +101,6 @@ const Layout: React.FC<LayoutPropType> = ({
         />
 
         {/* default heading */}
-        {brand?.settings?.hideFromSearchEngine && (
-          <meta name="robots" content="noindex, nofollow" />
-        )}
         {brand?.googleAdsWebsiteMetaToken &&
           <meta name="google-site-verification" content={getToken()} />
         }
