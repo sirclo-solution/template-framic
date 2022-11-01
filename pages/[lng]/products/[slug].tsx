@@ -38,6 +38,7 @@ const ProductHighlightPage: FC<any> = ({
       lngDict={lngDict}
       brand={brand}
       setSEO={{ title: titleSectionProductHighlight }}
+      layoutClassName={styles.products_productHighlightContainer}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.products_container}>
