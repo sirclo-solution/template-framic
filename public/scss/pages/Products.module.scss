@@ -154,6 +154,21 @@
     }
   }
 
+  &_productHighlightContainer
+  {
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      & ol
+      {
+        margin-bottom: 10px;
+      }
+
+      & div[class*="products_container"]
+      {
+        margin-top: 0;
+      }
+    }
+  }
 
   &_productHighlightListWrapper
   {
@@ -187,6 +202,19 @@
         {
           margin-right: 0;
         }
+      }
+    }
+
+    @media screen and (max-width: $breakpoint_max_md) 
+    {
+      & div[class*="products_listHeaderContainer"]
+      {
+          margin-bottom: 12px;
+      }
+
+      & div[class*="products_listAdjustContainer"]
+      {
+          margin-bottom: 22px;
       }
     }
   }
