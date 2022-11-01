@@ -22,7 +22,7 @@ const ProductHighlightPage: FC<any> = ({
   const [totalProductPerPage, setTotalProductPerPage] = useState<string>('0')
 
   const [titleSectionProductHighlight, setTitleSectionProductHighlight] =
-    useState<string>("");
+    useState<string>("")
 
   const linksBreadcrumb = [`${i18n.t("header.home")}`, titleSectionProductHighlight]
 
