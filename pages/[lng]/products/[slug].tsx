@@ -24,8 +24,8 @@ const ProductHighlightPage: FC<any> = ({
   const [titleSectionProductHighlight, setTitleSectionProductHighlight] =
     useState<string>("")
 
-  const linksBreadcrumb = [`${i18n.t("header.home")}`, titleSectionProductHighlight]
-
+  const linksBreadcrumb = [i18n.t("header.home"), titleSectionProductHighlight]
+  
   const generateTotalProductsPerPage = (total: string = '0') => {
     const label = i18n.t('product.showingProduct')
     return label.replace('{TOTAL}', total)
