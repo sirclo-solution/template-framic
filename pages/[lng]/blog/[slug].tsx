@@ -1,7 +1,14 @@
 /* library package */
 import { FC, useState } from 'react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { BlogSingle, BlogCategories, useI18n, BlogRecent, getBlogHeaderImage } from '@sirclo/nexus'
+import {
+  BlogSingle,
+  BlogCategories,
+  useI18n,
+  BlogRecent,
+  getBlogHeaderImage,
+  useAuthToken,
+} from '@sirclo/nexus';
 import Link from 'next/link';
 /* library template */
 import { useBrand } from 'lib/useBrand'
@@ -138,9 +145,13 @@ const BlogSlug: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({
   params,
+  res,
   req,
 }) => {
-  const brand = await useBrand(req);
+  const [brand, ] = await Promise.all([
+    useBrand(req),
+    useAuthToken({ req, res, env: process.env }),
+  ]);
   const { slug } = params;
   const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`;
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';

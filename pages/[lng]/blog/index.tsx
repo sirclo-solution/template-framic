@@ -7,7 +7,8 @@ import {
   Blogs,
   BlogCategories,
   getBlogHeaderImage,
-  isBlogAllowed
+  isBlogAllowed,
+  useAuthToken,
 } from '@sirclo/nexus'
 /* library template */
 import useWindowSize from 'lib/useWindowSize'
@@ -140,8 +141,11 @@ const Blog: FC<any> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
-  const brand = await useBrand(req);
+export const getServerSideProps: GetServerSideProps = async ({ params, req, res }) => {
+  const [brand, ] = await Promise.all([
+    useBrand(req),
+    useAuthToken({ req, res, env: process.env }),
+  ]);
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
   const headerImage = await getBlogHeaderImage(GRAPHQL_URI(req));

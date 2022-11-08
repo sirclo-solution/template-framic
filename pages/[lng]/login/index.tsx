@@ -3,7 +3,7 @@ import { FC, useRef, useEffect } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
-import { Login, useI18n } from '@sirclo/nexus'
+import { Login, useI18n, useAuthToken } from '@sirclo/nexus'
 import ReCAPTCHA from 'react-google-recaptcha'
 /* library template */
 import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
@@ -126,7 +126,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const brand = await useBrand(req)
+  const [brand, ] = await Promise.all([
+    useBrand(req),
+    useAuthToken({ req, res, env: process.env }),
+  ]);
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 

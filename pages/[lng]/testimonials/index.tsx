@@ -10,6 +10,7 @@ import {
   isTestimonialAllowed,
   isTestimonialFormAllowed,
   TestimonialForm,
+  useAuthToken,
 } from '@sirclo/nexus'
 import { useBrand } from 'lib/useBrand'
 import ReCAPTCHA from 'react-google-recaptcha'
@@ -189,9 +190,13 @@ const TestimonialsPage: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  res,
   params,
 }) => {
-  const brand = await useBrand(req)
+  const [brand, ] = await Promise.all([
+    useBrand(req),
+    useAuthToken({ req, res, env: process.env }),
+  ]);
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 

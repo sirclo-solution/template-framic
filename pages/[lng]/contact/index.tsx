@@ -1,7 +1,13 @@
 /* library package */
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { useI18n, Contact, Widget, isEnquiryAllowed } from '@sirclo/nexus'
+import {
+  useI18n,
+  Contact,
+  Widget,
+  isEnquiryAllowed,
+  useAuthToken,
+} from '@sirclo/nexus';
 /* library template */
 import { useBrand } from 'lib/useBrand'
 import { toast } from 'react-toastify'
@@ -91,9 +97,13 @@ const ContactPage: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  res,
   params,
 }) => {
-  const brand = await useBrand(req);
+  const [brand, ] = await Promise.all([
+    useBrand(req),
+    useAuthToken({ req, res, env: process.env }),
+  ]);
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
 

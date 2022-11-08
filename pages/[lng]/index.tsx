@@ -6,7 +6,7 @@ import {
 } from 'react'
 import Link from 'next/link'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { getBanner, useI18n } from '@sirclo/nexus'
+import { getBanner, useI18n, useAuthToken } from '@sirclo/nexus'
 import { ChevronRight } from 'react-feather';
 /* component */
 import Layout from 'components/Layout/Layout'
@@ -104,7 +104,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
 }: any) => {
 
-  const brand = await useBrand(req);
+  const [brand, ] = await Promise.all([
+    useBrand(req),
+    useAuthToken({ req, res, env: process.env }),
+  ]);
   const dataBanners = await getBanner(GRAPHQL_URI(req));
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
@@ -122,7 +125,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       lng: defaultLanguage,
       lngDict,
       brand: brand || '',
-      dataBanners,
+      dataBanners
     },
   };
 };
