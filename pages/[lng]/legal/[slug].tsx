@@ -5,7 +5,7 @@ import {
 	Legal,
 	LegalCategories,
 	useI18n,
-	useAuthToken,
+	useAuthToken
 } from "@sirclo/nexus";
 import { useBrand } from "lib/useBrand";
 import Layout from "components/Layout/Layout";
@@ -86,12 +86,12 @@ const LegalPage: FC<any> = ({
 export const getServerSideProps: GetServerSideProps = async ({
 	req,
 	res,
-	params,
+	params
 }) => {
-	const [brand, ] = await Promise.all([
+	const [brand] = await Promise.all([
 		useBrand(req),
-		useAuthToken({ req, res, env: process.env }),
-	]);
+		useAuthToken({ req, res, env: process.env })
+	])
 	const defaultLanguage =
 		brand?.settings?.defaultLanguage || params.lng || "id";
 	const { default: lngDict = {} } = await import(

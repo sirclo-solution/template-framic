@@ -2,7 +2,11 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
-import { useI18n, usePaymentLink, useAuthToken } from '@sirclo/nexus'
+import { 
+  useI18n, 
+  usePaymentLink, 
+  useAuthToken
+} from '@sirclo/nexus'
 import { AlertCircle, XCircle } from 'react-feather'
 /* library template */
 import { useBrand } from 'lib/useBrand'
@@ -112,12 +116,12 @@ const PaymentStatus: FC<any> = ({
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   res,
-  params,
+  params
 }) => {
-  const [brand, ] = await Promise.all([
+  const [brand] = await Promise.all([
     useBrand(req),
-    useAuthToken({ req, res, env: process.env }),
-  ]);
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const [orderID, status] = params?.orderID as string[]

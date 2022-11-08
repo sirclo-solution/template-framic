@@ -3,7 +3,7 @@ import { FC } from 'react'
 import {
   useI18n,
   getProductDetail,
-  useAuthToken,
+  useAuthToken
 } from '@sirclo/nexus'
 /* library template */
 import { useBrand } from 'lib/useBrand'
@@ -73,10 +73,10 @@ const Product: FC<ProductProps> = ({
 export async function getServerSideProps({ req, res, params }) {
   const { slug } = params
   const data = await getProductDetail(GRAPHQL_URI(req), slug)
-  const [brand, ] = await Promise.all([
+  const [brand] = await Promise.all([
     useBrand(req),
-    useAuthToken({ req, res, env: process.env }),
-  ]);
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const urlSite = `https://${req.headers.host}/${params.lng}/product/${slug}`

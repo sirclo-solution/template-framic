@@ -9,7 +9,7 @@ import {
   BanksAccount as BanksAccountList,
   useI18n,
   CheckPaymentOrder,
-  useAuthToken,
+  useAuthToken
 } from '@sirclo/nexus'
 /* library template */
 import { useBrand } from 'lib/useBrand'
@@ -188,12 +188,12 @@ const PaymentConfirmationPage: FC<any> = ({
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   res,
-  params,
+  params
 }) => {
-  const [brand, ] = await Promise.all([
+  const [brand] = await Promise.all([
     useBrand(req),
-    useAuthToken({ req, res, env: process.env }),
-  ]);
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 

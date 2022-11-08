@@ -4,7 +4,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   ShipmentTracker,
   useI18n,
-  useAuthToken,
+  useAuthToken
 } from '@sirclo/nexus'
 /* library template */
 import { useBrand } from 'lib/useBrand'
@@ -73,10 +73,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const [brand, ] = await Promise.all([
+  const [brand] = await Promise.all([
     useBrand(req),
-    useAuthToken({ req, res, env: process.env }),
-  ]);
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 

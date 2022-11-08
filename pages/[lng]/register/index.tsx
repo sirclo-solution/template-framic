@@ -13,7 +13,11 @@ import {
   Calendar,
   CheckCircle
 } from 'react-feather'
-import { Register, useI18n, useAuthToken } from '@sirclo/nexus'
+import { 
+  Register, 
+  useI18n, 
+  useAuthToken
+} from '@sirclo/nexus'
 /* library template */
 import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
 import { parseCookies } from 'lib/parseCookies'
@@ -155,16 +159,16 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const [brand, ] = await Promise.all([
+  const [brand, hasGoogleAuth, hasFacebookAuth, hasOtp] = await Promise.all([
     useBrand(req),
-    useAuthToken({ req, res, env: process.env }),
-  ]);
+    useGoogleAuth(req),
+    useFacebookAuth(req),
+    useWhatsAppOTPSetting,
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const cookies = parseCookies(req)
-  const hasGoogleAuth = await useGoogleAuth(req)
-  const hasFacebookAuth = await useFacebookAuth(req)
-  const hasOtp = await useWhatsAppOTPSetting(req)
   redirectIfAuthenticated(res, cookies, 'account', defaultLanguage)
 
   return {

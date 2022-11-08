@@ -1,7 +1,11 @@
 /* library package */
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { useI18n, useCart, useAuthToken } from '@sirclo/nexus'
+import { 
+  useI18n, 
+  useCart, 
+  useAuthToken 
+} from '@sirclo/nexus'
 /* library template */
 import { useBrand } from 'lib/useBrand'
 /* components */
@@ -71,10 +75,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const [brand, ] = await Promise.all([
+  const [brand] = await Promise.all([
     useBrand(req),
-    useAuthToken({ req, res, env: process.env }),
-  ]);
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
 

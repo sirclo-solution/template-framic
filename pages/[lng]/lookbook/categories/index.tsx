@@ -7,7 +7,7 @@ import {
   Lookbook,
   isLookbookAllowed,
   useI18n,
-  useAuthToken,
+  useAuthToken
 } from '@sirclo/nexus';
 import { useBrand } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
@@ -111,12 +111,12 @@ const LookbookCategory: FC<any> = ({
 export const getServerSideProps: GetServerSideProps = async ({
   params,
   res,
-  req,
+  req
 }) => {
-  const [brand, ] = await Promise.all([
+  const [brand] = await Promise.all([
     useBrand(req),
-    useAuthToken({ req, res, env: process.env }),
-  ]);
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 

@@ -7,7 +7,7 @@ import {
   useI18n,
   BlogRecent,
   getBlogHeaderImage,
-  useAuthToken,
+  useAuthToken
 } from '@sirclo/nexus';
 import Link from 'next/link';
 /* library template */
@@ -146,17 +146,17 @@ const BlogSlug: FC<any> = ({
 export const getServerSideProps: GetServerSideProps = async ({
   params,
   res,
-  req,
+  req
 }) => {
-  const [brand, ] = await Promise.all([
+  const [brand, headerImage] = await Promise.all([
     useBrand(req),
-    useAuthToken({ req, res, env: process.env }),
-  ]);
+    getBlogHeaderImage(GRAPHQL_URI(req)),
+    useAuthToken({ req, res, env: process.env })
+  ])
   const { slug } = params;
   const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`;
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
-  const headerImage = await getBlogHeaderImage(GRAPHQL_URI(req));
 
   return {
     props: {
