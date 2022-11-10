@@ -8,8 +8,8 @@ import {
   BlogRecent,
   getBlogHeaderImage,
   useAuthToken
-} from '@sirclo/nexus';
-import Link from 'next/link';
+} from '@sirclo/nexus'
+import Link from 'next/link'
 /* library template */
 import { useBrand } from 'lib/useBrand'
 import { GRAPHQL_URI } from 'lib/Constants';
