@@ -2,7 +2,6 @@
 import { FC, useState } from 'react'
 /* component */
 import ProductsList from './ProductsList'
-// import ProductsWidget from './ProductsWidget'
 import ProductHighlight from './ProductHighlight'
 import ProductsCategory from './ProductsCategory'
 import ProductRecomendation from './ProductRecomendation'
@@ -65,7 +64,6 @@ const classesPlaceholderProducts = {
 const ProductsComponent: FC<ProductsComponentType> = ({
   type = "list",
   i18n,
-  // tagName,
   slug,
   SKUs,
   itemPerPage = 4,
