@@ -7,7 +7,7 @@ import {
   Widget,
   isEnquiryAllowed,
   useAuthToken
-} from '@sirclo/nexus';
+} from '@sirclo/nexus'
 /* library template */
 import { useBrand } from 'lib/useBrand'
 import { toast } from 'react-toastify'
