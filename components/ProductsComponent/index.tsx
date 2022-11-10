@@ -75,8 +75,11 @@ const ProductsComponent: FC<ProductsComponentType> = ({
   isProductHighlightBySlug,
   productHighlightListSlug,
   getTotalProductPerPage
+<<<<<<< HEAD
   // lng,
 >>>>>>> 50dfb6f (remove products widget)
+=======
+>>>>>>> 297603c (refactor and bump nexus to 2.17.4 to fix header element)
 }) => {
   const [totalProducts, setTotalProducts] = useState(null)
 
