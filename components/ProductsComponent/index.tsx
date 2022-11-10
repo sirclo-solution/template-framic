@@ -76,7 +76,6 @@ const ProductsComponent: FC<ProductsComponentType> = ({
   isProductHighlightBySlug,
   productHighlightListSlug,
   getTotalProductPerPage
-  // lng,
 }) => {
   const [totalProducts, setTotalProducts] = useState(null)
 
