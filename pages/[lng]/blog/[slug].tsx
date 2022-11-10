@@ -153,10 +153,10 @@ export const getServerSideProps: GetServerSideProps = async ({
     getBlogHeaderImage(GRAPHQL_URI(req)),
     useAuthToken({ req, res, env: process.env })
   ])
-  const { slug } = params;
-  const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`;
-  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
-  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
+  const { slug } = params
+  const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 
   return {
     props: {
