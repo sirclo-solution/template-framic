@@ -8,7 +8,7 @@ import {
   LookbookSingle,
   useI18n,
   useAuthToken
-} from '@sirclo/nexus';
+} from '@sirclo/nexus'
 import { useBrand } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
 /* component */
