@@ -1,5 +1,5 @@
 /* library package */
-import { FC, useState } from 'react';
+import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   BlogSingle,
