@@ -1,8 +1,15 @@
 /* library package */
-import { FC, useState } from 'react';
+import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { BlogSingle, BlogCategories, useI18n, BlogRecent, getBlogHeaderImage } from '@sirclo/nexus'
-import Link from 'next/link';
+import {
+  BlogSingle,
+  BlogCategories,
+  useI18n,
+  BlogRecent,
+  getBlogHeaderImage,
+  useAuthToken
+} from '@sirclo/nexus'
+import Link from 'next/link'
 /* library template */
 import { useBrand } from 'lib/useBrand'
 import { GRAPHQL_URI } from 'lib/Constants';
@@ -138,14 +145,18 @@ const BlogSlug: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({
   params,
-  req,
+  res,
+  req
 }) => {
-  const brand = await useBrand(req);
-  const { slug } = params;
-  const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`;
-  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
-  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
-  const headerImage = await getBlogHeaderImage(GRAPHQL_URI(req));
+  const [brand, headerImage] = await Promise.all([
+    useBrand(req),
+    getBlogHeaderImage(GRAPHQL_URI(req)),
+    useAuthToken({ req, res, env: process.env })
+  ])
+  const { slug } = params
+  const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 
   return {
     props: {
