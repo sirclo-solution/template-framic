@@ -2,7 +2,11 @@
 import { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { getBanner, useI18n } from '@sirclo/nexus'
+import { 
+  getBanner, 
+  useI18n, 
+  useAuthToken
+} from '@sirclo/nexus'
 import { ChevronRight } from 'react-feather';
 /* component */
 import Layout from 'components/Layout/Layout'
@@ -81,11 +85,14 @@ const Home: FC<any> = ({
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   res,
-  params,
+  params
 }: any) => {
 
-  const brand = await useBrand(req);
-  const dataBanners = await getBanner(GRAPHQL_URI(req));
+  const [brand, dataBanners] = await Promise.all([
+    useBrand(req),
+    getBanner(GRAPHQL_URI(req)),
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico'];
@@ -102,7 +109,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       lng: defaultLanguage,
       lngDict,
       brand: brand || '',
-      dataBanners,
+      dataBanners
     },
   };
 };
