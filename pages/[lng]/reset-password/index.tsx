@@ -1,7 +1,11 @@
 /* library package */
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { SetNewPassword, useI18n } from '@sirclo/nexus'
+import { 
+  SetNewPassword, 
+  useI18n, 
+  useAuthToken 
+} from '@sirclo/nexus'
 import { toast } from 'react-toastify'
 import { CheckCircle } from 'react-feather'
 /* library template */
@@ -65,8 +69,15 @@ const ResetPasswordPage: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  const brand = await useBrand(req)
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  res,
+  params
+}) => {
+  const [brand] = await Promise.all([
+    useBrand(req),
+    useAuthToken({ req, res, env: process.env }),
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 
