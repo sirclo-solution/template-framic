@@ -173,37 +173,39 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
 
     waitForElm('[class*="size-guide"]').then(() => {
       const sizeGuide = document.querySelector('[class*="size-guide"]')
-      sizeGuide.className = stylesSizeGuide.sizeguide_sizeList
-      sizeGuide.setAttribute("id", "size-list")
+      if(sizeGuide){
+        sizeGuide.className = stylesSizeGuide.sizeguide_sizeList
+        sizeGuide.setAttribute("id", "size-list")
 
-      const divTabGuide = document.getElementById("tab-guide")
-      if (!divTabGuide) {
-        const tabGuide = document.createElement("div")
-        tabGuide.setAttribute("id", "tab-guide")
-        tabGuide.className = stylesSizeGuide.sizeguide_tabSizeGuide
-        sizeGuide.insertAdjacentElement("beforebegin", tabGuide)
-      }
-
-      const sizeList = Array.from(sizeGuide.children)
-      let sizeArray = []
-      sizeList.map((item) => {
-        let sizeType = item.dataset.type
-        if (sizeArray.indexOf(sizeType) === -1 && sizeType !== undefined) {
-          sizeArray.push(sizeType)
-          const button = document.createElement("button")
-          button.className = stylesSizeGuide.sizeguide_tabToggle
-          button.innerText = sizeType
-          button.dataset.toggle = sizeType
-          button.onclick = function () {
-            tabToggle(this, sizeType)
-          }
-          document.getElementById("tab-guide").appendChild(button)
+        const divTabGuide = document.getElementById("tab-guide")
+        if (!divTabGuide) {
+          const tabGuide = document.createElement("div")
+          tabGuide.setAttribute("id", "tab-guide")
+          tabGuide.className = stylesSizeGuide.sizeguide_tabSizeGuide
+          sizeGuide.insertAdjacentElement("beforebegin", tabGuide)
         }
-      })
 
-      setTimeout(() => {
-        document.querySelector("#tab-guide button").click()
-      }, 1000)
+        const sizeList = Array.from(sizeGuide.children)
+        let sizeArray = []
+        sizeList.map((item) => {
+          let sizeType = item.dataset.type
+          if (sizeArray.indexOf(sizeType) === -1 && sizeType !== undefined) {
+            sizeArray.push(sizeType)
+            const button = document.createElement("button")
+            button.className = stylesSizeGuide.sizeguide_tabToggle
+            button.innerText = sizeType
+            button.dataset.toggle = sizeType
+            button.onclick = function () {
+              tabToggle(this, sizeType)
+            }
+            document.getElementById("tab-guide").appendChild(button)
+          }
+        })
+
+        setTimeout(() => {
+          document.querySelector("#tab-guide button").click()
+        }, 1000)
+      }
 
       const tabToggle = (button: string, size: string) => {
         let activeToggle = document.querySelector("#tab-guide button.active")
