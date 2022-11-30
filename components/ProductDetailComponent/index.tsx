@@ -188,7 +188,7 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
         const sizeList = Array.from(sizeGuide.children)
         let sizeArray = []
         sizeList.map((item) => {
-          let sizeType = item.dataset.type
+          let sizeType = (item as HTMLElement).dataset.type
           if (sizeArray.indexOf(sizeType) === -1 && sizeType !== undefined) {
             sizeArray.push(sizeType)
             const button = document.createElement("button")
@@ -196,23 +196,25 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
             button.innerText = sizeType
             button.dataset.toggle = sizeType
             button.onclick = function () {
-              tabToggle(this, sizeType)
+              tabToggle(sizeType)
             }
             document.getElementById("tab-guide").appendChild(button)
           }
         })
 
         setTimeout(() => {
-          document.querySelector("#tab-guide button").click()
+          let firstButton = document.querySelector("#tab-guide button") as HTMLElement
+          firstButton.click()
         }, 1000)
       }
 
-      const tabToggle = (button: string, size: string) => {
+      const tabToggle = (size: string) => {
+        let thisButton = document.querySelector("#tab-guide button[data-toggle='" + size + "']")
         let activeToggle = document.querySelector("#tab-guide button.active")
         if (activeToggle !== null) {
           activeToggle.classList.remove("active")
         }
-        button.classList.add("active")
+        thisButton.classList.add("active")
 
         let displayList = document.querySelectorAll("#size-list li.show")
         if (displayList.length > 0) {
