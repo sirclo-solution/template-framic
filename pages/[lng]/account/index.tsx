@@ -4,6 +4,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   Account,
   useI18n,
+  useAuthToken
 } from '@sirclo/nexus'
 import { toast } from 'react-toastify'
 import {
@@ -270,7 +271,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const brand = await useBrand(req)
+  const [brand] = await Promise.all([
+    useBrand(req),
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
 
   const { default: lngDict = {} } = await import(

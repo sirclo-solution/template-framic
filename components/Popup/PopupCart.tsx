@@ -14,7 +14,8 @@ import {
   X,
   Trash,
   ArrowLeftCircle,
-  ArrowRightCircle
+  ArrowRightCircle,
+  Copy
 } from "react-feather";
 import { toast } from "react-toastify";
 import styles from "public/scss/components/Popup.module.scss";
@@ -82,7 +83,12 @@ const classesOrderSummary = {
   voucherButtonAppliedClassName: `${styles.summarycart_headerFeatures} order-2`,
   voucherAppliedIconClassName: `${styles.sumamrycart_headerFeatures__icon} mr-2`,
   voucherAppliedTextClassName: styles.summarycart_headerFeatures__label,
-  voucherButtonRemoveClassName: styles.summarycart_voucherRemove
+  voucherButtonRemoveClassName: styles.summarycart_voucherRemove,
+  voucherTitleInputClassName: styles.summarycart_popupVoucherTitleInput,
+  voucherSubTitleInputClassName: styles.summarycart_popupVoucherSubTitleInput,
+  voucherInputContainerClassName: styles.summarycart_popupVoucherInputContainer,
+  voucherShowMoreContainerClassName: styles.summarycart_popupVoucherShowMoreContainer,
+  voucherShowMoreButtonClassName: styles.summarycart_popupVoucherShowMoreButton
 };
 
 const classesCrosselProducts = {
@@ -282,6 +288,7 @@ const PopupCart: FC<PopupPropsType> = ({
                 voucher: <img src="/images/mdi_ticket-percent-black.svg" alt="icon" />,
                 points: <img src="/images/mdi_star-circle-black.svg" alt="icon" />,
                 close: <X />,
+                copyIcon: <Copy />,
                 voucherRemoved: <X />,
                 voucherApplied: <img src="/images/mdi_ticket-percent-black.svg" alt="icon" />
               }}

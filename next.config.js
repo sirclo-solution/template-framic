@@ -10,7 +10,9 @@ module.exports = withPWA({
   env: {
     GRAPHQL_URI: process.env.GRAPHQL_URI ? process.env.GRAPHQL_URI : "",
     NEXT_PUBLIC_SITEKEY_RECAPTCHA: process.env.NEXT_PUBLIC_SITEKEY_RECAPTCHA ? process.env.NEXT_PUBLIC_SITEKEY_RECAPTCHA : '',
-    IS_PROD: process.env.IS_PROD ? process.env.IS_PROD : ''
+    IS_PROD: process.env.IS_PROD ? process.env.IS_PROD : '',
+    CLIENT_CREDENTIAL: process.env.CLIENT_CREDENTIAL ? process.env.CLIENT_CREDENTIAL : '',
+    CREDENTIAL_API_URI: process.env.CREDENTIAL_API_URI ? process.env.CREDENTIAL_API_URI : '',
   },
   headers: {
     "X-Frame-Options": "sameorigin",

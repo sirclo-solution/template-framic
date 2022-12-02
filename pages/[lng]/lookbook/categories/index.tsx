@@ -3,7 +3,12 @@ import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Router from 'next/router'
 /* library template */
-import { Lookbook, isLookbookAllowed, useI18n } from '@sirclo/nexus'
+import {
+  Lookbook,
+  isLookbookAllowed,
+  useI18n,
+  useAuthToken
+} from '@sirclo/nexus'
 import { useBrand } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
 /* component */
@@ -105,9 +110,13 @@ const LookbookCategory: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({
   params,
-  req,
+  res,
+  req
 }) => {
-  const brand = await useBrand(req)
+  const [brand] = await Promise.all([
+    useBrand(req),
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 
