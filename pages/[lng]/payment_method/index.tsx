@@ -7,6 +7,7 @@ import {
   ListPaymentMethod,
   PrivateRoute,
   useI18n,
+  useAuthToken
 } from '@sirclo/nexus'
 /* library template */
 import { useBrand } from 'lib/useBrand'
@@ -52,6 +53,7 @@ const classesListPaymentMethod = {
   voucherContainerClassName: stylesOrderSummaryBox.ordersummary_voucherContainer,
   closeButtonClassName: stylesOrderSummaryBox.ordersummary_closeButton,
   voucherFormClassName: stylesOrderSummaryBox.ordersummary_voucherForm,
+  voucherFormContainerClassName: stylesOrderSummaryBox.ordersummary_voucherFormContainer,
   voucherInputClassName: stylesForm.form_inputLong,
   voucherSubmitButtonClassName: stylesButton.btn_primary,
   voucherListHeaderClassName: stylesOrderSummaryBox.ordersummary_voucherListHeader,
@@ -61,12 +63,12 @@ const classesListPaymentMethod = {
   voucherDetailEstimateClassName: stylesOrderSummaryBox.ordersummary_voucherDetailEstimate,
   voucherDetailDescClassName: stylesOrderSummaryBox.ordersummary_voucherDetailDesc,
   voucherDetailTitleClassName: stylesOrderSummaryBox.ordersummary_voucherDetailTitle,
-  voucherDetailCodeClassName: stylesOrderSummaryBox.ordersummary_voucherDetailCode,
+  voucherDetailCodeClassName: 'd-none',
   voucherDetailEstimateDescClassName: stylesOrderSummaryBox.ordersummary_voucherDetailEstimateDesc,
   voucherListClassName: stylesOrderSummaryBox.ordersummary_voucherList,
   voucherListHeaderIconClassName: stylesOrderSummaryBox.ordersummary_voucherListHeaderIcon,
   voucherDetailInvalidClassName: stylesOrderSummaryBox.ordersummary_voucherDetailInvalid,
-  voucherTitleClassName: stylesOrderSummaryBox.ordersummary_voucherTitle,
+  voucherTitleClassName: 'd-none',
   voucherListItemsClassName: stylesOrderSummaryBox.ordersummary_voucherListItems,
   voucherBankLogoContainerClassName: stylesOrderSummaryBox.ordersummary_voucherBankContainer,
   voucherBankLogoImageClassName: stylesOrderSummaryBox.ordersummary_voucherBankImage,
@@ -74,8 +76,34 @@ const classesListPaymentMethod = {
   voucherShipperLogoImageClassName: stylesOrderSummaryBox.ordersummary_voucherShippingImage,
   voucherButtonRemoveClassName: styles.paymentmethod_voucherButtonRemove,
   voucherAppliedTextClassName: styles.paymentmethod_voucherAppliedText,
-  pointButtonRemoveClassName: styles.paymentmethod_pointButtonRemove,
+  voucherDetailViewDetailsClassName: stylesOrderSummaryBox.ordersummary_voucherDetailViewDetails,
+  voucherDetailPopUpContainerClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpContainer,
+  voucherDetailPopUpBackgroundClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpHeader,
+  voucherDetailPopUpBodyClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpBody,
+  voucherDetailPopUpHeaderClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpHeader,
+  voucherDetailPopUpHeaderTitleClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpHeaderTitle,
+  voucherDetailPopUpCloseClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpClose,
+  voucherDetailPopUpDescContainerClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpDescContainer,
+  voucherDetailPopUpDescDateClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpDescDate,
+  voucherDetailPopUpCodeContainerClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpCodeContainer,
+  voucherDetailPopUpCodeTitleClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpCodeTitle,
+  voucherDetailPopUpCodeCopyContainerClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpCodeCopyContainer,
+  voucherDetailPopUpCodeCopyTitleClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpCodeCopyTitle,
+  voucherDetailPopUpCodeCopyButtonClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpCodeCopyButton,
+  voucherDetailPopUpUseCouponClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpUseCoupon,
+  voucherDetailPopUpTermsContainerClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpTermsContainer,
+  voucherDetailPopUpTermsItemsClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpTermsItems,
+  voucherDetailPopUpTermsTitleClassName: stylesOrderSummaryBox.ordersummary_voucherDetailPopUpTermsTitle,
+  voucherDetailApplyedClassName: stylesOrderSummaryBox.ordersummary_voucherDetailApplied,
+  voucherValidListClassName: stylesOrderSummaryBox.ordersummary_voucherValidList,
+  voucherInvalidListClassName: stylesOrderSummaryBox.ordersummary_voucherInvalidList,
+  voucherTitleInputClassName: stylesOrderSummaryBox.ordersummary_voucherTitleInput,
+  voucherSubTitleInputClassName: stylesOrderSummaryBox.ordersummary_voucherSubTitleInput,
+  voucherInputContainerClassName: stylesOrderSummaryBox.ordersummary_voucherInputContainer,
+  voucherShowMoreContainerClassName: stylesOrderSummaryBox.ordersummary_voucherShowMoreContainer,
+  voucherShowMoreButtonClassName: stylesOrderSummaryBox.ordersummary_voucherShowMoreButton,
 
+  pointButtonRemoveClassName: styles.paymentmethod_pointButtonRemove,
   pointButtonClassName: `${stylesOrderSummaryBox.ordersummary_pointsButton} ${styles.paymentmethod_pointsButton}`,
   pointsTextClassName: stylesOrderSummaryBox.ordersummary_pointsText,
   pointsContainerClassName: stylesOrderSummaryBox.ordersummary_pointsContainer,
@@ -135,7 +163,9 @@ const PaymentMethods: FC<any> = ({
             classes={classesListPaymentMethod}
             onErrorMsg={(msg: string) => toast.error(msg)}
             onErrorMsgCoupon={(msg: string) => toast.error(msg)}
+            onSuccessCopyCodeCoupon={() => toast.success(i18n.t("coupon.successCopyCode"))}
             closeButtonIcon={<span className={stylesOrderSummaryBox.ordersummary_closeIcon}></span>}
+            copyIcon={<span className={stylesOrderSummaryBox.ordersummary_copyIcon}></span>}
             pointAppliedIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIconApplied}></span>}
             pointIcon={<span className={stylesOrderSummaryBox.ordersummary_pointsIcon}></span>}
             voucherIcon={<span className={stylesOrderSummaryBox.ordersummary_voucherIcon}></span>}
@@ -164,11 +194,14 @@ const PaymentMethods: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  const brand = await useBrand(req)
+export const getServerSideProps: GetServerSideProps = async ({ req, res, params }) => {
+  const [brand, hasOtp] = await Promise.all([
+    useBrand(req),
+    useWhatsAppOTPSetting(req),
+    useAuthToken({ req, res, env: process.env })
+  ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
-  const hasOtp = await useWhatsAppOTPSetting(req);
 
   return {
     props: {
