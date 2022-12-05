@@ -259,9 +259,11 @@
     color: $color_grey;
     margin-bottom: 34px;
 
-    ul, p
+    width: 100%;
+
+    img
     {
-      margin: 0
+      max-width: 100% !important;
     }
   }
 
