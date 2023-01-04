@@ -5,6 +5,7 @@ import {
   getProductDetail,
   useAuthToken
 } from '@sirclo/nexus'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 /* library template */
 import { useBrand } from 'lib/useBrand'
 /* component */
@@ -53,12 +54,14 @@ const Product: FC<ProductProps> = ({
         lng={lng}
       />
 
-      <ProductDetailComponent
-        slug={slug}
-        lng={lng}
-        data={data}
-        urlSite={urlSite}
-      />
+      <LazyLoadComponent>
+        <ProductDetailComponent
+          slug={slug}
+          lng={lng}
+          data={data}
+          urlSite={urlSite}
+        />
+      </LazyLoadComponent>
 
       <ProductsComponent
         type="recomendation"
