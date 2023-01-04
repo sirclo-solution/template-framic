@@ -7,11 +7,11 @@ import {
 import Link from 'next/link'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
-  TemplateFeatures,
   FeaturesType,
   getBanner,
   useI18n,
-  useAuthToken
+  useAuthToken,
+  useFeatureToggle
 } from '@sirclo/nexus'
 import { ChevronRight } from 'react-feather';
 /* component */
@@ -35,7 +35,8 @@ const Home: FC<any> = ({
   dataBanners,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n();
-  const size = useWindowSize()
+  const size = useWindowSize();
+  const isProductHighlightEnabled = useFeatureToggle(FeaturesType.PRODUCT_HIGHLIGHT);
   const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
@@ -55,23 +56,9 @@ const Home: FC<any> = ({
           dataBanners={dataBanners?.data}
           isReady={isReady}
         />
-        <TemplateFeatures
-          id={FeaturesType.PRODUCT_HIGHLIGHT}
-          defaultChildren={
-            <>
-              <WidgetHomepageTop />
-              <ProductsComponent
-                lng={lng}
-                i18n={i18n}
-                type="widget"
-                tagName="featured"
-                itemPerPage={4}
-              />
-              <WidgetHomepageBottom />
-            </>
-          }
-        >
-          <ProductsComponent
+        {isProductHighlightEnabled ?
+        <>
+        <ProductsComponent
             type="category"
             lng={lng}
             i18n={i18n}
@@ -90,7 +77,20 @@ const Home: FC<any> = ({
             itemPerPage={4}
           />
           <WidgetHomepageBottom />
-        </TemplateFeatures>
+          </>
+          : 
+            <>
+              <WidgetHomepageTop />
+              <ProductsComponent
+                lng={lng}
+                i18n={i18n}
+                type="widget"
+                tagName="featured"
+                itemPerPage={4}
+              />
+              <WidgetHomepageBottom />
+            </>
+          }
         <Link
           href='/[lng]/products'
           as={`/${lng}/products`}

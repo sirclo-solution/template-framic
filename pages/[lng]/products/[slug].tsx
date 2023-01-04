@@ -4,7 +4,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   useI18n,
   useAuthToken,
-  TemplateFeatures,
+  useFeatureToggle,
   FeaturesType
 } from '@sirclo/nexus'
 /* library template */
@@ -25,6 +25,7 @@ const ProductHighlightPage: FC<any> = ({
   slugSection
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n()
+  const isProductHighlightEnabled = useFeatureToggle(FeaturesType.PRODUCT_HIGHLIGHT)
   const [totalProductPerPage, setTotalProductPerPage] = useState<string>('0')
 
   const [titleSectionProductHighlight, setTitleSectionProductHighlight] =
@@ -37,55 +38,52 @@ const ProductHighlightPage: FC<any> = ({
     return label.replace('{TOTAL}', total)
   }
 
+  if (!isProductHighlightEnabled) return <Error404Page />;
+
   return (
-    <TemplateFeatures
-      id={FeaturesType.PRODUCT_HIGHLIGHT}
-      defaultChildren={<Error404Page />}
+    <Layout
+      i18n={i18n}
+      lng={lng}
+      lngDict={lngDict}
+      brand={brand}
+      setSEO={{ title: titleSectionProductHighlight }}
+      layoutClassName={styles.products_productHighlightContainer}
     >
-      <Layout
-        i18n={i18n}
-        lng={lng}
-        lngDict={lngDict}
-        brand={brand}
-        setSEO={{ title: titleSectionProductHighlight }}
-        layoutClassName={styles.products_productHighlightContainer}
-      >
-        <Breadcrumb links={linksBreadcrumb} lng={lng} />
-        <div className={styles.products_container}>
-          <div className={`${styles.products_listWrapper} ${styles.products_productHighlightListWrapper}`}>
-            <div className={styles.products_listHeaderContainer}>
-              <div className={styles.products_listAdjustContainer}>
-                <h1 className={styles.products_listHeaderTitle}>
-                  {titleSectionProductHighlight}
-                </h1>
-              </div>
-              <label className={styles.products_listHeaderTotal}>
-                {generateTotalProductsPerPage(totalProductPerPage)}
-              </label>
+      <Breadcrumb links={linksBreadcrumb} lng={lng} />
+      <div className={styles.products_container}>
+        <div className={`${styles.products_listWrapper} ${styles.products_productHighlightListWrapper}`}>
+          <div className={styles.products_listHeaderContainer}>
+            <div className={styles.products_listAdjustContainer}>
+              <h1 className={styles.products_listHeaderTitle}>
+                {titleSectionProductHighlight}
+              </h1>
             </div>
-            <div className={`${stylesProductHighlight.productHighlight_productSectionContainer}`}>
-              {/* Container Products List */}
-              <ProductsComponent
-                i18n={i18n}
-                lng={lng}
-                getTotalProductPerPage={setTotalProductPerPage}
-                isProductHighlightBySlug
-                productHighlightListSlug={slugSection}
-                getTitleSectionProductHighlight={(value: string) => setTitleSectionProductHighlight(value)}
-                type="list"
-              />
-            </div>
-            <div className={styles.products_backTopContainer}>
-              <a
-                href="#top"
-                className={styles.products_backTopLink}
-                aria-label="Scroll to Top"
-              />
-            </div>
+            <label className={styles.products_listHeaderTotal}>
+              {generateTotalProductsPerPage(totalProductPerPage)}
+            </label>
+          </div>
+          <div className={`${stylesProductHighlight.productHighlight_productSectionContainer}`}>
+            {/* Container Products List */}
+            <ProductsComponent
+              i18n={i18n}
+              lng={lng}
+              getTotalProductPerPage={setTotalProductPerPage}
+              isProductHighlightBySlug
+              productHighlightListSlug={slugSection}
+              getTitleSectionProductHighlight={(value: string) => setTitleSectionProductHighlight(value)}
+              type="list"
+            />
+          </div>
+          <div className={styles.products_backTopContainer}>
+            <a
+              href="#top"
+              className={styles.products_backTopLink}
+              aria-label="Scroll to Top"
+            />
           </div>
         </div>
-      </Layout>
-    </TemplateFeatures>
+      </div>
+    </Layout>
   )
 }
 
