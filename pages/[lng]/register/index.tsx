@@ -17,7 +17,7 @@ import {
   Register, 
   useI18n, 
   useAuthToken,
-  topPremium
+  termOfPaymentPremium
 } from '@sirclo/nexus'
 /* library template */
 import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
@@ -70,7 +70,7 @@ const RegisterPage: FC<any> = ({
 
   const [isVerified, setIsVerified] = useState<boolean>(false)
   const linksBreadcrumb = [i18n.t("header.home"), i18n.t("register.title")]
-  const isTopAllowed = topPremium();
+  const isTopAllowed = termOfPaymentPremium();
 
   const getReCAPTCHAToken = async () => {
     const token = await recaptchaRef.current.executeAsync()

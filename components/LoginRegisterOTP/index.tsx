@@ -12,7 +12,7 @@ import {
   SingleSignOn,
   useI18n,
   WhatsAppOTPInput,
-  topPremium
+  termOfPaymentPremium
 } from '@sirclo/nexus'
 
 // styles
@@ -93,7 +93,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
     wa: "whatsapp-input"
   }
   const [step, setStep] = useState<string>(steps.wa)
-  const isTopAllowed = topPremium();
+  const isTopAllowed = termOfPaymentPremium();
 
   const brandName = (brand: string): string => {
     const lower = brand?.toLowerCase()
