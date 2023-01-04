@@ -90,4 +90,13 @@
       }
     }
   } 
+
+  & + [class*="WidgetHomePage"]
+  {
+    @media screen and (min-width: $breakpoint_min_md)
+    {
+      margin-top: 41px;
+      margin-bottom: 42px;
+    }
+  }
 }
