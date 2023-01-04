@@ -236,8 +236,11 @@ const AccountsPage: FC<AccountPageProps> = ({
             currency={ACTIVE_CURRENCY}
             onFetchCompleted={onFetchCompleted}
             onErrorMsg={onError}
+            onInvalidMsg={(msg: string) => toast.error(msg)}
             onSuccessMsg={onSuccess}
             onSuccessChPass={onSuccessChPass}
+            onSuccessCopyPaymentNumber={() => toast.success(i18n.t('paymentMethod.copySuccess'))}
+            onSuccessQrDownload={() => toast.success(i18n.t('paymentMethod.downloadQrSuccess'))}
             orderHistoryIsCallPagination={true}
             orderHistoryItemPerPage={10}
             paymentHrefPrefix="payment_notif"
