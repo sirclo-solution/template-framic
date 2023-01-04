@@ -5,6 +5,7 @@ import {
   getProductDetail,
   useAuthToken
 } from '@sirclo/nexus'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 /* library template */
 import { useBrand } from 'lib/useBrand'
 /* component */
@@ -13,7 +14,6 @@ import { GRAPHQL_URI } from 'components/Constants'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import ProductDetailComponent from 'components/ProductDetailComponent'
 import ProductsComponent from 'components/ProductsComponent'
-import { LazyLoadComponent } from 'react-lazy-load-image-component'
 
 interface ProductProps {
   lng?: string
