@@ -11,7 +11,8 @@ import Link from 'next/link'
 import {
   SingleSignOn,
   useI18n,
-  WhatsAppOTPInput
+  WhatsAppOTPInput,
+  topPremium
 } from '@sirclo/nexus'
 
 // styles
@@ -92,6 +93,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
     wa: "whatsapp-input"
   }
   const [step, setStep] = useState<string>(steps.wa)
+  const isTopAllowed = topPremium();
 
   const brandName = (brand: string): string => {
     const lower = brand?.toLowerCase()
@@ -131,7 +133,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
         />
       }
 
-      {(step === steps.wa || type === "register") &&
+      {(step === steps.wa || type === "register") && !isTopAllowed &&
         <div className={styles.loginregister_footer}>
           {type === "register" ?
             i18n.t('register.haveAccount') :
