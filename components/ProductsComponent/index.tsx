@@ -2,6 +2,7 @@
 import { FC, useState } from 'react'
 /* component */
 import ProductsList from './ProductsList'
+import ProductsWidget from './ProductsWidget'
 import ProductHighlight from './ProductHighlight'
 import ProductsCategory from './ProductsCategory'
 import ProductRecomendation from './ProductRecomendation'
@@ -9,7 +10,7 @@ import ProductRecomendation from './ProductRecomendation'
 import styles from 'public/scss/components/Product.module.scss'
 
 export type ProductsComponentType = {
-  type: "list" | "recomendation" | "category" | "highlight 1" | "highlight 2"
+  type: "list" | "widget" | "recomendation" | "category" | "highlight 1" | "highlight 2"
   i18n: any
   lng: string
   slug?: string | string[]
@@ -60,29 +61,23 @@ const classesPlaceholderProducts = {
 const ProductsComponent: FC<ProductsComponentType> = ({
   type = "list",
   i18n,
+  tagName,
   slug,
   SKUs,
   itemPerPage = 4,
   collectionSlug,
   filterProduct,
   getTotalProduct,
-<<<<<<< HEAD
-  lng,
-=======
   getTitleSectionProductHighlight,
   isProductHighlightBySlug,
   productHighlightListSlug,
-  getTotalProductPerPage
-<<<<<<< HEAD
-  // lng,
->>>>>>> 50dfb6f (remove products widget)
-=======
->>>>>>> 297603c (refactor and bump nexus to 2.17.4 to fix header element)
+  getTotalProductPerPage,
+  lng
 }) => {
   const [totalProducts, setTotalProducts] = useState(null)
 
   if (totalProducts === 0 && type !== "list") return <></>
-  
+
   return type === "list" ? (
     <ProductsList
       i18n={i18n}
@@ -91,6 +86,16 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       classPlaceholder={classesPlaceholderProducts}
       collectionSlug={collectionSlug}
       filterProduct={filterProduct}
+    />
+  ) : type === "widget" ? (
+    <ProductsWidget
+      i18n={i18n}
+      lng={lng}
+      tagName={tagName}
+      itemPerPage={itemPerPage}
+      classPlaceholder={classesPlaceholderProducts}
+      classProducts={classesProducts}
+      setTotalProducts={setTotalProducts}
     />
   ) : type === "recomendation" ? (
     <ProductRecomendation
@@ -114,14 +119,14 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       classPlaceholder={classesPlaceholderProducts}
       display={'Display1'}
     />
-  ) :  type === "highlight 2" ? (
+  ) : type === "highlight 2" ? (
     <ProductHighlight
       itemPerPage={itemPerPage}
       classProducts={classesProducts}
       classPlaceholder={classesPlaceholderProducts}
       display={'Display2'}
     />
-  ) :(<></>)
+  ) : (<></>)
 }
 
 export default ProductsComponent
