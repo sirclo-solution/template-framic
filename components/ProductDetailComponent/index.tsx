@@ -246,8 +246,6 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
         classes={classesProductDetail}
         isButton={{ 0: true, 1: true }}
         enableAutoColorVariant
-        enableArrow={enableArrowDots}
-        enableDots={enableArrowDots}
         enableTabs
         getProductID={setProductID}
         onCompleteMsg={tooglePopupSuccessNotifyme}

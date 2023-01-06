@@ -44,7 +44,6 @@
 
     & > ul
     {
-      @include absolute(0, auto, auto, 0);
       @include useScrollbar();
       display: block;
       padding: 0 3px 0 0;
@@ -59,11 +58,16 @@
           margin-right: 4px;
         }
       }
+
+      @media screen and (min-width: $breakpoint_min_md)
+      {
+        @include absolute(0, auto, auto, 0);
+      }
       
       @media screen and (max-width: $breakpoint_max_md) 
       {
-        @include absolute(auto, auto, 0, auto);
         @include flex(row, center, center);
+        margin-top: 8px;
         width: 100%;
         height: fit-content;
       }
