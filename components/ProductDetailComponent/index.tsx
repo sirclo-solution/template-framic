@@ -125,7 +125,6 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
   // variables
   const i18n: any = useI18n()
   const size = useWindowSize()
-  const enableArrowDots = size.width && size.width < 768 ? true : false
   const IS_PROD = process.env.IS_PROD;
 
   // state
