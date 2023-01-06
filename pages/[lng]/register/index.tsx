@@ -16,8 +16,7 @@ import {
 import { 
   Register, 
   useI18n, 
-  useAuthToken,
-  isTermOfPayment
+  useAuthToken
 } from '@sirclo/nexus'
 /* library template */
 import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
@@ -70,7 +69,6 @@ const RegisterPage: FC<any> = ({
 
   const [isVerified, setIsVerified] = useState<boolean>(false)
   const linksBreadcrumb = [i18n.t("header.home"), i18n.t("register.title")]
-  const isTermOfPaymentAllowed = isTermOfPayment();
 
   const getReCAPTCHAToken = async () => {
     const token = await recaptchaRef.current.executeAsync()
@@ -103,7 +101,6 @@ const RegisterPage: FC<any> = ({
       lngDict={lngDict}
       brand={brand}
       setSEO={{ title: i18n.t("register.title") }}
-      withAllowed={!isTermOfPaymentAllowed}
     >
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.register_wrapper}>

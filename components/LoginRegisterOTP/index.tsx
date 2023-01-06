@@ -11,8 +11,7 @@ import Link from 'next/link'
 import {
   SingleSignOn,
   useI18n,
-  WhatsAppOTPInput,
-  isTermOfPayment
+  WhatsAppOTPInput
 } from '@sirclo/nexus'
 
 // styles
@@ -93,7 +92,6 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
     wa: "whatsapp-input"
   }
   const [step, setStep] = useState<string>(steps.wa)
-  const isTermOfPaymentAllowed = isTermOfPayment();
 
   const brandName = (brand: string): string => {
     const lower = brand?.toLowerCase()
@@ -133,7 +131,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
         />
       }
 
-      {(step === steps.wa || type === "register") && !isTermOfPaymentAllowed &&
+      {(step === steps.wa || type === "register") &&
         <div className={styles.loginregister_footer}>
           {type === "register" ?
             i18n.t('register.haveAccount') :
