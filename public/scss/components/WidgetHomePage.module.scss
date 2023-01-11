@@ -116,6 +116,11 @@
     }
   }
 
+  &_productsTagContainer
+  {
+    margin-bottom: 42px;
+  }
+
   &_productsLabel
   {
     @include typographyBuilder(600, 20, 24);

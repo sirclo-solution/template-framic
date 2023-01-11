@@ -1,14 +1,16 @@
 /* library package */
-import { 
-  FC, 
-  useEffect, 
-  useState 
+import {
+  FC,
+  useEffect,
+  useState
 } from 'react'
 import Link from 'next/link'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { 
-  getBanner, 
-  useI18n, 
+import {
+  TemplateFeatures,
+  FeaturesType,
+  getBanner,
+  useI18n,
   useAuthToken
 } from '@sirclo/nexus'
 import { ChevronRight } from 'react-feather';
@@ -53,25 +55,42 @@ const Home: FC<any> = ({
           dataBanners={dataBanners?.data}
           isReady={isReady}
         />
-        <ProductsComponent 
-          type='category'
-          lng={lng}
-          i18n={i18n}
-        />
-        <ProductsComponent 
-          lng={lng}
-          i18n={i18n}
-          type="highlight 1"
-          itemPerPage={4}
-        />
-        <WidgetHomepageTop />
-        <ProductsComponent 
-          lng={lng}
-          i18n={i18n}
-          type="highlight 2"
-          itemPerPage={4}
-        />
-        <WidgetHomepageBottom />
+        <TemplateFeatures
+          id={FeaturesType.PRODUCT_HIGHLIGHT}
+          defaultChildren={
+            <>
+              <WidgetHomepageTop />
+              <ProductsComponent
+                lng={lng}
+                i18n={i18n}
+                type="widget"
+                tagName="featured"
+                itemPerPage={4}
+              />
+              <WidgetHomepageBottom />
+            </>
+          }
+        >
+          <ProductsComponent
+            type="category"
+            lng={lng}
+            i18n={i18n}
+          />
+          <ProductsComponent
+            lng={lng}
+            i18n={i18n}
+            type="highlight 1"
+            itemPerPage={4}
+          />
+          <WidgetHomepageTop />
+          <ProductsComponent
+            lng={lng}
+            i18n={i18n}
+            type="highlight 2"
+            itemPerPage={4}
+          />
+          <WidgetHomepageBottom />
+        </TemplateFeatures>
         <Link
           href='/[lng]/products'
           as={`/${lng}/products`}
