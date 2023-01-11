@@ -1,7 +1,11 @@
 /* library package */
 import { useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
-import { withBrand, Newsletter } from '@sirclo/nexus'
+import {
+  withBrand,
+  Newsletter,
+  useI18n
+} from '@sirclo/nexus'
 import Head from 'next/head'
 import { X as XIcon } from 'react-feather'
 import useWindowSize from 'lib/useWindowSize'
@@ -18,8 +22,8 @@ import stylesButtons from 'public/scss/components/Button.module.scss'
 
 type LayoutPropType = {
   lngDict: any
-  i18n: any
   lng: string
+  i18n?: any
   layoutClassName?: string
   withHeader?: boolean
   withFooter?: boolean
@@ -51,8 +55,8 @@ const classesNewsletterPopup = {
 
 const Layout: React.FC<LayoutPropType> = ({
   lngDict,
-  i18n,
   lng,
+  i18n = useI18n(), // Temporarily using default value for persistent layout alt solution
   layoutClassName = "",
   withHeader = true,
   withFooter = true,
