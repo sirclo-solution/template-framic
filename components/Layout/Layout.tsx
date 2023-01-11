@@ -1,7 +1,11 @@
 /* library package */
 import { useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
-import { withBrand, Newsletter, useI18n } from '@sirclo/nexus'
+import {
+  withBrand,
+  Newsletter,
+  useI18n
+} from '@sirclo/nexus'
 import Head from 'next/head'
 import { X as XIcon } from 'react-feather'
 import useWindowSize from 'lib/useWindowSize'

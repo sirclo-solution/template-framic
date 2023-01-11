@@ -1,5 +1,9 @@
 /* library package */
-import { FC, ReactElement, ReactNode } from 'react'
+import {
+  FC,
+  ReactElement,
+  ReactNode
+} from 'react'
 import {
   useI18n,
   getProductDetail,
