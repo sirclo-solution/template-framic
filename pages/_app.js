@@ -7,6 +7,7 @@ import {
   useApollo,
   ApolloProvider,
   PackageFeatureProvider,
+  TemplateFeatureFlag,
   Widget,
   I18n
 } from "@sirclo/nexus";
@@ -22,7 +23,7 @@ const classesMaintenance = {
   maintenanceInfoClassName: 'maintenance__info',
   imageContainerClassName: 'maintenance__container--images',
   imageClassName: 'maintenance__container--images-img',
-}
+};
 
 function MyApp({ Component, pageProps, router }) {
   const apolloClient = useApollo(pageProps.initialApolloState);
@@ -48,12 +49,14 @@ function MyApp({ Component, pageProps, router }) {
     >
       <ApolloProvider client={apolloClient} key={router.route}>
         <PackageFeatureProvider>
-          <MaintenanceMode classes={classesMaintenance}>
-            <I18n lngDict={pageProps.lngDict} locale={pageProps.lng}>
-              <Component {...pageProps} />
-              <Widget pos="script" hash={hash} />
-            </I18n>
-          </MaintenanceMode>
+          <TemplateFeatureFlag>
+            <MaintenanceMode classes={classesMaintenance}>
+              <I18n lngDict={pageProps.lngDict} locale={pageProps.lng}>
+                <Component {...pageProps} />
+                <Widget pos="script" hash={hash} />
+              </I18n>
+            </MaintenanceMode>
+          </TemplateFeatureFlag>
         </PackageFeatureProvider>
       </ApolloProvider>
     </PageTransition>

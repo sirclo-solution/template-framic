@@ -28,6 +28,7 @@
     "deliveryAddress": "Alamat Pengiriman",
     "editAccount": "Sunting Akun",
     "editErrorMsg": "Gagal mengubah data akun",
+    "editInvalidMsg": "Input tidak sesuai, silahkan cek kembali",
     "editSuccessMsg": "Berhasil mengubah data akun",
     "email": "Email",
     "emailPlaceholder": "Masukan email anda",
@@ -437,6 +438,10 @@
     "uploadFailed": "Gagal mengunggah dokumen, silahkan coba lagi.",
     "wrongEmail": "Mohon gunakan email yang sesuai dengan saat membuat pesanan"
   },
+  "paymentMethod": {
+    "copySuccess": "Berhasil tersalin",
+    "downloadQrSuccess": "Berhasil Mengunduh Gambar"
+  },
   "paymentStatus": {
     "continueShopping": "Lanjutkan Berbelanja",
     "failedDesc": "Pembayaran Anda gagal diproses",
@@ -541,7 +546,7 @@
     "seeAllProduct": "Lihat semua produk",
     "share": "Bagikan",
     "shareProduct": "Bagikan Produk",
-    "showingProduct": "Menampilkan {TOTAL} Produk",
+    "showingProduct": "Menampilkan {TOTAL} hasil",
     "sort": "Urutkan",
     "successAddToCart": "Sukses masuk keranjang!",
     "summary": "Ringkasan",

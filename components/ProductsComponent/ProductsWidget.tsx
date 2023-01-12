@@ -41,7 +41,7 @@ const ProductsWidget: FC<ProductsWidgetType> = ({
           </span>
         </Link>
       </div>
-      <div className={styles.widget_productsContainer}>
+      <div className={`${styles.widget_productsContainer} ${styles.widget_productsTagContainer}`}>
         <Products
           itemPerPage={itemPerPage}
           getPageInfo={(pageInfo: any) => setTotalProducts(pageInfo.totalItems)}

@@ -28,6 +28,7 @@
     "deliveryAddress": "Delivered Address",
     "editAccount": "Edit Account",
     "editErrorMsg": "Failed to edit profile data",
+    "editInvalidMsg": "Invalid input, please check again",
     "editSuccessMsg": "success to edit profile data",
     "email": "Email",
     "emailPlaceholder": "Input your email",
@@ -437,6 +438,10 @@
     "uploadFailed": "File upload failed. Please try again.",
     "wrongEmail": "Please use the email that you used to create the order"
   },
+  "paymentMethod": {
+    "copySuccess": "Copied Successfully",
+    "downloadQrSuccess": "Image Downloaded Successfully"
+  },
   "paymentStatus": {
     "continueShopping": "Continue Shopping",
     "failedDesc": "Your payment failed to process. Please make a repayment process",
@@ -541,7 +546,7 @@
     "seeAllProduct": "See all products",
     "share": "Share",
     "shareProduct": "Share Product",
-    "showingProduct": "Showing {TOTAL} Product(s)",
+    "showingProduct": "Showing {TOTAL} product(s)",
     "sort": "Sort",
     "successAddToCart": "Item has successfully add to cart",
     "summary": "Summary",
