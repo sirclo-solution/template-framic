@@ -613,11 +613,10 @@
 
   &_infoIcon
   {
-    @include fixedSize(12px);
+    @include fixedSize(16px);
     display: block;
     background-repeat: no-repeat;
-    margin-right: 8px;
-    background-image: url("data:image/svg+xml,%0A%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6 10.7509C3.38057 10.7509 1.24914 8.61943 1.24914 6C1.24914 3.38057 3.38057 1.24914 6 1.24914C8.61943 1.24914 10.7509 3.38057 10.7509 6C10.7509 8.61943 8.61943 10.7509 6 10.7509ZM6 0C9.30857 0 12 2.69143 12 6C12 9.30857 9.30857 12 6 12C2.69143 12 0 9.30857 0 6C0 2.69143 2.69143 0 6 0ZM6.20629 8.11029H5.79429C5.51029 8.11029 5.27886 8.32 5.27886 8.57829V9.18057C5.27886 9.43829 5.51029 9.648 5.79429 9.648H6.20629C6.49029 9.648 6.72057 9.43829 6.72057 9.18057V8.57829C6.72057 8.32 6.49029 8.10971 6.20629 8.10971V8.11029ZM6.20743 2.27771H5.79314C5.50457 2.27771 5.27886 2.46743 5.27886 2.70857V7.18629C5.27886 7.428 5.50457 7.61714 5.79314 7.61714H6.20743C6.49543 7.61714 6.72057 7.42857 6.72057 7.18629V2.70857C6.72057 2.46743 6.49543 2.27771 6.20743 2.27771Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7C12.5523 7 13 7.44772 13 8ZM13 17V11H11V17H13Z' fill='%232296CB'/%3E%3C/svg%3E");
   }
 
   &_orderInfoLabel
@@ -832,8 +831,11 @@
   &_shippingMethodContainer,
   &_paymentMethodContainer
   {
+    @include flex(column, left, flex-start);
+
     border-top: 1px solid $color_light;
     padding: 16px 0;
+    gap: 4px;
   }
 
   &_buyerNoteLabel,
@@ -1151,5 +1153,226 @@
     {
       @extend .form_inputLong;
     }
+  }
+
+  &_paymentMethodDetailOption
+  {
+    @include flex(row, center, flex-start);
+  }
+
+  &_paymentMethodDetailWrapper
+  {
+    @include flex(column, left);
+
+    gap: 4px;
+  }
+
+  &_paymentMethodDetailCard
+  {
+    margin: 4px 0;
+
+    & > div:nth-child(3) {
+      width: 180px !important;
+    }
+  }
+
+  &_paymentMethodDetailText
+  {
+    @include typographyBuilder(400, 12, 16);
+
+    margin-bottom: 0;
+
+    & > a[data-identity="view-payment-page"]
+    {
+      @include typographyBuilder(600, 12, 16);
+    }
+  }
+
+  &_paymentMethodDetailCode
+  {
+    @include typographyBuilder(600, 13, 20);
+
+    background-color: $color_white;
+    text-align: center;
+    color: $color_black;
+    padding: 8px 12px;
+    border: 1px solid $color_dark_white_border;
+    border-radius: 4px;
+    margin-bottom: 0;
+  }
+
+  &_paymentMethodDetailInstructionContainer
+  {
+    @include flex(row, flex-start);
+
+    background-color: $color_lighter_blue;
+    color: $color_blue_text !important;
+    padding: 8px;
+    gap: 4px;
+
+    border-right: 0.5px solid $color_dark_white_border;
+    border-bottom: 0.5px solid $color_dark_white_border;
+    border-left: 0.5px solid $color_dark_white_border;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+    & > svg {
+      margin-top: 1px;
+      height: 10px;
+      width: 10px;
+    }
+  }
+
+  &_paymentMethodDetailInstructionText
+  {
+    @include typographyBuilder(400, 10, 16);
+
+    color: $color_blue_text !important;
+    margin-bottom: 0;
+  }
+
+  &_paymentMethodDetailSeeMoreContainer
+  {
+    @include typographyBuilder(400, 12, 16);
+  }
+
+  &_paymentMethodDetailSeeMoreLink
+  {
+    color: $color_blue !important;
+    font-weight: 600;
+  }
+
+  &_paymentMethodDetailQr
+  {
+    @include flex(row, center, space-between);
+
+    width: 180px;
+
+    img 
+    {
+      position: relative;
+      width: inherit;
+      border-top: 0.5px solid $color_dark_white_border;
+      border-right: 0.5px solid $color_dark_white_border;
+      border-left: 0.5px solid $color_dark_white_border;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+    }
+
+    &DownloadBtn
+    {
+      @include flex(row, center, center);
+      @include typographyBuilder(600, 12, 16);
+
+      width: 180px;
+      height: 28px;
+      border: none;
+      background-color: $color_white;
+      color: $color_black;
+      padding-bottom: 10px;
+
+      border-right: 0.5px solid $color_dark_white_border;
+      border-left: 0.5px solid $color_dark_white_border;
+
+      &::before
+      {
+        @include fixedSize(14px);
+
+        content: "";
+        display: block;
+        background-repeat: no-repeat;
+        margin-right: 4px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5'/%3E%3C/svg%3E");
+      }
+
+      svg 
+      {
+        @include fixedSize(14px);
+        
+        margin-right: 6px;
+      }
+    }
+  }
+
+  &_paymentMethodDetailBankList
+  {
+    background-color: $color_white;
+    border: 0.5px solid $color_dark_white_border;
+    border-radius: 4px;
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin: 0;
+
+    li {
+      @include flex(row, center, space-between);
+
+      padding: 12px;
+      width: 100%;
+      border-bottom: 1px solid $color_dark_white_border;
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &_paymentMethodDetailBankInfo
+  {
+    & > span {
+      @include typographyBuilder(400, 12, 16);
+
+      color: $color_black_text;
+    }
+
+    & > p {
+      @include typographyBuilder(400, 10, 16);
+
+      color: $color_grey_light_text;
+    }
+  }
+
+  &_paymentMethodDetailCopyCodeButton
+  {
+    @include fixedSize(14px);
+
+    background: none;
+    border: none;
+    margin-left: 4px;
+    content: "";
+    display: block;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23269CD9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='13' height='13' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'%3E%3C/path%3E%3C/svg%3E");
+  }
+
+  &_paymentMethodDetailExpiryContainer
+  {
+    @include flex(row, center, center);
+    @include typographyBuilder(400, 12, 16);
+
+    max-width: 300px;
+    padding: 6px;
+    background: $color_yellow_light;
+    border-radius: 4px;
+  }
+
+  &_paymentMethodDetailExpiryWarningText,
+  &_paymentMethodDetailExpiryDate
+  {
+    margin-left: 3px;
+  }
+
+  &_warningIcon
+  {
+    @include fixedSize(16px);
+    
+    display: block;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg' fill='none'%3E%3Cpath fill='%23FFC043' fill-rule='evenodd' d='M8 1a2.143 2.143 0 00-1.827 1.024l-5.88 9.768a2.125 2.125 0 00.762 2.915c.322.188.687.289 1.06.293h11.77a2.143 2.143 0 001.834-1.074 2.126 2.126 0 00-.006-2.124L9.829 2.028A2.149 2.149 0 008 1zM7 11a1 1 0 011-1h.007a1 1 0 110 2H8a1 1 0 01-1-1zm1.75-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z' clip-rule='evenodd'/%3E%3C/svg%3E");
   }
 }
