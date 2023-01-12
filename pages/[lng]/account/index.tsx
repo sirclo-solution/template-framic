@@ -159,6 +159,24 @@ const classesAccount = {
   shipmentListWrapperClassName: stylesShipmentTracker.shipmenttracker_shipmentListWrapper,
   shipmentCloseIconClassName: stylesShipmentTracker.shipmenttracker_shipmentCloseIcon,
   shipmentTrackButtonClassName: stylesShipmentTracker.shipmenttracker_shipmentTrackButton,
+  /* payment method */
+  paymentMethodDetailOptionClassName: styles.orderhistory_paymentMethodDetailOption,
+  paymentMethodDetailWrapperClassName: styles.orderhistory_paymentMethodDetailWrapper,
+  paymentMethodDetailCardClassName: styles.orderhistory_paymentMethodDetailCard,
+  paymentMethodDetailTextClassName: styles.orderhistory_paymentMethodDetailText,
+  paymentMethodDetailCodeClassName: styles.orderhistory_paymentMethodDetailCode,
+  paymentMethodDetailInstructionContainerClassName: styles.orderhistory_paymentMethodDetailInstructionContainer,
+  paymentMethodDetailInstructionTextClassName: styles.orderhistory_paymentMethodDetailInstructionText,
+  paymentMethodDetailSeeMoreContainerClassName: styles.orderhistory_paymentMethodDetailSeeMoreContainer,
+  paymentMethodDetailSeeMoreLinkClassName: styles.orderhistory_paymentMethodDetailSeeMoreLink,
+  paymentMethodDetailQrClassName: styles.orderhistory_paymentMethodDetailQr,
+  paymentMethodDetailQrDownloadBtnClassName: styles.orderhistory_paymentMethodDetailQrDownloadBtn,
+  paymentMethodDetailBankListClassName: styles.orderhistory_paymentMethodDetailBankList,
+  paymentMethodDetailBankInfoClassName: styles.orderhistory_paymentMethodDetailBankInfo,
+  paymentMethodDetailCopyCodeButtonClassName: styles.orderhistory_paymentMethodDetailCopyCodeButton,
+  paymentMethodDetailExpiryContainerClassName: styles.orderhistory_paymentMethodDetailExpiryContainer,
+  paymentMethodDetailExpiryWarningTextClassName: styles.orderhistory_paymentMethodDetailExpiryWarningText,
+  paymentMethodDetailExpiryDateClassName: styles.orderhistory_paymentMethodDetailExpiryDate,
   /* setting notification */
   settingNotifContainer: "notification",
   settingNotifHeader: "d-none",
@@ -259,7 +277,8 @@ const AccountsPage: FC<AccountPageProps> = ({
               infoIcon: <span className={styles.orderhistory_infoIcon} />,
               iconTracker: <img src="/images/motorcycle.svg" alt="motorcycle" />,
               whatsApp: <img src="/images/whatsapp.png" />,
-              email: <img src="/images/email.png" />
+              email: <img src="/images/email.png" />,
+              warningIcon: <span className={styles.orderhistory_warningIcon}/>
             }}
           />
         </div>

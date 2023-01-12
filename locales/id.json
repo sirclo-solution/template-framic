@@ -439,8 +439,18 @@
     "wrongEmail": "Mohon gunakan email yang sesuai dengan saat membuat pesanan"
   },
   "paymentMethod": {
+    "continuePayment": "Lanjutkan pembayaran",
     "copySuccess": "Berhasil tersalin",
-    "downloadQrSuccess": "Berhasil Mengunduh Gambar"
+    "counterInstruction": "Tunjukkan barcode ini ke kasir",
+    "downloadQrSuccess": "Berhasil Mengunduh Gambar",
+    "expiryDateWarning": "Bayar sebelum",
+    "manualBankTransfer": "Manual Bank Transfer",
+    "manualBankTransferInstruction": "Pilih salah satu tujuan bank transfer pembayaran",
+    "manualBankTransferAccountNamePrefix": "a.n.",
+    "page": "halaman pembayaran",
+    "qrDownload": "Unduh QR Code",
+    "qrInstruction": "Pindai kode QR melalui e-wallet atau aplikasi m-banking yang mendukung pembayaran QRIS.",
+    "seeMore": "Lebih lengkap lihat"
   },
   "paymentStatus": {
     "continueShopping": "Lanjutkan Berbelanja",
