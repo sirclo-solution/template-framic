@@ -1171,7 +1171,8 @@
   {
     margin: 4px 0;
 
-    & > div:nth-child(3) {
+    & > div:nth-child(3)
+    {
       width: 180px !important;
     }
   }
@@ -1216,10 +1217,11 @@
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
 
-    & > svg {
+    & > svg 
+    {
+      @include fixedSize(10px);
+
       margin-top: 1px;
-      height: 10px;
-      width: 10px;
     }
   }
 
@@ -1324,13 +1326,15 @@
 
   &_paymentMethodDetailBankInfo
   {
-    & > span {
+    & > span
+    {
       @include typographyBuilder(400, 12, 16);
 
       color: $color_black_text;
     }
 
-    & > p {
+    & > p
+    {
       @include typographyBuilder(400, 10, 16);
 
       color: $color_grey_light_text;
