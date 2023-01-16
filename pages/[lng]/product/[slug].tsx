@@ -1,9 +1,5 @@
 /* library package */
-import {
-  FC,
-  ReactElement,
-  ReactNode
-} from 'react'
+import { FC, ReactElement } from 'react'
 import {
   useI18n,
   getProductDetail,
@@ -21,19 +17,15 @@ import ProductsComponent from 'components/ProductsComponent'
 
 interface ProductProps {
   lng?: string
-  lngDict?: any
   slug?: string
   data?: any
-  brand?: string
   urlSite?: string
 }
 
 const Product: FC<ProductProps> & NextPageWithLayout = ({
   lng,
-  lngDict,
   slug,
   data,
-  brand,
   urlSite
 }) => {
   const i18n: any = useI18n()
