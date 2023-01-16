@@ -1,5 +1,9 @@
 /* library package */
-import { FC } from 'react'
+import {
+  FC,
+  ReactElement,
+  ReactNode
+} from 'react'
 import {
   useI18n,
   getProductDetail,
@@ -7,6 +11,7 @@ import {
 } from '@sirclo/nexus'
 /* library template */
 import { useBrand } from 'lib/useBrand'
+import { NextPageWithLayout } from 'lib/commonTypes'
 /* component */
 import Layout from 'components/Layout/Layout'
 import { GRAPHQL_URI } from 'components/Constants'
@@ -23,31 +28,19 @@ interface ProductProps {
   urlSite?: string
 }
 
-const Product: FC<ProductProps> = ({
+const Product: FC<ProductProps> & NextPageWithLayout = ({
   lng,
   lngDict,
   slug,
   data,
   brand,
   urlSite
-
 }) => {
   const i18n: any = useI18n()
   const linksBreadcrumb = [`${i18n.t("header.home")}`, data?.published && data?.details[0]?.name || ""]
 
   return (
-    <Layout
-      i18n={i18n}
-      lng={lng}
-      lngDict={lngDict}
-      brand={brand}
-      setSEO={{
-        title: data?.details[0]?.name || "",
-        description: data?.SEOs[0]?.description || "",
-        keywords: data?.SEOs[0]?.keywords?.join(", ") || "",
-        image: data?.imageURLs || "",
-      }}
-    >
+    <>
       <Breadcrumb
         links={linksBreadcrumb}
         lng={lng}
@@ -66,14 +59,14 @@ const Product: FC<ProductProps> = ({
         i18n={i18n}
         lng={lng}
       />
-    </Layout>
+    </>
   )
 }
 
 export async function getServerSideProps({ req, res, params }) {
   const { slug } = params
-  const data = await getProductDetail(GRAPHQL_URI(req), slug)
-  const [brand] = await Promise.all([
+  const [data, brand] = await Promise.all([
+    getProductDetail(GRAPHQL_URI(req), slug),
     useBrand(req),
     useAuthToken({ req, res, env: process.env })
   ])
@@ -91,6 +84,21 @@ export async function getServerSideProps({ req, res, params }) {
       urlSite: urlSite,
     },
   }
+}
+
+Product.getLayout = (page: ReactElement) => {
+  const layoutProps = {
+    lng: page.props?.lng,
+    lngDict: page.props?.lngDict,
+    brand: page.props?.brand,
+    setSEO: {
+      title: page.props?.data?.details[0]?.name || "",
+      description: page.props?.data?.SEOs[0]?.description || "",
+      keywords: page.props?.data?.SEOs[0]?.keywords?.join(", ") || "",
+      image: page.props?.data?.imageURLs[0] || ""
+    }
+  }
+  return <Layout {...layoutProps}>{page}</Layout>
 }
 
 export default Product

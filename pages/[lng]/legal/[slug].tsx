@@ -43,7 +43,6 @@ const LegalPage: FC<any> = ({
 	const layoutProps = {
 		lng,
 		lngDict,
-		i18n,
 		brand,
 		SEO: { title: data?.title },
 	};
