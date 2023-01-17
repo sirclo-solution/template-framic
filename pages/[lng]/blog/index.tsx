@@ -74,7 +74,6 @@ const Blog: FC<any> = ({
 
   return (
     <Layout
-      i18n={i18n}
       lng={lng}
       lngDict={lngDict}
       brand={brand}
