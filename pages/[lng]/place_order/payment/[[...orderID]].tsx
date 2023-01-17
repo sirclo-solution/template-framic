@@ -59,7 +59,6 @@ const PaymentStatus: FC<any> = ({
   return (
     <Layout
       lngDict={lngDict}
-      i18n={i18n}
       lng={lng}
       brand={brand}
       setSEO={{ title: i18n.t("paymentStatus.title") }}

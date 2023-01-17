@@ -144,7 +144,6 @@ const PaymentMethods: FC<any> = ({
   return (
     <PrivateRouteWrapper>
       <Layout
-        i18n={i18n}
         lng={lng}
         lngDict={lngDict}
         brand={brand}
