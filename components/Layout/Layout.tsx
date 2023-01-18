@@ -65,6 +65,7 @@ const Layout: React.FC<LayoutPropType> = ({
   setSEO,
   ...props
 }) => {
+  const i18n: any = useI18n()
   const size = useWindowSize()
   const getToken = (): string => {
     const googleAdsWebsiteMetaToken = brand?.googleAdsWebsiteMetaToken
