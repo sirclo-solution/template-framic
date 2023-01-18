@@ -56,7 +56,6 @@ const classesNewsletterPopup = {
 const Layout: React.FC<LayoutPropType> = ({
   lngDict,
   lng,
-  i18n = useI18n(), // Temporarily using default value for persistent layout alt solution
   layoutClassName = "",
   withHeader = true,
   withFooter = true,
@@ -65,6 +64,7 @@ const Layout: React.FC<LayoutPropType> = ({
   setSEO,
   ...props
 }) => {
+  const i18n: any = useI18n()
   const size = useWindowSize()
   const getToken = (): string => {
     const googleAdsWebsiteMetaToken = brand?.googleAdsWebsiteMetaToken

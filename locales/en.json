@@ -76,7 +76,7 @@
     "sessionExpired": "Your session is expired",
     "settingNotification": "Notification",
     "shipped": "Shipped",
-    "shippingDetail": "Shipping Detail",
+    "shippingDetails": "Shipping Address",
     "shippingMethod": "Shipping Method",
     "total": "total",
     "unpaid": "Unpaid",
@@ -439,8 +439,17 @@
     "wrongEmail": "Please use the email that you used to create the order"
   },
   "paymentMethod": {
+    "continuePayment": "Continue to Payment",
     "copySuccess": "Copied Successfully",
-    "downloadQrSuccess": "Image Downloaded Successfully"
+    "counterInstruction": "Show this barcode to the cashier",
+    "downloadQrSuccess": "Image Downloaded Successfully",
+    "expiryDateWarning": "Complete payment before",
+    "manualBankTransfer": "Manual Bank Transfer",
+    "manualBankTransferInstruction": "Select one of the bank transfer payment destinations",
+    "page": "Payment page",
+    "qrDownload": "Download QR Code",
+    "qrInstruction": "Scan the QR code via an e-wallet or m-banking application that supports QRIS payments.",
+    "seeMore": "For more info, see"
   },
   "paymentStatus": {
     "continueShopping": "Continue Shopping",
