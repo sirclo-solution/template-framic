@@ -439,17 +439,17 @@
     "wrongEmail": "Please use the email that you used to create the order"
   },
   "paymentMethod": {
-    "continuePayment": "Continue to Payment",
+    "continuePayment": "Continue to payment",
     "copySuccess": "Copied Successfully",
     "counterInstruction": "Show this barcode to the cashier",
     "downloadQrSuccess": "Image Downloaded Successfully",
-    "expiryDateWarning": "Complete payment before",
+    "expiryDateWarning": "Complete payment before ",
     "manualBankTransfer": "Manual Bank Transfer",
-    "manualBankTransferInstruction": "Select one of the bank transfer payment destinations",
+    "manualBankTransferInstruction": "Choose 1 payment recipient account",
     "page": "Payment page",
     "qrDownload": "Download QR Code",
     "qrInstruction": "Scan the QR code via an e-wallet or m-banking application that supports QRIS payments.",
-    "seeMore": "For more info, see"
+    "seeMore": "For more info, see "
   },
   "paymentStatus": {
     "continueShopping": "Continue Shopping",
