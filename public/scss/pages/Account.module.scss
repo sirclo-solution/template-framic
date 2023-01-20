@@ -751,6 +751,7 @@
   &_orderInnerHeader
   {
     width: calc(100% - 56px);
+    margin-bottom: 4px;
 
     & > div //styling paymentStatus
     {
@@ -1356,16 +1357,20 @@
 
   &_paymentMethodDetailExpiryContainer
   {
-    @include flex(row, center, center);
+    @include flex(row, center, flex-start);
     @include typographyBuilder(400, 12, 16);
 
-    max-width: 300px;
-    padding: 6px;
+    padding: 6px 8px;
     background: $color_yellow_light;
     border-radius: 4px;
+    display: inline-flex;
   }
 
-  &_paymentMethodDetailExpiryWarningText,
+  &_paymentMethodDetailExpiryWarningText
+  {
+    margin-left: 9.6px;
+  }
+
   &_paymentMethodDetailExpiryDate
   {
     margin-left: 3px;
