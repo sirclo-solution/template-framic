@@ -728,16 +728,23 @@
     @include flex(row, center, space-between);
     order: 2;
     width: calc(100% - 32px);
-    margin:  0 16px;
-    background: $color_light_dark;
+    margin: 0 16px;
     border-radius: 3px;
-    padding: 8px 12px;
+    border-top: 1px dashed $color_grey_light_border;
+
+    & > span,
+    & > h2
+    {
+      width: 100%;
+      margin-top: 16px;
+      padding: 8px 12px;
+      background: $color_light_dark;
+      color: $color_black_text;
+    }
 
     & > span
     {
       @include typographyBuilder(500, 12, 16);
-      color: $color_black_text;
-      margin: 0;
     }
   }
 
