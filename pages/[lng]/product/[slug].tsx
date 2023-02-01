@@ -1,15 +1,23 @@
 /* library package */
-import { FC, ReactElement, ReactNode } from 'react';
-import { useI18n, getProductDetail, useAuthToken } from '@sirclo/nexus';
-import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import {
+  FC,
+  ReactElement,
+  ReactNode
+} from 'react'
+import { 
+  useI18n,
+  getProductDetail,
+  useAuthToken
+} from '@sirclo/nexus'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 /* library template */
-import { useBrand } from 'lib/useBrand';
+import { useBrand } from 'lib/useBrand'
 /* component */
-import Layout from 'components/Layout/Layout';
-import { GRAPHQL_URI } from 'components/Constants';
-import Breadcrumb from 'components/Breadcrumb/Breadcrumb';
-import ProductDetailComponent from 'components/ProductDetailComponent';
-import ProductsComponent from 'components/ProductsComponent';
+import Layout from 'components/Layout/Layout'
+import { GRAPHQL_URI } from 'components/Constants'
+import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
+import ProductDetailComponent from 'components/ProductDetailComponent'
+import ProductsComponent from 'components/ProductsComponent'
 
 interface ProductProps {
   lng?: string;

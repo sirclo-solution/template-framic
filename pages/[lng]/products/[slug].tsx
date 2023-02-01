@@ -1,22 +1,22 @@
 /* library package */
-import { FC, useState } from 'react';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { FC, useState } from 'react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   useI18n,
   useAuthToken,
   TemplateFeatures,
-  FeaturesType,
-} from '@sirclo/nexus';
+  FeaturesType
+} from '@sirclo/nexus'
 /* library template */
-import { useBrand } from 'lib/useBrand';
+import { useBrand } from 'lib/useBrand'
 /* component */
-import Layout from 'components/Layout/Layout';
-import ProductsComponent from 'components/ProductsComponent';
-import Breadcrumb from 'components/Breadcrumb/Breadcrumb';
-import Error404Page from 'pages/404';
+import Layout from 'components/Layout/Layout'
+import ProductsComponent from 'components/ProductsComponent'
+import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
+import Error404Page from 'pages/404'
 /* styles */
-import styles from 'public/scss/pages/Products.module.scss';
-import stylesProductHighlight from 'public/scss/components/Product.module.scss';
+import styles from 'public/scss/pages/Products.module.scss'
+import stylesProductHighlight from 'public/scss/components/Product.module.scss'
 
 const ProductHighlightPage: FC<any> = ({
   lng,
