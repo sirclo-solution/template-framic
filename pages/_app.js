@@ -1,8 +1,8 @@
-import '@brainhubeu/react-carousel/lib/style.css';
-import 'react-toastify/dist/ReactToastify.css';
-import 'public/scss/main.scss';
+import '@brainhubeu/react-carousel/lib/style.css'
+import 'react-toastify/dist/ReactToastify.css'
+import 'public/scss/main.scss'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import {
   useApollo,
   ApolloProvider,
@@ -10,10 +10,10 @@ import {
   TemplateFeatureFlag,
   Widget,
   I18n,
-} from '@sirclo/nexus';
-import { PageTransition } from 'next-page-transitions';
-import { handleWebVitals } from 'lib/handleWebVitals';
-import MaintenanceMode from '@sirclo/nexus/lib/component/MaintenanceMode';
+} from '@sirclo/nexus'
+import { PageTransition } from 'next-page-transitions'
+import { handleWebVitals } from 'lib/handleWebVitals'
+import MaintenanceMode from '@sirclo/nexus/lib/component/MaintenanceMode'
 
 export const reportWebVitals = (metric) => handleWebVitals(metric);
 
