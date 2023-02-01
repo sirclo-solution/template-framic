@@ -9,6 +9,7 @@ import { IncomingMessage } from 'http'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import {
+  isTermOfPayment,
   SingleSignOn,
   useI18n,
   WhatsAppOTPInput
@@ -92,6 +93,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
     wa: "whatsapp-input"
   }
   const [step, setStep] = useState<string>(steps.wa)
+  const isTermOfPaymentAllowed = isTermOfPayment();
 
   const brandName = (brand: string): string => {
     const lower = brand?.toLowerCase()
@@ -131,7 +133,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
         />
       }
 
-      {(step === steps.wa || type === "register") &&
+      {(step === steps.wa || type === "register") && !isTermOfPaymentAllowed &&
         <div className={styles.loginregister_footer}>
           {type === "register" ?
             i18n.t('register.haveAccount') :
