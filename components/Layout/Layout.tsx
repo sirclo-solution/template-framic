@@ -56,7 +56,6 @@ const classesNewsletterPopup = {
 const Layout: React.FC<LayoutPropType> = ({
   lngDict,
   lng,
-  i18n = useI18n(), // Temporarily using default value for persistent layout alt solution
   layoutClassName = "",
   withHeader = true,
   withFooter = true,
