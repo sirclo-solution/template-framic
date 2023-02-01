@@ -4,7 +4,6 @@ import { useI18n, getProductDetail, useAuthToken } from '@sirclo/nexus';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 /* library template */
 import { useBrand } from 'lib/useBrand';
-import { NextPageWithLayout } from 'lib/commonTypes';
 /* component */
 import Layout from 'components/Layout/Layout';
 import { GRAPHQL_URI } from 'components/Constants';
