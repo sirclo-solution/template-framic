@@ -22,20 +22,20 @@ const ProductHighlightPage: FC<any> = ({
   lng,
   lngDict,
   brand,
-  slugSection
+  slugSection,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const i18n: any = useI18n()
-  const [totalProductPerPage, setTotalProductPerPage] = useState<string>('0')
+  const i18n: any = useI18n();
+  const [totalProductPerPage, setTotalProductPerPage] = useState<string>('0');
 
   const [titleSectionProductHighlight, setTitleSectionProductHighlight] =
-    useState<string>("")
+    useState<string>('');
 
-  const linksBreadcrumb = [i18n.t("header.home"), titleSectionProductHighlight]
+  const linksBreadcrumb = [i18n.t('header.home'), titleSectionProductHighlight];
 
   const generateTotalProductsPerPage = (total: string = '0') => {
-    const label = i18n.t('product.showingProduct')
-    return label.replace('{TOTAL}', total)
-  }
+    const label = i18n.t('product.showingProduct');
+    return label.replace('{TOTAL}', total);
+  };
 
   return (
     <TemplateFeatures
@@ -51,7 +51,9 @@ const ProductHighlightPage: FC<any> = ({
       >
         <Breadcrumb links={linksBreadcrumb} lng={lng} />
         <div className={styles.products_container}>
-          <div className={`${styles.products_listWrapper} ${styles.products_productHighlightListWrapper}`}>
+          <div
+            className={`${styles.products_listWrapper} ${styles.products_productHighlightListWrapper}`}
+          >
             <div className={styles.products_listHeaderContainer}>
               <div className={styles.products_listAdjustContainer}>
                 <h1 className={styles.products_listHeaderTitle}>
@@ -62,7 +64,9 @@ const ProductHighlightPage: FC<any> = ({
                 {generateTotalProductsPerPage(totalProductPerPage)}
               </label>
             </div>
-            <div className={`${stylesProductHighlight.productHighlight_productSectionContainer}`}>
+            <div
+              className={`${stylesProductHighlight.productHighlight_productSectionContainer}`}
+            >
               {/* Container Products List */}
               <ProductsComponent
                 i18n={i18n}
@@ -70,7 +74,9 @@ const ProductHighlightPage: FC<any> = ({
                 getTotalProductPerPage={setTotalProductPerPage}
                 isProductHighlightBySlug
                 productHighlightListSlug={slugSection}
-                getTitleSectionProductHighlight={(value: string) => setTitleSectionProductHighlight(value)}
+                getTitleSectionProductHighlight={(value: string) =>
+                  setTitleSectionProductHighlight(value)
+                }
                 type="list"
               />
             </div>
@@ -85,30 +91,33 @@ const ProductHighlightPage: FC<any> = ({
         </div>
       </Layout>
     </TemplateFeatures>
-  )
-}
+  );
+};
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   res,
-  params
+  params,
 }) => {
-  const { slug } = params
+  const { slug } = params;
   const [brand] = await Promise.all([
     useBrand(req),
-    useAuthToken({ req, res, env: process.env })
-  ])
-  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
-  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
+    useAuthToken({ req, res, env: process.env }),
+  ]);
+  const defaultLanguage =
+    brand?.settings?.defaultLanguage || params.lng || 'id';
+  const { default: lngDict = {} } = await import(
+    `locales/${defaultLanguage}.json`
+  );
 
   return {
     props: {
       lng: defaultLanguage,
       lngDict,
       slugSection: slug,
-      brand: brand || ""
-    }
-  }
-}
+      brand: brand || '',
+    },
+  };
+};
 
-export default ProductHighlightPage
+export default ProductHighlightPage;
