@@ -40,7 +40,6 @@ const Header: FC<any> = ({
 
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [countWidgetAnnouncement, setCountWidgetAnnouncement] = useState(null);
-  const [scrolled, setScrolled] = useState<boolean>(false)
 
   useEffect(() => {
     setOpenMenu(false)
@@ -51,15 +50,6 @@ const Header: FC<any> = ({
   const handleCart = () => {
     if (router.pathname !== "/[lng]/payment_notif/[[...orderID]]") Router.push("/[lng]/cart", `/${lng}/cart`);
   }
-
-  const handleScroll = () => {
-    let offset = window.scrollY
-    setScrolled(offset > 32)
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-  })
 
   return (
     <>
@@ -73,8 +63,8 @@ const Header: FC<any> = ({
           />
         </div>
       }
-      <header className={`${styles.header_wrapper}  ${scrolled ? "scrolled" : ""}`}>
-        <div className={`${styles.header_container} ${scrolled ? "scrolled" : ""}`}>
+      <header className={styles.header_wrapper}>
+        <div className={styles.header_container}>
           <span className={styles.header_menu} onClick={toogleMenu} />
           <div className={styles.header_logoContainer}>
             <LazyLoadComponent
