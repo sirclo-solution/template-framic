@@ -6,29 +6,22 @@
   {
     @include useContainer();
     transition: all ease-in-out 0.5s;
-
-    &[class*="scrolled"]
-    {
-      position: fixed;
-      top: 0;
-      z-index: 10;
-      background-color: $color_white;
-      min-width: 100%;
-      left: 0;
-    }
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: $color_white;
+    min-width: 100%;
   }
 
   &_container
   {
     @include flex(row, center, center);
+    @include useContainer();
     background-color: $color_white;
     padding-top: 20px !important;
     padding-bottom: 20px !important;
-
-    &[class*="scrolled"]
-    {
-      @include useContainer();
-    }
   }
 
   &_menu
