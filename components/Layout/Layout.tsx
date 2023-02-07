@@ -1,7 +1,11 @@
 /* library package */
 import { useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
-import { withBrand, Newsletter } from '@sirclo/nexus'
+import {
+  withBrand,
+  Newsletter,
+  useI18n
+} from '@sirclo/nexus'
 import Head from 'next/head'
 import { X as XIcon } from 'react-feather'
 import useWindowSize from 'lib/useWindowSize'
@@ -18,7 +22,6 @@ import stylesButtons from 'public/scss/components/Button.module.scss'
 
 type LayoutPropType = {
   lngDict: any
-  i18n: any
   lng: string
   layoutClassName?: string
   withHeader?: boolean
@@ -51,7 +54,6 @@ const classesNewsletterPopup = {
 
 const Layout: React.FC<LayoutPropType> = ({
   lngDict,
-  i18n,
   lng,
   layoutClassName = "",
   withHeader = true,
@@ -61,6 +63,7 @@ const Layout: React.FC<LayoutPropType> = ({
   setSEO,
   ...props
 }) => {
+  const i18n: any = useI18n()
   const size = useWindowSize()
   const getToken = (): string => {
     const googleAdsWebsiteMetaToken = brand?.googleAdsWebsiteMetaToken
