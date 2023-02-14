@@ -39,7 +39,6 @@
     & > img
     {
       @include fixedHeight(24px);
-      @include fixedWidth(70px);
     }
   }
 
