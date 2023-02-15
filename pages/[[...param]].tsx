@@ -28,7 +28,7 @@ export const getServerSideProps = async ({ req, res, params }: any) => {
   ]
 
   const { lng } = await useBrandCommon(req, params)
-  const location = `/${lng}` + req.url
+  const location = `/${lng}` + req.url.replace(/\/$/, '')
 
   if (allowedUri.indexOf(params.param) == -1) {
     if (
