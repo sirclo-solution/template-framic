@@ -1,8 +1,7 @@
 /* library package */
 import { 
   FC, 
-  useState, 
-  useEffect
+  useState
 } from 'react'
 import Router from 'next/router'
 import {
@@ -23,7 +22,6 @@ import ProductDetailReviews from './ProductDetailReviews'
 import styles from 'public/scss/components/ProductDetail.module.scss'
 import stylesButton from 'public/scss/components/Button.module.scss'
 import stylesForm from 'public/scss/components/Form.module.scss'
-import stylesSizeGuide from 'public/scss/components/SizeGuide.module.scss'
 import { useSizeBanner } from 'lib/useSizeBanner'
 
 type ProductDetailComponentType = {
@@ -153,86 +151,6 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
     setDataAddToCart(detailProduct[0])
     tooglePopupSuccessAddCart()
   }
-  
-  useEffect(() => {
-    const waitForElm = (selector: string) => {
-      return new Promise((resolve) => {
-        if (document.querySelector(selector)) {
-          return resolve(document.querySelector(selector))
-        }
-        const observer = new MutationObserver(() => {
-          if (document.querySelector(selector)) {
-            resolve(document.querySelector(selector));
-            observer.disconnect()
-          }
-        })
-
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true,
-        })
-      })
-    }
-
-    waitForElm('[class*="size-guide"]').then(() => {
-      const sizeGuide = document.querySelector('[class*="size-guide"]')
-      if(sizeGuide){
-        sizeGuide.className = stylesSizeGuide.sizeguide_sizeList
-        sizeGuide.setAttribute("id", "size-list")
-
-        const divTabGuide = document.getElementById("tab-guide")
-        if (!divTabGuide) {
-          const tabGuide = document.createElement("div")
-          tabGuide.setAttribute("id", "tab-guide")
-          tabGuide.className = stylesSizeGuide.sizeguide_tabSizeGuide
-          sizeGuide.insertAdjacentElement("beforebegin", tabGuide)
-        }
-
-        const sizeList = Array.from(sizeGuide.children)
-        let sizeArray = []
-        sizeList.map((item) => {
-          let sizeType = (item as HTMLElement).dataset.type
-          if (sizeArray.indexOf(sizeType) === -1 && sizeType !== undefined) {
-            sizeArray.push(sizeType)
-            const button = document.createElement("button")
-            button.className = stylesSizeGuide.sizeguide_tabToggle
-            button.innerText = sizeType
-            button.dataset.toggle = sizeType
-            button.onclick = function () {
-              tabToggle(sizeType)
-            }
-            document.getElementById("tab-guide").appendChild(button)
-          }
-        })
-
-        setTimeout(() => {
-          let firstButton = document.querySelector("#tab-guide button") as HTMLElement
-          firstButton.click()
-        }, 1000)
-      }
-
-      const tabToggle = (size: string) => {
-        let thisButton = document.querySelector("#tab-guide button[data-toggle='" + size + "']")
-        let activeToggle = document.querySelector("#tab-guide button.active")
-        if (activeToggle !== null) {
-          activeToggle.classList.remove("active")
-        }
-        thisButton.classList.add("active")
-
-        let displayList = document.querySelectorAll("#size-list li.show")
-        if (displayList.length > 0) {
-          displayList.forEach((item) => {
-            item.classList.remove("show")
-          })
-        }
-
-        let allFilterSize = document.querySelectorAll("#size-list [data-type='" + size + "']")
-        allFilterSize.forEach((item) => {
-          item.classList.add("show")
-        })
-      }
-    })
-  }, [])
 
   if (!data?.published || !data) return <EmptyComponent title={i18n.t("product.isEmpty")} />
 
