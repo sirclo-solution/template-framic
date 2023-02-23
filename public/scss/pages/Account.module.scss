@@ -679,6 +679,19 @@
     margin: 0;
   }
 
+  &_productNotes
+  {
+    @include typographyBuilder(400, 10, 16);
+
+    word-wrap: break-word;
+    max-width: 414px;
+          
+    @media screen and (max-width: 767px)
+    {
+      max-width: 200px;
+    }
+  }
+
   &_orderItem
   {
     @include flex(column, flex-start, flex-start);
@@ -720,7 +733,48 @@
   &_orderBody
   {
     width: 100%;
+    order: 2;
+  }
+
+  &_detailPriceSection
+  {
+    @include flex(column, flex-start, flex-start);
+    @include typographyBuilder(400, 12, 16);
+
     order: 3;
+    width: 100%;
+    gap: 5px;
+  }
+
+  &_detailPriceLine
+  {
+    @include flex(row, flex-start, space-between);
+    width: 100%;
+    padding: 0 16px;
+
+    &:first-child,
+    &:nth-last-child(3)
+    {
+      border-top: 1px solid $color_light;
+      padding-top: 16px;
+    }
+
+    &:nth-last-child(3)
+    {
+      margin-top: 16px;
+    }
+  }
+
+  &_detailTotalPriceLine
+  {
+    @include flex(row, flex-start, space-between);
+    @include typographyBuilder(600, 12, 16);
+
+    padding: 0 16px 16px;
+    width: 100%;
+    border-top: 1px solid $color_light;
+    padding-top: 16px;
+    margin-top: 16px;
   }
 
   &_orderFooter
