@@ -342,6 +342,7 @@
     "lineItemDelivered": "Delivered",
     "lineItemNeedReview": "Needs Review",
     "lineItemReviewed": "Reviewed",
+    "productNote": "Note",
     "uploading": "Uploading ...",
     "uploadReceipt": "Payment Confirmation"
   },
@@ -369,18 +370,31 @@
   "orderSummary": {
     "allEmpty": "All field must not be empty",
     "billingEmpty": "All field on Billing Address Form must not be empty.",
+    "continueShopping": "Continue Shopping",
+    "coupon": "Coupon",
+    "detail": "Detail",
     "discountBundle": "Discount Bundle",
-    "placeOrder": "Continue",
+    "discountProduct": "Product Discount",
+    "orderSummary": "Your cart",
+    "pay": "Pay",
+    "placeOrder": "Checkout",
+    "points": "Points",
     "pointsApplied": "Points applied",
     "pointsLeft": "Points left",
+    "products": "Products",
     "shipping": "Shipping Cost",
     "shippingEmpty": "All field on Shipping Address Form must not be empty.",
     "subTotal": "Subtotal",
+    "subTotalTransaction": "Subtotal",
     "total": "Total",
+    "transactionFee": "Transaction Fee",
+    "uniqueCode": "Unique Code",
     "usePoints": "Use point",
     "useVoucher": "Use coupon",
     "viewCart": "View Cart",
-    "voucherApplied": "Coupon applied"
+    "voucher": "Coupon",
+    "voucherApplied": "Coupon applied",
+    "yourCart": "Your Cart"
   },
   "pageHeader": {
     "back": "back"
