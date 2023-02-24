@@ -749,7 +749,7 @@
   &_detailPriceLine
   {
     @include flex(row, flex-start, space-between);
-    
+
     width: 100%;
     padding: 0 16px;
 
@@ -771,10 +771,9 @@
     @include flex(row, flex-start, space-between);
     @include typographyBuilder(600, 12, 16);
 
-    padding: 0 16px 16px;
+    padding: 16px;
     width: 100%;
     border-top: 1px solid $color_light;
-    padding-top: 16px;
     margin-top: 16px;
   }
 
