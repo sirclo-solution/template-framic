@@ -749,6 +749,7 @@
   &_detailPriceLine
   {
     @include flex(row, flex-start, space-between);
+    
     width: 100%;
     padding: 0 16px;
 
