@@ -115,11 +115,15 @@ const classesAccount = {
   orderedItemClassName: styles.orderhistory_orderedItem,
   orderedItemDetailTitleClassName: styles.orderhistory_orderedItemDetailTitle,
   orderedItemDetailPriceClassName: styles.orderhistory_orderedItemDetailPrice,
+  productNotesClassName: styles.orderhistory_productNotes,
   orderTitleClassName: styles.orderhistory_orderTitle,
   orderHeaderClassName: styles.orderhistory_orderHeader,
   orderDateClassName: styles.orderhistory_orderDate,
   orderInnerHeaderClassName: styles.orderhistory_orderInnerHeader,
   orderBodyClassName: styles.orderhistory_orderBody,
+  detailPriceSectionClassName: styles.orderhistory_detailPriceSection,
+  detailPriceLineClassName: styles.orderhistory_detailPriceLine,
+  detailTotalPriceLineClassName: styles.orderhistory_detailTotalPriceLine,
   orderFooterClassName: styles.orderhistory_orderFooter,
   totalCostClassName: styles.orderhistory_totalCost,
   orderedItemsContainer: styles.orderhistory_orderedItemsContainer,
@@ -278,7 +282,8 @@ const AccountsPage: FC<AccountPageProps> = ({
               iconTracker: <img src="/images/motorcycle.svg" alt="motorcycle" />,
               whatsApp: <img src="/images/whatsapp.png" />,
               email: <img src="/images/email.png" />,
-              warningIcon: <span className={styles.orderhistory_warningIcon}/>
+              warningIcon: <span className={styles.orderhistory_warningIcon}/>,
+              checkMarkIcon: ""
             }}
           />
         </div>
