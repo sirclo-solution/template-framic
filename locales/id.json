@@ -340,8 +340,8 @@
   },
   "orderHistory": {
     "lineItemDelivered": "Selesaikan Pesanan",
-    "lineItemNeedReview": "Needs Review",
-    "lineItemReviewed": "Reviewed",
+    "lineItemNeedReview": "Butuh Ulasan",
+    "lineItemReviewed": "Sudah Diulas",
     "productNote": "Catatan",
     "uploading": "Mengunggah ...",
     "uploadReceipt": "Konfirmasi Pembayaran"
