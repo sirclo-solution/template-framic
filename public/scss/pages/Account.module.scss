@@ -918,6 +918,11 @@
     margin-bottom: 6px;
   }
 
+  &_shippingMethodValue
+  {
+    @include typographyBuilder(600, 12, 16);
+  }
+
   &_orderControl
   {
     @include flex(row-reverse, center, flex-start);
@@ -1241,7 +1246,7 @@
 
   &_paymentMethodDetailText
   {
-    @include typographyBuilder(400, 12, 16);
+    @include typographyBuilder(600, 12, 16);
 
     margin-bottom: 0;
 
