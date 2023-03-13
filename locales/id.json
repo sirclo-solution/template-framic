@@ -76,7 +76,7 @@
     "sessionExpired": "Sesi anda telah usai",
     "settingNotification": "Notifikasi",
     "shipped": "Pesanan Dikirim",
-    "shippingDetail": "Detil pengiriman",
+    "shippingDetails": "Alamat pengiriman",
     "shippingMethod": "Metode Pengiriman",
     "total": "Jumlah",
     "unpaid": "Menunggu Pembayaran",
@@ -340,8 +340,9 @@
   },
   "orderHistory": {
     "lineItemDelivered": "Selesaikan Pesanan",
-    "lineItemNeedReview": "Needs Review",
-    "lineItemReviewed": "Reviewed",
+    "lineItemNeedReview": "Butuh Ulasan",
+    "lineItemReviewed": "Sudah Diulas",
+    "productNote": "Catatan",
     "uploading": "Mengunggah ...",
     "uploadReceipt": "Konfirmasi Pembayaran"
   },
@@ -369,18 +370,30 @@
   "orderSummary": {
     "allEmpty": "Semua kolom tidak boleh kosong",
     "billingEmpty": "Semua kolom di alamat penagihan tidak boleh kosong.",
+    "continueShopping": "Lanjutkan Belanja",
+    "coupon": "Kupon",
+    "detail": "Detail",
     "discountBundle": "Paket Diskon",
-    "placeOrder": "Lanjutkan",
+    "discountProduct": "Diskon Produk",
+    "orderSummary": "Keranjangmu",
+    "pay": "Bayar",
+    "placeOrder": "Beli",
+    "points": "Poin",
     "pointsApplied": "Point digunakan",
     "pointsLeft": "Point tersisa",
-    "shipping": "Biaya pengiriman",
+    "products": "Produk",
+    "shipping": "Ongkos Kirim",
     "shippingEmpty": "Semua kolom di alamat pengiriman tidak boleh kosong.",
     "subTotal": "Subtotal",
-    "total": "Total",
+    "subTotalTransaction": "Subtotal",
+    "total": "Total Pembayaran",
+    "transactionFee": "Biaya Transaksi",
+    "uniqueCode": "Kode Unik",
     "usePoints": "Gunakan poin",
     "useVoucher": "Gunakan kupon",
-    "viewCart": "Lihat Keranjang",
-    "voucherApplied": "Kupon digunakan"
+    "viewCart": "Liat Keranjang",
+    "voucherApplied": "Kupon digunakan",
+    "yourCart": "Keranjang anda"
   },
   "pageHeader": {
     "back": "Kembali"
@@ -439,8 +452,18 @@
     "wrongEmail": "Mohon gunakan email yang sesuai dengan saat membuat pesanan"
   },
   "paymentMethod": {
+    "continuePayment": "Lanjutkan pembayaran",
     "copySuccess": "Berhasil tersalin",
-    "downloadQrSuccess": "Berhasil Mengunduh Gambar"
+    "counterInstruction": "Tunjukkan barcode ini ke kasir",
+    "downloadQrSuccess": "Berhasil Mengunduh Gambar",
+    "expiryDateWarning": "Bayar sebelum ",
+    "manualBankTransfer": "Manual Bank Transfer",
+    "manualBankTransferAccountNamePrefix": "a.n",
+    "manualBankTransferInstruction": "Pilih 1 rekening penerima pembayaran",
+    "page": "halaman Pembayaran",
+    "qrDownload": "Unduh QR Code",
+    "qrInstruction": "Scan kode QR melalui aplikasi e-wallet atau m-banking yang mendukung pembayaran QRIS",
+    "seeMore": "Lihat info lengkap di "
   },
   "paymentStatus": {
     "continueShopping": "Lanjutkan Berbelanja",

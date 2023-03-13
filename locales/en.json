@@ -76,7 +76,7 @@
     "sessionExpired": "Your session is expired",
     "settingNotification": "Notification",
     "shipped": "Shipped",
-    "shippingDetail": "Shipping Detail",
+    "shippingDetails": "Shipping Address",
     "shippingMethod": "Shipping Method",
     "total": "total",
     "unpaid": "Unpaid",
@@ -342,6 +342,7 @@
     "lineItemDelivered": "Delivered",
     "lineItemNeedReview": "Needs Review",
     "lineItemReviewed": "Reviewed",
+    "productNote": "Note",
     "uploading": "Uploading ...",
     "uploadReceipt": "Payment Confirmation"
   },
@@ -369,18 +370,31 @@
   "orderSummary": {
     "allEmpty": "All field must not be empty",
     "billingEmpty": "All field on Billing Address Form must not be empty.",
+    "continueShopping": "Continue Shopping",
+    "coupon": "Coupon",
+    "detail": "Detail",
     "discountBundle": "Discount Bundle",
-    "placeOrder": "Continue",
+    "discountProduct": "Product Discount",
+    "orderSummary": "Your cart",
+    "pay": "Pay",
+    "placeOrder": "Checkout",
+    "points": "Points",
     "pointsApplied": "Points applied",
     "pointsLeft": "Points left",
+    "products": "Products",
     "shipping": "Shipping Cost",
     "shippingEmpty": "All field on Shipping Address Form must not be empty.",
     "subTotal": "Subtotal",
+    "subTotalTransaction": "Subtotal",
     "total": "Total",
+    "transactionFee": "Transaction Fee",
+    "uniqueCode": "Unique Code",
     "usePoints": "Use point",
     "useVoucher": "Use coupon",
     "viewCart": "View Cart",
-    "voucherApplied": "Coupon applied"
+    "voucher": "Coupon",
+    "voucherApplied": "Coupon applied",
+    "yourCart": "Your Cart"
   },
   "pageHeader": {
     "back": "back"
@@ -439,8 +453,17 @@
     "wrongEmail": "Please use the email that you used to create the order"
   },
   "paymentMethod": {
+    "continuePayment": "Continue to payment",
     "copySuccess": "Copied Successfully",
-    "downloadQrSuccess": "Image Downloaded Successfully"
+    "counterInstruction": "Show this barcode to the cashier",
+    "downloadQrSuccess": "Image Downloaded Successfully",
+    "expiryDateWarning": "Complete payment before ",
+    "manualBankTransfer": "Manual Bank Transfer",
+    "manualBankTransferInstruction": "Choose 1 payment recipient account",
+    "page": "Payment page",
+    "qrDownload": "Download QR Code",
+    "qrInstruction": "Scan the QR code via an e-wallet or m-banking application that supports QRIS payments.",
+    "seeMore": "For more info, see "
   },
   "paymentStatus": {
     "continueShopping": "Continue Shopping",
