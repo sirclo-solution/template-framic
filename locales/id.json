@@ -340,8 +340,8 @@
   },
   "orderHistory": {
     "lineItemDelivered": "Selesaikan Pesanan",
-    "lineItemNeedReview": "Needs Review",
-    "lineItemReviewed": "Reviewed",
+    "lineItemNeedReview": "Butuh Ulasan",
+    "lineItemReviewed": "Sudah Diulas",
     "productNote": "Catatan",
     "uploading": "Mengunggah ...",
     "uploadReceipt": "Konfirmasi Pembayaran"
@@ -457,14 +457,14 @@
     "copySuccess": "Berhasil tersalin",
     "counterInstruction": "Tunjukkan barcode ini ke kasir",
     "downloadQrSuccess": "Berhasil Mengunduh Gambar",
-    "expiryDateWarning": "Bayar sebelum",
+    "expiryDateWarning": "Bayar sebelum ",
     "manualBankTransfer": "Manual Bank Transfer",
-    "manualBankTransferInstruction": "Pilih salah satu tujuan bank transfer pembayaran",
-    "manualBankTransferAccountNamePrefix": "a.n.",
-    "page": "halaman pembayaran",
+    "manualBankTransferAccountNamePrefix": "a.n",
+    "manualBankTransferInstruction": "Pilih 1 rekening penerima pembayaran",
+    "page": "halaman Pembayaran",
     "qrDownload": "Unduh QR Code",
-    "qrInstruction": "Pindai kode QR melalui e-wallet atau aplikasi m-banking yang mendukung pembayaran QRIS.",
-    "seeMore": "Lebih lengkap lihat"
+    "qrInstruction": "Scan kode QR melalui aplikasi e-wallet atau m-banking yang mendukung pembayaran QRIS",
+    "seeMore": "Lihat info lengkap di "
   },
   "paymentStatus": {
     "continueShopping": "Lanjutkan Berbelanja",

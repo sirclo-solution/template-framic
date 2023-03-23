@@ -782,16 +782,23 @@
     @include flex(row, center, space-between);
     order: 2;
     width: calc(100% - 32px);
-    margin:  0 16px;
-    background: $color_light_dark;
+    margin: 0 16px;
     border-radius: 3px;
-    padding: 8px 12px;
+    border-top: 1px dashed $color_grey_light_border;
+
+    & > span,
+    & > h2
+    {
+      width: 100%;
+      margin-top: 16px;
+      padding: 8px 12px;
+      background: $color_light_dark;
+      color: $color_black_text;
+    }
 
     & > span
     {
       @include typographyBuilder(500, 12, 16);
-      color: $color_black_text;
-      margin: 0;
     }
   }
 
@@ -805,6 +812,7 @@
   &_orderInnerHeader
   {
     width: calc(100% - 56px);
+    margin-bottom: 4px;
 
     & > div //styling paymentStatus
     {
@@ -908,6 +916,11 @@
     @include typographyBuilder(400, 12, 16);
     color: $color_black_text;
     margin-bottom: 6px;
+  }
+
+  &_shippingMethodValue
+  {
+    @include typographyBuilder(600, 12, 16);
   }
 
   &_orderControl
@@ -1233,7 +1246,7 @@
 
   &_paymentMethodDetailText
   {
-    @include typographyBuilder(400, 12, 16);
+    @include typographyBuilder(600, 12, 16);
 
     margin-bottom: 0;
 
@@ -1410,16 +1423,20 @@
 
   &_paymentMethodDetailExpiryContainer
   {
-    @include flex(row, center, center);
+    @include flex(row, center, flex-start);
     @include typographyBuilder(400, 12, 16);
 
-    max-width: 300px;
-    padding: 6px;
+    padding: 6px 8px;
     background: $color_yellow_light;
     border-radius: 4px;
+    display: inline-flex;
   }
 
-  &_paymentMethodDetailExpiryWarningText,
+  &_paymentMethodDetailExpiryWarningText
+  {
+    margin-left: 9.6px;
+  }
+
   &_paymentMethodDetailExpiryDate
   {
     margin-left: 3px;
