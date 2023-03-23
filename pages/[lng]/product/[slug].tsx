@@ -1,24 +1,15 @@
 /* library package */
-import {
-  FC,
-  ReactElement,
-  ReactNode
-} from 'react'
-import { 
-  useI18n,
-  getProductDetail,
-  useAuthToken
-} from '@sirclo/nexus'
-import { LazyLoadComponent } from 'react-lazy-load-image-component'
+import { FC, ReactElement, ReactNode } from "react";
+import { useI18n, getProductDetail, useAuthToken } from "@sirclo/nexus";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 /* library template */
-import { useBrand } from 'lib/useBrand'
-import { NextPageWithLayout } from 'lib/commonTypes'
+import { useBrand } from "lib/useBrand";
 /* component */
-import Layout from 'components/Layout/Layout'
-import { GRAPHQL_URI } from 'components/Constants'
-import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
-import ProductDetailComponent from 'components/ProductDetailComponent'
-import ProductsComponent from 'components/ProductsComponent'
+import Layout from "components/Layout/Layout";
+import { GRAPHQL_URI } from "components/Constants";
+import Breadcrumb from "components/Breadcrumb/Breadcrumb";
+import ProductDetailComponent from "components/ProductDetailComponent";
+import ProductsComponent from "components/ProductsComponent";
 
 interface ProductProps {
   lng?: string;
@@ -34,8 +25,8 @@ const Product: FC<ProductProps> & {
 } = ({ lng, slug, data, urlSite }) => {
   const i18n: any = useI18n();
   const linksBreadcrumb = [
-    `${i18n.t('header.home')}`,
-    (data?.published && data?.details[0]?.name) || '',
+    `${i18n.t("header.home")}`,
+    (data?.published && data?.details[0]?.name) || "",
   ];
 
   return (
@@ -69,7 +60,7 @@ export async function getServerSideProps({ req, res, params }) {
     useAuthToken({ req, res, env: process.env }),
   ]);
   const defaultLanguage =
-    brand?.settings?.defaultLanguage || params.lng || 'id';
+    brand?.settings?.defaultLanguage || params.lng || "id";
   const { default: lngDict = {} } = await import(
     `locales/${defaultLanguage}.json`
   );
@@ -81,7 +72,7 @@ export async function getServerSideProps({ req, res, params }) {
       slug,
       lngDict,
       data: data || null,
-      brand: brand || '',
+      brand: brand || "",
       urlSite: urlSite,
     },
   };
@@ -93,10 +84,10 @@ Product.getLayout = (page: ReactElement) => {
     lngDict: page.props?.lngDict,
     brand: page.props?.brand,
     setSEO: {
-      title: page.props?.data?.details[0]?.name || '',
-      description: page.props?.data?.SEOs[0]?.description || '',
-      keywords: page.props?.data?.SEOs[0]?.keywords?.join(', ') || '',
-      image: page.props?.data?.imageURLs[0] || '',
+      title: page.props?.data?.details[0]?.name || "",
+      description: page.props?.data?.SEOs[0]?.description || "",
+      keywords: page.props?.data?.SEOs[0]?.keywords?.join(", ") || "",
+      image: page.props?.data?.imageURLs[0] || "",
     },
   };
   return <Layout {...layoutProps}>{page}</Layout>;
