@@ -165,7 +165,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     useBrand(req),
     useGoogleAuth(req),
     useFacebookAuth(req),
-    useWhatsAppOTPSetting,
+    useWhatsAppOTPSetting(req),
     useAuthToken({ req, res, env: process.env })
   ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
