@@ -13,7 +13,7 @@
         @include fixedWidth(375px);
         min-height: 48px;
 
-        @media screen and (max-width: 575px)
+        @media screen and (max-width: $breakpoint_max_sm)
         {
             @include fixedWidth(calc(100vw - (20px * 2)));
         }
