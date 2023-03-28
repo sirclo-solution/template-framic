@@ -12,6 +12,7 @@ import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
 type ProductsListType = {
   i18n: any
   classProducts: classesProductType
+  classProductsCategory: classProductsCategoryType
   classPlaceholder: classesPlaceholderType
   collectionSlug: string
   filterProduct: any
@@ -20,6 +21,15 @@ type ProductsListType = {
   isProductHighlight?: boolean
   productHighlightSlug?: string
   getTitleProductHighlight?: (value: string) => void
+  tooglePopupSuccessNotifyme?: () => void
+  handleSuccessAddToCart?: () => void
+  tooglePopupErrorNotifyme?: () => void
+  tooglePopupErrorAddCart?: () => void
+  handleMultipleVariant: (
+    type: "add-to-cart" | "buy-now",
+    productSlug: string,
+    isQuickView: boolean
+  ) => void
 }
 
 type classesProductType = {
@@ -41,6 +51,15 @@ type classesProductType = {
   newLabelClassName?: string
 }
 
+type classProductsCategoryType = {
+  categoryContainerClassName?: string
+  parentCategoryClassName?: string
+  categoryItemClassName?: string
+  categoryValueContainerClassName?: string
+  categoryValueClassName?: string
+  categoryNameClassName?: string
+}
+
 type classesPlaceholderType = {
   placeholderImage?: string
   placeholderTitle?: string
@@ -49,6 +68,7 @@ type classesPlaceholderType = {
 
 const ProductsList: FC<ProductsListType> = ({
   classProducts,
+  classProductsCategory,
   classPlaceholder,
   i18n,
   getTotalProduct,
@@ -57,6 +77,11 @@ const ProductsList: FC<ProductsListType> = ({
   isProductHighlight,
   productHighlightSlug,
   getTitleProductHighlight,
+  tooglePopupSuccessNotifyme,
+  handleSuccessAddToCart,
+  tooglePopupErrorNotifyme,
+  tooglePopupErrorAddCart,
+  handleMultipleVariant    
 }) => {
   const size = useWindowSize()
   const categories: string = useQuery("categories")
@@ -125,7 +150,19 @@ const ProductsList: FC<ProductsListType> = ({
           collectionSlug={categories}
           tagName={tagname || ""}
           filter={filterProduct}
+          productCategoryClasses={classProductsCategory}
           isFlipImage
+          withAddToCartButton
+          cartIcon={<span>{i18n.t("product.addToCart")}</span>}
+          withCategory
+          categoryLength={1}
+          withRating
+          withBuyNowButton
+          onCompleteMsg={tooglePopupSuccessNotifyme}
+          onComplete={handleSuccessAddToCart}
+          onErrorMsg={tooglePopupErrorNotifyme}
+          onError={tooglePopupErrorAddCart}
+          onHandleMultiVariant={handleMultipleVariant}
           withSeparatedVariant={true}
           fullPath={`product/{id}`}
           pathPrefix={`product`}

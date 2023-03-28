@@ -10,18 +10,36 @@ import Placeholder from 'components/Placeholder'
 import styles from 'public/scss/components/WidgetHomePage.module.scss'
 
 export type ProductHighlightType = {
+  i18n: any
   classPlaceholder: any
   classProducts: any
+  classProductsCategory: any
   display?: "Display1" | "Display2"
   isLastSection?: boolean
   itemPerPage: number
+  tooglePopupSuccessNotifyme?: () => void
+  handleSuccessAddToCart?: () => void
+  tooglePopupErrorNotifyme?: () => void
+  tooglePopupErrorAddCart?: () => void
+  handleMultipleVariant: (
+    type: "add-to-cart" | "buy-now",
+    productSlug: string,
+    isQuickView: boolean
+  ) => void
 }
 
 const ProductHighlight: FC<ProductHighlightType> = ({
+  i18n,
   classProducts,
+  classProductsCategory,
   display,
   isLastSection,
-  itemPerPage              
+  itemPerPage,
+  tooglePopupSuccessNotifyme,
+  handleSuccessAddToCart,
+  tooglePopupErrorNotifyme,
+  tooglePopupErrorAddCart,
+  handleMultipleVariant        
 }) => {
   const size = useWindowSize()
 
@@ -34,7 +52,18 @@ const ProductHighlight: FC<ProductHighlightType> = ({
           sectionProductHighlight={display}
           isFlipImage
           lazyLoadedImage={false}
-          withCategory={false}
+          withAddToCartButton
+          withBuyNowButton
+          cartIcon={<span>{i18n.t("product.addToCart")}</span>}
+          withCategory
+          productCategoryClasses={classProductsCategory}
+          categoryLength={1}
+          withRating
+          onCompleteMsg={tooglePopupSuccessNotifyme}
+          onComplete={handleSuccessAddToCart}
+          onErrorMsg={tooglePopupErrorNotifyme}
+          onError={tooglePopupErrorAddCart}
+          onHandleMultiVariant={handleMultipleVariant}
           fullPath={`product/{id}`}
           pathPrefix={`product`}
           thumborSetting={{

@@ -1,0 +1,315 @@
+@import '../utils/variables';
+
+.chooseVariant
+{
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    background-color: $color_white;
+    border-radius: 0 0 3px 3px;
+
+    &__inner
+    {
+        @include fixedWidth(375px);
+        min-height: 48px;
+
+        @media screen and (max-width: 575px)
+        {
+            @include fixedWidth(calc(100vw - (20px * 2)));
+        }
+    }
+
+    &__loader
+    {
+        @include flex(row, center, center);
+        @include fixedWidth(100%);
+        position: relative;
+        min-height: 300px;
+    }
+
+    &__propertyRow
+    {
+        @include fixedWidth(100%);
+        position: relative;
+        margin: 0;
+        padding: 16px;
+
+        & > p
+        {
+            &:not([class])
+            {
+                display: none;
+            }
+        }
+    }
+
+    &__variantContainer
+    {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__variantOptionsContainer
+    {
+        @include flex(column, stretch, flex-start);
+        @include fixedWidth(100%);
+        position: relative;
+        margin: 0 auto 24px;
+        padding: 0;
+    }
+
+    &__variantLabel
+    {
+        @include flex(row, center, flex-start);
+        @include fixedWidth(100%);
+        @include fontPrimary(400);
+        @include fontSize(13);
+        text-transform: uppercase;
+        position: relative;
+        margin: 0 auto 6px;
+        padding: 0;
+        letter-spacing: calc((12px * 3.5) / 100);
+        color: $color_black;
+
+        &::after
+        {
+            content: " :";
+        }
+
+        &--no-colon
+        {
+            &::after
+            {
+                content: "";
+            }
+        }
+    }
+
+    &__variantOptions
+    {
+        @include flex(row, center, flex-start, true);
+        @include fixedWidth(100%);
+        position: relative;
+        margin: 0;
+        padding: 0;
+        gap: 8px;
+
+        select
+        {
+            background-size: 10px auto;
+            background-position: calc(100% - 16px) center;
+            background-repeat: no-repeat;
+            background-image: url("data:image/svg+xml,%3Csvg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 448 512' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'%3E%3C/path%3E%3C/svg%3E");
+
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            text-indent: 1px;
+            text-overflow: '';
+
+            &::-ms-expand
+            {
+                display: none;
+            }
+        }
+
+    & > span
+      {
+        & > input
+        {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          display: none;
+
+          &:checked + label
+          {
+            background-color: $color_black_text;
+            color: $color_white;
+            border-radius: 2px;
+          }
+
+          &:disabled + label
+          {
+            opacity: .5 !important;
+            cursor: inherit !important;
+          }
+        }
+
+        & > label
+        {
+          @include typographyBuilder(400, 12, 16);
+          color: $color_black_text;
+          border: 1px solid $color_light;
+          box-sizing: border-box;
+          padding: 12px;
+          border-radius: 2px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__variantInput
+    {
+        @include fixedWidth(100%);
+        @include fixedHeight(50px);
+        @include typographyBuilder(400, 12, 18);
+
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0 15px;
+        background-color: $color_white;
+        border: solid 1px $color_grey;
+        border-radius: 3px;
+
+        color: $color_black;
+
+        &,
+        &:hover,
+        &:focus,
+        &:active,
+        &:focus-visible
+        {
+            outline: none;
+            box-shadow: 0 0 0 transparent;
+        }
+    }
+
+    &__qtyWrapper
+    {
+        @include fixedWidth(100%);
+        margin-bottom: 24px;
+
+        &::before
+        {
+            content: "Quantity";
+            @extend .chooseVariant__variantLabel;
+        }
+
+        &[class*="id"]
+        {
+            &::before
+            {
+                content: "Jumlah";
+            }
+        }
+    }
+
+    &__qtyBox
+    {
+        @include flex(row, center, space-between);
+        max-width: 100%;
+        width: fit-content;
+        min-width: 124px;
+
+        & > span
+        {
+            @extend .chooseVariant__variantInput;
+            @include transition;
+            @include flex(row, center, center);
+            @include fixedSize(50px);
+
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 16px auto;
+
+            cursor: pointer;
+
+            &:hover,
+            &:focus-visible
+            {
+                background-color: darken($color_white, 3%);
+            }
+
+            &[data-identity="decrease-qty"]
+            {
+                border-radius: 3px 0 0 3px;
+                border-right: none;
+
+                background-image: url("data:image/svg+xml,%3Csvg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+            }
+
+            &[data-identity="increase-qty"]
+            {
+                border-radius: 0 3px 3px 0;
+                border-left: none;
+
+                background-image: url("data:image/svg+xml,%3Csvg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='12' y1='5' x2='12' y2='19'%3E%3C/line%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+            }
+        }
+
+        input
+        {
+            @extend .chooseVariant__variantInput;
+            @include fixedWidth(calc(100% - 100px));
+            text-align: center;
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
+            padding: 12px 0;
+
+            /* Chrome, Safari, Edge, Opera */
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button
+            {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+
+            /* Firefox */
+            &[type="number"]
+            {
+              -moz-appearance: textfield;
+            }
+        }
+    }
+
+    &__addToCartBtn
+    {
+        @include transition;
+        @include fixedWidth(100%);
+        @include fontPrimary(600);
+        @include fontSize(13);
+        min-height: 46px;
+        border: none;
+        text-transform: uppercase;
+        background-color: $color_black;
+        color: $color_white;
+
+        &[disabled]
+        {
+            background: $color_grey;
+        }
+    }
+
+    &__notifyMe
+    {
+        @include fixedWidth(100%);
+        position: relative;
+    }
+
+    &__notifyMeLabel
+    {
+        @extend .chooseVariant__variantLabel;
+    }
+
+    &__notifyMeInputWrapper
+    {
+        @include flex(column, stretch, flex-start);
+        @include fixedWidth(100%);
+    }
+
+    &__notifyMeInput
+    {
+        @extend .chooseVariant__variantInput;
+        margin-bottom: 24px;
+    }
+
+    &__openOrder
+    {
+        @extend .chooseVariant__variantOptionsContainer;
+    }
+}

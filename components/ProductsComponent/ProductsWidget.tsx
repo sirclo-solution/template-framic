@@ -1,5 +1,5 @@
 /* library package */
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Link from 'next/link'
 import { Products } from '@sirclo/nexus'
 /* library template */
@@ -13,17 +13,33 @@ export type ProductsWidgetType = {
   i18n: any
   lng: string
   classProducts: any
+  classProductsCategory: any
   classPlaceholder: any
   tagName?: string
   itemPerPage: number
   setTotalProducts: (total: number) => void
+  tooglePopupSuccessNotifyme?: () => void
+  handleSuccessAddToCart?: () => void
+  tooglePopupErrorNotifyme?: () => void
+  tooglePopupErrorAddCart?: () => void
+  handleMultipleVariant: (
+    type: "add-to-cart" | "buy-now",
+    productSlug: string,
+    isQuickView: boolean
+  ) => void
 }
 const ProductsWidget: FC<ProductsWidgetType> = ({
   classProducts,
+  classProductsCategory,
   classPlaceholder,
   i18n,
   tagName,
   setTotalProducts,
+  tooglePopupSuccessNotifyme,
+  handleSuccessAddToCart,
+  tooglePopupErrorNotifyme,
+  tooglePopupErrorAddCart,
+  handleMultipleVariant,
   itemPerPage,
   lng
 }) => {
@@ -50,6 +66,18 @@ const ProductsWidget: FC<ProductsWidgetType> = ({
           fullPath={`product/{id}`}
           pathPrefix={`product`}
           isFlipImage
+          withAddToCartButton
+          withBuyNowButton
+          cartIcon={<span>{i18n.t("product.addToCart")}</span>}
+          withCategory
+          productCategoryClasses={classProductsCategory}
+          categoryLength={1}
+          withRating
+          onCompleteMsg={tooglePopupSuccessNotifyme}
+          onComplete={handleSuccessAddToCart}
+          onErrorMsg={tooglePopupErrorNotifyme}
+          onError={tooglePopupErrorAddCart}
+          onHandleMultiVariant={handleMultipleVariant}
           lazyLoadedImage={false}
           classes={classProducts}
           loadingComponent={
