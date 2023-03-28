@@ -89,7 +89,15 @@ const ProductHighlightPage: FC<any> = ({
       id={FeaturesType.PRODUCT_HIGHLIGHT}
       defaultChildren={<Error404Page />}
     >
-      {isOpenChooseVariantDialog && slug && (
+     
+      <Layout
+        lng={lng}
+        lngDict={lngDict}
+        brand={brand}
+        setSEO={{ title: titleSectionProductHighlight }}
+        layoutClassName={styles.products_productHighlightContainer}
+      >
+         {isOpenChooseVariantDialog && slug && (
         <Popup
             setPopup={toggleChooseVariant}
             title={i18n.t("product.selectVariant")} 
@@ -188,13 +196,6 @@ const ProductHighlightPage: FC<any> = ({
           </button>
         </div>
       </Popup>
-      <Layout
-        lng={lng}
-        lngDict={lngDict}
-        brand={brand}
-        setSEO={{ title: titleSectionProductHighlight }}
-        layoutClassName={styles.products_productHighlightContainer}
-      >
         <Breadcrumb links={linksBreadcrumb} lng={lng} />
         <div className={styles.products_container}>
           <div className={`${styles.products_listWrapper} ${styles.products_productHighlightListWrapper}`}>

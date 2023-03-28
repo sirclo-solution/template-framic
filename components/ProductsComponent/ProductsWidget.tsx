@@ -1,5 +1,5 @@
 /* library package */
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import Link from 'next/link'
 import { Products } from '@sirclo/nexus'
 /* library template */
