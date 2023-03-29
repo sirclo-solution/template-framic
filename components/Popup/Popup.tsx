@@ -35,7 +35,7 @@ const Popup: FC<PopupPropsType> = ({
               {title}
             </h3>
           }
-          {withClose && <span className={styles.popup_close} />}
+          {withClose && <span className={styles.popup_close} onClick={() => setPopup(false)}/>}
         </div>
         <div className={styles.popup_body}>
           {children}

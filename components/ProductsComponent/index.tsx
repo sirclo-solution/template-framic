@@ -24,6 +24,15 @@ export type ProductsComponentType = {
   isProductHighlightBySlug?: boolean
   productHighlightListSlug?: string
   getTitleSectionProductHighlight?: (value: string) => void;
+  tooglePopupSuccessNotifyme?: () => void
+  handleSuccessAddToCart?: () => void
+  tooglePopupErrorNotifyme?: () => void
+  tooglePopupErrorAddCart?: () => void
+  handleMultipleVariant?: (
+    type: "add-to-cart" | "buy-now",
+    productSlug: string,
+    isQuickView: boolean
+  ) => void
 }
 
 const classesProducts = {
@@ -42,6 +51,18 @@ const classesProducts = {
   saleLabelClassName: styles.product_stickerItemSale,
   preOrderLabelClassName: styles.product_stickerItemPreOrder,
   newLabelClassName: styles.product_stickerItemNew,
+  addToCartAndBuyNowButtonContainerClassName: styles.product_actionBtnContainer,
+  addToCartButtonContainerClassName: styles.product_actionBtnAddToCartBuyNowContainer,
+  addToCartButtonClassName:styles.product_actionBtnAddToCartBtn,
+  buyNowButtonContainerClassName: styles.product_actionBtnAddToCartBuyNowContainer,
+  buyNowButtonClassName: styles.product_actionBtnBuyNowBtn,
+  ratingContainerClassName: styles.product_ratingContainer,
+  ratingWrapperClassName: styles.product_ratingWrapper,
+  ratingIconClassName: styles.product_ratingIcon,
+  reviewCountClassName: "d-none",
+  categoryContainerClassName: styles.product_categoryContainer,
+  titleContainerClassName: styles.product_titleContainer,
+  salePriceContainerClassName: styles.product_salePriceContainer,
   /* Product Highlight */
   productHighlightContainerClassName: styles.productHighlight_Container,
   productHighlightTitleContainerClassName: styles.productHighlight_TitleContainer,
@@ -56,6 +77,10 @@ const classesProducts = {
   imgContainerClassName: styles.category_imageContainer,
   imgClassName: styles.category_itemsImage,
   categoryNameClassName: styles.category_itemsImagesName
+}
+
+const classesProductCategory = {
+  parentCategoryClassName: styles.category_productCardCategory,
 }
 
 const classesPlaceholderProducts = {
@@ -76,6 +101,11 @@ const ProductsComponent: FC<ProductsComponentType> = ({
   isProductHighlightBySlug,
   productHighlightListSlug,
   getTotalProductPerPage,
+  tooglePopupErrorAddCart,
+  tooglePopupErrorNotifyme,
+  tooglePopupSuccessNotifyme,
+  handleSuccessAddToCart,
+  handleMultipleVariant,
   lng
 }) => {
   const [totalProducts, setTotalProducts] = useState(null)
@@ -93,16 +123,28 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       isProductHighlight={isProductHighlightBySlug}
       productHighlightSlug={productHighlightListSlug}
       getTitleProductHighlight={getTitleSectionProductHighlight}
-      getTotalProductPerPage={getTotalProductPerPage}
+      tooglePopupErrorAddCart={tooglePopupErrorAddCart}
+      tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
+      handleSuccessAddToCart={handleSuccessAddToCart}
+      tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
+      handleMultipleVariant={handleMultipleVariant}
+      getTotalProductPerPage={getTotalProductPerPage} 
+      classProductsCategory={classesProductCategory}    
     />
   ) : type === "widget" ? (
     <ProductsWidget
       i18n={i18n}
       lng={lng}
+      tooglePopupErrorAddCart={tooglePopupErrorAddCart}
+      tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
+      handleSuccessAddToCart={handleSuccessAddToCart}
+      tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
+      handleMultipleVariant={handleMultipleVariant}
       tagName={tagName}
       itemPerPage={itemPerPage}
       classPlaceholder={classesPlaceholderProducts}
       classProducts={classesProducts}
+      classProductsCategory={classesProductCategory}    
       setTotalProducts={setTotalProducts}
     />
   ) : type === "recomendation" ? (
@@ -111,8 +153,14 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       slug={slug}
       SKUs={SKUs}
       classProducts={classesProducts}
+      classProductsCategory={classesProductCategory}    
       classPlaceholder={classesPlaceholderProducts}
       setTotalProducts={setTotalProducts}
+      tooglePopupErrorAddCart={tooglePopupErrorAddCart}
+      tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
+      handleSuccessAddToCart={handleSuccessAddToCart}
+      tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
+      handleMultipleVariant={handleMultipleVariant}
     />
   ) : type === "category" ? (
     <ProductsCategory
@@ -122,15 +170,29 @@ const ProductsComponent: FC<ProductsComponentType> = ({
     />
   ) : type === "highlight 1" ? (
     <ProductHighlight
+      i18n={i18n}
+      handleMultipleVariant={handleMultipleVariant}
       itemPerPage={itemPerPage}
       classProducts={classesProducts}
+      tooglePopupErrorAddCart={tooglePopupErrorAddCart}
+      tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
+      handleSuccessAddToCart={handleSuccessAddToCart}
+      tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
+      classProductsCategory={classesProductCategory}    
       classPlaceholder={classesPlaceholderProducts}
       display={'Display1'}
     />
   ) : type === "highlight 2" ? (
     <ProductHighlight
+      i18n={i18n}
+      handleMultipleVariant={handleMultipleVariant}
       itemPerPage={itemPerPage}
       classProducts={classesProducts}
+      tooglePopupErrorAddCart={tooglePopupErrorAddCart}
+      tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
+      handleSuccessAddToCart={handleSuccessAddToCart}
+      tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
+      classProductsCategory={classesProductCategory}    
       classPlaceholder={classesPlaceholderProducts}
       display={'Display2'}
     />
