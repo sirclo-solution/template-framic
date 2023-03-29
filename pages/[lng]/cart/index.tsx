@@ -2,6 +2,7 @@
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Router from 'next/router'
+import { Check } from 'react-feather'
 import { 
   useI18n, 
   useCart, 
@@ -21,6 +22,7 @@ import Popup from 'components/Popup/Popup'
 import styles from 'public/scss/pages/Cart.module.scss'
 import stylesButton from 'public/scss/components/Button.module.scss'
 import stylesProductDetail from 'public/scss/components/ProductDetail.module.scss'
+import stylesPopup from 'public/scss/components/Popup.module.scss'
 
 interface CartPropType {
   lngDict: any
@@ -48,14 +50,11 @@ const Cart: FC<CartPropType> = ({
   const [showPopupErrorNotify, setShowPopupErrorNotify] = useState<boolean>(false)
 
   // function
-  const tooglePopupSuccessAddCart = () => {
-    Router.push("/[lng]/cart", `/${lng}/cart`)
-    setShowPopupSuccessAddCart(!showPopupSuccessAddCart)
-  }
-  const tooglePopupErrorAddCart = () => setShowPopupErrorAddCart(!showPopupErrorAddCart)
-  const tooglePopupSuccessNotifyme = () => setShowPopupSuccessNotify(!showPopupSuccessNotify)
-  const tooglePopupErrorNotifyme = () => setShowPopupErrorNotify(!showPopupErrorNotify)
-  const toggleChooseVariant = () => setIsOpenChooseVariantDialog(!isOpenChooseVariantDialog);
+  const tooglePopupSuccessAddCart = () => setShowPopupSuccessAddCart(showPopupSuccessAddCart => !showPopupSuccessAddCart)
+  const tooglePopupErrorAddCart = () => setShowPopupErrorAddCart(showPopupErrorAddCart => !showPopupErrorAddCart)
+  const tooglePopupSuccessNotifyme = () => setShowPopupSuccessNotify(showPopupSuccessNotify => !showPopupSuccessNotify)
+  const tooglePopupErrorNotifyme = () => setShowPopupErrorNotify(showPopupErrorNotify => !showPopupErrorNotify)
+  const toggleChooseVariant = () => setIsOpenChooseVariantDialog(isOpenChooseVariantDialog => !isOpenChooseVariantDialog);
 
   const handleMultipleVariant = (
     type: "add-to-cart" | "buy-now",
@@ -107,6 +106,28 @@ const Cart: FC<CartPropType> = ({
           />
         </Popup>
       )}
+
+      {/* PopUp Succes Add To Cart */}
+      <Popup
+        setPopup={tooglePopupSuccessAddCart}
+        isOpen={showPopupSuccessAddCart}
+        withClose={false}
+      >
+        <div className={stylesPopup.popup_checkIconContainer}>
+          <div className={stylesPopup.popup_checkIconWrapper}>
+            <Check color="white" size={40} />
+          </div>
+          <p>{i18n.t("product.successAddToCartGeneral")}</p>
+        </div>
+        <button
+          className={`${stylesButton.btn_primaryLongSmall} mb-3`}
+          onClick={() => {
+            tooglePopupSuccessAddCart()
+            Router.push("/[lng]/cart", `/${lng}/cart`)
+          }}>
+          {i18n.t("home.close")}
+        </button>
+      </Popup>
 
       {/* PopUp Error Add To Cart  */}
       <Popup

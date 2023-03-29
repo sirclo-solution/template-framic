@@ -55,11 +55,11 @@ const Home: FC<any> = ({
   const [showPopupErrorNotify, setShowPopupErrorNotify] = useState<boolean>(false)
 
   // function
-  const tooglePopupSuccessAddCart = () => setShowPopupSuccessAddCart(!showPopupSuccessAddCart)
-  const tooglePopupErrorAddCart = () => setShowPopupErrorAddCart(!showPopupErrorAddCart)
-  const tooglePopupSuccessNotifyme = () => setShowPopupSuccessNotify(!showPopupSuccessNotify)
-  const tooglePopupErrorNotifyme = () => setShowPopupErrorNotify(!showPopupErrorNotify)
-  const toggleChooseVariant = () => setIsOpenChooseVariantDialog(!isOpenChooseVariantDialog);
+  const tooglePopupSuccessAddCart = () => setShowPopupSuccessAddCart(showPopupSuccessAddCart => !showPopupSuccessAddCart)
+  const tooglePopupErrorAddCart = () => setShowPopupErrorAddCart(showPopupErrorAddCart => !showPopupErrorAddCart)
+  const tooglePopupSuccessNotifyme = () => setShowPopupSuccessNotify(showPopupSuccessNotify => !showPopupSuccessNotify)
+  const tooglePopupErrorNotifyme = () => setShowPopupErrorNotify(showPopupErrorNotify => !showPopupErrorNotify)
+  const toggleChooseVariant = () => setIsOpenChooseVariantDialog(isOpenChooseVariantDialog => !isOpenChooseVariantDialog);
 
   const handleMultipleVariant = (
     type: "add-to-cart" | "buy-now",
