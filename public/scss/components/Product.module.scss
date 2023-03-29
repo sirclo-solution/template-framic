@@ -29,6 +29,20 @@
   {
     position: relative;
     width: fit-content;
+
+    &:hover
+    {
+      div[class*="product_actionBtnContainer"]
+      {
+        display: flex;
+        animation-duration: 1s;
+      }
+
+      img
+      {
+        opacity: 0.7;
+      }
+    }
   } 
 
   &_imageContainer
@@ -44,7 +58,54 @@
 
   &_labelContainer
   {
+    @include flex(column, flex-start, center);
     margin-top: 12px
+  }
+
+  &_rating
+  {
+    &Container
+    {
+      @include position(absolute, auto, 5%, 0, auto);
+      order: 4;
+
+      @media screen and (max-width: $breakpoint_max_lg) 
+      {
+        @include position(relative);
+        margin: 4px 0;
+      }
+    }
+
+    &Wrapper
+    {
+      @include flex(row, center, flex-start);
+      @include typographyBuilder(400, 12, 16);
+      color: $color_text_mute;
+      gap: 4px;
+    }
+
+    &Icon
+    {
+      svg
+      {
+        @include fixedSize(12px);
+      }
+    }
+  }
+
+  &_categoryContainer
+  {
+    order: 1;
+  }
+
+  &_titleContainer
+  {
+    order: 2;
+  }
+
+  &_salePriceContainer
+  {
+    order: 3;
   }
 
   &_title
@@ -57,6 +118,8 @@
   &_price
   {
     @include typographyBuilder(400, 12, 16);
+    @include flex(row, center, flex-start, true);
+    gap: 4px;
     color: $color_grey;
     margin-bottom: 0;
   }
@@ -129,6 +192,55 @@
   &_stickerItemPreOrder
   {
     background-color: $color_purple;
+  }
+
+  &_actionBtn
+  {
+    &Container
+    {
+      @include flex(column, center, center, true);
+      @include typographyBuilder(400, 12, 0);
+      @include position(absolute, 25%, auto, auto, auto);
+      width: 100%;
+      padding: 0 38px;
+      gap: 10px;
+      display: none;
+
+      @media screen and (max-width: $breakpoint_max_lg) 
+      {
+        @include position(relative);
+        display: flex;
+        padding: 0;
+        margin-top: 12px;
+        order: 5;
+      }
+    }
+
+    &AddToCartBuyNowContainer
+    {
+      width: 100%;
+    }
+
+    &AddToCartBtn
+    {
+      display: block;
+      width: 100%;
+      padding: 8px 0;
+      border-radius: 2px;
+      background: $color_black_text;
+      color: white;
+      border: none;
+    }
+
+    &BuyNowBtn
+    {
+      display: block;
+      width: 100%;
+      padding: 8px 0;
+      border-radius: 2px;
+      background: $color_light_low;
+      border: 1px solid $color_black_text;
+    }
   }
 }
 
@@ -214,6 +326,19 @@
     list-style: none;
     padding: 0;
     margin-bottom: 42px;
+  }
+
+  &_productCardCategory
+  {
+    @include typographyBuilder(600, 12, 12);
+    list-style: none;
+    padding: 0;
+    margin-bottom: 8px;
+
+    a
+    {
+      color: $color_black_text;
+    }
   }
 
   &_items

@@ -16,8 +16,18 @@ export type Iprops = {
   slug?: string | string[]
   SKUs?: Array<string>
   classProducts: classesProductType
+  classProductsCategory: classProductsCategoryType
   classPlaceholder: classesPlaceholderType
   setTotalProducts: (data: any) => void
+  tooglePopupSuccessNotifyme?: () => void
+  handleSuccessAddToCart?: () => void
+  tooglePopupErrorNotifyme?: () => void
+  tooglePopupErrorAddCart?: () => void
+  handleMultipleVariant: (
+    type: "add-to-cart" | "buy-now",
+    productSlug: string,
+    isQuickView: boolean
+  ) => void
 }
 
 type classesProductType = {
@@ -39,6 +49,15 @@ type classesProductType = {
   newLabelClassName?: string
 }
 
+type classProductsCategoryType = {
+  categoryContainerClassName?: string
+  parentCategoryClassName?: string
+  categoryItemClassName?: string
+  categoryValueContainerClassName?: string
+  categoryValueClassName?: string
+  categoryNameClassName?: string
+}
+
 type classesPlaceholderType = {
   placeholderImage?: string
   placeholderTitle?: string
@@ -54,7 +73,13 @@ const ProductRecomendation: FC<Iprops> = ({
   i18n,
   classProducts,
   classPlaceholder,
+  classProductsCategory,
   setTotalProducts,
+  tooglePopupSuccessNotifyme,
+  handleSuccessAddToCart,
+  tooglePopupErrorNotifyme,
+  tooglePopupErrorAddCart,
+  handleMultipleVariant,
   slug = null,
   SKUs = null
 }) => {
@@ -86,6 +111,18 @@ const ProductRecomendation: FC<Iprops> = ({
         fullPath={`product/{id}`}
         pathPrefix={`product`}
         isFlipImage
+        withAddToCartButton
+        withBuyNowButton
+        withCategory
+        productCategoryClasses={classProductsCategory}
+        categoryLength={1}
+        withRating
+        onCompleteMsg={tooglePopupSuccessNotifyme}
+        onComplete={handleSuccessAddToCart}
+        onErrorMsg={tooglePopupErrorNotifyme}
+        onError={tooglePopupErrorAddCart}
+        onHandleMultiVariant={handleMultipleVariant}
+        cartIcon={<span>{i18n.t("product.addToCart")}</span>}
         itemPerPage={4}
         newPagination
         buttonNext={<span className={styles.productrecomendation_nextIcon} />}
