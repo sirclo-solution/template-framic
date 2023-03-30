@@ -6,11 +6,12 @@ import ProductsWidget from './ProductsWidget'
 import ProductHighlight from './ProductHighlight'
 import ProductsCategory from './ProductsCategory'
 import ProductRecomendation from './ProductRecomendation'
+import ProductAll from './ProductAll'
 /* styles */
 import styles from 'public/scss/components/Product.module.scss'
 
 export type ProductsComponentType = {
-  type: "list" | "widget" | "recomendation" | "category" | "highlight 1" | "highlight 2"
+  type: "list" | "widget" | "recomendation" | "category" | "highlight 1" | "highlight 2" | "product all"
   i18n: any
   lng: string
   slug?: string | string[]
@@ -195,6 +196,11 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       classProductsCategory={classesProductCategory}    
       classPlaceholder={classesPlaceholderProducts}
       display={'Display2'}
+    />
+  ) : type === "product all" ? (
+    <ProductAll
+      i18n={i18n}
+      lng={lng}
     />
   ) : (<></>)
 }
