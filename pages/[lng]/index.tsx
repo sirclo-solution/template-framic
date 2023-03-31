@@ -4,7 +4,6 @@ import {
   useEffect,
   useState
 } from 'react'
-import Link from 'next/link'
 import Router from 'next/router'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
@@ -12,9 +11,10 @@ import {
   FeaturesType,
   getBanner,
   useI18n,
-  useAuthToken
+  useAuthToken,
+  useGetHomepageSection
 } from '@sirclo/nexus'
-import { Check, ChevronRight } from 'react-feather';
+import { Check } from 'react-feather';
 /* component */
 import Layout from 'components/Layout/Layout'
 import WidgetHomepageTop from 'components/Widget/WidgetHomepageTop'
@@ -40,13 +40,14 @@ const Home: FC<any> = ({
   lngDict,
   brand,
   dataBanners,
+  isMenuCategorySectionActive = true,
+  isAllProductsSectionActive = false
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n();
   const size = useWindowSize()
   const [isReady, setIsReady] = useState<boolean>(false);
   const [slug, setSlug] = useState<string>("");
-  const [isOpenChooseVariantDialog, setIsOpenChooseVariantDialog] =
-  useState<boolean>(false);
+  const [isOpenChooseVariantDialog, setIsOpenChooseVariantDialog] = useState<boolean>(false);
   const [isAddToCart, setIsAddToCart] = useState<boolean>(false);
   const [hasQuickViewFeature, setHasQuickViewFeature] = useState<boolean>(false);
   const [showPopupSuccessAddCart, setShowPopupSuccessAddCart] = useState<boolean>(false)
@@ -101,110 +102,115 @@ const Home: FC<any> = ({
           dataBanners={dataBanners?.data}
           isReady={isReady}
         />
-      {isOpenChooseVariantDialog && slug && (
-        <Popup
+        {isOpenChooseVariantDialog && slug && (
+          <Popup
             setPopup={toggleChooseVariant}
-            title={i18n.t("product.selectVariant")} 
+            title={i18n.t("product.selectVariant")}
             isOpen={isOpenChooseVariantDialog}
             withClose
+          >
+            <ChooseVariant
+              lng={lng}
+              slug={slug}
+              toggleFailedAddToCart={toggleFailedAddToCart}
+              toggleCompleteAddToCart={handleSuccessAddToCart}
+              toggleCompleteNotifyMe={toggleCompleteNotifyMe}
+              isOpenChooseVariantDialog={isOpenChooseVariantDialog}
+              isAddToCart={isAddToCart}
+              hasQuickViewFeature={hasQuickViewFeature}
+            />
+          </Popup>
+        )}
+        {/* PopUp Succes Add To Cart */}
+        <Popup
+          setPopup={tooglePopupSuccessAddCart}
+          isOpen={showPopupSuccessAddCart}
+          withClose={false}
         >
-          <ChooseVariant
-            lng={lng}
-            slug={slug}
-            toggleFailedAddToCart={toggleFailedAddToCart}
-            toggleCompleteAddToCart={handleSuccessAddToCart}
-            toggleCompleteNotifyMe={toggleCompleteNotifyMe}
-            isOpenChooseVariantDialog={isOpenChooseVariantDialog}
-            isAddToCart={isAddToCart}
-            hasQuickViewFeature={hasQuickViewFeature}
-          />
-        </Popup>
-      )}
-      {/* PopUp Succes Add To Cart */}
-      <Popup
-        setPopup={tooglePopupSuccessAddCart}
-        isOpen={showPopupSuccessAddCart}
-        withClose={false}
-      >
-        <div className={stylesPopup.popup_checkIconContainer}>
-          <div className={stylesPopup.popup_checkIconWrapper}>
-            <Check color="white" size={40} />
+          <div className={stylesPopup.popup_checkIconContainer}>
+            <div className={stylesPopup.popup_checkIconWrapper}>
+              <Check color="white" size={40} />
+            </div>
+            <p>{i18n.t("product.successAddToCartGeneral")}</p>
           </div>
-          <p>{i18n.t("product.successAddToCartGeneral")}</p>
-        </div>
-        <button
-          className={`${stylesButton.btn_primaryLongSmall} mb-3`}
-          onClick={() => {
-            tooglePopupSuccessAddCart()
-            Router.push("/[lng]/cart", `/${lng}/cart`)
-          }}>
-          {i18n.t("orderSummary.viewCart")}
-        </button>
-        <button
-          className={`${stylesButton.btn_textLongSmall} ${stylesPopup.popup_btCcontinueShopping}`}
-          onClick={tooglePopupSuccessAddCart}>
-          {i18n.t("global.continueShopping")}
-        </button>
-      </Popup>
-
-      {/* PopUp Error Add To Cart  */}
-      <Popup
-        setPopup={tooglePopupErrorAddCart}
-        isOpen={showPopupErrorAddCart}
-        title={i18n.t("cart.errorSKUTitle")}
-        withClose={false}
-        maxWidth="308px"
-      >
-        <div className={stylesProductDetail.productdetail_popUpNotifymeContainer}>
-          <p className={stylesProductDetail.productdetail_popUpNotifymeDesc}>{i18n.t("cart.errorSKUDesc")}</p>
           <button
-            className={stylesButton.btn_primaryLongSmall}
-            onClick={tooglePopupErrorAddCart}>
-            {i18n.t("paymentStatus.tryAgain")}
+            className={`${stylesButton.btn_primaryLongSmall} mb-3`}
+            onClick={() => {
+              tooglePopupSuccessAddCart()
+              Router.push("/[lng]/cart", `/${lng}/cart`)
+            }}>
+            {i18n.t("orderSummary.viewCart")}
           </button>
-        </div>
-      </Popup>
-
-      {/* PopUp Success Notifyme */}
-      <Popup
-        setPopup={tooglePopupSuccessNotifyme}
-        isOpen={showPopupSuccessNotify}
-        title={i18n.t("product.notifyTitleSuccess")}
-        withClose={false}
-        maxWidth="308px"
-      >
-        <div className={stylesProductDetail.productdetail_popUpNotifymeContainer}>
-          <p className={stylesProductDetail.productdetail_popUpNotifymeDesc}>{i18n.t("product.notifySuccess")}</p>
           <button
-            className={stylesButton.btn_primaryLongSmall}
-            onClick={tooglePopupSuccessNotifyme}>
+            className={`${stylesButton.btn_textLongSmall} ${stylesPopup.popup_btCcontinueShopping}`}
+            onClick={tooglePopupSuccessAddCart}>
             {i18n.t("global.continueShopping")}
           </button>
-        </div>
-      </Popup>
+        </Popup>
 
-      {/* PopUp Error Notifyme */}
-      <Popup
-        setPopup={tooglePopupErrorNotifyme}
-        isOpen={showPopupErrorNotify}
-        title={i18n.t("product.notifyTitleError")}
-        withClose={false}
-        maxWidth="308px"
-      >
-        <div className={stylesProductDetail.productdetail_popUpNotifymeContainer}>
-          <p className={stylesProductDetail.productdetail_popUpNotifymeDesc}>{i18n.t("product.notifyError")}</p>
-          <button
-            className={stylesButton.btn_primaryLongSmall}
-            onClick={tooglePopupSuccessNotifyme}>
-            {i18n.t("paymentStatus.tryAgain")}
-          </button>
-        </div>
-      </Popup>
+        {/* PopUp Error Add To Cart  */}
+        <Popup
+          setPopup={tooglePopupErrorAddCart}
+          isOpen={showPopupErrorAddCart}
+          title={i18n.t("cart.errorSKUTitle")}
+          withClose={false}
+          maxWidth="308px"
+        >
+          <div className={stylesProductDetail.productdetail_popUpNotifymeContainer}>
+            <p className={stylesProductDetail.productdetail_popUpNotifymeDesc}>{i18n.t("cart.errorSKUDesc")}</p>
+            <button
+              className={stylesButton.btn_primaryLongSmall}
+              onClick={tooglePopupErrorAddCart}>
+              {i18n.t("paymentStatus.tryAgain")}
+            </button>
+          </div>
+        </Popup>
+
+        {/* PopUp Success Notifyme */}
+        <Popup
+          setPopup={tooglePopupSuccessNotifyme}
+          isOpen={showPopupSuccessNotify}
+          title={i18n.t("product.notifyTitleSuccess")}
+          withClose={false}
+          maxWidth="308px"
+        >
+          <div className={stylesProductDetail.productdetail_popUpNotifymeContainer}>
+            <p className={stylesProductDetail.productdetail_popUpNotifymeDesc}>{i18n.t("product.notifySuccess")}</p>
+            <button
+              className={stylesButton.btn_primaryLongSmall}
+              onClick={tooglePopupSuccessNotifyme}>
+              {i18n.t("global.continueShopping")}
+            </button>
+          </div>
+        </Popup>
+
+        {/* PopUp Error Notifyme */}
+        <Popup
+          setPopup={tooglePopupErrorNotifyme}
+          isOpen={showPopupErrorNotify}
+          title={i18n.t("product.notifyTitleError")}
+          withClose={false}
+          maxWidth="308px"
+        >
+          <div className={stylesProductDetail.productdetail_popUpNotifymeContainer}>
+            <p className={stylesProductDetail.productdetail_popUpNotifymeDesc}>{i18n.t("product.notifyError")}</p>
+            <button
+              className={stylesButton.btn_primaryLongSmall}
+              onClick={tooglePopupSuccessNotifyme}>
+              {i18n.t("paymentStatus.tryAgain")}
+            </button>
+          </div>
+        </Popup>
         <TemplateFeatures
           id={FeaturesType.PRODUCT_HIGHLIGHT}
           defaultChildren={
+            // OLD VERSION
             <>
-              <WidgetHomepageTop />
+              <ProductsComponent
+                type="category"
+                lng={lng}
+                i18n={i18n}
+              />
               <ProductsComponent
                 lng={lng}
                 i18n={i18n}
@@ -216,15 +222,32 @@ const Home: FC<any> = ({
                 tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
                 tagName="featured"
                 itemPerPage={4}
+
               />
+              <WidgetHomepageTop />
               <WidgetHomepageBottom />
+              <ProductsComponent
+                type="product all"
+                lng={lng}
+                i18n={i18n}
+              />
             </>
           }
         >
+          {/* NEW VERSION */}
+          {isMenuCategorySectionActive && (
+            <ProductsComponent
+              type="category"
+              lng={lng}
+              i18n={i18n}
+            />
+          )}
           <ProductsComponent
-            type="category"
             lng={lng}
             i18n={i18n}
+            type="widget"
+            tagName="featured"
+            itemPerPage={4}
           />
           <ProductsComponent
             lng={lng}
@@ -250,19 +273,14 @@ const Home: FC<any> = ({
             itemPerPage={4}
           />
           <WidgetHomepageBottom />
+          {isAllProductsSectionActive && (
+            <ProductsComponent
+              type="product all"
+              lng={lng}
+              i18n={i18n}
+            />
+          )}
         </TemplateFeatures>
-        <Link
-          href='/[lng]/products'
-          as={`/${lng}/products`}
-        >
-          <div className={styles.homepage_linkAllProduct}>
-            <img src='/images/product.svg' />
-            <p className={styles.homepage_textSeeProduct}>
-              {i18n.t('product.seeAllProduct')}
-            </p>
-            <ChevronRight className={styles.homepage_rightArrow} />
-          </div>
-        </Link>
       </section>
 
       <Instagram
@@ -280,9 +298,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   params
 }: any) => {
 
-  const [brand, dataBanners] = await Promise.all([
+  const [brand, dataBanners, { isAllProductsSectionActive, isMenuCategorySectionActive }] = await Promise.all([
     useBrand(req),
     getBanner(GRAPHQL_URI(req)),
+    useGetHomepageSection(GRAPHQL_URI(req)),
     useAuthToken({ req, res, env: process.env })
   ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
@@ -301,7 +320,9 @@ export const getServerSideProps: GetServerSideProps = async ({
       lng: defaultLanguage,
       lngDict,
       brand: brand || '',
-      dataBanners
+      dataBanners,
+      isMenuCategorySectionActive,
+      isAllProductsSectionActive
     },
   };
 };
