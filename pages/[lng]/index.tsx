@@ -245,13 +245,6 @@ const Home: FC<any> = ({
           <ProductsComponent
             lng={lng}
             i18n={i18n}
-            type="widget"
-            tagName="featured"
-            itemPerPage={4}
-          />
-          <ProductsComponent
-            lng={lng}
-            i18n={i18n}
             handleMultipleVariant={handleMultipleVariant}
             type="highlight 1"
             tooglePopupErrorAddCart={tooglePopupErrorAddCart}
