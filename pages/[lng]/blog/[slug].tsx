@@ -147,10 +147,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   req
 }) => {
-  const [brand, headerImage] = await Promise.all([
+  const [, brand, headerImage] = await Promise.all([
+    useAuthToken({ req, res, env: process.env }),
     useBrand(req),
     getBlogHeaderImage(GRAPHQL_URI(req)),
-    useAuthToken({ req, res, env: process.env })
   ])
   const { slug } = params
   const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`

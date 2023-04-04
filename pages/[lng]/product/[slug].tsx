@@ -57,10 +57,10 @@ const Product: FC<ProductProps> & NextPageWithLayout = ({
 
 export async function getServerSideProps({ req, res, params }) {
   const { slug } = params
-  const [data, brand] = await Promise.all([
+  const [, data, brand] = await Promise.all([
+    useAuthToken({ req, res, env: process.env }),
     getProductDetail(GRAPHQL_URI(req), slug),
     useBrand(req),
-    useAuthToken({ req, res, env: process.env })
   ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)

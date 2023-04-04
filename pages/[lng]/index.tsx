@@ -298,11 +298,11 @@ export const getServerSideProps: GetServerSideProps = async ({
   params
 }: any) => {
 
-  const [brand, dataBanners, { isAllProductsSectionActive, isMenuCategorySectionActive }] = await Promise.all([
+  const [, brand, dataBanners, { isAllProductsSectionActive, isMenuCategorySectionActive }] = await Promise.all([
+    useAuthToken({ req, res, env: process.env }),
     useBrand(req),
     getBanner(GRAPHQL_URI(req)),
     useGetHomepageSection(GRAPHQL_URI(req)),
-    useAuthToken({ req, res, env: process.env })
   ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)

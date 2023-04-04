@@ -246,9 +246,9 @@ export const getServerSideProps: GetServerSideProps = async ({
   params
 }) => {
   const { slug } = params
-  const [brand] = await Promise.all([
+  const [, brand] = await Promise.all([
+    useAuthToken({ req, res, env: process.env }),
     useBrand(req),
-    useAuthToken({ req, res, env: process.env })
   ])
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
