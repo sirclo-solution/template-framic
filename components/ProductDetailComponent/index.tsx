@@ -135,6 +135,7 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
   const [showPopupErrorAddCart, setShowPopupErrorAddCart] = useState<boolean>(false)
   const [showPopupErrorNotify, setShowPopupErrorNotify] = useState<boolean>(false)
   const [additionalInfo, setadditionalInfo] = useState<string>("")
+  const [errorNotifyMsg, setErrorNotifyMsg] = useState<string>("")
   const [dataAddToCart, setDataAddToCart] = useState<IDataAddToCart>({
     imageURL: null,
     title: null,
@@ -144,10 +145,10 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
   })
 
   // function
-  const tooglePopupSuccessAddCart = () => setShowPopupSuccessAddCart(!showPopupSuccessAddCart)
-  const tooglePopupErrorAddCart = () => setShowPopupErrorAddCart(!showPopupErrorAddCart)
-  const tooglePopupSuccessNotifyme = () => setShowPopupSuccessNotify(!showPopupSuccessNotify)
-  const tooglePopupErrorNotifyme = () => setShowPopupErrorNotify(!showPopupErrorNotify)
+  const tooglePopupSuccessAddCart = () => setShowPopupSuccessAddCart(showPopupSuccessAddCart => !showPopupSuccessAddCart)
+  const tooglePopupErrorAddCart = () => setShowPopupErrorAddCart(showPopupErrorAddCart => !showPopupErrorAddCart)
+  const tooglePopupSuccessNotifyme = () => setShowPopupSuccessNotify(showPopupSuccessNotify => !showPopupSuccessNotify)
+  const tooglePopupErrorNotifyme = () => setShowPopupErrorNotify(showPopupErrorNotify => !showPopupErrorNotify)
   const handleSuccessAddToCart = (dataProduct: any) => {
     const dataAs = dataProduct?.saveCart?.lineItems || dataProduct?.saveCartByMemberID?.lineItems
     const detailProduct = dataAs?.filter((data: any) => data?.slug === slug)
@@ -252,7 +253,10 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
         getProductID={setProductID}
         onCompleteMsg={tooglePopupSuccessNotifyme}
         onComplete={handleSuccessAddToCart}
-        onErrorMsg={tooglePopupErrorNotifyme}
+        onErrorMsg={(msg) => {
+          setErrorNotifyMsg(msg)
+          setShowPopupErrorNotify(showPopupErrorNotify => !showPopupErrorNotify)
+        }}
         onError={tooglePopupErrorAddCart}
         getAdditionalInfo={setadditionalInfo}
         prevIcon={<span className={styles.productdetail_arrowPrev} />}
@@ -312,7 +316,7 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
 
       {/* PopUp Succes Add To Cart */}
       <Popup
-        setPopup={tooglePopupSuccessAddCart}
+        setPopup={() => setShowPopupErrorNotify(showPopupErrorNotify => !showPopupErrorNotify)}
         isOpen={showPopupSuccessAddCart}
         title={i18n.t("product.successAddToCart")}
         withClose={false}
@@ -398,11 +402,11 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
         maxWidth="308px"
       >
         <div className={styles.productdetail_popUpNotifymeContainer}>
-          <p className={styles.productdetail_popUpNotifymeDesc}>{i18n.t("product.notifyError")}</p>
+          <p className={styles.productdetail_popUpNotifymeDesc}>{errorNotifyMsg}</p>
           <button
             className={stylesButton.btn_primaryLongSmall}
-            onClick={tooglePopupSuccessNotifyme}>
-            {i18n.t("paymentStatus.tryAgain")}
+            onClick={tooglePopupErrorNotifyme}>
+            {i18n.t("home.close")}
           </button>
         </div>
       </Popup>

@@ -19,7 +19,6 @@ export type ProductHighlightType = {
   itemPerPage: number
   tooglePopupSuccessNotifyme?: () => void
   handleSuccessAddToCart?: () => void
-  tooglePopupErrorNotifyme?: () => void
   tooglePopupErrorAddCart?: () => void
   handleMultipleVariant: (
     type: "add-to-cart" | "buy-now",
@@ -37,7 +36,6 @@ const ProductHighlight: FC<ProductHighlightType> = ({
   itemPerPage,
   tooglePopupSuccessNotifyme,
   handleSuccessAddToCart,
-  tooglePopupErrorNotifyme,
   tooglePopupErrorAddCart,
   handleMultipleVariant        
 }) => {
@@ -61,7 +59,6 @@ const ProductHighlight: FC<ProductHighlightType> = ({
           withRating
           onCompleteMsg={tooglePopupSuccessNotifyme}
           onComplete={handleSuccessAddToCart}
-          onErrorMsg={tooglePopupErrorNotifyme}
           onError={tooglePopupErrorAddCart}
           onHandleMultiVariant={handleMultipleVariant}
           fullPath={`product/{id}`}
