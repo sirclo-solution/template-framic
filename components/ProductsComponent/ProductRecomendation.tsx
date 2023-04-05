@@ -21,7 +21,6 @@ export type Iprops = {
   setTotalProducts: (data: any) => void
   tooglePopupSuccessNotifyme?: () => void
   handleSuccessAddToCart?: () => void
-  tooglePopupErrorNotifyme?: () => void
   tooglePopupErrorAddCart?: () => void
   handleMultipleVariant: (
     type: "add-to-cart" | "buy-now",
@@ -77,7 +76,6 @@ const ProductRecomendation: FC<Iprops> = ({
   setTotalProducts,
   tooglePopupSuccessNotifyme,
   handleSuccessAddToCart,
-  tooglePopupErrorNotifyme,
   tooglePopupErrorAddCart,
   handleMultipleVariant,
   slug = null,
@@ -119,7 +117,6 @@ const ProductRecomendation: FC<Iprops> = ({
         withRating
         onCompleteMsg={tooglePopupSuccessNotifyme}
         onComplete={handleSuccessAddToCart}
-        onErrorMsg={tooglePopupErrorNotifyme}
         onError={tooglePopupErrorAddCart}
         onHandleMultiVariant={handleMultipleVariant}
         cartIcon={<span>{i18n.t("product.addToCart")}</span>}
