@@ -210,6 +210,11 @@ const Home: FC<any> = ({
                 type="product all"
                 lng={lng}
                 i18n={i18n}
+                handleMultipleVariant={handleMultipleVariant}
+                tooglePopupErrorAddCart={tooglePopupErrorAddCart}
+                tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
+                handleSuccessAddToCart={handleSuccessAddToCart}
+                tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
               />
             </>
           }
@@ -222,13 +227,6 @@ const Home: FC<any> = ({
               i18n={i18n}
             />
           )}
-          <ProductsComponent
-            lng={lng}
-            i18n={i18n}
-            type="widget"
-            tagName="featured"
-            itemPerPage={4}
-          />
           <ProductsComponent
             lng={lng}
             i18n={i18n}
@@ -256,6 +254,11 @@ const Home: FC<any> = ({
               type="product all"
               lng={lng}
               i18n={i18n}
+              handleMultipleVariant={handleMultipleVariant}
+              tooglePopupErrorAddCart={tooglePopupErrorAddCart}
+              tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
+              handleSuccessAddToCart={handleSuccessAddToCart}
+              tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
             />
           )}
         </TemplateFeatures>
