@@ -785,6 +785,7 @@
     "otpSent": "We have sent a verification code via Whatsapp number ",
     "privacyPolicy": "Privacy Policy",
     "requestOTPTimeOut": "The OTP code has been sent, please wait 1 minute to resend the OTP code",
+    "requestOTPTimeOutLimit": "Attempts to request an OTP have reached a limit. Please try again after",
     "resend": "Resend code OTP",
     "seconds": "sec",
     "sendOTP": "Send code OTP",
