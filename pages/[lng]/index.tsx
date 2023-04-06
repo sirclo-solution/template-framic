@@ -212,7 +212,6 @@ const Home: FC<any> = ({
                 i18n={i18n}
                 handleMultipleVariant={handleMultipleVariant}
                 tooglePopupErrorAddCart={tooglePopupErrorAddCart}
-                tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
                 handleSuccessAddToCart={handleSuccessAddToCart}
                 tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
               />
@@ -256,7 +255,6 @@ const Home: FC<any> = ({
               i18n={i18n}
               handleMultipleVariant={handleMultipleVariant}
               tooglePopupErrorAddCart={tooglePopupErrorAddCart}
-              tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
               handleSuccessAddToCart={handleSuccessAddToCart}
               tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
             />
