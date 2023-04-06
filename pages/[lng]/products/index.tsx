@@ -39,13 +39,11 @@ const ProductsPage: FC<any> = ({
   const [showPopupSuccessAddCart, setShowPopupSuccessAddCart] = useState<boolean>(false)
   const [showPopupSuccessNotify, setShowPopupSuccessNotify] = useState<boolean>(false)
   const [showPopupErrorAddCart, setShowPopupErrorAddCart] = useState<boolean>(false)
-  const [showPopupErrorNotify, setShowPopupErrorNotify] = useState<boolean>(false)
 
   // function
   const tooglePopupSuccessAddCart = () => setShowPopupSuccessAddCart(showPopupSuccessAddCart => !showPopupSuccessAddCart)
   const tooglePopupErrorAddCart = () => setShowPopupErrorAddCart(showPopupErrorAddCart => !showPopupErrorAddCart)
   const tooglePopupSuccessNotifyme = () => setShowPopupSuccessNotify(showPopupSuccessNotify => !showPopupSuccessNotify)
-  const tooglePopupErrorNotifyme = () => setShowPopupErrorNotify(showPopupErrorNotify => !showPopupErrorNotify)
   const toggleChooseVariant = () => setIsOpenChooseVariantDialog(isOpenChooseVariantDialog => !isOpenChooseVariantDialog);
 
   const handleMultipleVariant = (
@@ -178,23 +176,6 @@ const ProductsPage: FC<any> = ({
         </div>
       </Popup>
 
-      {/* PopUp Error Notifyme */}
-      <Popup
-        setPopup={tooglePopupErrorNotifyme}
-        isOpen={showPopupErrorNotify}
-        title={i18n.t("product.notifyTitleError")}
-        withClose={false}
-        maxWidth="308px"
-      >
-        <div className={stylesProductDetail.productdetail_popUpNotifymeContainer}>
-          <p className={stylesProductDetail.productdetail_popUpNotifymeDesc}>{i18n.t("product.notifyError")}</p>
-          <button
-            className={stylesButton.btn_primaryLongSmall}
-            onClick={tooglePopupSuccessNotifyme}>
-            {i18n.t("paymentStatus.tryAgain")}
-          </button>
-        </div>
-      </Popup>
       <Breadcrumb links={linksBreadcrumb} lng={lng} />
       <div className={styles.products_container}>
         {/* Container Products Filter */}
@@ -243,7 +224,6 @@ const ProductsPage: FC<any> = ({
               type="list"
               handleMultipleVariant={handleMultipleVariant}
               tooglePopupErrorAddCart={tooglePopupErrorAddCart}
-              tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
               handleSuccessAddToCart={handleSuccessAddToCart}
               tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
             />

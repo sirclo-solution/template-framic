@@ -23,7 +23,6 @@ type ProductsListType = {
   getTitleProductHighlight?: (value: string) => void
   tooglePopupSuccessNotifyme?: () => void
   handleSuccessAddToCart?: () => void
-  tooglePopupErrorNotifyme?: () => void
   tooglePopupErrorAddCart?: () => void
   handleMultipleVariant: (
     type: "add-to-cart" | "buy-now",
@@ -79,7 +78,6 @@ const ProductsList: FC<ProductsListType> = ({
   getTitleProductHighlight,
   tooglePopupSuccessNotifyme,
   handleSuccessAddToCart,
-  tooglePopupErrorNotifyme,
   tooglePopupErrorAddCart,
   handleMultipleVariant    
 }) => {
@@ -160,7 +158,6 @@ const ProductsList: FC<ProductsListType> = ({
           withBuyNowButton
           onCompleteMsg={tooglePopupSuccessNotifyme}
           onComplete={handleSuccessAddToCart}
-          onErrorMsg={tooglePopupErrorNotifyme}
           onError={tooglePopupErrorAddCart}
           onHandleMultiVariant={handleMultipleVariant}
           withSeparatedVariant={true}

@@ -27,7 +27,6 @@ export type ProductsComponentType = {
   getTitleSectionProductHighlight?: (value: string) => void;
   tooglePopupSuccessNotifyme?: () => void
   handleSuccessAddToCart?: () => void
-  tooglePopupErrorNotifyme?: () => void
   tooglePopupErrorAddCart?: () => void
   handleMultipleVariant?: (
     type: "add-to-cart" | "buy-now",
@@ -103,7 +102,6 @@ const ProductsComponent: FC<ProductsComponentType> = ({
   productHighlightListSlug,
   getTotalProductPerPage,
   tooglePopupErrorAddCart,
-  tooglePopupErrorNotifyme,
   tooglePopupSuccessNotifyme,
   handleSuccessAddToCart,
   handleMultipleVariant,
@@ -125,7 +123,6 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       productHighlightSlug={productHighlightListSlug}
       getTitleProductHighlight={getTitleSectionProductHighlight}
       tooglePopupErrorAddCart={tooglePopupErrorAddCart}
-      tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
       handleSuccessAddToCart={handleSuccessAddToCart}
       tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
       handleMultipleVariant={handleMultipleVariant}
@@ -137,7 +134,6 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       i18n={i18n}
       lng={lng}
       tooglePopupErrorAddCart={tooglePopupErrorAddCart}
-      tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
       handleSuccessAddToCart={handleSuccessAddToCart}
       tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
       handleMultipleVariant={handleMultipleVariant}
@@ -158,7 +154,6 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       classPlaceholder={classesPlaceholderProducts}
       setTotalProducts={setTotalProducts}
       tooglePopupErrorAddCart={tooglePopupErrorAddCart}
-      tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
       handleSuccessAddToCart={handleSuccessAddToCart}
       tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
       handleMultipleVariant={handleMultipleVariant}
@@ -176,7 +171,6 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       itemPerPage={itemPerPage}
       classProducts={classesProducts}
       tooglePopupErrorAddCart={tooglePopupErrorAddCart}
-      tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
       handleSuccessAddToCart={handleSuccessAddToCart}
       tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
       classProductsCategory={classesProductCategory}    
@@ -190,7 +184,6 @@ const ProductsComponent: FC<ProductsComponentType> = ({
       itemPerPage={itemPerPage}
       classProducts={classesProducts}
       tooglePopupErrorAddCart={tooglePopupErrorAddCart}
-      tooglePopupErrorNotifyme={tooglePopupErrorNotifyme}
       handleSuccessAddToCart={handleSuccessAddToCart}
       tooglePopupSuccessNotifyme={tooglePopupSuccessNotifyme}
       classProductsCategory={classesProductCategory}    
