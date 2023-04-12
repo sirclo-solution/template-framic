@@ -227,7 +227,7 @@ const AccountsPage: FC<AccountPageProps> = ({
   const onSuccessChPass = (msg: string) => toast.success(msg)
 
   const onSuccess = (msg: string, data: any) => {
-    if (data && data?.upsertProfile) setName(data?.upsertProfile[0]?.firstName + " " + data?.upsertProfile[0]?.lastName)
+    setName(data?.upsertProfile[0]?.firstName + " " + data?.upsertProfile[0]?.lastName)
     toast.success(msg)
   }
 
