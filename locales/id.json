@@ -786,6 +786,7 @@
     "otpSent": "Kami telah mengirimkan kode verifikasi melalui nomor Whatsapp ",
     "privacyPolicy": "Kebijakan Privasi",
     "requestOTPTimeOut": "Kode OTP sudah dikirim, harap tunggu 1 menit untuk kirim ulang kode OTP",
+    "requestOTPTimeOutLimit": "Percobaan minta OTP sudah mencapai batas. Silakan coba lagi setelah pukul",
     "resend": "Kirim ulang kode OTP",
     "seconds": "detik",
     "sendOTP": "Kirim Kode OTP",
