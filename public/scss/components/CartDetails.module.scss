@@ -323,15 +323,7 @@
 
   &_itemRemove
   {
-    @include flex(row, center, center);
-    position: absolute;
-    right: 0;
-    bottom: 24px;
-    width: 40px !important;
-    height: 40px;
-    background-color: $color_light_low;
-    border-radius: 2px;
-    cursor: pointer;
+    display: none;
   }
 
   &_itemRemoveIcon

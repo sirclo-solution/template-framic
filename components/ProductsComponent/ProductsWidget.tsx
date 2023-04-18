@@ -20,7 +20,6 @@ export type ProductsWidgetType = {
   setTotalProducts: (total: number) => void
   tooglePopupSuccessNotifyme?: () => void
   handleSuccessAddToCart?: () => void
-  tooglePopupErrorNotifyme?: () => void
   tooglePopupErrorAddCart?: () => void
   handleMultipleVariant: (
     type: "add-to-cart" | "buy-now",
@@ -37,7 +36,6 @@ const ProductsWidget: FC<ProductsWidgetType> = ({
   setTotalProducts,
   tooglePopupSuccessNotifyme,
   handleSuccessAddToCart,
-  tooglePopupErrorNotifyme,
   tooglePopupErrorAddCart,
   handleMultipleVariant,
   itemPerPage,
@@ -75,7 +73,6 @@ const ProductsWidget: FC<ProductsWidgetType> = ({
           withRating
           onCompleteMsg={tooglePopupSuccessNotifyme}
           onComplete={handleSuccessAddToCart}
-          onErrorMsg={tooglePopupErrorNotifyme}
           onError={tooglePopupErrorAddCart}
           onHandleMultiVariant={handleMultipleVariant}
           lazyLoadedImage={false}

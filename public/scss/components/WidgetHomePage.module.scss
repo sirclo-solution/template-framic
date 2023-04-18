@@ -77,6 +77,7 @@
   &_productsContainer
   {
     @include flex(row, flex-start, flex-start, true);
+    margin-bottom: 42px;
 
     & > div[class*="product_container"]
     { 
