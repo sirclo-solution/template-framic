@@ -113,7 +113,7 @@ const classesOrderSummary = {
 const classesCartDetails = {
   className: styles.ordersummary_className,
   cartBodyClassName: styles.ordersummary_cartBody,
-  itemRemoveClassName: `${stylesCart.cartdetails_itemRemove} ${styles.ordersummary_itemRemove}`,
+  itemRemoveClassName: "d-none",
   itemQtyClassName: `${stylesCart.cartdetails_itemQty} ${styles.ordersummary_itemQty}`,
   itemPriceClassName: `${stylesCart.cartdetails_itemPrice} ${styles.ordersummary_itemPrice}`,
   itemRegularAmountClassName: `${styles.ordersummary_itemRegularAmount}`,
@@ -173,11 +173,6 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
       itemPriceClassName: `
         ${stylesCart.cartdetails_itemPrice} 
         ${styles.ordersummary_itemPrice} 
-        ${page === "payment_method" && "d-none"}
-      `,
-      itemRemoveClassName: `
-        ${stylesCart.cartdetails_itemRemove} 
-        ${styles.ordersummary_itemRemove} 
         ${page === "payment_method" && "d-none"}
       `,
       itemAmountClassName: `

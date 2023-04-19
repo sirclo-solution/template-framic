@@ -227,7 +227,7 @@ const AccountsPage: FC<AccountPageProps> = ({
   const onSuccessChPass = (msg: string) => toast.success(msg)
 
   const onSuccess = (msg: string, data: any) => {
-    setName(data?.upsertProfile[0]?.firstName + " " + data?.upsertProfile[0]?.lastName)
+    if (data && data?.upsertProfile) setName(data?.upsertProfile[0]?.firstName + " " + data?.upsertProfile[0]?.lastName)
     toast.success(msg)
   }
 
@@ -282,7 +282,7 @@ const AccountsPage: FC<AccountPageProps> = ({
               iconTracker: <img src="/images/motorcycle.svg" alt="motorcycle" />,
               whatsApp: <img src="/images/whatsapp.png" />,
               email: <img src="/images/email.png" />,
-              warningIcon: <span className={styles.orderhistory_warningIcon}/>,
+              warningIcon: <span className={styles.orderhistory_warningIcon} />,
               checkMarkIcon: ""
             }}
           />
