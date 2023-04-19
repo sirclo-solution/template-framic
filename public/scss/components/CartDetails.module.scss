@@ -323,7 +323,7 @@
 
   &_itemRemove
   {
-    @include flex(row, center, center);	    display: none;
+    @include flex(row, center, center);
     position: absolute;	
     right: 0;	
     bottom: 24px;	
