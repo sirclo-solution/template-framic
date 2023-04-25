@@ -40,6 +40,7 @@
   &_warningPinPoint
   {
     order: 3;
+    margin-left: auto;
 
     &~div[class*="shippingmethod_shippingPriceDiv"]
     {
@@ -50,7 +51,21 @@
   &_shippingPriceDiv
   {
     order: 3;
-    display: block;
+    @include flex(column, flex-end);
+    margin-left: auto;
+
+    & > p[class*="_shippingPrice"]:not(:only-child)
+    {
+      text-decoration: line-through;
+      color: $color_grey;
+    }
+  }
+
+  &_shippingNameDiv
+  {
+    margin-left: 4px;
+    order: 2;
+    max-width: 60%;
   }
 
   &_shippingName
@@ -58,13 +73,30 @@
     @include typographyBuilder(400, 16, 24);
     color: $color_black_text;
     margin: 0;
+    white-space: break-spaces;
   }
 
-  &_shippingNameDiv
+  &_shippingPriceDivDiscounted
   {
-    width: 60%;
-    margin: 0 auto 0 12px;
-    order: 2;
+    @include flex(row);
+  }
+
+  &_shippingDiscountPercentage
+  {
+    @include typographyBuilder(600, 10, 16);
+    background: $color_red;
+    color: $color_white;
+    padding: 3px;
+    border-radius: 3px;
+    margin-right: 8px;
+    max-height: 22px;
+  }
+
+  &_shippingDiscountedPrice
+  {
+    @include typographyBuilder(400, 12, 16);
+    color: $color_red;
+    margin: 0;
   }
 
   &_shippingPrice
