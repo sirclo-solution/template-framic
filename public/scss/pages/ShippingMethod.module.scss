@@ -67,7 +67,8 @@
     order: 2;
     max-width: 80%;
 
-    @media screen and (max-width: 575px) {
+    @media screen and (max-width: 575px)
+    {
       max-width: 44%;
       white-space: break-spaces;
     }
@@ -80,7 +81,8 @@
     margin: 0;
     white-space: break-spaces;
 
-    @media screen and (max-width: 575px) {
+    @media screen and (max-width: 575px)
+    {
       font-size: 14px;
     }
   }
