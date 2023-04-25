@@ -65,7 +65,12 @@
   {
     margin-left: 4px;
     order: 2;
-    max-width: 60%;
+    max-width: 80%;
+
+    @media screen and (max-width: 575px) {
+      max-width: 44%;
+      white-space: break-spaces;
+    }
   }
 
   &_shippingName
@@ -74,6 +79,10 @@
     color: $color_black_text;
     margin: 0;
     white-space: break-spaces;
+
+    @media screen and (max-width: 575px) {
+      font-size: 14px;
+    }
   }
 
   &_shippingPriceDivDiscounted
