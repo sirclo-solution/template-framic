@@ -93,7 +93,6 @@ const classesOrderSummary = {
   voucherInputContainerClassName: styles.ordersummary_voucherInputContainer,
   voucherShowMoreContainerClassName: styles.ordersummary_voucherShowMoreContainer,
   voucherShowMoreButtonClassName: styles.ordersummary_voucherShowMoreButton,
-  deductionPriceClassName: styles.ordersummary_deductionPrice,
   disclaimerMessageContainerClassName: 'd-none',
 
   pointsButtonClassName: styles.ordersummary_pointsButton,
