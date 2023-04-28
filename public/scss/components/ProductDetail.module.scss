@@ -919,7 +919,7 @@
   &_estimateShippingPopupProviderDiscountedValuePrice
   {
     @include typographyBuilder(400, 10, 16);
-    color: $color_black_text;
+    color: $color_grey;
     margin: 0 0 0 auto;
     text-decoration: line-through;
   }
