@@ -130,7 +130,6 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
   const i18n: any = useI18n()
   const size = useWindowSize()
   const enableArrowDots = size.width && size.width < 768 ? true : false
-  const IS_PROD = process.env.IS_PROD;
 
   // state
   const [productID, setProductID] = useState<string>("")
@@ -313,7 +312,7 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
             </div>
           </div>
         }
-        withEstimateShipping={IS_PROD === "false" ? true : false}
+        withEstimateShipping
         openOrderIconDate={<span className={styles.productdetail_openOrderDateIcon} />}
         openOrderIconTime={<span className={styles.productdetail_openOrderTimeIcon} />}
       />
