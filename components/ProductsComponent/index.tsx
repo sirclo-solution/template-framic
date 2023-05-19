@@ -109,7 +109,7 @@ const ProductsComponent: FC<ProductsComponentType> = ({
 }) => {
   const [totalProducts, setTotalProducts] = useState(null)
 
-  if (totalProducts === 0 && type !== "list") return <></>
+  if (totalProducts === 0 && (type === "widget" || type === "recomendation")) return <></>
 
   return type === "list" ? (
     <ProductsList
