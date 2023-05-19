@@ -273,7 +273,7 @@
 
   &_pointsIcon
   {
-    background-image: url("data:image/svg+xml,%0A%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 15.5C3.85775 15.5 0.5 12.1423 0.5 8.00002C0.5 3.85777 3.85775 0.500015 8 0.500015C12.1423 0.500015 15.5 3.85777 15.5 8.00002C15.5 12.1423 12.1423 15.5 8 15.5ZM6.125 5.75002L4.25 7.62502L8 11.375L11.75 7.62502L9.875 5.75002H6.125Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+   display: none;  
   }
 
   &_voucherIconRemove
@@ -411,9 +411,17 @@
   &_pointLabel
   {
     @include typographyBuilder(400, 16, 24);
-    display: block;
+    @include flex(row, center, flex-start);
     color: $color_black_text;
-    margin-bottom: 12px
+    margin-bottom: 12px;
+
+    &::before
+    {
+      content: url("data:image/svg+xml,%0A%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 15.5C3.85775 15.5 0.5 12.1423 0.5 8.00002C0.5 3.85777 3.85775 0.500015 8 0.500015C12.1423 0.500015 15.5 3.85777 15.5 8.00002C15.5 12.1423 12.1423 15.5 8 15.5ZM6.125 5.75002L4.25 7.62502L8 11.375L11.75 7.62502L9.875 5.75002H6.125Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+      margin-right: 10px;
+      width: fit-content;
+      height: 20px;
+    }
   }
 
   &_totalPoints
@@ -480,6 +488,7 @@
     @include flex(row, center, center);
     @include fixedSize(100%);
     @include fixed(0, auto, auto, 0);
+    padding: 0 19px;
     z-index: 10;
     background-color: rgba($color_black, 0.8);
 
@@ -522,11 +531,20 @@
     }
   }
 
+  &_pointsContainer
+  {
+    & > button[class*="ordersummary_closeButton"]
+    {
+      @include position(absolute, 0, 0, auto, auto);
+      margin: calc(16px + 1vw)
+    }
+  }
+
   &_voucherContainer,
   &_pointsContainer
   {
     @include flex(column, flex-start, flex-start);
-    @include fixedWidth('370px');
+    @include fixedWidth('480px');
     position: relative;
     background-color: $color_white;
     padding: calc(12px + .6vw) calc(12px + .6vw);
@@ -538,7 +556,7 @@
 
     @media screen and (max-width: $breakpoint_max_md) 
     {
-      @include fixedWidth('370px');
+      @include fixedWidth('100%');
       -webkit-overflow-scrolling: auto;
       border-radius: 2px;
     }
