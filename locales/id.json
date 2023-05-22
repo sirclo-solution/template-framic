@@ -314,6 +314,7 @@
     "orderID": "No Pesanan",
     "pointHistory": "Riwayat Poin",
     "points": "Poin",
+    "pointsApplied": "Poin",
     "shopNow": "Belanja sekarang!",
     "upLevelPrompt": "Lakukan {MINIMUM_ORDER} transaksi pembelian untuk mencapai {NEXT_LEVEL}",
     "usePoints": "Gunakan Poin Anda",
