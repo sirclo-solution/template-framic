@@ -230,7 +230,7 @@
   &_pointsButtonApplied
   {
     @include flex(row, center, flex-start);
-    padding: 12px calc(10px + .5vw);
+    padding: 12px calc(10px + 0.5vw);
     border-radius: 2px;
     border: 1px solid $color_light_border;
     cursor: pointer;
@@ -239,9 +239,9 @@
     vertical-align: middle;
   }
 
-  &_voucherButtonApplied
+  &_pointsButtonApplied
   {
-    margin-bottom: 12px;
+    margin-top: 12px;
   }
 
   &_voucherButton,
@@ -307,6 +307,11 @@
     white-space: normal;
     word-break: break-all;
     vertical-align: middle;
+  }
+
+  &_pointsAppliedText
+  {
+    text-transform: capitalize;
   }
 
   &_voucherTitle
