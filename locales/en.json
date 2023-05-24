@@ -314,6 +314,7 @@
     "orderID": "Order ID",
     "pointHistory": "Point History",
     "points": "Points",
+    "pointsApplied": "Points",
     "shopNow": "Shopping now",
     "upLevelPrompt": "Make {MINIMUM_ORDER} transaction(s) left to reach {NEXT_LEVEL}",
     "usePoints": "Use Point",

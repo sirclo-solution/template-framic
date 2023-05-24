@@ -107,6 +107,8 @@ const classesOrderSummary = {
   pointsWarningClassName: styles.ordersummary_pointsWarning,
   continueShoppingClassName: styles.ordersummary_continueShopping,
   pointsSubmitButtonClassName: stylesButton.btn_primaryLong,
+  pointsButtonAppliedClassName: styles.ordersummary_pointsButtonApplied,
+  pointsAppliedTextClassName: styles.ordersummary_pointsAppliedText
 }
 
 const classesCartDetails = {
@@ -236,7 +238,7 @@ const OrderSummaryBox: FC<OrderSummaryBoxPropsType> = ({
         icons={{
           voucher: <span className={styles.ordersummary_voucherIcon}></span>,
           points: <span className={styles.ordersummary_pointsIcon}></span>,
-          pointsApplied: <span className={styles.ordersummary_voucherIconApplied}></span>,
+          pointsApplied: <span className={styles.ordersummary_pointsIconApplied}></span>,
           close: <span className={styles.ordersummary_closeIcon}></span>,
           copyIcon: <span className={styles.ordersummary_copyIcon}></span>,
           voucherApplied: <span className={styles.ordersummary_voucherIconApplied}></span>,
