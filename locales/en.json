@@ -311,6 +311,8 @@
     "exchangePoints": "Redeem your Point",
     "getPointPrompt": "Get points on your transactions",
     "insufficientPoints": "Not enough points",
+    "invalidMinimumPointToExchange": "Angka yang dimasukkan belum mencapai",
+    "minimumPointToExchange": "Min. tukar",
     "orderID": "Order ID",
     "pointHistory": "Point History",
     "points": "Points",
