@@ -343,7 +343,7 @@
   },
   "orderHistory": {
     "lineItemDelivered": "Selesaikan Pesanan",
-    "lineItemNeedReview": "Butuh Ulasan",
+    "lineItemNeedReview": "Ulas Pesanan",
     "lineItemReviewed": "Sudah Diulas",
     "productNote": "Catatan",
     "uploading": "Mengunggah ...",
