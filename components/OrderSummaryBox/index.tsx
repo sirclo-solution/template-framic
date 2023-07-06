@@ -104,6 +104,8 @@ const classesOrderSummary = {
   pointValueClassName: styles.ordersummary_pointValue,
   pointsFormClassName: styles.ordersummary_pointsForm,
   changePointsClassName: styles.ordersummary_changePoints,
+  minimumPointToExchangeClassName: styles.ordersummary_minimumPointToExchange,
+  invalidMinimumPointToExchangeClassName: styles.ordersummary_invalidMinimumPointToExchange,
   pointsWarningClassName: styles.ordersummary_pointsWarning,
   continueShoppingClassName: styles.ordersummary_continueShopping,
   pointsSubmitButtonClassName: stylesButton.btn_primaryLong,

@@ -311,6 +311,8 @@
     "exchangePoints": "Tukar Poin Anda",
     "getPointPrompt": "Tingkatkan poin Anda dengan bertransaksi di toko ini.",
     "insufficientPoints": "Poin tidak mencukupi",
+    "invalidMinimumPointToExchange": "Angka yang dimasukkan belum mencapai",
+    "minimumPointToExchange": "Min. tukar",
     "orderID": "No Pesanan",
     "pointHistory": "Riwayat Poin",
     "points": "Poin",
@@ -341,7 +343,7 @@
   },
   "orderHistory": {
     "lineItemDelivered": "Selesaikan Pesanan",
-    "lineItemNeedReview": "Butuh Ulasan",
+    "lineItemNeedReview": "Ulas Pesanan",
     "lineItemReviewed": "Sudah Diulas",
     "productNote": "Catatan",
     "uploading": "Mengunggah ...",

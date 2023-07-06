@@ -13,7 +13,8 @@ import {
   Crosshair,
   ChevronDown,
   ChevronRight,
-  ChevronLeft
+  ChevronLeft,
+  Edit
 } from 'react-feather'
 /* library template */
 import { parseCookies } from 'lib/parseCookies'
@@ -149,6 +150,7 @@ const classesAccount = {
   popupConfirmationOrderButtonNoClassName: stylesButton.btn_primaryLong,
   orderedItemsLabelClassName: styles.orderhistory_orderedItemsLabel,
   orderedItemDetailUploadReceiptClassName: styles.orderhistory_orderedItemDetailUploadReceipt,
+  orderedItemDetailWrapperNeedReviewClassName: styles.orderhistory_orderedItemDetailWrapper,
   orderedItemDetailNeedReviewClassName: styles.orderhistory_orderedItemDetailNeedReview,
   orderedItemDetailReviewedClassName: styles.orderhistory_orderedItemDetailReviewed,
   /* tracking */
@@ -283,7 +285,8 @@ const AccountsPage: FC<AccountPageProps> = ({
               whatsApp: <img src="/images/whatsapp.png" />,
               email: <img src="/images/email.png" />,
               warningIcon: <span className={styles.orderhistory_warningIcon} />,
-              checkMarkIcon: ""
+              checkMarkIcon: "",
+              reviewIcon: <Edit size={16} color="#276EF1"  />,
             }}
           />
         </div>
