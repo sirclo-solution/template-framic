@@ -829,7 +829,6 @@
       @media (max-width: #{$breakpoint_max_md})
       {
         text-align: center;
-        width: calc(100% - 32px);
         transform: none;
         right: auto;
         top: auto;
@@ -927,6 +926,8 @@
   {
     @include flex(row-reverse, center, flex-start);
     padding: 16px;
+    border-top: solid 1px $color_light;
+    border-top-style: dashed;
 
     & > *
     {
@@ -1104,6 +1105,13 @@
     }
   }
 
+  &_orderedItemDetailWrapper
+  {
+    @include flex(row, center, flex-start);
+    margin-top: 10px;
+    gap: 4px;
+  }
+
   &_orderedItemDetailNeedReview,
   &_orderedItemDetailReviewed
   {
@@ -1137,18 +1145,8 @@
   &_orderedItemDetailNeedReview
   {
     @include flex(row, center, flex-start);
-    color: $color_red;
-    margin-top: 10px;
-
-    &::before
-    {
-      @include fixedSize(12px);
-      content: "";
-      display: inline-block;
-      background-repeat: no-repeat;
-      margin-right: 4px;
-      background-image: url("data:image/svg+xml,%0A%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 11.0004C3.2385 11.0004 1 8.76187 1 6.00037C1 3.23887 3.2385 1.00037 6 1.00037C8.7615 1.00037 11 3.23887 11 6.00037C11 8.76187 8.7615 11.0004 6 11.0004ZM6 10.0004C7.06087 10.0004 8.07828 9.57894 8.82843 8.82879C9.57857 8.07865 10 7.06123 10 6.00037C10 4.9395 9.57857 3.92208 8.82843 3.17194C8.07828 2.42179 7.06087 2.00037 6 2.00037C4.93913 2.00037 3.92172 2.42179 3.17157 3.17194C2.42143 3.92208 2 4.9395 2 6.00037C2 7.06123 2.42143 8.07865 3.17157 8.82879C3.92172 9.57894 4.93913 10.0004 6 10.0004ZM5.5 7.50037H6.5V8.50037H5.5V7.50037ZM5.5 3.50037H6.5V6.50037H5.5V3.50037Z' fill='%23E11900'/%3E%3C/svg%3E");
-    }
+    color: $color_blue;
+    text-decoration: underline;
   }
 
   &_checkPaymentOrderContainer

@@ -486,6 +486,19 @@
     }
   }
 
+  &_minimumPointToExchange
+  {
+    @include typographyBuilder(400, 12, 16);
+    margin-top: 4px;
+  }
+
+  &_invalidMinimumPointToExchange
+  {
+    @include typographyBuilder(400, 12, 16);
+    margin-top: 4px;
+    color: $color_red;
+  }
+
   &_pointsWarning
   {
     margin-top: 12px;
