@@ -312,7 +312,7 @@
     "getPointPrompt": "Get points on your transactions",
     "insufficientPoints": "Not enough points",
     "invalidMinimumPointToExchange": "The min. number needs to be applied is",
-    "minimumPointToExchange": "The min. number needs to be applied is",
+    "minimumPointToExchange": "Min. exchange is",
     "orderID": "Order ID",
     "pointHistory": "Point History",
     "points": "Points",
