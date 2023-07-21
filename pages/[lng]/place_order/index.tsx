@@ -70,6 +70,7 @@ const classesPlaceOrderForm = {
   mapButtonFooterClassName: `${stylesButton.btn_primary} ${styleMapLocation.mapButtonFooter}`,
   mapPinPointIconClassName: styleMapLocation.mapPinPointIcon,
   paymentDetailsDeductionClassName: styles.placeorder_paymentDetailsDeduction,
+  shippingCheckboxContainerClassName: styles.placeorder_shippingCheckboxContainer,
 
   headerLabelClassName: styles.register_headerLabel,
   inputContainerClassName: stylesForm.form_control,
