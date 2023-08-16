@@ -1,4 +1,5 @@
 @import '../utils/variables';
+@import '../components/Form.module.scss';
 
 .placeorder
 {
@@ -175,6 +176,99 @@
     &:last-child
     {
       margin-bottom: 0;
+    }
+  }
+
+  &_label
+  {
+    @include flex(row, center, space-between);
+  }
+
+  &_phone
+  {
+    &Container
+    {
+      @extend .form_inputLong;
+      @include flex(row, center, center, false, true);
+
+      padding: 0;
+
+      > span, 
+      > input
+      {
+        @include flex(row, center, center, false, true);
+      }
+    }
+
+    &InputGroupAddOn
+    {
+      white-space: nowrap;
+      vertical-align: middle;
+      position: relative;
+      border-right: 0;
+      border-radius: 3px 0 0 3px;
+      background-color: $color_grey_dark;
+      padding: 14px 12px;
+
+      &:has(.placeorder_phoneDropdownList)
+      {
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    &DialCode
+    {
+      padding: 0 10px;
+    }
+
+    &Input
+    {
+      width: 100%;
+      padding: 0 !important;
+      border: none !important;
+
+      &:focus
+      {
+        border: none !important;
+      }
+    }
+
+    &DropdownListContainer
+    {
+      @include position(absolute, 100%, auto, auto, 0);
+      border: 1px solid $color_light;
+      border-radius: 3px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      overflow-y: scroll;
+      z-index: 999;
+      background-color: $color_white;
+      height: 250px;
+      max-width: 90vw;
+
+      @media screen and (max-width: $breakpoint_min_sm)
+      {
+        max-width: 84vw;
+      }
+    }
+
+    &DropdownList
+    {
+      list-style-type: none;
+      padding: 12px 0 0 12px;
+    }
+
+    &CountryOption
+    {
+      &:not(:last-child)
+      {
+        padding-bottom: 14px;
+      }
+
+      &:first-child
+      {
+        padding-top: 0;
+      }
     }
   }
 }
