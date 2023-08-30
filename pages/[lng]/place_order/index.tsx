@@ -13,7 +13,8 @@ import {
   X as XIcon,
   ArrowLeft,
   CheckCircle,
-  Crosshair
+  Crosshair,
+  ChevronDown
 } from 'react-feather'
 /* library template */
 import { useBrand } from 'lib/useBrand'
@@ -36,6 +37,7 @@ type PrivateComponentPropsType = {
 const classesPlaceOrderForm = {
   formGroupClassName: stylesForm.form_control,
   inputClassName: stylesForm.form_inputLong,
+  labelClassName: styles.placeorder_label,
   shippingCheckboxLabelClassName: styles.placeorder_shippingCheckboxLabel,
   signupLabelClassName: styles.placeorder_signupLabel,
   checkoutAsMemberClassName: styles.placeorder_checkoutAsMember,
@@ -136,6 +138,23 @@ const PlaceOrderPage: FC<any> = ({
             backIcon={<ArrowLeft />}
             mapButtonCloseIcon={<XIcon />}
             mapCenterIcon={<Crosshair />}
+            fieldPhoneNumberProps={{
+              name: 'phone_number',
+              dropdownIcon: <ChevronDown className='ml-2' size={14} />,
+              selectedImgOptionHeight: '24px',
+              classes: {
+                fieldContainerClassName: styles.placeorder_phoneContainer,
+                selectCountryContainerClassName: styles.placeorder_phoneInputGroupAddOn,
+                selectCountryFlagClassName: styles.placeorder_phoneSelectedCountryFlag,
+                dropdownListContainerClassName: styles.placeorder_phoneDropdownListContainer,
+                dropdownListClassName: styles.placeorder_phoneDropdownList,
+                countryOptionClassName: styles.placeorder_phoneCountryOption,
+                countryFlagClassName: styles.placeorder_phoneCountryFlag,
+                countryNameClassName: styles.placeorder_phoneCountryName,
+                dialCodeClassName: styles.placeorder_phoneDialCode,
+                inputFieldPhoneClassName: styles.placeorder_phoneInput
+              },
+            }}
           />
         </ChekoutComponent>
       </Layout>
