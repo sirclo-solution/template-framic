@@ -8,7 +8,7 @@ import {
   useAuthToken
 } from '@sirclo/nexus';
 /* library template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 /* component */
 import Layout from 'components/Layout/Layout'
 import Placeholder from 'components/Placeholder'
@@ -69,11 +69,13 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
+  const tokenData = await useAuthToken({ req, res, env: process.env }); 
+	const token = tokenData.value; 
   const [brand] = await Promise.all([
-    useBrand(req),
+    useBrandCommon(req, params, token),
     useAuthToken({ req, res, env: process.env })
   ])
-  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+  const defaultLanguage = brand.brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 
   return {
