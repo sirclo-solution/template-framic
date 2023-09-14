@@ -5,10 +5,12 @@ const Manifest = () => <></>;
 export default Manifest;
 
 export async function getServerSideProps({ req, res }) {
+  const tokenData = await useAuthToken({req, res, env: process.env});
+  const token = tokenData.value;
   const [data] = await Promise.all([
-    getBrand(GRAPHQL_URI(req)),
+    getBrand(GRAPHQL_URI(req), token),
     useAuthToken({ req, res, env: process.env })
-  ])
+  ]);
 
   const body = `
     {
