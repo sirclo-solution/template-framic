@@ -10,7 +10,6 @@ import {
   useI18n
 } from '@sirclo/nexus'
 /* library template */
-import useWindowSize from 'lib/useWindowSize'
 import formatPrice from 'lib/formatPrice'
 /* component */
 import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
@@ -121,7 +120,6 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
 }) => {
   // variables
   const i18n: any = useI18n()
-  const size = useWindowSize()
   const IS_PROD = process.env.IS_PROD;
 
   // state
