@@ -26,7 +26,7 @@ import Popup from 'components/Popup/Popup';
 import ChooseVariant from 'components/ChooseVariant';
 /* library template */
 import { GRAPHQL_URI } from 'lib/Constants'
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
 
 import styles from 'public/scss/pages/Home.module.scss'
@@ -87,6 +87,8 @@ const Home: FC<any> = ({
     setIsOpenChooseVariantDialog(false)
     tooglePopupSuccessAddCart()
   }
+
+  console.log({brand: brand}, {banners: dataBanners});
 
   return (
     <Layout
@@ -276,14 +278,15 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }: any) => {
-
+  const tokenData = await useAuthToken({res, req, env: process.env});
+  const token = tokenData.value;
   const [brand, dataBanners, { isAllProductsSectionActive, isMenuCategorySectionActive }] = await Promise.all([
-    useBrand(req),
-    getBanner(GRAPHQL_URI(req)),
-    useGetHomepageSection(GRAPHQL_URI(req)),
-    useAuthToken({ req, res, env: process.env })
-  ])
-  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
+    useBrandCommon(req, params, token),
+    getBanner(GRAPHQL_URI(req), token),
+    useGetHomepageSection(GRAPHQL_URI(req), token)
+  ]);
+
+  const defaultLanguage = brand.brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico'];
 
@@ -293,6 +296,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     })
     res.end()
   }
+  console.log('gssp', token, brand.brand, dataBanners);
 
   return {
     props: {
