@@ -10,9 +10,9 @@ export const useBrandCommon = async (
   token: string
 ) => {
   try {
-    const brand = await getBrand(GRAPHQL_URI(req), token)
-    const lng = brand?.settings?.defaultLanguage || params.lng || 'id'
-    const { default: lngDict = {} } = await import(`locales/${lng}.json`)
+    const brand = await getBrand(GRAPHQL_URI(req), token);
+    const lng = brand?.settings?.defaultLanguage || params.lng || 'id';
+    const { default: lngDict = {} } = await import(`locales/${lng}.json`);
 
     return {
       brand: brand || '',
@@ -20,6 +20,6 @@ export const useBrandCommon = async (
       lng,
     }
   } catch (err) {
-    console.log('Error while request brand: ', err)
+    console.log('Error while request brand: ', err);
   }
 }

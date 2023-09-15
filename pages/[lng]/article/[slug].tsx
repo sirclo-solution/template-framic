@@ -5,7 +5,7 @@ import {
   Article,
   ArticleCategories,
   useI18n,
-  useAuthToken
+  useAuthToken,
 } from '@sirclo/nexus';
 /* library template */
 import { useBrandCommon } from 'lib/useBrand'
@@ -67,15 +67,13 @@ const ArticleDetail: FC<any> = ({
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   res,
-  params
+  params,
 }) => {
   const tokenData = await useAuthToken({ req, res, env: process.env }); 
 	const token = tokenData.value; 
-  const [brand] = await Promise.all([
-    useBrandCommon(req, params, token),
-    useAuthToken({ req, res, env: process.env })
-  ])
-  const defaultLanguage = brand.brand?.settings?.defaultLanguage || params.lng || 'id'
+  const { brand } = await useBrandCommon(req, params, token);
+
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
 
   return {
@@ -83,7 +81,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       lng: defaultLanguage,
       lngDict,
       slug: params.slug,
-      brand: brand || ''
+      brand: brand || '',
     }
   }
 }
