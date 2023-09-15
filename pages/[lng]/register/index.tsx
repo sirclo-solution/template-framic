@@ -164,7 +164,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const tokenData = await useAuthToken({ req, res, env: process.env }); 
   const token = tokenData.value;
   const [
-    brand, 
+    { brand }, 
     hasGoogleAuth, 
     hasFacebookAuth, 
     hasOtp
@@ -175,7 +175,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     useWhatsAppOTPSetting(req, token)
   ]);
   
-  const defaultLanguage = brand.brand?.settings?.defaultLanguage || params.lng || 'id'
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const cookies = parseCookies(req)
   redirectIfAuthenticated(res, cookies, 'account', defaultLanguage)

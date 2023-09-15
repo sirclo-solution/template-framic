@@ -143,12 +143,12 @@ const Blog: FC<any> = ({
 export const getServerSideProps: GetServerSideProps = async ({ params, req, res }) => {
   const tokenData = await useAuthToken({ req, res, env: process.env }); 
 	const token = tokenData.value; 
-  const [brand, headerImage] = await Promise.all([
+  const [{ brand }, { headerImage }] = await Promise.all([
     useBrandCommon(req, params, token),
     getBlogHeaderImage(GRAPHQL_URI(req), token),
-    useAuthToken({ req, res, env: process.env })
-  ])
-  const defaultLanguage = brand.brand?.settings?.defaultLanguage || params.lng || 'id';
+  ]);
+
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
 
   return {

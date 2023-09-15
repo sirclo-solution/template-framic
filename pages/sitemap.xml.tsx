@@ -18,6 +18,7 @@ export default Sitemap
 export async function getServerSideProps({ req, res }) {
   const tokenData = await useAuthToken({req, res, env: process.env});
   const token = tokenData.value;
+  
   let pages = await globby([
     'pages/**/*.tsx',
     '!pages/**/[*.tsx',

@@ -196,12 +196,13 @@ const PaymentMethods: FC<any> = ({
 export const getServerSideProps: GetServerSideProps = async ({ req, res, params }) => {
   const tokenData = await useAuthToken({ req, res, env: process.env }); 
   const token = tokenData.value;
-  const [brand, hasOtp] = await Promise.all([
+  const [{ brand }, hasOtp] = await Promise.all([
     useBrandCommon(req, params, token),
     useWhatsAppOTPSetting(req, token)
-  ])
-  const defaultLanguage = brand.brand?.settings?.defaultLanguage || params.lng || 'id'
-  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
+  ]);
+
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
 
   return {
     props: {
