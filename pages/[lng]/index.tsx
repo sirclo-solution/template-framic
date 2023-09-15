@@ -280,13 +280,13 @@ export const getServerSideProps: GetServerSideProps = async ({
 }: any) => {
   const tokenData = await useAuthToken({res, req, env: process.env});
   const token = tokenData.value;
-  const [brand, dataBanners, { isAllProductsSectionActive, isMenuCategorySectionActive }] = await Promise.all([
+  const [{ brand }, dataBanners, { isAllProductsSectionActive, isMenuCategorySectionActive }] = await Promise.all([
     useBrandCommon(req, params, token),
     getBanner(GRAPHQL_URI(req), token),
     useGetHomepageSection(GRAPHQL_URI(req), token)
   ]);
 
-  const defaultLanguage = brand.brand?.settings?.defaultLanguage || params.lng || 'id'
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico'];
 
@@ -296,7 +296,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     })
     res.end()
   }
-  console.log('gssp', token, brand.brand, dataBanners);
+  console.log('gssp', token, brand, dataBanners);
 
   return {
     props: {

@@ -68,11 +68,11 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const tokenData = await useAuthToken({ req, res, env: process.env }); 
 	const token = tokenData.value; 
-  const brand = await useBrandCommon(req, params, token);
+  const { brand } = await useBrandCommon(req, params, token);
   
-  const cookies = parseCookies(req)
-  const defaultLanguage = brand.brand?.settings?.defaultLanguage || params.lng || 'id'
-  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
+  const cookies = parseCookies(req);
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
 
   redirectIfAuthenticated(res, cookies, 'account', defaultLanguage)
 
