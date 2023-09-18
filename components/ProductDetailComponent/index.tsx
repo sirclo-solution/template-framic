@@ -24,7 +24,6 @@ import styles from 'public/scss/components/ProductDetail.module.scss'
 import stylesButton from 'public/scss/components/Button.module.scss'
 import stylesForm from 'public/scss/components/Form.module.scss'
 import stylesSizeGuide from 'public/scss/components/SizeGuide.module.scss'
-import { useSizeBanner } from 'lib/useSizeBanner'
 
 type ProductDetailComponentType = {
   data: any
@@ -265,7 +264,6 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
         prevIcon={<span className={styles.productdetail_arrowPrev} />}
         nextIcon={<span className={styles.productdetail_arrowNext} />}
         thumborSetting={{
-          width: useSizeBanner(size.width),
           format: "webp",
           quality: 100
         }}
