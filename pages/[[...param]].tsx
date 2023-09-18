@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import { useBrandCommon } from 'lib/useBrand'
-import { useI18n } from '@sirclo/nexus'
+import { useI18n, useAuthToken } from '@sirclo/nexus'
 import Error from 'components/Error'
 
 interface Props {
@@ -26,8 +26,10 @@ export const getServerSideProps = async ({ req, res, params }: any) => {
     'manifest',
     'sitemap.xml',
   ]
+  const tokenData = await useAuthToken({ req, res, env: process.env }); 
+  const token = tokenData.value;
 
-  const { lng } = await useBrandCommon(req, params)
+  const { lng } = await useBrandCommon(req, params, token)
   const location = `/${lng}` + req.url.replace(/\/$/, '')
 
   if (allowedUri.indexOf(params.param) == -1) {
