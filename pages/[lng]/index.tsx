@@ -88,8 +88,6 @@ const Home: FC<any> = ({
     tooglePopupSuccessAddCart()
   }
 
-  console.log({brand: brand}, {banners: dataBanners});
-
   return (
     <Layout
       lng={lng}
@@ -296,7 +294,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     })
     res.end()
   }
-  console.log('gssp', token, brand, dataBanners);
 
   return {
     props: {
