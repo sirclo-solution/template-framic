@@ -11,7 +11,7 @@ import {
 } from '@sirclo/nexus'
 import Link from 'next/link'
 /* library template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import { GRAPHQL_URI } from 'lib/Constants';
 /* component */
 import Layout from 'components/Layout/Layout'
@@ -147,11 +147,13 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   req
 }) => {
-  const [brand, headerImage] = await Promise.all([
-    useBrand(req),
-    getBlogHeaderImage(GRAPHQL_URI(req)),
-    useAuthToken({ req, res, env: process.env })
-  ])
+  const tokenData = await useAuthToken({ req, res, env: process.env }); 
+	const token = tokenData.value;
+  const [{ brand }, { headerImage }] = await Promise.all([
+    useBrandCommon(req, params, token),
+    getBlogHeaderImage(GRAPHQL_URI(req), token),
+  ]);
+
   const { slug } = params
   const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'

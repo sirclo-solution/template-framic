@@ -21,7 +21,7 @@ import {
 /* library template */
 import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
 import { parseCookies } from 'lib/parseCookies'
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import {
   useGoogleAuth,
   useFacebookAuth,
@@ -158,13 +158,20 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const [brand, hasGoogleAuth, hasFacebookAuth, hasOtp] = await Promise.all([
-    useBrand(req),
-    useGoogleAuth(req),
-    useFacebookAuth(req),
-    useWhatsAppOTPSetting(req),
-    useAuthToken({ req, res, env: process.env })
-  ])
+  const tokenData = await useAuthToken({ req, res, env: process.env }); 
+  const token = tokenData.value;
+  const [
+    { brand }, 
+    hasGoogleAuth, 
+    hasFacebookAuth, 
+    hasOtp
+  ] = await Promise.all([
+    useBrandCommon(req, params, token),
+    useGoogleAuth(req, token),
+    useFacebookAuth(req, token),
+    useWhatsAppOTPSetting(req, token)
+  ]);
+  
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const cookies = parseCookies(req)

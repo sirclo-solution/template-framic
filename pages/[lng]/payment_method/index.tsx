@@ -10,7 +10,7 @@ import {
   useAuthToken
 } from '@sirclo/nexus'
 /* library template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import { useWhatsAppOTPSetting } from 'lib/useAuthMethod'
 /* component */
 import Layout from 'components/Layout/Layout'
@@ -194,13 +194,15 @@ const PaymentMethods: FC<any> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res, params }) => {
-  const [brand, hasOtp] = await Promise.all([
-    useBrand(req),
-    useWhatsAppOTPSetting(req),
-    useAuthToken({ req, res, env: process.env })
-  ])
-  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
-  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
+  const tokenData = await useAuthToken({ req, res, env: process.env }); 
+  const token = tokenData.value;
+  const [{ brand }, hasOtp] = await Promise.all([
+    useBrandCommon(req, params, token),
+    useWhatsAppOTPSetting(req, token)
+  ]);
+
+  const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
+  const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
 
   return {
     props: {

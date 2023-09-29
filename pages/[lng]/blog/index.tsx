@@ -12,7 +12,7 @@ import {
 } from '@sirclo/nexus'
 /* library template */
 import useWindowSize from 'lib/useWindowSize'
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 /* component */
 import Layout from 'components/Layout/Layout'
 import { GRAPHQL_URI } from 'components/Constants'
@@ -141,11 +141,13 @@ const Blog: FC<any> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ params, req, res }) => {
-  const [brand, headerImage] = await Promise.all([
-    useBrand(req),
-    getBlogHeaderImage(GRAPHQL_URI(req)),
-    useAuthToken({ req, res, env: process.env })
-  ])
+  const tokenData = await useAuthToken({ req, res, env: process.env }); 
+	const token = tokenData.value; 
+  const [{ brand }, { headerImage }] = await Promise.all([
+    useBrandCommon(req, params, token),
+    getBlogHeaderImage(GRAPHQL_URI(req), token),
+  ]);
+
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id';
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`);
 
