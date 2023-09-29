@@ -88,8 +88,6 @@ const Home: FC<any> = ({
     tooglePopupSuccessAddCart()
   }
 
-  console.log({brand: brand}, {banners: dataBanners});
-
   return (
     <Layout
       lng={lng}
