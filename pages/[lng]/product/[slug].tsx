@@ -11,7 +11,7 @@ import {
   useAuthToken
 } from '@sirclo/nexus'
 /* library template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import { NextPageWithLayout } from 'lib/commonTypes'
 /* component */
 import Layout from 'components/Layout/Layout'
@@ -192,12 +192,14 @@ const Product: FC<ProductProps> & NextPageWithLayout = ({
 }
 
 export async function getServerSideProps({ req, res, params }) {
+  const tokenData = await useAuthToken({ req, res, env: process.env }); 
+  const token = tokenData.value;
   const { slug } = params
-  const [data, brand] = await Promise.all([
-    getProductDetail(GRAPHQL_URI(req), slug),
-    useBrand(req),
-    useAuthToken({ req, res, env: process.env })
+  const [ { brand }, data ] = await Promise.all([
+    useBrandCommon(req, params, token),
+    getProductDetail(GRAPHQL_URI(req), slug, token),
   ])
+  
   const defaultLanguage = brand?.settings?.defaultLanguage || params.lng || 'id'
   const { default: lngDict = {} } = await import(`locales/${defaultLanguage}.json`)
   const urlSite = `https://${req.headers.host}/${params.lng}/product/${slug}`
