@@ -265,7 +265,7 @@ const ProductDetailComponent: FC<ProductDetailComponentType> = ({
         nextIcon={<span className={styles.productdetail_arrowNext} />}
         thumborSetting={{
           format: "webp",
-          quality: 100
+          quality: 85
         }}
         customTabsComponent={
           <Tabs
