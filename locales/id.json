@@ -502,6 +502,7 @@
     "fieldNotComplete": "Mohon dilengkapi form yang tersedia.",
     "haveAnAccount": "Sudah punya akun?",
     "internationalShipping": "Internasional (luar negeri)",
+    "minimumAddress": "Detail Alamat minimal 11 karakter",
     "mobilePhone": "No.Handphone",
     "mobilePhonePlaceholder": "810 0000 0000",
     "nameInvalid": "Nama harus mengandung huruf, silahkan cek lagi",
